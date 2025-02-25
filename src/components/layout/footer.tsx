@@ -16,7 +16,7 @@ const usefulLinks = ['About Us', 'Why MBBS Abroad', 'Services', 'News & Events',
 
 const Footer = () => {
   return (
-    <footer className="bg-slate-700 text-slate-200 py-12">
+    <footer className="bg-slate-900 text-slate-200 py-12">
       <div className="container max-w-[1440px] mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Office Address Section */}
@@ -103,6 +103,7 @@ const Footer = () => {
               />
               <Button
                 type="submit"
+                variant="secondary"
               >
                 Send Message
               </Button>
@@ -113,7 +114,7 @@ const Footer = () => {
         {/* Copyright Section */}
         <div className="mt-12 pt-8 border-t border-slate-800/75 text-center text-sm">
           <p>
-            Copyright © 2014-24 || Education Abroad Services || Website Designed & developed by Ravi Jakhar
+            Copyright © 2014-25 || Education Abroad Services || Website Designed & developed by Ajay Gaur
           </p>
         </div>
       </div>
