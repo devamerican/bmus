@@ -1,23 +1,7 @@
 {
-  "commit": "6682a7ea572b8029288c1ff4055e8bb519cf055f",
-  "generated": "2025-02-26T18:18:14.320Z",
+  "commit": "14191b7832a4e2b364eb75c6bba95c24e751dd63",
+  "generated": "2025-02-26T18:23:22.083Z",
   "metadata": [
-    {
-      "__outstatic": {
-        "commit": "3b53f985f1a772ef2941dabd24aaef3fbc53f587",
-        "hash": "1167462341",
-        "path": "outstatic/content/mbbs-abroad-faqs/why-should-i-study-mbbs-abroad.mdx"
-      },
-      "author": {
-        "name": "Ajay Gaur",
-        "picture": "https://avatars.githubusercontent.com/u/79410810?v=4"
-      },
-      "collection": "mbbs-abroad-faqs",
-      "publishedAt": "2025-02-26T17:54:52.278Z",
-      "slug": "why-should-i-study-mbbs-abroad",
-      "status": "published",
-      "title": "Why should I study MBBS abroad ?"
-    },
     {
       "__outstatic": {
         "commit": "6682a7ea572b8029288c1ff4055e8bb519cf055f",
@@ -33,6 +17,22 @@
       "slug": "test-title",
       "status": "published",
       "title": "Test Title"
+    },
+    {
+      "__outstatic": {
+        "commit": "14191b7832a4e2b364eb75c6bba95c24e751dd63",
+        "hash": "1873761027",
+        "path": "outstatic/content/mbbs-abroad-faqs/why-should-i-study-mbbs-abroad.mdx"
+      },
+      "author": {
+        "name": "Ajay Gaur",
+        "picture": "https://avatars.githubusercontent.com/u/79410810?v=4"
+      },
+      "collection": "mbbs-abroad-faqs",
+      "publishedAt": "2025-02-26T17:54:52.278Z",
+      "slug": "why-should-i-study-mbbs-abroad",
+      "status": "published",
+      "title": "Why should I study MBBS abroad ?"
     }
   ]
 }
