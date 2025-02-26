@@ -1,10 +1,10 @@
 {
-  "commit": "bbbe74ca4174a5a68834810862c433ab6e3d2c0d",
-  "generated": "2025-02-26T17:25:31.271Z",
+  "commit": "",
+  "generated": "Wed, 26 Feb 2025 17:48:22 GMT",
   "metadata": [
     {
       "__outstatic": {
-        "commit": "bbbe74ca4174a5a68834810862c433ab6e3d2c0d",
+        "commit": "3b53f985f1a772ef2941dabd24aaef3fbc53f587",
         "hash": "1167462341",
         "path": "outstatic/content/mbbs-abroad-faqs/why-should-i-study-mbbs-abroad.mdx"
       },
