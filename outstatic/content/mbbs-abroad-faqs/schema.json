@@ -8,6 +8,13 @@
       "fieldType": "String",
       "dataType": "string",
       "title": "question"
+    },
+    "isTrue": {
+      "description": "Testing",
+      "required": true,
+      "fieldType": "Boolean",
+      "dataType": "boolean",
+      "title": "isTrue"
     }
   }
 }
