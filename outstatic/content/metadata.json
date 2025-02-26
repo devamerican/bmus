@@ -1,6 +1,6 @@
 {
-  "commit": "14191b7832a4e2b364eb75c6bba95c24e751dd63",
-  "generated": "2025-02-26T18:23:22.083Z",
+  "commit": "21e3e43a86552603a041553fe0d7db756cc2a8c4",
+  "generated": "2025-02-26T18:25:21.359Z",
   "metadata": [
     {
       "__outstatic": {
@@ -20,8 +20,8 @@
     },
     {
       "__outstatic": {
-        "commit": "14191b7832a4e2b364eb75c6bba95c24e751dd63",
-        "hash": "1873761027",
+        "commit": "21e3e43a86552603a041553fe0d7db756cc2a8c4",
+        "hash": "380957761",
         "path": "outstatic/content/mbbs-abroad-faqs/why-should-i-study-mbbs-abroad.mdx"
       },
       "author": {
