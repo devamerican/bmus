@@ -1,6 +1,13 @@
 {
-  "title": "MBBS Abroad FAQs",
-  "slug": "mbbs-abroad-faqs",
+  "title": "mbbs-abroad-faqs",
   "type": "object",
-  "properties": {}
+  "properties": {
+    "question": {
+      "description": "",
+      "required": false,
+      "fieldType": "String",
+      "dataType": "string",
+      "title": "question"
+    }
+  }
 }
