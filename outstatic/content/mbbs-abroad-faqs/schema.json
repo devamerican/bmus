@@ -15,6 +15,13 @@
       "fieldType": "Boolean",
       "dataType": "boolean",
       "title": "isTrue"
+    },
+    "answer": {
+      "description": "Add a answer",
+      "required": false,
+      "fieldType": "String",
+      "dataType": "string",
+      "title": "Answer"
     }
   }
 }
