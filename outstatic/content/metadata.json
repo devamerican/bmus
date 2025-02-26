@@ -1,6 +1,6 @@
 {
-  "commit": "",
-  "generated": "Wed, 26 Feb 2025 17:48:22 GMT",
+  "commit": "54dec8ea0f7ba662592df98e9125451900f373a7",
+  "generated": "2025-02-26T17:52:24.011Z",
   "metadata": [
     {
       "__outstatic": {
@@ -17,6 +17,22 @@
       "slug": "why-should-i-study-mbbs-abroad",
       "status": "published",
       "title": "Why should I study MBBS abroad ?"
+    },
+    {
+      "__outstatic": {
+        "commit": "54dec8ea0f7ba662592df98e9125451900f373a7",
+        "hash": "4008670205",
+        "path": "outstatic/content/posts/test-title.mdx"
+      },
+      "author": {
+        "name": "Ajay Gaur",
+        "picture": "https://avatars.githubusercontent.com/u/79410810?v=4"
+      },
+      "collection": "posts",
+      "publishedAt": "2025-02-26T18:25:12.256Z",
+      "slug": "test-title",
+      "status": "published",
+      "title": "Test Title"
     }
   ]
 }
