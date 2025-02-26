@@ -1,6 +1,6 @@
 {
-  "commit": "dc8edd5cde0a1fcca0ac2b6f2d46b4528c5e73aa",
-  "generated": "2025-02-26T18:39:00.769Z",
+  "commit": "69161e9ded8a73ba249e90669717255f5ec640ed",
+  "generated": "2025-02-26T19:10:12.562Z",
   "metadata": [
     {
       "__outstatic": {
@@ -20,8 +20,8 @@
     },
     {
       "__outstatic": {
-        "commit": "dc8edd5cde0a1fcca0ac2b6f2d46b4528c5e73aa",
-        "hash": "2145491331",
+        "commit": "69161e9ded8a73ba249e90669717255f5ec640ed",
+        "hash": "1159634966",
         "path": "outstatic/content/mbbs-abroad-faqs/why-should-i-study-mbbs-abroad.mdx"
       },
       "author": {
@@ -34,7 +34,7 @@
       "question": "What is this field",
       "slug": "why-should-i-study-mbbs-abroad",
       "status": "published",
-      "title": "Why should I study MBBS abroad ?"
+      "title": "Study MBBS Abroad FAQ's"
     }
   ]
 }
