@@ -1,6 +1,6 @@
 {
-  "commit": "54dec8ea0f7ba662592df98e9125451900f373a7",
-  "generated": "2025-02-26T17:52:24.011Z",
+  "commit": "6682a7ea572b8029288c1ff4055e8bb519cf055f",
+  "generated": "2025-02-26T18:18:14.320Z",
   "metadata": [
     {
       "__outstatic": {
@@ -20,7 +20,7 @@
     },
     {
       "__outstatic": {
-        "commit": "54dec8ea0f7ba662592df98e9125451900f373a7",
+        "commit": "6682a7ea572b8029288c1ff4055e8bb519cf055f",
         "hash": "4008670205",
         "path": "outstatic/content/posts/test-title.mdx"
       },
