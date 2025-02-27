@@ -28,8 +28,8 @@ const countries = [
 ]
 export default function Countries(){
     return(
-        <section className="max-w-[1440px] mx-auto p-4" >
-            <h2 className="text-center text-2xl font-semibold mb-8" >Countries</h2>
+        <section className="section-container" >
+            <h2 className="text-center text-h2 mb-8" >Countries</h2>
             <div className="grid grid-cols-3 gap-10" >
                 {
                     countries.map((country, i) => (

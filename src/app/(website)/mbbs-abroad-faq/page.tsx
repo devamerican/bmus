@@ -1,8 +1,20 @@
-import { getDocuments } from "outstatic/server"
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+  } from "@/components/ui/accordion"  
+import { load } from "outstatic/server"
+
 
 
 async function getData(){
-    return getDocuments('posts', ['Test title'])
+    // return getDocuments('Mbbs-abroad-faqs', ['title', 'content', 'isTrue'])
+    // return getDocuments("Mbbs-abroad-faqs", ["title", "faqs", "content"]);
+    const db = await load()
+    const res = await db.find({title: 'faq'}).toArray()
+    return res
+  
 }   
 
 export default async function MbbsAbroadFAQPage(){
@@ -11,7 +23,19 @@ export default async function MbbsAbroadFAQPage(){
     
     return(
         <section>
-            {JSON.stringify(data)}
+        <Accordion type="multiple" >
+            {
+                data.map((item, index) => (
+                <AccordionItem key={index} value="item-1">
+                    <AccordionTrigger>{item.title}</AccordionTrigger>
+                    <AccordionContent>
+                        {item.content}
+                    </AccordionContent>
+                </AccordionItem>
+                ))
+            }
+        </Accordion>
+
         </section>
     )
 }

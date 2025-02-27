@@ -16,7 +16,7 @@ const usefulLinks = ['About Us', 'Why MBBS Abroad', 'Services', 'News & Events',
 
 const Footer = () => {
   return (
-    <footer className="bg-slate-900 text-slate-200 py-12">
+    <footer className="bg-zinc-900 text-zinc-200 py-12">
       <div className="container max-w-[1440px] mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Office Address Section */}
@@ -89,17 +89,17 @@ const Footer = () => {
               <input
                 type="text"
                 placeholder="Your Name"
-                className="w-full px-3 py-2 bg-slate-800 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-3 py-2 bg-zinc-800 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary"
               />
               <input
                 type="email"
                 placeholder="Your Email"
-                className="w-full px-3 py-2 bg-slate-800 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-3 py-2 bg-zinc-800 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary"
               />
               <textarea
                 placeholder="Message"
                 rows={3}
-                className="w-full px-3 py-2 bg-slate-800 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-3 py-2 bg-zinc-800 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary"
               />
               <Button
                 type="submit"
@@ -112,7 +112,7 @@ const Footer = () => {
         </div>
 
         {/* Copyright Section */}
-        <div className="mt-12 pt-8 border-t border-slate-800/75 text-center text-sm">
+        <div className="mt-12 pt-8 border-t border-zinc-800/75 text-center text-sm">
           <p>
             Copyright © 2014-25 || Education Abroad Services || Website Designed & developed by Ajay Gaur
           </p>

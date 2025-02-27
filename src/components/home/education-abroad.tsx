@@ -26,10 +26,10 @@ const achivementsItems = [
 
 export default function EducationAbroad(){
     return(
-        <section className="flex flex-col lg:flex-row gap-4 *:basis-1/2 max-w-[1440px] mx-auto p-4" >
+        <section className="flex flex-col lg:flex-row gap-4 *:basis-1/2 section-container" >
             <div className="space-y-4" >
 
-                <h2 className="text-3xl font-semibold" >Welcome to Education Abroad Services</h2>
+                <h2 className="text-h2" >Welcome to Education Abroad Services</h2>
                 <p>Education Abroad Services Overseas CAREER Consultants provides “One Stop Solution for All Your International Education Needs”.
                 </p>
                 <p>We offer a wide-ranging portfolio of outstanding and brilliantly managed services right from pre-admission to post landing services designed to suit the individual needs of the students.Our quality counseling distinguishes us from others in a way that we offer personalized counseling where there is direct involvement of the directors who have been educated in the finest institutes in India and abroad and have first-hand experience of the international culture and education system.</p>

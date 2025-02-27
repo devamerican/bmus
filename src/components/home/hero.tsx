@@ -24,16 +24,16 @@ export default function Hero(){
     return(
         <section>
             <div className="overflow-hidden" ref={emblaRef}>
-            <div className="flex">
-                {
-                    heroItems.map((item) => (
-                        <div className="flex-[0_0_100%] min-w-0" key={item.id}>
-                            <Image className='w-full' src={item.img} width={1000} height={500} alt="hero" />
-                        </div>
-                    ))
-                }
-       
-            </div>
+                <div className="flex">
+                    {
+                        heroItems.map((item) => (
+                            <div className="flex-[0_0_100%] min-w-0" key={item.id}>
+                                <Image className='w-full' src={item.img} width={1000} height={500} alt="hero" />
+                            </div>
+                        ))
+                    }
+        
+                </div>
             </div>
         </section>
     )
