@@ -16,7 +16,7 @@ const usefulLinks = ['About Us', 'Why MBBS Abroad', 'Services', 'News & Events',
 
 const Footer = () => {
   return (
-    <footer className="bg-zinc-900 text-zinc-200 py-12">
+    <footer className="bg-accent-foreground text-zinc-200 py-12">
       <div className="container max-w-[1440px] mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Office Address Section */}

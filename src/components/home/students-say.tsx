@@ -3,6 +3,7 @@ import Image from "next/image"
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import { Quote } from "lucide-react"
+import { Card, CardContent } from "@/components/ui/card" 
 
 const testimonials = [
     {
@@ -52,7 +53,8 @@ export default function StudentsSay(){
                                 <div className="flex">
                                     {
                                         testimonials.map((item) => (
-                                            <article className="flex-[0_0_25%] min-w-0 flex flex-col rounded-xl shadow-md items-center justify-center gap-4 p-4 border mr-10"  key={item.id}>
+                                            <Card className="flex-[0_0_25%] min-w-0 p-4 mr-10"  key={item.id}>
+                                                <CardContent className="text-center flex flex-col items-center justify-center" >
                                                 <div className="text-center -mt-[50px]" >
                                                     <Image className='rounded-full object-cover mx-auto shadow-md' src={item.image} width={60} height={60} alt={item.name} />  
                                                     <p className="font-medium" >{item.name}</p>
@@ -62,7 +64,8 @@ export default function StudentsSay(){
                                                     <Quote className="rotate-180 text-zinc-500 mb-1" />
                                                     {item.content}
                                                 </h3>
-                                            </article>
+                                                </CardContent>
+                                            </Card>
                                         ))
                                     }
                         

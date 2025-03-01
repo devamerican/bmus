@@ -35,15 +35,15 @@ export default function CounselingForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full ">
         <FormField
           control={form.control}
           name="name"
           render={({ field }) => (
-            <FormItem className="w-full">
+            <FormItem>
               <FormLabel>Full Name</FormLabel>
               <FormControl>
-                <Input placeholder="Ajay Gaur" {...field} className="w-full" />
+                <Input className="bg-secondary" placeholder="Ajay Gaur" {...field} />
               </FormControl>
               {/* <FormDescription>Enter your full name.</FormDescription> */}
               <FormMessage />
@@ -57,7 +57,7 @@ export default function CounselingForm() {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder="ajay@example.com" {...field} />
+                <Input className="bg-secondary" placeholder="ajay@example.com" {...field} />
               </FormControl>
               {/* <FormDescription>Enter your email address.</FormDescription> */}
               <FormMessage />
@@ -71,7 +71,7 @@ export default function CounselingForm() {
             <FormItem>
               <FormLabel>Phone Number</FormLabel>
               <FormControl>
-                <Input placeholder="+91-9910180049" {...field} />
+                <Input className="bg-secondary" placeholder="+91-9910180049" {...field} />
               </FormControl>
               {/* <FormDescription>Enter your phone number.</FormDescription> */}
               <FormMessage />
@@ -86,6 +86,7 @@ export default function CounselingForm() {
               <FormLabel>Your Message</FormLabel>
               <FormControl>
                 <Textarea
+                  className="bg-secondary"
                   placeholder="Course/Country/Query/Suggestion"
                   {...field}
                 />
@@ -95,7 +96,7 @@ export default function CounselingForm() {
             </FormItem>
           )}
         />
-        <Button disabled={form.formState.isSubmitting} type="submit">
+        <Button variant="secondary" disabled={form.formState.isSubmitting} type="submit">
           {form.formState.isSubmitting ? (
             <>
               <Loader className="animate-spin" /> Submitting
