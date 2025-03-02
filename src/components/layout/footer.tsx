@@ -16,12 +16,12 @@ const usefulLinks = ['About Us', 'Why MBBS Abroad', 'Services', 'News & Events',
 
 const Footer = () => {
   return (
-    <footer className="bg-accent-foreground text-zinc-200 py-12">
+    <footer className="bg-accent-foreground text-primary-foreground py-12">
       <div className="container max-w-[1440px] mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Office Address Section */}
           <div className="space-y-4">
-            <h3 className="text-xl font-semibold text-white mb-4">Office Address</h3>
+            <h3 className="text-xl font-semibold mb-4">Office Address</h3>
             <div className="space-y-2">
               <div className="flex items-start gap-2">
                 <MapPin className="h-5 w-5 mt-1" />
@@ -50,7 +50,7 @@ const Footer = () => {
 
           {/* Useful Links Section */}
           <div>
-            <h3 className="text-xl font-semibold text-white mb-4">Useful Links</h3>
+            <h3 className="text-xl font-semibold mb-4">Useful Links</h3>
             <ul className="space-y-2">
               {usefulLinks.map((link) => (
                 <li key={link}>
@@ -67,7 +67,7 @@ const Footer = () => {
 
           {/* MBBS Abroad Section */}
           <div>
-            <h3 className="text-xl font-semibold text-white mb-4">MBBS Abroad</h3>
+            <h3 className="text-xl font-semibold  mb-4">MBBS Abroad</h3>
             <ul className="space-y-2">
               {countries.map((country) => (
                 <li key={country}>
@@ -84,7 +84,7 @@ const Footer = () => {
 
           {/* Quick Contact Form */}
           <div>
-            <h3 className="text-xl font-semibold text-white mb-4">Quick Contact</h3>
+            <h3 className="text-xl font-semibold mb-4">Quick Contact</h3>
             <form className="space-y-3">
               <input
                 type="text"

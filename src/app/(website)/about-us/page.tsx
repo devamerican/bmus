@@ -54,7 +54,7 @@ const team = [
 
 export default function AboutUs() {
   return (
-    <section className="section-container my-10">
+    <section className="max-w-5xl mx-auto my-10">
       <h1 className="text-h1 text-center mb-20" >About Us</h1>
       <h2 className="text-h2 mb-8">Welcome to Education Abroad Services</h2>
       <div className="space-y-8" >
