@@ -51,10 +51,10 @@ export default function ContactUs(){
                                 {item.title}
                             </h3>
                             {item.address && (
-                                <p className="text-gray-600 mt-1">{item.address}</p>
+                                <p className="text-muted-foreground mt-1">{item.address}</p>
                             )}
                             {item.details && (
-                                <ul className="mt-1 text-gray-600 flex gap-5">
+                                <ul className="mt-1 text-muted-foreground flex gap-5">
                                 {item.details.map((detail, i) => (
                                     <li key={i}>{detail}</li>
                                 ))}

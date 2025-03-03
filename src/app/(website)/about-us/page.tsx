@@ -1,3 +1,4 @@
+import { Card, CardContent } from "@/components/ui/card";
 import { Globe, Handshake, Landmark, Laugh } from "lucide-react";
 import Image from "next/image";
 
@@ -69,13 +70,15 @@ export default function AboutUs() {
       <div className="my-24" >
 
         <h2 className="text-h2 mb-12" >Achievements</h2>
-        <div className="grid grid-cols-4 place-content-center place-items-center gap-12" >
+        <div className="grid grid-cols-4 place-content-center place-items-center gap-4" >
             {
                 achievementsItems.map((item) => (
-                    <div key={item.id} className="border w-full grid place-content-center p-5 rounded-2xl h-60 hover:shadow-md transition-all" >
-                        <item.icon size={70} className="mx-auto mb-4" />
-                        <h4 className="text-xl font-semibold  text-center" >{item.title}</h4>
-                    </div>
+                        <Card key={item.id} className="hover:shadow-md transition-shadow" >
+                            <CardContent  >
+                                <item.icon size={32} className=" mb-6 text-blue-500" />
+                                <h4 className="text-lg font-semibold " >{item.title}</h4>
+                            </CardContent>
+                        </Card>
                 ))
             }
         </div>
@@ -94,7 +97,7 @@ export default function AboutUs() {
             team.map((item) => (
                 <div key={item.id} className="flex flex-col items-center justify-center">
                     <Image className="w-full mb-2 rounded-2xl" src={item.image} alt={item.name} width={300} height={300} />
-                    <h3 className="text-h3 mb-1">{item.name}</h3>
+                    <h4 className="text-xl font-medium mb-1">{item.name}</h4>
                     <p className="text-sm text-muted-foreground">{item.desingnation}</p>
                 </div>
             ))

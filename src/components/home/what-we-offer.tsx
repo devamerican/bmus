@@ -76,7 +76,7 @@ export default function WhatWeOffer(){
                     <div className="flex">
                         {
                             items.map((item) => (
-                                <div className="flex-[0_0_25%] min-w-0 flex flex-col items-center justify-center gap-4 p-4 " key={item.id}>
+                                <div className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.33%] xl:flex-[0_0_25%] min-w-0 flex flex-col items-center justify-center gap-4 p-4 " key={item.id}>
                                     <Image className='w-full rounded-sm' src={item.image} width={150} height={150} alt="hero" /> 
                                     <h3 className="text-lg">{item.title}</h3>
                                 </div>

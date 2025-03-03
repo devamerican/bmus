@@ -43,7 +43,7 @@ const navItems = [
       },
       {
         title: "Director's message",
-        href: "/about-us",
+        href: "/director-message",
         description: "A message from our director",
       },
       {
@@ -59,28 +59,78 @@ const navItems = [
     items: [
       {
         title: "MBBS in Russia",
-        href: "/mbbs-abroad",
+        href: "/mbbs/russia",
         description: "Study medicine in Russia",
       },
       {
-        title: "MBBS in India",
-        href: "/mbbs-abroad",
-        description: "Study medicine in India",
+        title: "MBBS in Kazakhstan",
+        href: "/mbbs/kazakhstan",
+        description: "Study medicine in Kazakhstan",
       },
       {
-        title: "MBBS in UAE",
-        href: "/mbbs-abroad",
-        description: "Study medicine in UAE",
+        title: "MBBS in Kyrgyzstan",
+        href: "/mbbs/kyrgyzstan",
+        description: "Study medicine in kyrgyzstan",
+      },
+      {
+        title: "MBBS in Uzbekistan",
+        href: "/mbbs/uzbekistan",
+        description: "Study medicine in Uzbekistan",
       },
       {
         title: "MBBS in Tajikistan",
-        href: "/mbbs-abroad",
+        href: "/mbbs/tajikistan",
         description: "Study medicine in Tajikistan",
       },
       {
         title: "MBBS in Georgia",
-        href: "/mbbs-abroad",
+        href: "/mbbs/georgia",
         description: "Study medicine in Georgia",
+      },
+      {
+        title: "MBBS in Serbia",
+        href: "/mbbs/serbia",
+        description: "Study medicine in Serbia",
+      },
+      {
+        title: "MBBS in Bangladesh",
+        href: "/mbbs/bangladesh",
+        description: "Study medicine in Bangladesh",
+      },
+      {
+        title: "MBBS in Moldova",
+        href: "/mbbs/moldova",
+        description: "Study medicine in Moldova",
+      },
+      {
+        title: "MBBS in Bosnia and Herzegovina",
+        href: "/mbbs/bosnia-and-herzegovina",
+        description: "Study medicine in Bosnia and Herzegovina",
+      },
+      {
+        title: "MBBS in Belize",
+        href: "/mbbs/belize",
+        description: "Study medicine in Belize",
+      },
+      {
+        title: "MBBS in Armenia",
+        href: "/mbbs/armenia",
+        description: "Study medicine in Armenia",
+      },
+      {
+        title: "MBBS in Ukraine",
+        href: "/mbbs/ukraine",
+        description: "Study medicine in Ukraine",
+      },
+      {
+        title: "MBBS in Philippines",
+        href: "/mbbs/philippines",
+        description: "Study medicine in Philippines",
+      },
+      {
+        title: "MBBS in China",
+        href: "/mbbs/china",
+        description: "Study medicine in China",
       },
     ],
   },
@@ -153,14 +203,20 @@ export default function Navbar() {
   return (
     <>
           <div className="hidden lg:flex justify-between items-center gap-3 p-3 bg-secondary " >
-            <ul className="flex gap-3" >
+            <ul className="flex gap-6" >
+              <Link href="tel:+919910180049" className="text-sm hover:opacity-75">
                 <li className="flex gap-1 text-sm"> <Phone size={18} /> +91 9910180049</li>
+              </Link>
+              <Link href="mailto:info@eduabroadservices.com" className="text-sm hover:opacity-75">
                 <li className="flex gap-1 text-sm"> <Mail size={18} /> info@eduabroadservices.com</li>
+              </Link>
             </ul>
-            <Button size="sm" variant="outline" >
-                <Globe />
-                Apply Now
-            </Button>
+            <Link href="/apply-online" >
+              <Button size="sm" variant="outline" >
+                  <Globe />
+                  Apply Now
+              </Button>
+            </Link>
         </div>
     <nav className="sticky top-0 z-50 bg-white border-b shadow-sm">
       <div className="flex items-center justify-between gap-2 p-2.5 xl:p-3 mx-auto">
@@ -208,7 +264,7 @@ export default function Navbar() {
                   <NavigationMenuItem key={item.name}>
                     <NavigationMenuTrigger>{item.name}</NavigationMenuTrigger>
                     <NavigationMenuContent>
-                      <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                      <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:grid-cols-3 lg:w-[600px] xl:w-[760px]">
                         {item.items?.map((subitem, index) => (
                           <li key={index}>
                             <NavigationMenuLink asChild>

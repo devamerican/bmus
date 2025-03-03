@@ -30,7 +30,7 @@ export default function Countries(){
     return(
         <section className="section-container" >
             <h2 className="text-center text-h2 mb-8" >Countries</h2>
-            <div className="grid grid-cols-3 gap-10" >
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" >
                 {
                     countries.map((country, i) => (
                         <div key={i} >

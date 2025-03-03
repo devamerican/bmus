@@ -12,11 +12,11 @@ const countries = [
     'Bangladesh'
   ]
 
-const usefulLinks = ['About Us', 'Why MBBS Abroad', 'Services', 'News & Events', 'Countries', 'Blog', 'Contact Us']
+const usefulLinks = [{title: 'About Us', href: '/about-us'}, {title: 'Why MBBS Abroad', href: '/why-study-mbbs-abroad'}, {title: 'Services', href: '/services'}, {title: 'News & Events', href: '/news-and-events'}, {title: 'Countries', href: '/countries'}, {title: 'Blog', href: '/blog'}, {title: 'Contact Us', href: '/contact-us'}]
 
 const Footer = () => {
   return (
-    <footer className="bg-accent-foreground text-primary-foreground py-12">
+    <footer className="bg-primary text-primary-foreground py-12"> 
       <div className="container max-w-[1440px] mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Office Address Section */}
@@ -52,13 +52,13 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-semibold mb-4">Useful Links</h3>
             <ul className="space-y-2">
-              {usefulLinks.map((link) => (
-                <li key={link}>
+              {usefulLinks.map((item) => (
+                <li key={item.title}>
                   <Link 
-                    href={`/${link.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`}
+                    href={item.href}
                     className="text-sm hover:opacity-75"
                   >
-                    {link}
+                    {item.title}
                   </Link>
                 </li>
               ))}

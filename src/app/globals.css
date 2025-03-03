@@ -144,17 +144,17 @@
 }
 
 .text-h1 {
-  @apply text-5xl font-bold;
+  @apply text-3xl md:text-4xl lg:text-5xl font-bold;
 }
 
 .text-h2 {
-  @apply text-4xl font-semibold;
+  @apply text-2xl md:text-3xl lg:text-4xl font-semibold;
 }
 
 .text-h3{
-  @apply text-2xl font-semibold;
+  @apply text-xl md:text-2xl lg:text-3xl font-semibold;
 }
 
 .section-container {
-  @apply max-w-[1440px] mx-auto p-4;
+  @apply max-w-[1400px] mx-auto p-4;
 }

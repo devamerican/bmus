@@ -50,10 +50,10 @@ export default function StudentsSay(){
             <p className="max-w-4xl mx-auto mb-10 text-center text-muted-foreground" >Over 1000+ students have opted for our counseling services in the past 13 years and are currently living the life they dreamed of.</p>
 
              <div className="overflow-hidden py-16 select-none" ref={emblaRef}>
-                                <div className="flex">
+                                <div className="flex mx-4">
                                     {
                                         testimonials.map((item) => (
-                                            <Card className="flex-[0_0_25%] min-w-0 p-4 mr-10"  key={item.id}>
+                                            <Card className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.33%] xl:flex-[0_0_25%] min-w-0 p-4 mr-5 md:mr-10"  key={item.id}>
                                                 <CardContent className="text-center flex flex-col items-center justify-center" >
                                                 <div className="text-center -mt-[50px]" >
                                                     <Image className='rounded-full object-cover mx-auto shadow-md' src={item.image} width={60} height={60} alt={item.name} />  

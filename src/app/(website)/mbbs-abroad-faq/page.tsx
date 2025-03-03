@@ -59,14 +59,14 @@ export default async function MbbsAbroadFAQPage(){
     // const data = await getData()
     
     return(
-        <section className="section-container my-10" >
+        <section className="max-w-6xl mx-auto my-10" >
             <h1 className="text-center text-h1 mb-16" >Study MBBS Abroad FAQ&apos;s</h1>
-        <Accordion type="multiple" className="space-y-0.5 rounded-xl" >
+        <Accordion type="multiple" className=" rounded-xl" >
             {
                 data.map((item, index) => (
-                <AccordionItem key={index} value={item.question} className="first:rounded-t-xl last:rounded-b-xl border bg-gray-100" >
-                    <AccordionTrigger className="text-lg p-8 cursor-pointer"  >{item.question}</AccordionTrigger>
-                    <AccordionContent className="text-base p-8" >
+                <AccordionItem key={index} value={item.question} className="first:rounded-t-xl last:rounded-b-xl bg-muted/50" >
+                    <AccordionTrigger className="text-lg p-5 cursor-pointer"  >{item.question}</AccordionTrigger>
+                    <AccordionContent className="text-base p-5 leading-relaxed text-muted-foreground" >
                         {item.answer}
                     </AccordionContent>
                 </AccordionItem>
