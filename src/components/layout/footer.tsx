@@ -3,20 +3,42 @@ import Link from 'next/link';
 import { Button } from '../ui/button';
 
 const countries = [
-    'Russia',
-    'Kazakhstan',
-    'Kyrgyzstan',
-    'Uzbekistan',
-    'Serbia',
-    'Georgia',
-    'Bangladesh'
-  ]
+  {
+    title: 'Russia',
+    href: '/mbbs/russia'
+  },
+  {
+    title: 'Kazakhstan',
+    href: '/mbbs/kazakhstan'
+  },
+  {
+    title: 'Kyrgyzstan',
+    href: '/mbbs/kyrgyzstan'
+  },
+  {
+    title: 'Uzbekistan',
+    href: '/mbbs/uzbekistan'
+  },
+  {
+    title: 'Serbia',
+    href: '/mbbs/serbia'
+  },
+  {
+    title: 'Georgia',
+    href: '/mbbs/georgia'
+  },
+  {
+    title: 'Bangladesh',
+    href: '/mbbs/bangladesh'
+  }
+]
+
 
 const usefulLinks = [{title: 'About Us', href: '/about-us'}, {title: 'Why MBBS Abroad', href: '/why-study-mbbs-abroad'}, {title: 'Services', href: '/services'}, {title: 'News & Events', href: '/news-and-events'}, {title: 'Countries', href: '/countries'}, {title: 'Blog', href: '/blog'}, {title: 'Contact Us', href: '/contact-us'}]
 
 const Footer = () => {
   return (
-    <footer className="bg-primary text-primary-foreground py-12"> 
+    <footer className="bg-primary text-primary-foreground pt-12"> 
       <div className="container max-w-[1440px] mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Office Address Section */}
@@ -70,12 +92,12 @@ const Footer = () => {
             <h3 className="text-xl font-semibold  mb-4">MBBS Abroad</h3>
             <ul className="space-y-2">
               {countries.map((country) => (
-                <li key={country}>
+                <li key={country.title}>
                   <Link 
-                    href={`/mbbs-in-${country.toLowerCase()}`}
+                    href={country.href}
                     className="text-sm hover:opacity-75"
                   >
-                    MBBS in {country}
+                    MBBS in {country.title}
                   </Link>
                 </li>
               ))}
@@ -112,9 +134,9 @@ const Footer = () => {
         </div>
 
         {/* Copyright Section */}
-        <div className="mt-12 pt-8 border-t border-zinc-800/75 text-center text-sm">
+        <div className="mt-12 py-6 border-t text-muted-foreground border-zinc-800/75 text-center text-sm">
           <p>
-            Copyright © 2014-25 || Education Abroad Services || Website Designed & developed by Ajay Gaur
+            Copyright © 2014-25 || Education Abroad Services || Website Designed & developed by <Link target='_blank' href="https://ajaygaur.in" className='hover:text-white transition-colors underline hover:no-underline' > Ajay Gaur </Link>
           </p>
         </div>
       </div>

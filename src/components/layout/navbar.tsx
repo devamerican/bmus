@@ -202,7 +202,7 @@ export default function Navbar() {
 
   return (
     <>
-          <div className="hidden lg:flex justify-between items-center gap-3 p-3 bg-secondary " >
+          <div className="hidden lg:flex justify-between items-center gap-3 px-3 py-1 bg-secondary" >
             <ul className="flex gap-6" >
               <Link href="tel:+919910180049" className="text-sm hover:opacity-75">
                 <li className="flex gap-1 text-sm"> <Phone size={18} /> +91 9910180049</li>

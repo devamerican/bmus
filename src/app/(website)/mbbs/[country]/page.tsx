@@ -178,7 +178,7 @@ export default function Home() {
             <Card className="mb-8">
                 <CardHeader>
                     <CardTitle>
-                        <h3 className="text-h3">Eligibility for MBBS in Russia</h3>
+                        <h4 className="text-h4">Eligibility for MBBS in Russia</h4>
                     </CardTitle>
                 </CardHeader>
               <CardContent>
@@ -196,7 +196,7 @@ export default function Home() {
             <Card className="mb-8">
                 <CardHeader>
                   <CardTitle>
-                    <h3 className="text-h3">Why to choose Russia for MBBS?</h3>
+                    <h4 className="text-h4">Why to choose Russia for MBBS?</h4> 
                   </CardTitle>
                 </CardHeader>
               <CardContent className="">

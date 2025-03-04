@@ -2,12 +2,10 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-
 import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-//   FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -18,7 +16,11 @@ import { CounselingFormType, counselingFormSchema } from "@/lib/zod";
 import { Textarea } from "@/components/ui/textarea";
 import { Loader } from "lucide-react";
 
-export default function CounselingForm() {
+interface CounselingFormProps {
+  theme?: "light" | "dark";
+}
+
+export default function CounselingForm({ theme = "light" }: CounselingFormProps) {
   const form = useForm<CounselingFormType>({
     defaultValues: {
       name: "",
@@ -29,13 +31,15 @@ export default function CounselingForm() {
     resolver: zodResolver(counselingFormSchema),
   });
 
+  const inputClass = theme === "dark" ? "bg-secondary/10 border-none" : "";
+
   function onSubmit(data: CounselingFormType) {
     console.log(data);
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full ">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full">
         <FormField
           control={form.control}
           name="name"
@@ -43,9 +47,8 @@ export default function CounselingForm() {
             <FormItem>
               <FormLabel>Full Name</FormLabel>
               <FormControl>
-                <Input className="bg-secondary" placeholder="Ajay Gaur" {...field} />
+                <Input className={inputClass} placeholder="Ajay Gaur" {...field} />
               </FormControl>
-              {/* <FormDescription>Enter your full name.</FormDescription> */}
               <FormMessage />
             </FormItem>
           )}
@@ -57,9 +60,8 @@ export default function CounselingForm() {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input className="bg-secondary" placeholder="ajay@example.com" {...field} />
+                <Input className={inputClass} placeholder="ajay@example.com" {...field} />
               </FormControl>
-              {/* <FormDescription>Enter your email address.</FormDescription> */}
               <FormMessage />
             </FormItem>
           )}
@@ -71,9 +73,8 @@ export default function CounselingForm() {
             <FormItem>
               <FormLabel>Phone Number</FormLabel>
               <FormControl>
-                <Input className="bg-secondary" placeholder="+91-9910180049" {...field} />
+                <Input className={inputClass} placeholder="+91-9910180049" {...field} />
               </FormControl>
-              {/* <FormDescription>Enter your phone number.</FormDescription> */}
               <FormMessage />
             </FormItem>
           )}
@@ -85,18 +86,13 @@ export default function CounselingForm() {
             <FormItem>
               <FormLabel>Your Message</FormLabel>
               <FormControl>
-                <Textarea
-                  className="bg-secondary"
-                  placeholder="Course/Country/Query/Suggestion"
-                  {...field}
-                />
+                <Textarea className={inputClass} placeholder="Course/Country/Query/Suggestion" {...field} />
               </FormControl>
-              {/* <FormDescription>Enter your query or message.</FormDescription> */}
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button variant="secondary" disabled={form.formState.isSubmitting} type="submit">
+        <Button variant={theme === "dark" ? "secondary" : "default"} disabled={form.formState.isSubmitting} type="submit">
           {form.formState.isSubmitting ? (
             <>
               <Loader className="animate-spin" /> Submitting

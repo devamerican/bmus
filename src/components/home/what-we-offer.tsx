@@ -63,7 +63,7 @@ const items = [
 export default function WhatWeOffer(){
     const [emblaRef] = useEmblaCarousel({ loop: true, align: 'start' })
     return(
-        <div className="bg-zinc-900 text-white py-20" >
+        <div className="bg-muted  py-20" >
 
         <section className="section-container text-center " >
             <h2 className="text-h2 mb-6" >What We Offer</h2>

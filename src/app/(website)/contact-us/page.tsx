@@ -65,12 +65,12 @@ export default function ContactUs(){
                         </Card>
                     ))}
                 </div>
-                <Card className="bg-zinc-800 text-white p-6 py-10 max-w-3xl mx-auto w-full" >
+                <Card className="bg-primary text-primary-foreground p-6 py-10 max-w-3xl mx-auto w-full" >
                     <CardHeader>
                         <h2 className="text-h2" >We&apos;d love to hear from you</h2>
                     </CardHeader>
                     <CardContent >
-                        <CounselingForm />
+                        <CounselingForm theme="dark" />
                     </CardContent>
                 </Card>
             </div>

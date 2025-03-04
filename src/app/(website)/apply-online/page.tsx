@@ -22,32 +22,32 @@ const items = [
 
 export default function ApplyOnlinePage(){
     return(
-        <section className="section-container my-12" >
-            <h1 className="text-h1 text-center mb-20" >Online Application Form</h1>
+        <section className="section-container my-8 md:my-12" >
+            <h1 className="text-h1 text-center mb-10 md:mb-14 lg:mb-20" >Online Application Form</h1>
 
 
 
-            <div className="flex *:basis-1/2 gap-6" >
-            <Card className="bg-zinc-800 text-white p-6 py-10 max-w-3xl mx-auto w-full" >
-                <CardContent >
-                    <CounselingForm />
+            <div className="flex flex-col md:flex-row *:basis-1/2 gap-6" >
+            <Card className=" p-6 mx-auto w-full" >
+                <CardContent className="p-0" >
+                    <CounselingForm theme="light" />
                 </CardContent>
             </Card>
 
-            <Card className="hover:shadow-md transition-shadow " >
-                <CardHeader className="text-h3" >
+            <Card className="" >
+                <CardHeader className="text-h3 md:mb-6" >
                     Get in Touch With Us
                 </CardHeader>
-                <CardContent className="space-y-6 " >
+                <CardContent className="space-y-3 md:space-y-6 px-3 md:px-6" >
                         {
                             items.map((item) => (
                                 <div key={item.title} className="flex items-start gap-4 p-4  rounded-xl " >
-                                    <item.icon size={22} />
+                                    <item.icon size={22} className="flex-none" />
                                     <div>
-                                        <h3 className="text-lg font-semibold">
+                                        <h3 className="text-base md:text-lg font-semibold">
                                             {item.title}
                                         </h3>
-                                        <p>{item.details}</p>
+                                        <p className="text-sm md:text-base" >{item.details}</p>
                                     </div>
                                 </div>
                             ))

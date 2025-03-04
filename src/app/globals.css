@@ -155,6 +155,10 @@
   @apply text-xl md:text-2xl lg:text-3xl font-semibold;
 }
 
+.text-h4{
+  @apply text-xl font-medium;
+}
+
 .section-container {
   @apply max-w-[1400px] mx-auto p-4;
 }
