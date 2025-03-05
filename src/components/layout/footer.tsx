@@ -39,7 +39,7 @@ const usefulLinks = [{title: 'About Us', href: '/about-us'}, {title: 'Why MBBS A
 const Footer = () => {
   return (
     <footer className="bg-primary text-primary-foreground pt-12"> 
-      <div className="container max-w-[1440px] mx-auto px-4">
+      <div className="max-w-[1400px] mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Office Address Section */}
           <div className="space-y-4">
