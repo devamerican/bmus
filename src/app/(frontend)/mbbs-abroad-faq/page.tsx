@@ -4,6 +4,10 @@ import {
     AccordionItem,
     AccordionTrigger,
   } from "@/components/ui/accordion"  
+// import { getPayload } from 'payload'
+// import config from '@/payload.config'
+
+// const payload = await getPayload({ config })
 // import { load } from "outstatic/server"
 
 
@@ -56,7 +60,13 @@ const data = [
     },
 ]
 export default async function MbbsAbroadFAQPage(){
+    
     // const data = await getData()
+    // const dataa = await payload.find({
+    //     collection: 'mbbs-faqs',
+    // })
+
+    // console.log(dataa.docs)
     
     return(
         <section className="max-w-6xl mx-auto my-10" >

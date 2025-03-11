@@ -7,7 +7,7 @@ import WhatWeOffer from "@/components/home/what-we-offer";
 
 export default function Home() {
   return (
-    <main className="space-y-32 mb-10" >
+    <main className="space-y-10 md:space-y-16 lg:space-y-32 mb-10" >
       <Hero />
       <EducationAbroad />
       <Countries />

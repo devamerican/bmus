@@ -15,7 +15,7 @@ interface AdmissionStepProps {
 }
 
 const AdmissionStep: React.FC<AdmissionStepProps> = ({ icon, title, description }) => (
-  <Card className="w-full h-full flex flex-col justify-between hover:shadow-lg transition-all duration-300">
+  <Card className="p-0 w-full h-full flex flex-col justify-between hover:shadow-lg transition-all duration-300">
     <CardContent className="p-6 flex flex-col items-center text-center space-y-4">
       <div className="text-primary p-4 bg-primary/10 rounded-full">
         {icon}

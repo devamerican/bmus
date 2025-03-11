@@ -1,6 +1,5 @@
-import { Mail, MapPin, Phone } from 'lucide-react';
+import { Facebook, Mail, MapPin, Phone, Twitter } from 'lucide-react';
 import Link from 'next/link';
-import { Button } from '../ui/button';
 
 const countries = [
   {
@@ -44,7 +43,7 @@ const Footer = () => {
           {/* Office Address Section */}
           <div className="space-y-4">
             <h3 className="text-xl font-semibold mb-4">Office Address</h3>
-            <div className="space-y-2">
+            <div className="space-y-3">
               <div className="flex items-start gap-2">
                 <MapPin className="h-5 w-5 mt-1" />
                 <p className="text-sm hover:opacity-75">
@@ -107,7 +106,23 @@ const Footer = () => {
           {/* Quick Contact Form */}
           <div>
             <h3 className="text-xl font-semibold mb-4">Quick Contact</h3>
-            <form className="space-y-3">
+            {/* react out to facebook, twitter */}
+            <div className='space-y-3' >
+              <div className="flex items-center gap-2">
+                <Facebook className="h-5 w-5" />
+                <a href="https://www.facebook.com/eduabroadservices" className="text-sm hover:opacity-75">
+                  facebook
+                </a>
+              </div>
+              <div className="flex items-center gap-2">
+                <Twitter className="h-5 w-5" />
+                <a href="https://twitter.com/eduabroadservices" className="text-sm hover:opacity-75">
+                  eduabroadservices
+                </a>
+              </div>
+
+            </div>
+            {/* <form className="space-y-3">
               <input
                 type="text"
                 placeholder="Your Name"
@@ -129,12 +144,12 @@ const Footer = () => {
               >
                 Send Message
               </Button>
-            </form>
+            </form> */}
           </div>
         </div>
 
         {/* Copyright Section */}
-        <div className="mt-12 py-6 border-t text-muted-foreground border-zinc-800/75 text-center text-sm">
+        <div className="mt-12 py-6 border-t text-muted-foreground border-zinc-800/75 text-center text-xs md:text-sm">
           <p>
             Copyright © 2014-25 || Education Abroad Services || Website Designed & developed by <Link target='_blank' href="https://ajaygaur.in" className='hover:text-white transition-colors underline hover:no-underline' > Ajay Gaur </Link>
           </p>
