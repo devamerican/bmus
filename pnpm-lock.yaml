@@ -74,6 +74,9 @@ dependencies:
   react-hook-form:
     specifier: ^7.54.2
     version: 7.54.2(react@19.0.0)
+  sharp:
+    specifier: ^0.33.5
+    version: 0.33.5
   tailwind-merge:
     specifier: ^3.0.2
     version: 3.0.2
@@ -5810,7 +5813,6 @@ packages:
       color-name: 1.1.4
       simple-swizzle: 0.2.2
     dev: false
-    optional: true
 
   /color@4.2.3:
     resolution: {integrity: sha512-1rXeuUUiGGrykh+CeBdu5Ie7OJwinCgQY0bc7GCRxy5xVHy+moaqkpL/jqQq0MtQOeYcrqEz4abc5f0KtU7W4A==}
@@ -5820,7 +5822,6 @@ packages:
       color-convert: 2.0.1
       color-string: 1.9.1
     dev: false
-    optional: true
 
   /colorette@2.0.20:
     resolution: {integrity: sha512-IfEDxwoWIjkeXL1eXcDiow4UbKjhLdq6/EuSVR9GMN7KVH3r9gQ83e73hsz1Nd1T3ijd5xv1wcWRYO+D6kCI2w==}
@@ -7270,7 +7271,6 @@ packages:
     resolution: {integrity: sha512-eVRqCvVlZbuw3GrM63ovNSNAeA1K16kaR/LRY/92w0zxQ5/1YzwblUX652i4Xs9RwAGjW9d9y6X88t8OaAJfWQ==}
     requiresBuild: true
     dev: false
-    optional: true
 
   /is-async-function@2.1.1:
     resolution: {integrity: sha512-9dgM/cZBnNvjzaMYHVoxxfPj2QXt22Ev7SuuPrs+xav0ukGB0S6d4ydZdEiM48kLx5kDV+QBPrpVnFyefL8kkQ==}
@@ -10299,7 +10299,6 @@ packages:
       '@img/sharp-win32-ia32': 0.33.5
       '@img/sharp-win32-x64': 0.33.5
     dev: false
-    optional: true
 
   /shebang-command@2.0.0:
     resolution: {integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==}
@@ -10367,7 +10366,6 @@ packages:
     dependencies:
       is-arrayish: 0.3.2
     dev: false
-    optional: true
 
   /simple-wcswidth@1.0.1:
     resolution: {integrity: sha512-xMO/8eNREtaROt7tJvWJqHBDTMFN4eiQ5I4JRMuilwfnFcV5W9u7RUkueNkdw0jPqGMX36iCywelS5yilTuOxg==}
