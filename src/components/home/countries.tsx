@@ -34,7 +34,7 @@ export default function Countries(){
                 {
                     countries.map((country, i) => (
                         <div key={i} >
-                            <Image className="object-cover rounded-sm" src={country.image} width={800} height={600} alt={country.name} />
+                            <Image className="object-cover" src={country.image} width={800} height={600} alt={country.name} />
                             <h4 className="text-center text-lg font-semibold mt-2" >{country.name}</h4>
                         </div>  
                     ))

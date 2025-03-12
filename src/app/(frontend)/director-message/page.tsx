@@ -1,6 +1,6 @@
 export default function DirectorMessage(){
     return(
-        <section className="max-w-5xl mx-auto mb-20 pt-10" > 
+        <section className="max-w-5xl px-4 mx-auto mb-20 pt-10" > 
             <h1 className="text-center text-h1 mb-12" >Director&apos;s Message</h1>
             <p className="leading-loose" >Empowering the students with quality education in a wider horizon is the mission we embrace at EAS. As a Director of EAS, I am privileged to be a part of the education scenario today. Understanding the competitive environment, we strive to facilitate excellent educational options for the personal growth and career fulfilment of students aspiring to study abroad I am delighted that you are considering EAS Overseas Education Consultants to help you realise your study abroad dream.
 

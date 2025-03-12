@@ -22,19 +22,21 @@ const items = [
 
 export default function ApplyOnlinePage(){
     return(
-        <section className="section-container my-8 md:my-12" >
+        <section className="max-w-5xl px-4 mx-auto my-8 md:my-12" >
             <h1 className="text-h1 text-center mb-10 md:mb-14 lg:mb-20" >Online Application Form</h1>
 
 
 
             <div className="flex flex-col md:flex-row *:basis-1/2 gap-6" >
-            <Card className=" p-6 mx-auto w-full" >
-                <CardContent className="p-0" >
-                    <CounselingForm theme="light" />
+            {/* <Card className=" p-6 mx-auto w-full border-muted shadow-none border-none " >
+                <CardContent className="p-0 lg:px-12" >
                 </CardContent>
-            </Card>
+            </Card> */}
+                    <div className="p-4 max-w-lg mx-auto w-full" >
+                        <CounselingForm />
+                    </div>
 
-            <Card className="" >
+            <Card className="shadow-none border-none bg-muted " >
                 <CardHeader className="text-h3 md:mb-6" >
                     Get in Touch With Us
                 </CardHeader>

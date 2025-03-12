@@ -68,7 +68,7 @@ export default function WhatWeOffer(){
         <section className="section-container text-center " >
             <h2 className="text-h2 mb-6" >What We Offer</h2>
             <h3 className="text-h3 mb-2" >To serve you better, We offer the following Services!</h3>
-            <p className="max-w-4xl mx-auto mb-10" >Education Abroad Services, offer a wide-ranging portfolio of outstanding and brilliantly managed services right from pre-admission to post landing services designed to suit the individual needs of the students.</p>
+            <p className="max-w-4xl mx-auto mb-10 text-muted-foreground" >Education Abroad Services, offer a wide-ranging portfolio of outstanding and brilliantly managed services right from pre-admission to post landing services designed to suit the individual needs of the students.</p>
 
 
 
@@ -77,7 +77,7 @@ export default function WhatWeOffer(){
                         {
                             items.map((item) => (
                                 <div className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.33%] xl:flex-[0_0_25%] min-w-0 flex flex-col items-center justify-center gap-4 p-4 " key={item.id}>
-                                    <Image className='w-full rounded-sm' src={item.image} width={150} height={150} alt="hero" /> 
+                                    <Image className='w-full' src={item.image} width={150} height={150} alt="hero" /> 
                                     <h3 className="text-lg">{item.title}</h3>
                                 </div>
                             ))

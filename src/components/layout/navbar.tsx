@@ -25,7 +25,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Download, Globe, Mail, Menu, Phone } from "lucide-react";
+import { Download, Globe,  Menu,  } from "lucide-react";
 
 const navItems = [
 //   {
@@ -202,25 +202,27 @@ export default function Navbar() {
 
   return (
     <>
-          <div className="hidden lg:flex justify-between items-center gap-3 px-3 py-1 bg-secondary" >
-            <ul className="flex gap-6" >
-              <Link href="tel:+919910180049" className="text-sm hover:opacity-75">
-                <li className="flex gap-1 text-sm"> <Phone size={18} /> +91 9910180049</li>
-              </Link>
-              <Link href="mailto:info@eduabroadservices.com" className="text-sm hover:opacity-75">
-                <li className="flex gap-1 text-sm"> <Mail size={18} /> info@eduabroadservices.com</li>
-              </Link>
-            </ul>
-            <Link href="/apply-online" >
-              <Button size="sm" variant="outline" >
-                  <Globe />
-                  Apply Now
-              </Button>
-            </Link>
-        </div>
+    {/* <div className="hidden lg:flex justify-between items-center gap-3 px-3 py-1 bg-secondary" >
+      <ul className="flex gap-6" >
+        <Link href="tel:+919910180049" className="text-sm hover:opacity-75">
+          <li className="flex gap-1 text-sm"> <Phone size={18} /> +91 9910180049</li>
+        </Link>
+        <Link href="mailto:info@eduabroadservices.com" className="text-sm hover:opacity-75">
+          <li className="flex gap-1 text-sm"> <Mail size={18} /> info@eduabroadservices.com</li>
+        </Link>
+      </ul>
+      <Link href="/apply-online" >
+        <Button size="sm" variant="outline" >
+            <Globe />
+            Apply Now
+        </Button>
+      </Link>
+  </div> */}
     <nav className="sticky top-0 z-50 bg-white border-b shadow-sm">
       <div className="flex items-center justify-between gap-2 p-2.5 xl:p-3 mx-auto">
         {/* Logo */}
+        <div className="flex gap-3 items-center" >
+
         <Link href="/" className="flex-none">
           <Image
             src="/newlogo.png"
@@ -243,7 +245,7 @@ export default function Navbar() {
         {/* Desktop Navigation */}
         <div className="hidden lg:block">
           <NavigationMenu>
-            <NavigationMenuList className="gap-1">
+            <NavigationMenuList>
               {navItems.map((item) => {
                 // If the item has no subitems, render a simple link
                 if (!item.items) {
@@ -251,7 +253,7 @@ export default function Navbar() {
                     <NavigationMenuItem key={item.name}>
                       <Link href={item.href} legacyBehavior passHref>
                         {/* <NavigationMenuLink className={navigationMenuTriggerStyle()}> */}
-                        <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 data-[active=true]:bg-accent/50 data-[state=open]:bg-accent/50 data-[active=true]:text-accent-foreground ring-ring/10 dark:ring-ring/20 dark:outline-ring/40 outline-ring/50 transition-[color,box-shadow] focus-visible:ring-4 focus-visible:outline-1" >
+                        <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 data-[active=true]:bg-accent/50 data-[state=open]:bg-accent/50 data-[active=true]:text-accent-foreground ring-ring/10 dark:ring-ring/20 dark:outline-ring/40 outline-ring/50 transition-[color,box-shadow] focus-visible:ring-4 focus-visible:outline-1" >
                           {item.name}
                         </NavigationMenuLink>
                       </Link>
@@ -262,7 +264,7 @@ export default function Navbar() {
                 // If the item has subitems, render a dropdown
                 return (
                   <NavigationMenuItem key={item.name}>
-                    <NavigationMenuTrigger>{item.name}</NavigationMenuTrigger>
+                    <NavigationMenuTrigger className="px-3" >{item.name}</NavigationMenuTrigger>
                     <NavigationMenuContent>
                       <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:grid-cols-3 lg:w-[600px] xl:w-[760px]">
                         {item.items?.map((subitem, index) => (
@@ -290,11 +292,20 @@ export default function Navbar() {
             </NavigationMenuList>
           </NavigationMenu>
         </div>
+        </div>
 
         {/* CTA Buttons */}
         {/* <div className="hidden lg:flex gap-2">
         </div> */}
-          <Button className="max-lg:hidden "> <Download /> Prospectus</Button>
+        <div className="flex gap-2 items-center max-lg:hidden " >
+          <Button variant="ghost" > <Download /> Prospectus</Button>
+          <Link href="/apply-online" >
+            <Button >
+                <Globe />
+                Apply Now
+            </Button>
+          </Link>
+        </div>
           {/* <Button>Apply Now</Button> */}
 
         {/* Mobile Menu Button */}

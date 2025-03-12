@@ -1,35 +1,35 @@
-import { Handshake } from "lucide-react";
+// import { Handshake } from "lucide-react";
 import Image from "next/image";
 
-const achivementsItems = [
-    {
-        id: 1,
-        title: "13+ Years of Experience",
-        icon: Handshake
-    },
-    {
-        id: 2,
-        title: "15+ Countries for MBBS",
-        icon: Handshake
-    },
-    {
-        id: 3,
-        title: "100+ Connected Universities",
-        icon: Handshake
-    },
-    {
-        id: 4,
-        title: "1000+ Happy Students",
-        icon: Handshake
-    },
-]
+// const achivementsItems = [
+//     {
+//         id: 1,
+//         title: "13+ Years of Experience",
+//         icon: Handshake
+//     },
+//     {
+//         id: 2,
+//         title: "15+ Countries for MBBS",
+//         icon: Handshake
+//     },
+//     {
+//         id: 3,
+//         title: "100+ Connected Universities",
+//         icon: Handshake
+//     },
+//     {
+//         id: 4,
+//         title: "1000+ Happy Students",
+//         icon: Handshake
+//     },
+// ]
 
 export default function EducationAbroad(){
     return(
-        <section className="flex flex-col lg:flex-row gap-4 *:basis-1/2 section-container" >
-            <div className="space-y-4" >
+        <section className="flex flex-col lg:flex-row gap-4 *:basis-1/2 section-container items-center" >
+            <div className="space-y-4 text-muted-foreground" >
 
-                <h2 className="text-h2" >Welcome to Education Abroad Services</h2>
+                <h2 className="text-h2 text-primary" >Welcome to Education Abroad Services</h2>
                 <p>Education Abroad Services Overseas CAREER Consultants provides “One Stop Solution for All Your International Education Needs”.
                 </p>
                 <p>We offer a wide-ranging portfolio of outstanding and brilliantly managed services right from pre-admission to post landing services designed to suit the individual needs of the students.Our quality counseling distinguishes us from others in a way that we offer personalized counseling where there is direct involvement of the directors who have been educated in the finest institutes in India and abroad and have first-hand experience of the international culture and education system.</p>
@@ -37,8 +37,11 @@ export default function EducationAbroad(){
                 <p>We aim at bringing education in every corner of the country. Every town, village, district should be flooded with education is the motto that we believe in. With its corporate office in FARIDABAD NCR, EDUCATION ABROAD SERVICES is spreading its spectrum by getting functional PAN India to cater to maximum.</p>
             </div>
 
+            <div>
+                <Image src="/students.jpg" width={1920} height={1080} alt="students"  />
+            </div>
 
-            <div className="relative grid place-content-center p-4 max-sm:py-12 max-lg:py-20" >
+            {/* <div className="relative grid place-content-center p-4 max-sm:py-12 max-lg:py-20" >
                 <Image className="absolute top-0 left-0 w-full h-full object-cover -z-10" src="/pic-vision.jpg" width={551} height={327} alt="background world map"  />
                 <div>
                     <h3 className="mb-12 md:mb-24 text-4xl font-semibold text-center italic" >Achivements</h3>
@@ -53,7 +56,7 @@ export default function EducationAbroad(){
                         }
                     </div>
                 </div>
-            </div>
+            </div> */}
         </section>
     )
 }

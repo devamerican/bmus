@@ -151,7 +151,7 @@ export default function Home() {
             </div>
 
             <h2 className="text-h2 mb-6 mt-20">About Russia</h2>
-            <Card className="mb-8">
+            <Card className="mb-8 shadow-none border-none">
               <CardContent className="pt-6">
                 {pageContent.aboutRussia.paragraphs.map((paragraph, index) => (
                   <p key={index} className="text-gray-700 mb-4">{paragraph}</p>
@@ -175,7 +175,7 @@ export default function Home() {
             
             <div className='grid lg:grid-cols-2 gap-6' >
 
-            <Card className="mb-8">
+            <Card className="mb-8 shadow-none border-none">
                 <CardHeader>
                     <CardTitle>
                         <h4 className="text-h4">Eligibility for MBBS in Russia</h4>
@@ -193,7 +193,7 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            <Card className="mb-8">
+            <Card className="mb-8 shadow-none border-none" >
                 <CardHeader>
                   <CardTitle>
                     <h4 className="text-h4">Why to choose Russia for MBBS?</h4> 

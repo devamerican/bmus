@@ -68,6 +68,9 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    'mbbs-faqs': MbbsFaq;
+    pages: Page;
+    services: Service;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -76,6 +79,9 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    'mbbs-faqs': MbbsFaqsSelect<false> | MbbsFaqsSelect<true>;
+    pages: PagesSelect<false> | PagesSelect<true>;
+    services: ServicesSelect<false> | ServicesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -150,6 +156,168 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "mbbs-faqs".
+ */
+export interface MbbsFaq {
+  id: string;
+  question: string;
+  answer: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages".
+ */
+export interface Page {
+  id: string;
+  title: string;
+  pageType: 'home' | 'about' | 'services' | 'directorsMessage' | 'whyStudyMBBSAbroad' | 'mbbsFaqs';
+  homePageContent?: {
+    hero: {
+      heading: string;
+      countries: {
+        country: string;
+        image: string | Media;
+        id?: string | null;
+      }[];
+    };
+  };
+  aboutPageContent?: {
+    intro?: {
+      heading?: string | null;
+      subheading?: string | null;
+      content?: {
+        root: {
+          type: string;
+          children: {
+            type: string;
+            version: number;
+            [k: string]: unknown;
+          }[];
+          direction: ('ltr' | 'rtl') | null;
+          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+          indent: number;
+          version: number;
+        };
+        [k: string]: unknown;
+      } | null;
+    };
+    achievements?: {
+      title?: string | null;
+      achivementItems?:
+        | {
+            icon?: string | null;
+            title?: string | null;
+            id?: string | null;
+          }[]
+        | null;
+    };
+    ourTeam?: {
+      title?: string | null;
+      description?: string | null;
+      teamMembers?:
+        | {
+            image?: (string | null) | Media;
+            name?: string | null;
+            designation?: string | null;
+            id?: string | null;
+          }[]
+        | null;
+    };
+  };
+  servicePageContent?: {
+    serviceIntro?: {
+      heading?: string | null;
+      description?: {
+        root: {
+          type: string;
+          children: {
+            type: string;
+            version: number;
+            [k: string]: unknown;
+          }[];
+          direction: ('ltr' | 'rtl') | null;
+          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+          indent: number;
+          version: number;
+        };
+        [k: string]: unknown;
+      } | null;
+      serviceList?:
+        | {
+            title?: string | null;
+            icon?: string | null;
+            id?: string | null;
+          }[]
+        | null;
+    };
+  };
+  directorsMessageContent?: {
+    directorsMessage?: {
+      heading?: string | null;
+      content?: {
+        root: {
+          type: string;
+          children: {
+            type: string;
+            version: number;
+            [k: string]: unknown;
+          }[];
+          direction: ('ltr' | 'rtl') | null;
+          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+          indent: number;
+          version: number;
+        };
+        [k: string]: unknown;
+      } | null;
+    };
+  };
+  whyStudyMBBSAbroadContent?: {
+    whyStudyMBBSAbroad?: {
+      heading?: string | null;
+      listItems?:
+        | {
+            title?: string | null;
+            icon?: string | null;
+            id?: string | null;
+          }[]
+        | null;
+    };
+  };
+  mbbsFaqsContent?: {
+    mbbsFaqs?: {
+      heading?: string | null;
+      listItems?:
+        | {
+            question?: string | null;
+            answer?: string | null;
+            id?: string | null;
+          }[]
+        | null;
+    };
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services".
+ */
+export interface Service {
+  id: string;
+  service_heading: string;
+  service_description: string;
+  services: {
+    service_icon?: (string | null) | Media;
+    service_name: string;
+    id?: string | null;
+  }[];
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -162,6 +330,18 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: string | Media;
+      } | null)
+    | ({
+        relationTo: 'mbbs-faqs';
+        value: string | MbbsFaq;
+      } | null)
+    | ({
+        relationTo: 'pages';
+        value: string | Page;
+      } | null)
+    | ({
+        relationTo: 'services';
+        value: string | Service;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -237,6 +417,155 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "mbbs-faqs_select".
+ */
+export interface MbbsFaqsSelect<T extends boolean = true> {
+  question?: T;
+  answer?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages_select".
+ */
+export interface PagesSelect<T extends boolean = true> {
+  title?: T;
+  pageType?: T;
+  homePageContent?:
+    | T
+    | {
+        hero?:
+          | T
+          | {
+              heading?: T;
+              countries?:
+                | T
+                | {
+                    country?: T;
+                    image?: T;
+                    id?: T;
+                  };
+            };
+      };
+  aboutPageContent?:
+    | T
+    | {
+        intro?:
+          | T
+          | {
+              heading?: T;
+              subheading?: T;
+              content?: T;
+            };
+        achievements?:
+          | T
+          | {
+              title?: T;
+              achivementItems?:
+                | T
+                | {
+                    icon?: T;
+                    title?: T;
+                    id?: T;
+                  };
+            };
+        ourTeam?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              teamMembers?:
+                | T
+                | {
+                    image?: T;
+                    name?: T;
+                    designation?: T;
+                    id?: T;
+                  };
+            };
+      };
+  servicePageContent?:
+    | T
+    | {
+        serviceIntro?:
+          | T
+          | {
+              heading?: T;
+              description?: T;
+              serviceList?:
+                | T
+                | {
+                    title?: T;
+                    icon?: T;
+                    id?: T;
+                  };
+            };
+      };
+  directorsMessageContent?:
+    | T
+    | {
+        directorsMessage?:
+          | T
+          | {
+              heading?: T;
+              content?: T;
+            };
+      };
+  whyStudyMBBSAbroadContent?:
+    | T
+    | {
+        whyStudyMBBSAbroad?:
+          | T
+          | {
+              heading?: T;
+              listItems?:
+                | T
+                | {
+                    title?: T;
+                    icon?: T;
+                    id?: T;
+                  };
+            };
+      };
+  mbbsFaqsContent?:
+    | T
+    | {
+        mbbsFaqs?:
+          | T
+          | {
+              heading?: T;
+              listItems?:
+                | T
+                | {
+                    question?: T;
+                    answer?: T;
+                    id?: T;
+                  };
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services_select".
+ */
+export interface ServicesSelect<T extends boolean = true> {
+  service_heading?: T;
+  service_description?: T;
+  services?:
+    | T
+    | {
+        service_icon?: T;
+        service_name?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

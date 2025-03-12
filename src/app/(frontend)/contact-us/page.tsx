@@ -43,7 +43,7 @@ export default function ContactUs(){
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5" >
                 <div className="max-w-3xl mx-auto space-y-5">
                     {contactInfo.map((item, index) => (
-                        <Card key={index} className="">
+                        <Card key={index} className="shadow-none border-none bg-muted">
                         <CardContent className=" flex items-start space-x-4">
                             <div className="text-2xl">{item.icon}</div>
                             <div>
@@ -65,12 +65,13 @@ export default function ContactUs(){
                         </Card>
                     ))}
                 </div>
-                <Card className="bg-primary text-primary-foreground p-6 py-10 max-w-3xl mx-auto w-full" >
-                    <CardHeader>
+                {/* <Card className="bg-primary text-primary-foreground p-6 py-10 max-w-3xl mx-auto w-full" > */}
+                <Card className=" p-6 py-10 max-w-3xl mx-auto w-full shadow-none border-2 border-muted" >
+                    <CardHeader className="mb-4" >
                         <h2 className="text-h2" >We&apos;d love to hear from you</h2>
                     </CardHeader>
                     <CardContent >
-                        <CounselingForm theme="dark" />
+                        <CounselingForm  />
                     </CardContent>
                 </Card>
             </div>

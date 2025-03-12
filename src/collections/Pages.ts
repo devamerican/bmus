@@ -2,68 +2,37 @@
 import type { CollectionConfig, Field } from 'payload'
 
 // Section fields for Home Page
-// const homePageSections: Field[] = [
-//   {
-//     name: 'hero',
-//     type: 'group',
-//     fields: [
-//       {
-//         name: 'heading',
-//         type: 'text',
-//         required: true,
-//       },
-//       {
-//         name: 'subheading',
-//         type: 'text',
-//       },
-//       {
-//         name: 'image',
-//         type: 'upload',
-//         relationTo: 'media',
-//       },
-//       {
-//         name: 'ctaText',
-//         type: 'text',
-//       },
-//       {
-//         name: 'ctaLink',
-//         type: 'text',
-//       },
-//     ],
-//   },
-//   {
-//     name: 'featuredSection',
-//     type: 'group',
-//     fields: [
-//       {
-//         name: 'title',
-//         type: 'text',
-//       },
-//       {
-//         name: 'description',
-//         type: 'richText',
-//       },
-//       {
-//         name: 'features',
-//         type: 'array',
-//         fields: [
-//           {
-//             name: 'title',
-//             type: 'text',
-//           },
-//           {
-//             name: 'description',
-//             type: 'textarea',
-//           },
-//           {
-//             name: 'icon',
-//             type: 'text',
-//           },
-//         ],
-//       },
-//     ],
-//   },
-// ];
+const homePageSections: Field[] = [
+  {
+    name: 'hero',
+    type: 'group',
+    fields: [
+        {
+          name: 'heading',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'countries',
+          type: 'array',
+          required: true,
+          fields: [
+            {
+              name: 'country',
+              type: 'text',
+              required: true,
+            },
+            {
+              name: 'image',
+              type: 'upload',
+              relationTo: 'media',
+              required: true,
+            }
+          ],
+        }
+    ],
+  }
+];
 
 // Section fields for About Page
 const aboutPageSections: Field[] = [
@@ -247,7 +216,7 @@ const mbbsFaqs: Field[] = [
 },
 ]
 
-export const Pages: CollectionConfig = {
+export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
   admin: {
     useAsTitle: 'title',
@@ -265,10 +234,10 @@ export const Pages: CollectionConfig = {
       name: 'pageType',
       type: 'select',
       options: [
-        // {
-        //   label: 'Home',
-        //   value: 'home',
-        // },
+        {
+          label: 'Home',
+          value: 'home',
+        },
         {
           label: 'About',
           value: 'about',
@@ -295,14 +264,14 @@ export const Pages: CollectionConfig = {
         position: 'sidebar',
       },
     },
-    // {
-    //   name: 'homePageContent',
-    //   type: 'group',
-    //   admin: {
-    //     condition: (data) => data.pageType === 'home',
-    //   },
-    //   fields: homePageSections,
-    // },
+    {
+      name: 'homePageContent',
+      type: 'group',
+      admin: {
+        condition: (data) => data.pageType === 'home',
+      },
+      fields: homePageSections,
+    },
     {
       name: 'aboutPageContent',
       type: 'group',
