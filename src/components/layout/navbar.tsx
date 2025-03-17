@@ -345,7 +345,7 @@ export default function Navbar() {
                                     href={subitem.href}
                                     className="block py-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
                                     >
-                                    <SheetClose key={subIdx}>
+                                    <SheetClose key={subIdx} className="text-start" >  
                                         {subitem.title}
                                     </SheetClose>
                                 </Link>

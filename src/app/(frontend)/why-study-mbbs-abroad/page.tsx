@@ -21,10 +21,10 @@ export default function WhyStudyMbbsAbroad() {
     <section className="section-container my-10">   
       <h1 className="text-h1 text-center mb-20" >Why Study MBBS Abroad?</h1>
 
-      <div className="grid grid-cols-4 gap-6" >
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" >
         {
             studyAbroadBenefits.map((item) => (
-                <div key={item.title} className="p-10 h-56  rounded-xl bg-muted"> 
+                <div key={item.title} className="p-8 sm:p-10 min-h-56  rounded-xl bg-muted"> 
                     <DynamicIcon name={item.image as IconName} size={54} className='mb-6 text-blue-500' />
                     <h3 className="text-lg font-semibold text-muted-foreground">{item.title}</h3>
                 </div>

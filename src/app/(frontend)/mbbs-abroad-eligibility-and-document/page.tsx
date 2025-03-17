@@ -22,7 +22,7 @@ export default function MbbsAbroadEligibilityAndDocument() {
         MBBS Abroad Eligibility and Document
       </h1>
 
-      <div className="flex items-center gap-6 *:basis-1/2">
+      <div className="flex flex-col-reverse md:flex-row items-center gap-6 *:basis-1/2">
         <Image
           src="/eligibility.png"
           alt="requirements"
