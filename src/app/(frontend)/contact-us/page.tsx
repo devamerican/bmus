@@ -36,7 +36,7 @@ const contactInfo = [
 
 export default function ContactUs(){
     return(
-        <section className="section-container my-10">
+        <section className="section-container my-10 ">
             <h1 className="text-center text-h1 mb-16" >Contact US</h1>
 
             {/* <div className="flex items-center *:basis-1/2" > */}

@@ -5,6 +5,7 @@ import Autoplay from 'embla-carousel-autoplay'
 import Image from 'next/image'
 import { ArrowRight, Globe2, GraduationCap } from 'lucide-react'
 import { Button } from '../ui/button'
+import Link from 'next/link'
 
 const heroItems = [
     {
@@ -59,13 +60,17 @@ export default function Hero(){
                     </p>
                     
                     <div className="flex flex-col sm:flex-row gap-4">
+                        <Link href="#book_counseling" >
                         <Button size="lg" variant="blue" className="text-base">
                         Get Started
                         <ArrowRight className="ml-2 h-5 w-5" />
                         </Button>
+                        </Link>
+                        <Link href="#services" >
                         <Button size="lg" variant="outline" className="text-base bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 hover:text-white">
                             Explore Programs
                         </Button>
+                        </Link>
                     </div>
                     </div>
 

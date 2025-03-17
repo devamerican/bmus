@@ -2,17 +2,17 @@
 import { DynamicIcon, type IconName} from 'lucide-react/dynamic'; 
 
 const studyAbroadBenefits = [
-    { title: "Lower Tuition Fee Than India", image: "camera" },
-    { title: "NMC and WHO Approved Medical Universities", image: "camera" },
-    { title: "Internationally Trained and Experienced Faculty", image: "camera" },
-    { title: "Safe and Secure Countries", image: "camera" },
-    { title: "No Donation or Capitation Fee", image: "camera" },
-    { title: "Comfortable Weather for Study", image: "camera" },
-    { title: "Similar Cost of Living as India", image: "camera" },
-    { title: "English Medium Study", image: "camera" },
-    { title: "Availability of Better Medical Equipment", image: "camera" },
-    { title: "Indian Food Available", image: "camera" },
-    { title: "International Job Options", image: "camera" }
+    { title: "Lower Tuition Fee Than India", image: "book-text" },
+    { title: "NMC and WHO Approved Medical Universities", image: "stethoscope" },
+    { title: "Internationally Trained and Experienced Faculty", image: "shield-check" },
+    { title: "Safe and Secure Countries", image: "shield-check" },
+    { title: "No Donation or Capitation Fee", image: "hand-coins" },
+    { title: "Comfortable Weather for Study", image: "cloud-sun" },
+    { title: "Similar Cost of Living as India", image: "indian-rupee" },
+    { title: "English Medium Study", image: "book-a" },
+    { title: "Availability of Better Medical Equipment", image: "heart-pulse" },
+    { title: "Indian Food Available", image: "apple" },
+    { title: "International Job Options", image: "briefcase-business" }
   ];
   
 export default function WhyStudyMbbsAbroad() {
@@ -24,9 +24,9 @@ export default function WhyStudyMbbsAbroad() {
       <div className="grid grid-cols-4 gap-6" >
         {
             studyAbroadBenefits.map((item) => (
-                <div key={item.title} className="border gap-4 p-4 h-56 grid place-content-center  rounded-xl shadow hover:shadow-md transition-shadow">
-                    <DynamicIcon name={item.image as IconName} size={62} className="mx-auto" />
-                    <h3 className="text-center max-w-[12rem]">{item.title}</h3>
+                <div key={item.title} className="p-10 h-56  rounded-xl bg-muted"> 
+                    <DynamicIcon name={item.image as IconName} size={54} className='mb-6 text-blue-500' />
+                    <h3 className="text-lg font-semibold text-muted-foreground">{item.title}</h3>
                 </div>
             ))
         }

@@ -66,7 +66,7 @@ export default async function AboutUs() {
     const aboutPageData = data.docs[0]
     
   return (
-    <section className="max-w-5xl mx-auto px-4 my-10">
+    <section className="max-w-5xl mx-auto px-4 my-10 lg:my-16 lg:pb-16" >
       <h1 className="text-h1 text-center mb-20" >{aboutPageData.aboutPageContent?.intro?.heading}</h1>
       <h2 className="text-h2 mb-8">{aboutPageData.aboutPageContent?.intro?.subheading}</h2>
       <div className="space-y-8" >

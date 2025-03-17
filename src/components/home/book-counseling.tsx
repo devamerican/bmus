@@ -4,7 +4,7 @@ import { CardContent, Card, CardTitle, CardHeader } from "../ui/card";
 
 export default function BookCounseling(){
     return(
-        <section className="section-container flex flex-col lg:flex-row lg:items-end gap-6" >
+        <section id="book_counseling" className="section-container flex flex-col lg:flex-row lg:items-end gap-6 scroll-mt-20" >
             <div className="basis-[55%]" >
                 <Image className="object-cover w-full" src="/formbg1.jpg" width={800} height={600} alt="background counseling" />
             </div>
