@@ -46,8 +46,10 @@ export default function StudentsSay(){
      const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay()])
     return(
         <section  >
+            <div className="px-4" >
             <h2 className="text-h2 mb-2 text-center" >What Students Are Saying</h2>
             <p className="max-w-4xl mx-auto mb-10 text-center text-muted-foreground" >Over 1000+ students have opted for our counseling services in the past 13 years and are currently living the life they dreamed of.</p>
+            </div>
 
              <div className="overflow-hidden py-16 select-none" ref={emblaRef}>
                                 <div className="flex mx-4">

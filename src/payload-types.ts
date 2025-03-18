@@ -68,9 +68,7 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
-    'mbbs-faqs': MbbsFaq;
     pages: Page;
-    services: Service;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -79,9 +77,7 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
-    'mbbs-faqs': MbbsFaqsSelect<false> | MbbsFaqsSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
-    services: ServicesSelect<false> | ServicesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -89,8 +85,12 @@ export interface Config {
   db: {
     defaultIDType: string;
   };
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    navbar: Navbar;
+  };
+  globalsSelect: {
+    navbar: NavbarSelect<false> | NavbarSelect<true>;
+  };
   locale: null;
   user: User & {
     collection: 'users';
@@ -156,31 +156,75 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "mbbs-faqs".
- */
-export interface MbbsFaq {
-  id: string;
-  question: string;
-  answer: string;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "pages".
  */
 export interface Page {
   id: string;
-  title: string;
   pageType: 'home' | 'about' | 'services' | 'directorsMessage' | 'whyStudyMBBSAbroad' | 'mbbsFaqs';
   homePageContent?: {
     hero: {
       heading: string;
+      subheading: string;
+      cta: {
+        primary: {
+          label: string;
+          href: string;
+        };
+        secondary: {
+          label: string;
+          href: string;
+        };
+        href: string;
+      };
+      hero_2: {
+        heading: string;
+        content: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        image: string | Media;
+      };
       countries: {
         country: string;
         image: string | Media;
         id?: string | null;
       }[];
+      what_we_offer: {
+        heading: string;
+        subheading: string;
+        content: string;
+        services?:
+          | {
+              title: string;
+              image: string | Media;
+              id?: string | null;
+            }[]
+          | null;
+        what_students_say: {
+          heading: string;
+          content: string;
+          testimonials?:
+            | {
+                name: string;
+                image: string | Media;
+                university: string;
+                content: string;
+                id?: string | null;
+              }[]
+            | null;
+        };
+      };
     };
   };
   aboutPageContent?: {
@@ -297,22 +341,109 @@ export interface Page {
         | null;
     };
   };
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "services".
- */
-export interface Service {
-  id: string;
-  service_heading: string;
-  service_description: string;
-  services: {
-    service_icon?: (string | null) | Media;
-    service_name: string;
-    id?: string | null;
-  }[];
+  mbbsInCountryContent?: {
+    mbbsInCountry: {
+      slug: string;
+      heading: string;
+      bg_image: string | Media;
+      hero: {
+        logo_image: string | Media;
+        content: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+      };
+      universities: {
+        title: string;
+        table?:
+          | {
+              name: string;
+              year: string;
+              location: string;
+              fees: string;
+              id?: string | null;
+            }[]
+          | null;
+      };
+      about: {
+        title: string;
+        content: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        facts?:
+          | {
+              title: string;
+              icon: string;
+              value: string;
+              id?: string | null;
+            }[]
+          | null;
+      };
+      eligibility: {
+        title: string;
+        content: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+      };
+      why_choose: {
+        title: string;
+        content: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+      };
+      city_attractions: {
+        title: string;
+        image: string | Media;
+      };
+    };
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -332,16 +463,8 @@ export interface PayloadLockedDocument {
         value: string | Media;
       } | null)
     | ({
-        relationTo: 'mbbs-faqs';
-        value: string | MbbsFaq;
-      } | null)
-    | ({
         relationTo: 'pages';
         value: string | Page;
-      } | null)
-    | ({
-        relationTo: 'services';
-        value: string | Service;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -420,20 +543,9 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "mbbs-faqs_select".
- */
-export interface MbbsFaqsSelect<T extends boolean = true> {
-  question?: T;
-  answer?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "pages_select".
  */
 export interface PagesSelect<T extends boolean = true> {
-  title?: T;
   pageType?: T;
   homePageContent?:
     | T
@@ -442,12 +554,66 @@ export interface PagesSelect<T extends boolean = true> {
           | T
           | {
               heading?: T;
+              subheading?: T;
+              cta?:
+                | T
+                | {
+                    primary?:
+                      | T
+                      | {
+                          label?: T;
+                          href?: T;
+                        };
+                    secondary?:
+                      | T
+                      | {
+                          label?: T;
+                          href?: T;
+                        };
+                    href?: T;
+                  };
+              hero_2?:
+                | T
+                | {
+                    heading?: T;
+                    content?: T;
+                    image?: T;
+                  };
               countries?:
                 | T
                 | {
                     country?: T;
                     image?: T;
                     id?: T;
+                  };
+              what_we_offer?:
+                | T
+                | {
+                    heading?: T;
+                    subheading?: T;
+                    content?: T;
+                    services?:
+                      | T
+                      | {
+                          title?: T;
+                          image?: T;
+                          id?: T;
+                        };
+                    what_students_say?:
+                      | T
+                      | {
+                          heading?: T;
+                          content?: T;
+                          testimonials?:
+                            | T
+                            | {
+                                name?: T;
+                                image?: T;
+                                university?: T;
+                                content?: T;
+                                id?: T;
+                              };
+                        };
                   };
             };
       };
@@ -547,22 +713,68 @@ export interface PagesSelect<T extends boolean = true> {
                   };
             };
       };
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "services_select".
- */
-export interface ServicesSelect<T extends boolean = true> {
-  service_heading?: T;
-  service_description?: T;
-  services?:
+  mbbsInCountryContent?:
     | T
     | {
-        service_icon?: T;
-        service_name?: T;
-        id?: T;
+        mbbsInCountry?:
+          | T
+          | {
+              slug?: T;
+              heading?: T;
+              bg_image?: T;
+              hero?:
+                | T
+                | {
+                    logo_image?: T;
+                    content?: T;
+                  };
+              universities?:
+                | T
+                | {
+                    title?: T;
+                    table?:
+                      | T
+                      | {
+                          name?: T;
+                          year?: T;
+                          location?: T;
+                          fees?: T;
+                          id?: T;
+                        };
+                  };
+              about?:
+                | T
+                | {
+                    title?: T;
+                    content?: T;
+                    facts?:
+                      | T
+                      | {
+                          title?: T;
+                          icon?: T;
+                          value?: T;
+                          id?: T;
+                        };
+                  };
+              eligibility?:
+                | T
+                | {
+                    title?: T;
+                    content?: T;
+                  };
+              why_choose?:
+                | T
+                | {
+                    title?: T;
+                    content?: T;
+                  };
+              city_attractions?:
+                | T
+                | {
+                    title?: T;
+                    image?: T;
+                  };
+            };
       };
   updatedAt?: T;
   createdAt?: T;
@@ -598,6 +810,54 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "navbar".
+ */
+export interface Navbar {
+  id: string;
+  navItems?:
+    | {
+        name: string;
+        href?: string | null;
+        items?:
+          | {
+              title: string;
+              href: string;
+              description: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "navbar_select".
+ */
+export interface NavbarSelect<T extends boolean = true> {
+  navItems?:
+    | T
+    | {
+        name?: T;
+        href?: T;
+        items?:
+          | T
+          | {
+              title?: T;
+              href?: T;
+              description?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

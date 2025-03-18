@@ -9,9 +9,8 @@ import sharp from 'sharp'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
-import { MbbsFaqs } from './collections/MbbsFaqs'
 import { Pages } from './collections/Pages'
-import { Services } from './collections/Services'
+import { Navbar } from './collections/navbar'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -23,7 +22,8 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media,MbbsFaqs, Pages, Services],
+  collections: [Users, Media, Pages],
+  globals: [Navbar],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

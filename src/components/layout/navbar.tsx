@@ -160,38 +160,38 @@ const navItems = [
       },
     ],
   },
-  {
-    name: "Latest News",
-    href: "#",
-    items: [
-      {
-        title: "News & Events",
-        href: "/news-and-events",
-        description: "Stay updated with our latest news",
-      },
-      {
-        title: "Articles & Blog",
-        href: "/blog",
-        description: "Read our informative articles",
-      },
-    ],
-  },
-  {
-    name: "Gallery",
-    href: "#",
-    items: [
-      {
-        title: "Photos",
-        href: "/photos",
-        description: "View our photo gallery",
-      },
-      {
-        title: "Videos",
-        href: "/videos",
-        description: "Watch our videos",
-      },
-    ],
-  },
+  // {
+  //   name: "Latest News",
+  //   href: "#",
+  //   items: [
+  //     {
+  //       title: "News & Events",
+  //       href: "/news-and-events",
+  //       description: "Stay updated with our latest news",
+  //     },
+  //     {
+  //       title: "Articles & Blog",
+  //       href: "/blog",
+  //       description: "Read our informative articles",
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: "Gallery",
+  //   href: "#",
+  //   items: [
+  //     {
+  //       title: "Photos",
+  //       href: "/photos",
+  //       description: "View our photo gallery",
+  //     },
+  //     {
+  //       title: "Videos",
+  //       href: "/videos",
+  //       description: "Watch our videos",
+  //     },
+  //   ],
+  // },
   {
     name: "Contact Us",
     href: "/contact-us",

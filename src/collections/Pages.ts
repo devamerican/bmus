@@ -1,5 +1,6 @@
 // File: collections/Pages.ts
 import type { CollectionConfig, Field } from 'payload'
+import { revalidatePage } from './hooks/revalidatePage';
 
 // Section fields for Home Page
 const homePageSections: Field[] = [
@@ -11,6 +12,77 @@ const homePageSections: Field[] = [
           name: 'heading',
           type: 'text',
           required: true,
+        },
+        {
+          name: 'subheading',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'cta',
+          type: 'group',
+          fields: [
+            {
+              name: 'primary',
+              type: 'group',
+              fields: [
+                {
+                  name: 'label',
+                  type: 'text',
+                  required: true,
+                },
+                {
+                  name: 'href',
+                  type: 'text',
+                  required: true,
+                },
+              ],
+            },
+            {
+              name: 'secondary',
+              type: 'group',
+              fields: [
+                {
+                  name: 'label',
+                  type: 'text',
+                  required: true,
+                },
+                {
+                  name: 'href',
+                  type: 'text',
+                  required: true,
+                },
+              ],
+            },
+            {
+              name: 'href',
+              type: 'text',
+              required: true,
+            },
+
+          ],
+        },
+        {
+          name: 'hero_2',
+          type: 'group',
+          fields: [
+            {
+              name: 'heading',
+              type: 'text',
+              required: true,
+            },
+            {
+              name: 'content',
+              type: 'richText',
+              required: true,
+            },
+            {
+              name: 'image',
+              type: 'upload',
+              relationTo: 'media',
+              required: true,
+            }
+          ],
         },
         {
           name: 'countries',
@@ -29,7 +101,89 @@ const homePageSections: Field[] = [
               required: true,
             }
           ],
-        }
+        },
+        {
+          name: 'what_we_offer',
+          type: 'group',
+          fields: [
+            {
+              name: 'heading',
+              type: 'text',
+              required: true,
+            },
+            {
+              name: 'subheading',
+              type: 'text',
+              required: true,
+            },
+            {
+              name: 'content',
+              type: 'text',
+              required: true,
+            },
+            {
+              name: 'services',
+              type: 'array',
+              fields: [
+                {
+                  name: 'title',
+                  type: 'text',
+                  required: true,
+                },
+                {
+                  name: 'image',
+                  type: 'upload',
+                  relationTo: 'media',
+                  required: true,
+                },
+              ],
+            },
+            {
+              name: 'what_students_say',
+              type: 'group',
+              fields: [
+                {
+                  name: 'heading',
+                  type: 'text',
+                  required: true,
+                },
+                {
+                  name: 'content',
+                  type: 'text',
+                  required: true,
+                },
+                {
+                  name: 'testimonials',
+                  type: 'array',
+                  fields: [
+                    {
+                      name: 'name',
+                      type: 'text',
+                      required: true,
+                    },
+                    {
+                      name: 'image',
+                      type: 'upload',
+                      relationTo: 'media',
+                      required: true,
+                    },
+                    {
+                      name: 'university',
+                      type: 'text',
+                      required: true,
+                    },
+                    {
+                      name: 'content',
+                      type: 'text',
+                      required: true,
+                    },
+                  ],
+                },
+
+              ],
+            }
+          ],
+        },
     ],
   }
 ];
@@ -216,20 +370,185 @@ const mbbsFaqs: Field[] = [
 },
 ]
 
+const mbbsInCountry: Field[] = [
+  {
+    name: 'mbbsInCountry',
+    type: 'group',
+    fields: [
+      {
+        name: 'slug',
+        type: 'text',
+        required: true,
+      },
+      {
+        name: 'heading',
+        type: 'text',
+        required: true,
+      },
+      {
+        name: 'bg_image',
+        type: 'upload',
+        relationTo: 'media',
+        required: true,
+      },
+      {
+        name: 'hero',
+        type: 'group',
+        fields: [
+          {
+            name: 'logo_image',
+            type: 'upload',
+            relationTo: 'media',
+            required: true,
+          },
+          {
+            name: 'content',
+            type: 'richText',
+            required: true,
+          },
+        ]
+      },
+      {
+        name: 'universities',
+        type: 'group',
+        fields: [
+          {
+            name: 'title',
+            type: 'text',
+            required: true,
+          },
+          {
+            name: 'table',
+            type: 'array',
+            fields: [
+              {
+                name: 'name',
+                type: 'text',
+                required: true,
+              },
+              {
+                name: 'year',
+                type: 'text',
+                required: true,
+              },
+              {
+                name: 'location',
+                type: 'text',
+                required: true,
+              },
+              {
+                name: 'fees',
+                type: 'text',
+                required: true,
+              },
+            ]
+          },
+        ]
+      },
+      {
+        name: 'about',
+        type: 'group',
+        fields: [
+          {
+            name: 'title',
+            type: 'text',
+            required: true,
+          },
+          {
+            name: 'content',
+            type: 'richText',
+            required: true,
+          },
+          {
+            name: 'facts',
+            type: 'array',
+            fields: [
+              {
+                name: 'title',
+                type: 'text',
+                required: true,
+              },
+              {
+                name: 'icon',
+                type: 'text',
+                required: true,
+              },
+              {
+                name: 'value',
+                type: 'text',
+                required: true,
+              }
+            ]
+          },
+        ]
+      },
+      {
+        name: 'eligibility',
+        type: 'group',
+        fields: [
+          {
+            name: 'title',
+            type: 'text',
+            required: true,
+          },
+          {
+            name: 'content',
+            type: 'richText',
+            required: true,
+          },
+        ]
+      },
+      {
+        name: 'why_choose',
+        type: 'group',
+        fields: [
+          {
+            name: 'title',
+            type: 'text',
+            required: true,
+          },
+          {
+            name: 'content',
+            type: 'richText',
+            required: true,
+          },
+        ]
+      },
+      {
+        name: 'city_attractions',
+        type: 'group',
+        fields: [
+          {
+            name: 'title',
+            type: 'text',
+            required: true,
+          },
+          {
+            name: 'image',
+            type: 'upload',
+            relationTo: 'media',
+            required: true,
+          },
+        ]
+      }
+    ],
+  },
+];
+
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
   admin: {
-    useAsTitle: 'title',
+    useAsTitle: 'pageType',
   },
   access: {
     read: () => true,
   },
   fields: [
-    {
-      name: 'title',
-      type: 'text',
-      required: true,
-    },
+    // {
+    //   name: 'title',
+    //   type: 'text',
+    //   required: true,
+    // },
     {
       name: 'pageType',
       type: 'select',
@@ -260,9 +579,9 @@ export const Pages: CollectionConfig<'pages'> = {
         }    
       ],
       required: true,
-      admin: {
-        position: 'sidebar',
-      },
+      // admin: {
+      //   position: 'sidebar',
+      // },
     },
     {
       name: 'homePageContent',
@@ -311,6 +630,17 @@ export const Pages: CollectionConfig<'pages'> = {
           condition: (data) => data.pageType === 'mbbsFaqs',
         },
         fields: mbbsFaqs,
+    },
+    {
+        name: 'mbbsInCountryContent',
+        type: 'group',
+        admin: {
+          condition: (data) => data.pageType === 'mbbsInCountry',
+        },
+        fields: mbbsInCountry,
     }
   ],
+  hooks: {
+    afterChange:[revalidatePage],
+  },
 };

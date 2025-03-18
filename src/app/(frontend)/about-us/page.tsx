@@ -61,16 +61,18 @@ export default async function AboutUs() {
 
     const payload = await getPayload({ config })
     const data = await payload.find({
-        collection: 'pages'
+        collection: 'pages',
     })
-    const aboutPageData = data.docs[0]
+    const aboutPageData = data.docs.find((item) => item.pageType === 'about')
+
+    console.log({data: data.docs})
     
   return (
     <section className="max-w-5xl mx-auto px-4 my-10 lg:my-16 lg:pb-16" >
-      <h1 className="text-h1 text-center mb-20" >{aboutPageData.aboutPageContent?.intro?.heading}</h1>
-      <h2 className="text-h2 mb-8">{aboutPageData.aboutPageContent?.intro?.subheading}</h2>
+      <h1 className="text-h1 text-center mb-20" >{aboutPageData?.aboutPageContent?.intro?.heading}</h1>
+      <h2 className="text-h2 mb-8">{aboutPageData?.aboutPageContent?.intro?.subheading}</h2>
       <div className="space-y-8" >
-        {aboutPageData.aboutPageContent?.intro?.content && <RichText data={aboutPageData.aboutPageContent?.intro?.content} />}
+        {aboutPageData?.aboutPageContent?.intro?.content && <RichText data={aboutPageData?.aboutPageContent?.intro?.content} />}
         {/* <p>Education Abroad Services Overseas CAREER Consultants provides “One Stop Solution for All Your International Education Needs”.</p>
         <p>We offer a wide-ranging portfolio of outstanding and brilliantly managed services right from pre-admission to post landing services designed to suit the individual needs of the students.Our quality counseling distinguishes us from others in a way that we offer personalized counseling where there is direct involvement of the directors who have been educated in the finest institutes in India and abroad and have first-hand experience of the international culture and education system.</p>
         <p>Our team put forward sincere efforts and commitment on each student application case to help student realize the dream of studying in the best universities of the world. We are committed to contribute to our country and world in the education arena. Excellence is the top focus for our company. Our company continuously improves our services to deliver the best services and optimum satisfaction to all.</p>
@@ -81,7 +83,7 @@ export default async function AboutUs() {
         {/* Achievements */}
       <div className="my-24" >
 
-        <h2 className="text-h2 mb-12" >{aboutPageData.aboutPageContent?.achievements?.title}</h2>
+        <h2 className="text-h2 mb-12" >{aboutPageData?.aboutPageContent?.achievements?.title}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 place-content-center place-items-center gap-4 lg:gap-6" >
             {
                 achievementsItems.map((item) => (
@@ -101,8 +103,8 @@ export default async function AboutUs() {
     {/* our team */}
     <div>
 
-        <h2 className="text-h2 mb-1" >{aboutPageData.aboutPageContent?.ourTeam?.title}</h2>
-        <p className="text-muted-foreground mb-12" >{aboutPageData.aboutPageContent?.ourTeam?.description}</p>
+        <h2 className="text-h2 mb-1" >{aboutPageData?.aboutPageContent?.ourTeam?.title}</h2>
+        <p className="text-muted-foreground mb-12" >{aboutPageData?.aboutPageContent?.ourTeam?.description}</p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6" >
         {
