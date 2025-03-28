@@ -5,56 +5,57 @@ import { getPayload } from 'payload'
 import config from '@/payload.config'
 import { RichText } from '@payloadcms/richtext-lexical/react'
 import { DynamicIcon, IconName } from "lucide-react/dynamic";
+import { Media } from "@/payload-types";
 
-const achievementsItems = [
-    {
-        id: 1,
-        title: "13+ Years of Experience",
-        icon: "handshake"
-    },
-    {
-        id: 2,
-        title: "15+ Countries for MBBS",
-        icon: "globe" 
-    },
-    {
-        id: 3,
-        title: "100+ Connected Universities",
-        icon: "landmark"
-    },
-    {
-        id: 4,
-        title: "1000+ Happy Students",
-        icon: "laugh" 
-    },
-]
+// const achievementsItems = [
+//     {
+//         id: 1,
+//         title: "13+ Years of Experience",
+//         icon: "handshake"
+//     },
+//     {
+//         id: 2,
+//         title: "15+ Countries for MBBS",
+//         icon: "globe" 
+//     },
+//     {
+//         id: 3,
+//         title: "100+ Connected Universities",
+//         icon: "landmark"
+//     },
+//     {
+//         id: 4,
+//         title: "1000+ Happy Students",
+//         icon: "laugh" 
+//     },
+// ]
 
-const team = [
-    {
-        id: 1,
-        image: '/anik.jpg',
-        name: 'Ajay Gaur',
-        desingnation: 'Director',
-    },
-    {
-        id: 2,
-        image: '/anik.jpg',
-        name: 'Ajay Gaur',
-        desingnation: 'Associate Director',
-    },
-    {
-        id: 3,
-        image: '/anik.jpg',
-        name: 'Ajay Gaur',
-        desingnation: 'Director',
-    },
-    {
-        id: 4,
-        image: '/anik.jpg',
-        name: 'Ajay Gaur',
-        desingnation: 'Director',
-    },
-]
+// const team = [
+//     {
+//         id: 1,
+//         image: '/anik.jpg',
+//         name: 'Ajay Gaur',
+//         desingnation: 'Director',
+//     },
+//     {
+//         id: 2,
+//         image: '/anik.jpg',
+//         name: 'Ajay Gaur',
+//         desingnation: 'Associate Director',
+//     },
+//     {
+//         id: 3,
+//         image: '/anik.jpg',
+//         name: 'Ajay Gaur',
+//         desingnation: 'Director',
+//     },
+//     {
+//         id: 4,
+//         image: '/anik.jpg',
+//         name: 'Ajay Gaur',
+//         desingnation: 'Director',
+//     },
+// ]
 
 
 export default async function AboutUs() {
@@ -86,7 +87,7 @@ export default async function AboutUs() {
         <h2 className="text-h2 mb-12" >{aboutPageData?.aboutPageContent?.achievements?.title}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 place-content-center place-items-center gap-4 lg:gap-6" >
             {
-                achievementsItems.map((item) => (
+                aboutPageData?.aboutPageContent?.achievements?.achivementItems?.map((item) => (
                         <div key={item.id} className="hover:shadow transition-shadow p-6 rounded-lg bg-muted w-full" >
                             <div>
                                 <DynamicIcon name={item.icon as IconName} size={32} className=" mb-6 text-blue-500" />
@@ -108,11 +109,11 @@ export default async function AboutUs() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6" >
         {
-            team.map((item) => (
+            aboutPageData?.aboutPageContent?.ourTeam?.teamMembers?.map((item) => (
                 <div key={item.id} className="flex flex-col items-center justify-center">
-                    <Image className="w-full mb-2 rounded-2xl" src={item.image} alt={item.name} width={300} height={300} />
+                    <Image className="w-full mb-2 rounded-2xl aspect-square object-cover" src={(item.image as Media)?.url || "" } alt={(item?.image as Media)?.alt} width={300} height={300} />  
                     <h4 className="text-xl font-medium mb-1">{item.name}</h4>
-                    <p className="text-sm text-muted-foreground">{item.desingnation}</p>
+                    <p className="text-sm text-muted-foreground">{item.designation}</p>
                 </div>
             ))
         }

@@ -252,14 +252,17 @@ const aboutPageSections: Field[] = [
             name: 'image',
             type: 'upload',
             relationTo: 'media',
+            required: true,
           },
           {
             name: 'name',
             type: 'text',
+            required: true,
           },
           {
             name: 'designation',
             type: 'text',
+            required: true,
           },
         ],
       },

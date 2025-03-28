@@ -262,9 +262,9 @@ export interface Page {
       description?: string | null;
       teamMembers?:
         | {
-            image?: (string | null) | Media;
-            name?: string | null;
-            designation?: string | null;
+            image: string | Media;
+            name: string;
+            designation: string;
             id?: string | null;
           }[]
         | null;
@@ -817,6 +817,7 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Navbar {
   id: string;
+  logo: string | Media;
   navItems?:
     | {
         name: string;
@@ -840,6 +841,7 @@ export interface Navbar {
  * via the `definition` "navbar_select".
  */
 export interface NavbarSelect<T extends boolean = true> {
+  logo?: T;
   navItems?:
     | T
     | {

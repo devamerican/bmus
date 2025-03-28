@@ -6,6 +6,12 @@ export const Navbar: GlobalConfig = {
       read: () => true,
     },
     fields: [
+        {
+            name: 'logo',
+            type: 'upload',
+            relationTo: 'media',
+            required: true,
+        },
       {
         name: 'navItems',
         type: 'array',
@@ -42,6 +48,6 @@ export const Navbar: GlobalConfig = {
                 ],
             },
         ],
-      },
+      }
     ],
   }
