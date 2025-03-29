@@ -1,6 +1,6 @@
 // import { Card, CardContent } from "@/components/ui/card";
 // import { Globe, Handshake, Landmark, Laugh } from "lucide-react";
-import Image from "next/image";
+// import Image from "next/image";
 import { getPayload } from 'payload'
 import config from '@/payload.config'
 import { RichText } from '@payloadcms/richtext-lexical/react'
@@ -111,7 +111,7 @@ export default async function AboutUs() {
         {
             aboutPageData?.aboutPageContent?.ourTeam?.teamMembers?.map((item) => (
                 <div key={item.id} className="flex flex-col items-center justify-center">
-                    <Image className="w-full mb-2 rounded-2xl aspect-square object-cover" src={(item.image as Media)?.url || "" } alt={(item?.image as Media)?.alt} width={300} height={300} />  
+                    <img className="w-full mb-2 rounded-2xl aspect-square object-cover" src={(item.image as Media)?.url || "" } alt={(item?.image as Media)?.alt} width={300} height={300} />  
                     <h4 className="text-xl font-medium mb-1">{item.name}</h4>
                     <p className="text-sm text-muted-foreground">{item.designation}</p>
                 </div>
