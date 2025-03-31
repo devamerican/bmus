@@ -1,11 +1,16 @@
 // import { Card, CardContent } from "@/components/ui/card";
 // import { Globe, Handshake, Landmark, Laugh } from "lucide-react";
-// import Image from "next/image";
-import { getPayload } from 'payload'
-import config from '@/payload.config'
-import { RichText } from '@payloadcms/richtext-lexical/react'
+import Image from "next/image";
+// import { getPayload } from 'payload'
+// import config from '@/payload.config'
+// import { RichText } from '@payloadcms/richtext-lexical/react'
 import { DynamicIcon, IconName } from "lucide-react/dynamic";
-import { Media } from "@/payload-types";
+// import { Media } from "@/payload-types";
+import { type SanityDocument, PortableText } from "next-sanity";
+import imageUrlBuilder from "@sanity/image-url";
+
+import { client } from "@/sanity/client";
+import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
 // const achievementsItems = [
 //     {
@@ -60,20 +65,30 @@ import { Media } from "@/payload-types";
 
 export default async function AboutUs() {
 
-    const payload = await getPayload({ config })
-    const data = await payload.find({
-        collection: 'pages',
-    })
-    const aboutPageData = data.docs.find((item) => item.pageType === 'about')
+    // const payload = await getPayload({ config })
+    // const data = await payload.find({
+    //     collection: 'pages',
+    // })
+    // const aboutPageData = data.docs.find((item) => item.pageType === 'about')
 
-    console.log({data: data.docs})
-    
+    const QUERY = `*[_type == "aboutUs"]`
+
+    const data = await client.fetch<SanityDocument[]>(QUERY, {});
+    const aboutPageData = data[0]
+    console.log({aboutPageData})
+
+    const { projectId, dataset } = client.config();
+const urlFor = (source: SanityImageSource) =>
+  projectId && dataset
+    ? imageUrlBuilder({ projectId, dataset }).image(source)
+    : null;
+
   return (
     <section className="max-w-5xl mx-auto px-4 my-10 lg:my-16 lg:pb-16" >
-      <h1 className="text-h1 text-center mb-20" >{aboutPageData?.aboutPageContent?.intro?.heading}</h1>
-      <h2 className="text-h2 mb-8">{aboutPageData?.aboutPageContent?.intro?.subheading}</h2>
+      <h1 className="text-h1 text-center mb-20" >{aboutPageData.intro.heading}</h1> 
+      <h2 className="text-h2 mb-8">{aboutPageData.intro.subheading}</h2>
       <div className="space-y-8" >
-        {aboutPageData?.aboutPageContent?.intro?.content && <RichText data={aboutPageData?.aboutPageContent?.intro?.content} />}
+        {aboutPageData?.intro?.content && <PortableText value={aboutPageData?.intro?.content} />}
         {/* <p>Education Abroad Services Overseas CAREER Consultants provides “One Stop Solution for All Your International Education Needs”.</p>
         <p>We offer a wide-ranging portfolio of outstanding and brilliantly managed services right from pre-admission to post landing services designed to suit the individual needs of the students.Our quality counseling distinguishes us from others in a way that we offer personalized counseling where there is direct involvement of the directors who have been educated in the finest institutes in India and abroad and have first-hand experience of the international culture and education system.</p>
         <p>Our team put forward sincere efforts and commitment on each student application case to help student realize the dream of studying in the best universities of the world. We are committed to contribute to our country and world in the education arena. Excellence is the top focus for our company. Our company continuously improves our services to deliver the best services and optimum satisfaction to all.</p>
@@ -84,11 +99,11 @@ export default async function AboutUs() {
         {/* Achievements */}
       <div className="my-24" >
 
-        <h2 className="text-h2 mb-12" >{aboutPageData?.aboutPageContent?.achievements?.title}</h2>
+        <h2 className="text-h2 mb-12" >{aboutPageData?.achievements?.title}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 place-content-center place-items-center gap-4 lg:gap-6" >
             {
-                aboutPageData?.aboutPageContent?.achievements?.achivementItems?.map((item) => (
-                        <div key={item.id} className="hover:shadow transition-shadow p-6 rounded-lg bg-muted w-full" >
+                aboutPageData.achievements.achievementItems?.map((item: { icon: IconName, title: string, _key: string }) => (
+                        <div key={item._key} className="hover:shadow transition-shadow p-6 rounded-lg bg-muted w-full" >
                             <div>
                                 <DynamicIcon name={item.icon as IconName} size={32} className=" mb-6 text-blue-500" />
                                 <h4 className="text-lg font-semibold " >{item.title}</h4>
@@ -104,14 +119,14 @@ export default async function AboutUs() {
     {/* our team */}
     <div>
 
-        <h2 className="text-h2 mb-1" >{aboutPageData?.aboutPageContent?.ourTeam?.title}</h2>
-        <p className="text-muted-foreground mb-12" >{aboutPageData?.aboutPageContent?.ourTeam?.description}</p>
+        <h2 className="text-h2 mb-1" >{aboutPageData?.ourTeam?.heading}</h2>
+        <p className="text-muted-foreground mb-12" >{aboutPageData?.ourTeam?.subHeading}</p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6" >
         {
-            aboutPageData?.aboutPageContent?.ourTeam?.teamMembers?.map((item) => (
-                <div key={item.id} className="flex flex-col items-center justify-center">
-                    <img className="w-full mb-2 rounded-2xl aspect-square object-cover" src={(item.image as Media)?.url || "" } alt={(item?.image as Media)?.alt} width={300} height={300} />  
+            aboutPageData?.ourTeam?.teamMembers?.map((item: any) => (
+                <div key={item._key} className="flex flex-col items-center justify-center">
+                    <Image className="w-full mb-2 rounded-2xl aspect-square object-cover" src={urlFor(item.image)?.width(300).height(300).url() ?? "" } alt={item?.name} width={300} height={300} />   
                     <h4 className="text-xl font-medium mb-1">{item.name}</h4>
                     <p className="text-sm text-muted-foreground">{item.designation}</p>
                 </div>

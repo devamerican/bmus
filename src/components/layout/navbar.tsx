@@ -26,6 +26,11 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Download, Globe,  Menu,  } from "lucide-react";
+import { type SanityDocument } from "next-sanity";
+import imageUrlBuilder from "@sanity/image-url";
+
+import { client } from "@/sanity/client";
+import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
 const navItems = [
 //   {
@@ -198,7 +203,18 @@ const navItems = [
   },
 ];
 
-export default function Navbar() {
+export default async function Navbar() {
+
+  const QUERY = `*[_type == "navbar"]`
+  const navbarData = await client.fetch<SanityDocument>(QUERY, {});
+  const navbar = navbarData[0]
+
+      const { projectId, dataset } = client.config();
+  const urlFor = (source: SanityImageSource) =>
+    projectId && dataset
+      ? imageUrlBuilder({ projectId, dataset }).image(source)
+      : null;
+  console.log({navbar}) 
 
   return (
     <>
@@ -224,7 +240,7 @@ export default function Navbar() {
         <div className="flex gap-3 items-center" >
 
         <Link href="/" className="flex-none">
-          <Image
+          {/* <Image
             src="/newlogo.png"
             width={100}
             height={30}
@@ -239,7 +255,16 @@ export default function Navbar() {
             alt="logo"
             className="h-auto xl:hidden"
             priority
-          />
+          /> */}
+
+        <Image
+            src={urlFor(navbar.logo)?.width(300).height(300).url() ?? "" }
+            width={50}
+            height={50}
+            alt="logo"
+            className=""
+            // priority
+          /> 
         </Link>
 
         {/* Desktop Navigation */}
