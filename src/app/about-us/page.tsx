@@ -75,7 +75,6 @@ export default async function AboutUs() {
 
     const data = await client.fetch<SanityDocument[]>(QUERY, {});
     const aboutPageData = data[0]
-    console.log({aboutPageData})
 
     const { projectId, dataset } = client.config();
 const urlFor = (source: SanityImageSource) =>

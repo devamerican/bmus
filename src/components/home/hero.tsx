@@ -6,6 +6,11 @@ import Image from 'next/image'
 import { ArrowRight, Globe2, GraduationCap } from 'lucide-react'
 import { Button } from '../ui/button'
 import Link from 'next/link'
+import { DynamicIcon, IconName } from 'lucide-react/dynamic'
+import imageUrlBuilder from "@sanity/image-url";
+
+import { client } from "@/sanity/client";
+import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
 const heroItems = [
     {
@@ -22,16 +27,22 @@ const heroItems = [
     },
 ]
 
-export default function Hero(){
+export default function Hero({data}: {data: any}){
     const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay()])
+        const { projectId, dataset } = client.config();
+    const urlFor = (source: SanityImageSource) =>
+      projectId && dataset
+        ? imageUrlBuilder({ projectId, dataset }).image(source)
+        : null;
+
     return(
         <section className='relative' >
             <div className="overflow-hidden absolute w-full h-full" ref={emblaRef}>
                 <div className="flex h-full">
                     {
-                        heroItems.map((item) => (
-                            <div className="flex-[0_0_100%] min-w-0 brightness-[0.4] " key={item.id}>
-                                <Image className='w-full h-full object-cover bg-black' src={item.img} width={1000} height={500} alt="hero" />
+                        data.bgImage.map((item: any, index: number) => (
+                            <div className="flex-[0_0_100%] min-w-0 brightness-[0.4] " key={index}>
+                                <Image className='w-full h-full object-cover bg-black' src={urlFor(item)?.width(1000).height(500).url() ?? "" } width={1000} height={500} alt="hero" />
                             </div>
                         ))
                     }
@@ -52,23 +63,23 @@ export default function Hero(){
                     </div>
                     
                     <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight" >
-                        Study Abroad & Transform Your Future
+                        {data.heading}
                     </h1>
                     
                     <p className="text-lg sm:text-xl text-gray-200 max-w-xl">
-                        Unlock global opportunities with our expert guidance. We help students achieve their dreams of studying at prestigious universities worldwide.
+                        {data.subheading}
                     </p>
                     
                     <div className="flex flex-col sm:flex-row gap-4">
-                        <Link href="#book_counseling" >
+                        <Link href={data.cta.primary.href} >
                         <Button size="lg" variant="blue" className="text-base">
-                        Get Started
+                            {data.cta.primary.label}
                         <ArrowRight className="ml-2 h-5 w-5" />
                         </Button>
                         </Link>
-                        <Link href="#services" >
+                        <Link href={data.cta.secondary.href} >
                         <Button size="lg" variant="outline" className="text-base bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 hover:text-white">
-                            Explore Programs
+                            {data.cta.secondary.label}
                         </Button>
                         </Link>
                     </div>
@@ -76,19 +87,15 @@ export default function Hero(){
 
                         {/* Right Column - Stats */}
                         <div className="grid grid-cols-2 gap-6">
-                        {[
-                            { number: "100+", label: "Partner Universities", icon: <GraduationCap className="h-6 w-6" /> },
-                            { number: "15+", label: "Countries", icon: <Globe2 className="h-6 w-6" /> },
-                            { number: "1000+", label: "Students Placed", icon: <GraduationCap className="h-6 w-6" /> },
-                            { number: "13+", label: "Years of Experience", icon: <GraduationCap className="h-6 w-6" /> }
-                        ].map((stat, index) => (
+                        {data.achievements.map((stat) => (
                             <div
-                            key={index}
+                            key={stat._key}
                             className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 text-white hover:bg-white/20 transition-colors"
                             >
-                            <div className="mb-4">{stat.icon}</div>
-                            <div className="text-3xl font-bold mb-1">{stat.number}</div>
-                            <div className="text-sm text-gray-300">{stat.label}</div>
+                            {/* <div className="mb-4">{stat.icon}</div> */}
+                            <DynamicIcon name={stat.icon as IconName} className=" mb-6 text-blue-500 size-6" /> 
+                            <div className="text-3xl font-bold mb-1">{stat.title}</div>
+                            <div className="text-sm text-gray-300">{stat.subTitle}</div>
                             </div>
                         ))}
                         </div>

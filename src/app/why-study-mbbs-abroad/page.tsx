@@ -1,7 +1,7 @@
 // import { camera } from "lucide-react";
 import { DynamicIcon, type IconName} from 'lucide-react/dynamic'; 
-import { getPayload } from 'payload'
-import config from '@/payload.config'
+import { type SanityDocument } from "next-sanity";
+import { client } from "@/sanity/client";
 
 // const studyAbroadBenefits = [
 //     { title: "Lower Tuition Fee Than India", image: "book-text" },
@@ -19,22 +19,18 @@ import config from '@/payload.config'
   
 export default async function WhyStudyMbbsAbroad() {
 
-      const payload = await getPayload({ config })
-      const data = await payload.find({
-          collection: 'pages',
-      })
-      const pageData = data.docs.find((item) => item.pageType === 'whyStudyMBBSAbroad')?.whyStudyMBBSAbroadContent
-
-      console.log({pageData})
+        const QUERY = `*[_type == "whyStudyMBBSAbroad"]`
+        const result = await client.fetch<SanityDocument[]>(QUERY, {});
+        const data = result[0]
 
   return (
     <section className="section-container my-10">   
-      <h1 className="text-h1 text-center mb-20" >{pageData?.whyStudyMBBSAbroad?.heading}</h1>
+      <h1 className="text-h1 text-center mb-20" >{data.heading}</h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" >
         {
-            pageData?.whyStudyMBBSAbroad?.listItems?.map((item) => (
-                <div key={item.id} className="p-8 sm:p-10 min-h-56  rounded-xl bg-muted"> 
+            data.items?.map((item: any) => (
+                <div key={item._key} className="p-8 sm:p-10 min-h-56  rounded-xl bg-muted"> 
                     <DynamicIcon name={item.icon as IconName} size={42} className='mb-6 text-blue-500' />
                     <h3 className="text-lg font-semibold text-muted-foreground">{item.title}</h3>
                 </div>
