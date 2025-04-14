@@ -52,7 +52,7 @@ export default function EducationAbroad({data}: {data: any}){
             </div>
 
             <div>
-                <Image src={urlFor(data.image)?.width(1920).height(1080).url() ?? ""} width={1920} height={1080} alt="students"  />
+                <Image src={urlFor(data.image)?.url() ?? ""} width={1920} height={1080} alt="students"  />
             </div>
 
             {/* <div className="relative grid place-content-center p-4 max-sm:py-12 max-lg:py-20" >
