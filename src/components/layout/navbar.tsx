@@ -206,7 +206,14 @@ const navItems = [
 export default async function Navbar() {
 
   const QUERY = `*[_type == "navbar"]`
+  const PROSPECTUS_QUERY = `*[_type == "prospectus"]{
+        "pdfUrl": prospectus.asset->url
+      }`
+
   const navbarData = await client.fetch<SanityDocument>(QUERY, {});
+  const prospectusData = await client.fetch<SanityDocument>(PROSPECTUS_QUERY, {});
+
+  const prospectus = prospectusData[0]
   const navbar = navbarData[0]
 
       const { projectId, dataset } = client.config();
@@ -214,8 +221,8 @@ export default async function Navbar() {
     projectId && dataset
       ? imageUrlBuilder({ projectId, dataset }).image(source)
       : null;
-  console.log({navbar}) 
 
+  console.log('prospectus', prospectus)
   return (
     <>
     {/* <div className="hidden lg:flex justify-between items-center gap-3 px-3 py-1 bg-secondary" >
@@ -323,7 +330,9 @@ export default async function Navbar() {
         {/* <div className="hidden lg:flex gap-2">
         </div> */}
         <div className="flex gap-2 items-center max-lg:hidden " >
-          <Button variant="ghost" > <Download /> Prospectus</Button>
+          <Link href={prospectus.pdfUrl} target="_blank" rel="noopener noreferrer">
+            <Button variant="ghost" > <Download /> Prospectus</Button>
+          </Link>
           <Link href="/apply-online" >
             <Button >
                 <Globe />
@@ -383,8 +392,15 @@ export default async function Navbar() {
                 ))}
               </Accordion>
               <div className="flex flex-col space-y-2 mt-6">
-                <Button variant="outline" className="w-full">Prospectus</Button>
-                <Button className="w-full">Apply Now</Button>
+                  <Link href={prospectus.pdfUrl} target="_blank" rel="noopener noreferrer">
+                    <Button variant="outline" className="w-full">
+                      <Download />
+                        Prospectus
+                    </Button>
+                  </Link>
+                  <Link href="/apply-online" >
+                    <Button className="w-full">  <Globe /> Apply Now</Button>
+                  </Link>
               </div>
             </div>
           </SheetContent>

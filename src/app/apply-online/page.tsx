@@ -1,22 +1,26 @@
 import {  Mail, MessageSquare, Phone } from "lucide-react";
 import {Card, CardHeader, CardContent } from "@/components/ui/card";
 import CounselingForm from "@/components/home/counseling-form";
+import Link from "next/link";
 
 const items = [
     {
         title: "Call Our Team",
         icon: Phone,
-        details: "+91 129 4150049, +91-9910180049, +91-9910850049"
+        details: ["+91 9050086500", "+91 7015303343"],
+        type: "phone",
     },
     {
         title: "Chat on WhatsApp",
         icon: MessageSquare,
-        details: "+91-9910180049, +91-9910850049"
+        details: ["+91 9050086500", "+91 7015303343"],
+        type: "phone",
     },
     {
         title: "Write to us",
         icon: Mail,
-        details: "info@eduabroadservices.com"
+        details: ["info@bmus.co.in"],
+        type: "email"
     }
 ]
 
@@ -49,7 +53,25 @@ export default function ApplyOnlinePage(){
                                         <h3 className="text-base md:text-lg font-semibold">
                                             {item.title}
                                         </h3>
-                                        <p className="text-sm md:text-base" >{item.details}</p>
+                                        {item.details && (
+                                            <ul className="text-muted-foreground flex gap-2">
+                                            {item.details.map((detail: string, i: number) => (
+                                                <li key={i} className="hover:text-blue-500" >
+                                                    {
+                                                        item.type === 'phone' && <Link href={`tel:${detail}`}>
+                                                            {detail}
+                                                        </Link>
+                                                    }
+                                                    {
+                                                        item.type === 'email' && <Link href={`mailto:${detail}`}>
+                                                            {detail}
+                                                        </Link>
+                                                    }
+                                                </li>
+                                            ))}
+                                            </ul>
+                                        )}
+                                        {/* <p className="text-sm md:text-base" >{item.details}</p> */}
                                     </div>
                                 </div>
                             ))

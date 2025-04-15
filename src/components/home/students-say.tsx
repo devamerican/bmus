@@ -64,7 +64,7 @@ export default function StudentsSay({data}: {data: any}){
              <div className="overflow-hidden py-16 select-none" ref={emblaRef}>
                                 <div className="flex mx-4">
                                     {
-                                        data.testimonials.map((item) => (
+                                        data.testimonials.map((item: any) => (
                                             <Card className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.33%] xl:flex-[0_0_25%] min-w-0 p-4 mr-5 md:mr-10"  key={item._key}>
                                                 <CardContent className="text-center flex flex-col items-center justify-center" >
                                                 <div className="text-center -mt-[50px]" >
@@ -72,7 +72,7 @@ export default function StudentsSay({data}: {data: any}){
                                                     <p className="font-medium" >{item.name}</p>
                                                     <p className="text-xs max-w-[150px] text-muted-foreground">{item.university}</p>
                                                 </div>
-                                                <h3 className="text-sm text-center">
+                                                <h3 className="text-sm text-center text-zinc-700">
                                                     <Quote className="rotate-180 text-zinc-500 mb-1" />
                                                     {item.content}
                                                 </h3>

@@ -35,6 +35,8 @@ export default function CounselingForm({ theme = "light" }: CounselingFormProps)
 
   function onSubmit(data: CounselingFormType) {
     console.log(data);
+    form.reset()
+    alert('form sumbitted successfully!')
   }
 
   return (

@@ -1,43 +1,50 @@
-import { Facebook, Mail, MapPin, Phone, Twitter } from 'lucide-react';
-import Link from 'next/link';
+import { Facebook, Instagram, Mail, MapPin, Phone, Twitter } from "lucide-react";
+import Link from "next/link";
 
 const countries = [
   {
-    title: 'Russia',
-    href: '/mbbs/russia'
+    title: "Russia",
+    href: "/mbbs/russia",
   },
   {
-    title: 'Kazakhstan',
-    href: '/mbbs/kazakhstan'
+    title: "Kazakhstan",
+    href: "/mbbs/kazakhstan",
   },
   {
-    title: 'Kyrgyzstan',
-    href: '/mbbs/kyrgyzstan'
+    title: "Kyrgyzstan",
+    href: "/mbbs/kyrgyzstan",
   },
   {
-    title: 'Uzbekistan',
-    href: '/mbbs/uzbekistan'
+    title: "Uzbekistan",
+    href: "/mbbs/uzbekistan",
   },
   {
-    title: 'Serbia',
-    href: '/mbbs/serbia'
+    title: "Serbia",
+    href: "/mbbs/serbia",
   },
   {
-    title: 'Georgia',
-    href: '/mbbs/georgia'
+    title: "Georgia",
+    href: "/mbbs/georgia",
   },
   {
-    title: 'Bangladesh',
-    href: '/mbbs/bangladesh'
-  }
-]
+    title: "Bangladesh",
+    href: "/mbbs/bangladesh",
+  },
+];
 
-
-const usefulLinks = [{title: 'About Us', href: '/about-us'}, {title: 'Why MBBS Abroad', href: '/why-study-mbbs-abroad'}, {title: 'Services', href: '/services'}, {title: 'News & Events', href: '/news-and-events'}, {title: 'Countries', href: '/countries'}, {title: 'Blog', href: '/blog'}, {title: 'Contact Us', href: '/contact-us'}]
+const usefulLinks = [
+  { title: "About Us", href: "/about-us" },
+  { title: "Why MBBS Abroad", href: "/why-study-mbbs-abroad" },
+  { title: "Services", href: "/services" },
+  // { title: "News & Events", href: "/news-and-events" },
+  { title: "Countries", href: "/countries" },
+  // { title: "Blog", href: "/blog" },
+  { title: "Contact Us", href: "/contact-us" },
+];
 
 const Footer = () => {
   return (
-    <footer className="bg-primary text-primary-foreground pt-12"> 
+    <footer className="bg-primary text-primary-foreground pt-12">
       <div className="max-w-[1400px] mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Office Address Section */}
@@ -45,25 +52,28 @@ const Footer = () => {
             <h3 className="text-xl font-semibold mb-4">Office Address</h3>
             <div className="space-y-3">
               <div className="flex items-start gap-2">
-                <MapPin className="h-5 w-5 mt-1" />
+                <MapPin className="h-5 w-5 mt-1 flex-none" />
                 <p className="text-sm hover:opacity-75">
-                  Education Abroad Services<br />
-                  304-305, 3rd Floor, OM Subham Tower<br />
-                  Neelam-Bata Road, NIT<br />
-                  Faridabad-121001<br />
-                  Haryana, India
+                  Opposite Indian Overseas Bank <br /> Near Vivekanand School{" "}
+                  <br /> Railway Road <br /> Palwal - 121102
                 </p>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="h-5 w-5" />
-                <a href="tel:+919910180049" className="text-sm hover:opacity-75">
-                  +91 9910180049
+                <a
+                  href="tel:+919910180049"
+                  className="text-sm hover:opacity-75"
+                >
+                  +91 9050086500
                 </a>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="h-5 w-5" />
-                <a href="mailto:info@eduabroadservices.com" className="text-sm hover:opacity-75" >
-                  info@eduabroadservices.com
+                <a
+                  href="mailto:info@eduabroadservices.com"
+                  className="text-sm hover:opacity-75"
+                >
+                  info@bmus.co.in
                 </a>
               </div>
             </div>
@@ -75,10 +85,7 @@ const Footer = () => {
             <ul className="space-y-2">
               {usefulLinks.map((item) => (
                 <li key={item.title}>
-                  <Link 
-                    href={item.href}
-                    className="text-sm hover:opacity-75"
-                  >
+                  <Link href={item.href} className="text-sm hover:opacity-75">
                     {item.title}
                   </Link>
                 </li>
@@ -92,7 +99,7 @@ const Footer = () => {
             <ul className="space-y-2">
               {countries.map((country) => (
                 <li key={country.title}>
-                  <Link 
+                  <Link
                     href={country.href}
                     className="text-sm hover:opacity-75"
                   >
@@ -107,20 +114,27 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-semibold mb-4">Quick Contact</h3>
             {/* react out to facebook, twitter */}
-            <div className='space-y-3' >
+            <div className="space-y-3">
               <div className="flex items-center gap-2">
                 <Facebook className="h-5 w-5" />
-                <a href="https://www.facebook.com/eduabroadservices" className="text-sm hover:opacity-75">
-                  facebook
+                <a
+                  target="_blank"
+                  href="https://facebook.com/100063787162813"
+                  className="text-sm hover:opacity-75"
+                >
+                  Facebook
                 </a>
               </div>
               <div className="flex items-center gap-2">
-                <Twitter className="h-5 w-5" />
-                <a href="https://twitter.com/eduabroadservices" className="text-sm hover:opacity-75">
-                  eduabroadservices
+                <Instagram className="h-5 w-5" />
+                <a
+                  target="_blank"
+                  href="https://instagram.com/dev_american"
+                  className="text-sm hover:opacity-75"
+                >
+                  Instagram
                 </a>
               </div>
-
             </div>
             {/* <form className="space-y-3">
               <input
@@ -151,7 +165,16 @@ const Footer = () => {
         {/* Copyright Section */}
         <div className="mt-12 py-6 border-t text-muted-foreground border-zinc-800/75 text-center text-xs md:text-sm">
           <p>
-            Copyright © 2014-25 || Education Abroad Services || Website Designed & developed by <Link target='_blank' href="https://ajaygaur.in" className='hover:text-white transition-colors underline hover:no-underline' > Ajay Gaur </Link>
+            Copyright © 2014-25 || Education Abroad Services || Website
+            Designed & developed by{" "}
+            <Link
+              target="_blank"
+              href="https://ajaygaur.in"
+              className="hover:text-white transition-colors underline hover:no-underline"
+            >
+              {" "}
+              Ajay Gaur{" "}
+            </Link>
           </p>
         </div>
       </div>

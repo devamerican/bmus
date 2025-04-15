@@ -66,7 +66,7 @@ const items = [
 ]
 
 export default function WhatWeOffer({data}: {data: any}){
-    const [emblaRef] = useEmblaCarousel({ loop: true, align: 'start' })
+    const [emblaRef] = useEmblaCarousel({ loop: true, align: 'start', dragFree: true })
 
     const { projectId, dataset } = client.config();
     const urlFor = (source: SanityImageSource) =>
@@ -74,23 +74,25 @@ export default function WhatWeOffer({data}: {data: any}){
         ? imageUrlBuilder({ projectId, dataset }).image(source)
         : null;
     return(
-        <div id="services" className="bg-muted py-20 scroll-mt-16" >
+        <div id="services" className="bg-blue-50 py-20 scroll-mt-16" >
 
         <section className="section-container text-center " >
-            <h2 className="text-h2 mb-6" >{data.heading}</h2>
-            <h3 className="text-h3 mb-2" >{data.subheading}</h3>
+            <h2 className="text-h2 mb-6 text-blue-900" >{data.heading}</h2>
+            <h3 className="text-h3 mb-2 text-blue-900" >{data.subheading}</h3> 
             {/* <p className="max-w-4xl mx-auto mb-10 text-muted-foreground" >Education Abroad Services, offer a wide-ranging portfolio of outstanding and brilliantly managed services right from pre-admission to post landing services designed to suit the individual needs of the students.</p> */}
-            <PortableText value={data.content} />
+            <div className="mb-8" >
+                <PortableText value={data.content} />
+            </div>
 
 
 
             <div className="overflow-hidden" ref={emblaRef}>
-                    <div className="flex">
+                    <div className="flex items-start">
                         {
                             data.services.map((item: any) => (
                                 <div className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.33%] xl:flex-[0_0_25%] min-w-0 flex flex-col items-center justify-center gap-4 p-4" key={item._key}>
-                                    <Image className='w-full' src={urlFor(item.image)?.width(150).height(150).url() ?? "" } width={150} height={150} alt="hero" /> 
-                                    <h3 className="text-lg">{item.title}</h3>
+                                    <Image className='w-full' src={urlFor(item.image)?.url() ?? "" } width={100} height={100} alt="hero" /> 
+                                    <h3 className="text-lg text-blue-900">{item.title}</h3>
                                 </div>
                             ))
                         }

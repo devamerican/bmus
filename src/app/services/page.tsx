@@ -1,5 +1,8 @@
 import Image from "next/image";
 import {Card, CardContent} from "@/components/ui/card";
+import { client } from "@/sanity/client";
+import { SanityDocument } from "next-sanity";
+import { DynamicIcon, IconName } from "lucide-react/dynamic";
 const services = [
     { title: "Free counseling to select right university.", image: "/service.png" },
     { title: "Guaranteed admission in the university of choice.", image: "/service.png" },
@@ -15,18 +18,26 @@ const services = [
     { title: "Assistance & Guidance During the Course of Study", image: "/service.png" }
   ];
 
-export default function OurServicesPage(){
+export default async function OurServicesPage(){
+
+    const QUERY = `*[_type == "services"]`
+    const servicesData = await client.fetch<SanityDocument>(QUERY, {});
+    const services = servicesData[0]
+
+
+
     return(
         <section className="section-container my-12" > 
-            <h1 className="text-h1 mb-10 text-center" > Our Services</h1>
-            <p className="mb-10 text-center max-w-5xl mx-auto" >We at Education Abroad Services, not only help you with the admission process, when it comes to your MBBS abroad, but also partner with you at each and every step. We are there to support you from your step into the medical university abroad till you graduate and start living your dream career. At Education Abroad Services, we provide you with the best services that make your studying MBBS abroad much easier, simpler, and hassle-free so that you enjoy maximum benefits!</p>
+            <h1 className="text-h1 mb-10 text-center" > {services.heading}</h1>
+            <p className="mb-10 text-center max-w-5xl mx-auto" >{services.description}</p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" >
                 {
-                    services.map((item) => (
+                    services.servicesItems.map((item: { title: string, icon: string }) => (
                         <Card key={item.title} className="hover:shadow-md transition-shadow" >
                             <CardContent className="flex flex-col justify-center items-center gap-6" >
-                                <Image className="object-cover rounded-sm" src={item.image} width={100} height={100} alt={item.title} />
+                                {/* <Image className="object-cover rounded-sm" src={item.image} width={100} height={100} alt={item.title} /> */}
+                                <DynamicIcon name={item.icon as IconName} size={60} className="text-blue-500" />
                                 <h3 className="text-center max-w-[12rem]">{item.title}</h3>
                             </CardContent>
                         </Card>

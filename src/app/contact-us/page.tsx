@@ -1,34 +1,39 @@
 import CounselingForm from "@/components/home/counseling-form";
 import { Home, Mail, MapPin, Phone } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import Link from "next/link";
 
 const contactInfo = [
     {
-      title: "Head Office (Faridabad, Haryana)",
-      address:
-        "Office No. 304-305, 3rd Floor, OM Subham Tower, Neelam-Bata Road, NIT Faridabad 121001",
+      title: "Head Office (Palwal, Haryana)",
+    //   address: "Office No. 304-305, 3rd Floor, OM Subham Tower, Neelam-Bata Road, NIT Faridabad 121001",
+      details: ["Opposite Indian Overseas Bank, Near Vivekanand School, Railway Road, Palwal - 121102"],
+      type: 'address',
       icon: <Home className="text-green-600" />,
     },
-    {
-        title: "Jaipur Office",
-        address:
-        "Anil Kumar Sharma, Plot. No. 24/201, Brij Bihar Extension, Jagatpura Jaipur, Pin - 203016",
-        details: ["+91 9417876746", "+91 6284091032"],
-        icon: <Home className="text-green-600" />,
-    },
-    {
-        title: "Gurugram Office",
-        address: "667, Udyog Vihar Phase V, Sector 19, Gurugram, Haryana, 122008",
-        icon: <Home className="text-green-600" />,
-    },
+    // {
+    //     title: "Jaipur Office",
+    //     address:
+    //     "Anil Kumar Sharma, Plot. No. 24/201, Brij Bihar Extension, Jagatpura Jaipur, Pin - 203016",
+    //     details: ["+91 9417876746", "+91 6284091032"],
+    //     icon: <Home className="text-green-600" />,
+    // },
+    // {
+    //     title: "Gurugram Office",
+    //     address: "667, Udyog Vihar Phase V, Sector 19, Gurugram, Haryana, 122008",
+    //     icon: <Home className="text-green-600" />,
+    // },
     {
       title: "Call us",
-      details: ["+91 129 4150049", "+91 9910180049", "+91 9910850049"],
+    //   details: ["+91 129 4150049", "+91 9910180049", "+91 9910850049"],
+      details: ["+91 9050086500", "+91 7015303343"],
+      type: 'phone',
       icon: <Phone className="text-red-500" />,
     },
     {
       title: "Write us",
       details: ["info@eduabroadservices.com"],
+      type: 'email',
       icon: <Mail className="text-blue-600" />,
     },
   ];
@@ -47,16 +52,32 @@ export default function ContactUs(){
                         <CardContent className=" flex items-start space-x-4">
                             <div className="text-2xl">{item.icon}</div>
                             <div>
-                            <h3 className="text-lg font-semibold text-gray-800">
+                            <h3 className="text-lg font-semibold text-gray-800 mb-3">
                                 {item.title}
                             </h3>
-                            {item.address && (
+                            {/* {item.address && (
                                 <p className="text-muted-foreground mt-1">{item.address}</p>
-                            )}
+                            )} */}
                             {item.details && (
-                                <ul className="mt-1 text-muted-foreground flex gap-5">
-                                {item.details.map((detail, i) => (
-                                    <li key={i}>{detail}</li>
+                                <ul className="text-muted-foreground flex flex-col gap-2">
+                                {item.details.map((detail: string, i: number) => (
+                                    <li key={i} className="hover:text-blue-500" >
+                                        {
+                                            item.type === 'phone' && <Link href={`tel:${detail}`}>
+                                                {detail}
+                                            </Link>
+                                        }
+                                        {
+                                            item.type === 'email' && <Link href={`mailto:${detail}`}>
+                                                {detail}
+                                            </Link>
+                                        }
+                                        {
+                                            item.type === 'address' && <Link target="_blank" href={`https://maps.app.goo.gl/NotXCRBUSfxC6g8v6`}>
+                                                {detail}
+                                            </Link>
+                                        }
+                                    </li>
                                 ))}
                                 </ul>
                             )}
@@ -68,7 +89,7 @@ export default function ContactUs(){
                 {/* <Card className="bg-primary text-primary-foreground p-6 py-10 max-w-3xl mx-auto w-full" > */}
                 <Card className=" p-6 py-10 max-w-3xl mx-auto w-full shadow-none border-2 border-muted" >
                     <CardHeader className="mb-4" >
-                        <h2 className="text-h2" >We&apos;d love to hear from you</h2>
+                        <h2 className="text-h2" >We&apos;d love to hear from you!</h2>
                     </CardHeader>
                     <CardContent >
                         <CounselingForm  />

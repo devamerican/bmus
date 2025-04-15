@@ -29,7 +29,7 @@ const heroItems = [
 
 export default function Hero({data}: {data: any}){
     const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay()])
-        const { projectId, dataset } = client.config();
+    const { projectId, dataset } = client.config();
     const urlFor = (source: SanityImageSource) =>
       projectId && dataset
         ? imageUrlBuilder({ projectId, dataset }).image(source)
@@ -42,7 +42,7 @@ export default function Hero({data}: {data: any}){
                     {
                         data.bgImage.map((item: any, index: number) => (
                             <div className="flex-[0_0_100%] min-w-0 brightness-[0.4] " key={index}>
-                                <Image className='w-full h-full object-cover bg-black' src={urlFor(item)?.width(1000).height(500).url() ?? "" } width={1000} height={500} alt="hero" />
+                                <Image className='w-full h-full object-cover bg-black' src={urlFor(item)?.url() ?? "" } width={1920} height={1080} alt="hero" />
                             </div>
                         ))
                     }
@@ -87,7 +87,7 @@ export default function Hero({data}: {data: any}){
 
                         {/* Right Column - Stats */}
                         <div className="grid grid-cols-2 gap-6">
-                        {data.achievements.map((stat) => (
+                        {data.achievements.map((stat: any) => (
                             <div
                             key={stat._key}
                             className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 text-white hover:bg-white/20 transition-colors"
