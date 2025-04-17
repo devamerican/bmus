@@ -7,63 +7,63 @@ import imageUrlBuilder from "@sanity/image-url";
 import { client } from "@/sanity/client";
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 // import Autoplay from 'embla-carousel-autoplay'
-const items = [
-    {
-        id: 1,
-        title: 'Education Abroad Services',
-        image: '/customer-support.jpg'
-    },
-    {
-        id: 2,
-        title: 'Education Abroad Services',
-        image: '/customer-support.jpg'
-    },
-    {
-        id: 3,
-        title: 'Education Abroad Services',
-        image: '/customer-support.jpg'
-    },
-    {
-        id: 4,
-        title: 'Education Abroad Services',
-        image: '/customer-support.jpg'
-    },
-    {
-        id: 5,
-        title: 'Education Abroad Services',
-        image: '/customer-support.jpg'
-    },
-    {
-        id: 6,
-        title: 'Education Abroad Services',
-        image: '/customer-support.jpg'
-    },
-    {
-        id: 7,
-        title: 'Education Abroad Services',
-        image: '/customer-support.jpg'
-    },
-    {
-        id: 8,
-        title: 'Education Abroad Services',
-        image: '/customer-support.jpg'
-    },
-    {
-        id: 9,
-        title: 'Education Abroad Services',
-        image: '/customer-support.jpg'
-    },
-    {
-        id: 10,
-        title: 'Education Abroad Services',
-        image: '/customer-support.jpg'
-    },
-    {
-        id: 11,
-        title: 'Education Abroad Services',
-        image: '/customer-support.jpg'
-    },
-]
+// const items = [
+//     {
+//         id: 1,
+//         title: 'Education Abroad Services',
+//         image: '/customer-support.jpg'
+//     },
+//     {
+//         id: 2,
+//         title: 'Education Abroad Services',
+//         image: '/customer-support.jpg'
+//     },
+//     {
+//         id: 3,
+//         title: 'Education Abroad Services',
+//         image: '/customer-support.jpg'
+//     },
+//     {
+//         id: 4,
+//         title: 'Education Abroad Services',
+//         image: '/customer-support.jpg'
+//     },
+//     {
+//         id: 5,
+//         title: 'Education Abroad Services',
+//         image: '/customer-support.jpg'
+//     },
+//     {
+//         id: 6,
+//         title: 'Education Abroad Services',
+//         image: '/customer-support.jpg'
+//     },
+//     {
+//         id: 7,
+//         title: 'Education Abroad Services',
+//         image: '/customer-support.jpg'
+//     },
+//     {
+//         id: 8,
+//         title: 'Education Abroad Services',
+//         image: '/customer-support.jpg'
+//     },
+//     {
+//         id: 9,
+//         title: 'Education Abroad Services',
+//         image: '/customer-support.jpg'
+//     },
+//     {
+//         id: 10,
+//         title: 'Education Abroad Services',
+//         image: '/customer-support.jpg'
+//     },
+//     {
+//         id: 11,
+//         title: 'Education Abroad Services',
+//         image: '/customer-support.jpg'
+//     },
+// ]
 
 export default function WhatWeOffer({data}: {data: any}){
     const [emblaRef] = useEmblaCarousel({ loop: true, align: 'start', dragFree: true })
@@ -74,7 +74,7 @@ export default function WhatWeOffer({data}: {data: any}){
         ? imageUrlBuilder({ projectId, dataset }).image(source)
         : null;
     return(
-        <div id="services" className="bg-blue-50 py-20 scroll-mt-16" >
+        <div id="services" className="bg-blue-50 py-10 xl:py-20 scroll-mt-16" >
 
         <section className="section-container text-center " >
             <h2 className="text-h2 mb-6 text-blue-900" >{data.heading}</h2>
@@ -87,11 +87,11 @@ export default function WhatWeOffer({data}: {data: any}){
 
 
             <div className="overflow-hidden" ref={emblaRef}>
-                    <div className="flex items-start">
+                    <div className="flex items-start min-h-0">
                         {
                             data.services.map((item: any) => (
-                                <div className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.33%] xl:flex-[0_0_25%] min-w-0 flex flex-col items-center justify-center gap-4 p-4" key={item._key}>
-                                    <Image className='w-full' src={urlFor(item.image)?.url() ?? "" } width={100} height={100} alt="hero" /> 
+                                <div className=" flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.33%] xl:flex-[0_0_25%] min-w-0 flex flex-col items-center justify-center gap-4 p-4" key={item._key}>
+                                    <Image className='w-full aspect-[400/300] object-cover' src={urlFor(item.image)?.url() ?? "" } width={400} height={300} alt="hero" /> 
                                     <h3 className="text-lg text-blue-900">{item.title}</h3>
                                 </div>
                             ))

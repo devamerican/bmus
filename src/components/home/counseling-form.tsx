@@ -15,6 +15,7 @@ import { Input } from "@/components/ui/input";
 import { CounselingFormType, counselingFormSchema } from "@/lib/zod";
 import { Textarea } from "@/components/ui/textarea";
 import { Loader } from "lucide-react";
+import {toast} from "sonner";
 
 interface CounselingFormProps {
   theme?: "light" | "dark";
@@ -36,7 +37,10 @@ export default function CounselingForm({ theme = "light" }: CounselingFormProps)
   function onSubmit(data: CounselingFormType) {
     console.log(data);
     form.reset()
-    alert('form sumbitted successfully!')
+    // alert('form sumbitted successfully!')
+    toast.success('Thank you for your message!', {
+      description: 'We will get back to you soon.'
+    })
   }
 
   return (
@@ -49,7 +53,7 @@ export default function CounselingForm({ theme = "light" }: CounselingFormProps)
             <FormItem>
               <FormLabel>Full Name</FormLabel>
               <FormControl>
-                <Input className={inputClass} placeholder="Ajay Gaur" {...field} />
+                <Input className={inputClass} placeholder="John Doe" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -62,7 +66,7 @@ export default function CounselingForm({ theme = "light" }: CounselingFormProps)
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input className={inputClass} placeholder="ajay@example.com" {...field} />
+                <Input className={inputClass} placeholder="johndoe@gmail.com" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

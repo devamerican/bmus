@@ -181,22 +181,23 @@ const navItems = [
   //     },
   //   ],
   // },
-  // {
-  //   name: "Gallery",
-  //   href: "#",
-  //   items: [
-  //     {
-  //       title: "Photos",
-  //       href: "/photos",
-  //       description: "View our photo gallery",
-  //     },
-  //     {
-  //       title: "Videos",
-  //       href: "/videos",
-  //       description: "Watch our videos",
-  //     },
-  //   ],
-  // },
+  {
+    name: "Gallery",
+    href: "/gallery",
+    // items: [
+    //   {
+    //     title: "Photos",
+    //     href: "/photos",
+    //     description: "View our photo gallery",
+    //   },
+    //   {
+    //     title: "Videos",
+    //     href: "/videos",
+    //     description: "Watch our videos",
+    //     disabled: true
+    //   },
+    // ],
+  },
   {
     name: "Contact Us",
     href: "/contact-us",

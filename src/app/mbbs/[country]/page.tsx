@@ -82,12 +82,13 @@ type MBBSInCountryPageProps = {
 
 export default async function MBBSInCountryPage({params}: MBBSInCountryPageProps) {
   // All content stored in a variable
-  const paramSlug = await params.country
+  const slugParam = await params 
+  const countryFromParam = slugParam.country
 
   const QUERY = `*[_type == "mbbsInCountry"][slug.current == $slug][0]`
 
   const pageContent = await client.fetch<SanityDocument>(QUERY, {
-    slug: paramSlug
+    slug: countryFromParam
   })
   const { projectId, dataset } = client.config();
   const urlFor = (source: SanityImageSource) =>
