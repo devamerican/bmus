@@ -24,6 +24,11 @@ const items = [
     }
 ]
 
+export const metadata = {
+    title: "Apply Online",
+    description: "Apply Online for BMUS MBBS Abroad Program",
+}
+
 export default function ApplyOnlinePage(){
     return(
         <section className="max-w-5xl px-4 mx-auto my-8 md:my-12 lg:my-16 md:pb-20" >

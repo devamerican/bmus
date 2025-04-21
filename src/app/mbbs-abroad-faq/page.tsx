@@ -59,6 +59,12 @@ const data = [
         answer: "The duration of the program is 4 years. The duration of the program is 4 years. The duration of the program is 4 years. The duration of the program is 4 years."
     },
 ]
+
+export const metadata = {
+    title: "MBBS Abroad FAQ",
+    description: "Most Frequently Asked Questions for BMUS MBBS Abroad Program",
+}
+
 export default async function MbbsAbroadFAQPage(){
     
     // const data = await getData()

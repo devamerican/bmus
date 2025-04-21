@@ -165,16 +165,15 @@ const Footer = () => {
         {/* Copyright Section */}
         <div className="mt-12 py-6 border-t text-muted-foreground border-zinc-800/75 text-center text-xs md:text-sm">
           <p>
-            Copyright © 2014-25 || Education Abroad Services || Website
-            Designed & developed by{" "}
-            <Link
+            Copyright © 2024-25 | Best Medical University Services | Website 
+            Owned by Vishnu Sharma
+            {/* <Link
               target="_blank"
               href="https://ajaygaur.in"
               className="hover:text-white transition-colors underline hover:no-underline"
             >
-              {" "}
-              Ajay Gaur{" "}
-            </Link>
+              Ajay Gaur
+            </Link> */}
           </p>
         </div>
       </div>

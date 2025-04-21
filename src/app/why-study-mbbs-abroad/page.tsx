@@ -17,6 +17,11 @@ import { client } from "@/sanity/client";
 //     { title: "International Job Options", image: "briefcase-business" }
 //   ];
   
+export const metadata = {
+    title: "Why Study MBBS Abroad",
+    description: "Why you should study MBBS abroad",
+}
+
 export default async function WhyStudyMbbsAbroad() {
 
         const QUERY = `*[_type == "whyStudyMBBSAbroad"]`

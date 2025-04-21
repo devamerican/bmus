@@ -15,22 +15,31 @@ const studyAbroadDocument = [
   "An agreement letter from parents.",
 ];
 
+export const metadata = {
+  title: "MBBS Abroad Eligibility and Document",
+  description: "MBBS Abroad Eligibility and Document for BMUS MBBS Abroad Program",
+}
+
 export default function MbbsAbroadEligibilityAndDocument() {
   return (
-    <section className="section-container my-10">
-      <h1 className="text-h1 text-center mb-20">
+    <section className="section-container my-8 md:my-10">
+      <h1 className="text-h1 text-center mb-10 md:mb-20">
         MBBS Abroad Eligibility and Document
       </h1>
 
-      <div className="flex flex-col-reverse md:flex-row items-center gap-6 *:basis-1/2">
+      <div className="flex flex-col md:flex-row  gap-6 *:basis-1/2">
+      <div className="basis-1/2" >
+
         <Image
-          src="/eligibility.png"
+          src="/eligibility.jpg"
           alt="requirements"
-          width={1000}
-          height={1000}
-        />
-        <div>
-          <div className="mb-16">
+          width={1600}
+          height={1200}
+          className="object-cover"
+          />
+        </div>
+        <div className="basis-1/2" >
+          <div className="mb-9 md:mb-16">
             <h2 className="text-h2 mb-6">Eligibility:</h2>
             <ul className="space-y-4">
               {studyAbroadEligibility.map((item) => (

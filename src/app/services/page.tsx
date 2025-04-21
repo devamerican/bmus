@@ -18,6 +18,11 @@ const services = [
     { title: "Assistance & Guidance During the Course of Study", image: "/service.png" }
   ];
 
+export const metadata = {
+    title: "Our Services",
+    description: "Different Services provided by BMUS",
+}
+
 export default async function OurServicesPage(){
 
     const QUERY = `*[_type == "services"]`

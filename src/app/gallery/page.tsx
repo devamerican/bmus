@@ -4,6 +4,10 @@ import { SanityDocument } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
 import PhotoGallery from "./photo-gallery";
 
+export const metadata = {
+  title: "Gallery",
+  description: "BMUS Success Stories – A Photo Journey",
+}
 
 export default async function Gallery() {
 

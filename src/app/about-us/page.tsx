@@ -62,6 +62,11 @@ import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 //     },
 // ]
 
+export const metadata = {
+    title: "About Us",
+    description: "BMUS helps students to study abroad in the best medical universities of the world.",
+}
+
 
 export default async function AboutUs() {
 

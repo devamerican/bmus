@@ -8,6 +8,13 @@ import {
   Plane 
 } from 'lucide-react';
 
+
+export const metadata = {
+  title: "Admission Process",
+  description: "Simple steps to get admission in MBBS Abroad",
+}
+
+
 interface AdmissionStepProps {
   icon: React.ReactNode;
   title: string;

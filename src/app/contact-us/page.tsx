@@ -38,6 +38,11 @@ const contactInfo = [
     },
   ];
 
+export const metadata = {
+    title: "Contact Us",
+    description: "Contact Us for BMUS MBBS Abroad Program",
+}
+
 
 export default function ContactUs(){
     return(
