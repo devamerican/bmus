@@ -62,6 +62,9 @@ dependencies:
   next-sanity:
     specifier: ^9.9.6
     version: 9.9.6(@sanity/client@6.28.4)(@sanity/icons@3.7.0)(@sanity/types@3.81.0)(@sanity/ui@2.15.10)(next@15.2.0)(react-dom@19.0.0)(react-is@18.3.1)(react@19.0.0)(sanity@3.81.0)(styled-components@6.1.16)
+  nodemailer:
+    specifier: ^6.10.1
+    version: 6.10.1
   react:
     specifier: ^19.0.0
     version: 19.0.0
@@ -106,6 +109,9 @@ devDependencies:
   '@types/node':
     specifier: ^20.17.24
     version: 20.17.24
+  '@types/nodemailer':
+    specifier: ^6.4.17
+    version: 6.4.17
   '@types/react':
     specifier: ^19.0.10
     version: 19.0.10
@@ -4442,6 +4448,12 @@ packages:
     dependencies:
       undici-types: 6.19.8
 
+  /@types/nodemailer@6.4.17:
+    resolution: {integrity: sha512-I9CCaIp6DTldEg7vyUTZi8+9Vo0hi1/T8gv3C89yk1rSAAzoKQ8H8ki/jBYJSFoH/BisgLP8tkZMlQ91CIquww==}
+    dependencies:
+      '@types/node': 20.17.24
+    dev: true
+
   /@types/normalize-package-data@2.4.4:
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
     dev: false
@@ -8325,6 +8337,11 @@ packages:
 
   /node-releases@2.0.19:
     resolution: {integrity: sha512-xxOWJsBKtzAq7DY0J+DTzuz58K8e7sJbdgwkbMWQe8UYB6ekmsQ45q0M/tJDsGaZmbC+l7n57UV8Hl5tHxO9uw==}
+    dev: false
+
+  /nodemailer@6.10.1:
+    resolution: {integrity: sha512-Z+iLaBGVaSjbIzQ4pX6XV41HrooLsQ10ZWPUehGmuantvzWoDVBnmsdUcOIDM1t+yPor5pDhVlDESgOMEGxhHA==}
+    engines: {node: '>=6.0.0'}
     dev: false
 
   /normalize-package-data@2.5.0:

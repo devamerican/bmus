@@ -4,6 +4,8 @@ import {
     AccordionItem,
     AccordionTrigger,
   } from "@/components/ui/accordion"  
+import { client } from "@/sanity/client";
+import { SanityDocument } from "next-sanity";
 // import { getPayload } from 'payload'
 // import config from '@/payload.config'
 
@@ -73,16 +75,22 @@ export default async function MbbsAbroadFAQPage(){
     // })
 
     // console.log(dataa.docs)
+
+    const QUERY = `*[_type == "mbbsFaqs"]`
     
+    const mbbsFaqsData = await client.fetch<SanityDocument>(QUERY, {});
+    const mbbsFaqs = mbbsFaqsData[0]
+    
+    console.log("mbbs faqs", mbbsFaqs)
     return(
         <section className="max-w-6xl mx-auto my-10" >
-            <h1 className="text-center text-h1 mb-16" >Study MBBS Abroad FAQ&apos;s</h1>
+            <h1 className="text-center text-h1 mb-16" >{mbbsFaqs?.heading}</h1>
         <Accordion type="multiple" className=" rounded-xl" >
             {
-                data.map((item, index) => (
+                mbbsFaqs?.items.map((item: {question: string, answer: string, _key: string}, index: number) => ( 
                 <AccordionItem key={index} value={item.question} className="first:rounded-t-xl last:rounded-b-xl bg-muted/50" >
                     <AccordionTrigger className="text-lg p-5 cursor-pointer"  >{item.question}</AccordionTrigger>
-                    <AccordionContent className="text-base p-5 leading-relaxed text-muted-foreground" >
+                    <AccordionContent className="text-base p-5 leading-relaxed text-zinc-700" >
                         {item.answer}
                     </AccordionContent>
                 </AccordionItem>
