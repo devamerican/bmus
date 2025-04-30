@@ -37,7 +37,7 @@ export default function Hero({data}: {data: any}){
 
     return(
         <section className='relative' >
-            <div className="overflow-hidden absolute w-full h-full" ref={emblaRef}>
+            {/* <div className="overflow-hidden absolute w-full h-full" ref={emblaRef}>
                 <div className="flex h-full">
                     {
                         data.bgImage.map((item: any, index: number) => (
@@ -48,16 +48,17 @@ export default function Hero({data}: {data: any}){
                     }
         
                 </div>
-            </div>
+            </div> */}
 
 
-            <div className="relative overflow-hidden">
+            {/* <div className="relative overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900"> */}
+            <div className="relative overflow-hidden bg-gradient-to-br from-black via-black/80 to-black">
                 {/* Content */}
-                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     {/* Left Column */}
-                    <div className="text-white space-y-8">
-                    <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm w-fit px-4 py-2 rounded-full">
+                    <div className="text-blue-100 space-y-8">
+                    <div className="flex items-center gap-2 bg-blue-100/10 backdrop-blur-sm w-fit px-4 py-2 rounded-full">
                         <GraduationCap className="h-5 w-5 text-blue-500" />
                         <span className="text-sm font-medium">Your Future Starts Here</span>
                     </div>
@@ -66,19 +67,19 @@ export default function Hero({data}: {data: any}){
                         {data.heading}
                     </h1>
                     
-                    <p className="text-lg sm:text-xl text-gray-200 max-w-xl">
+                    <p className="text-lg sm:text-xl text-blue-100 max-w-xl">
                         {data.subheading}
                     </p>
                     
                     <div className="flex flex-col sm:flex-row gap-4">
                         <Link href={data.cta.primary.href} >
-                        <Button size="lg" variant="blue" className="text-base">
+                        <Button size="lg" variant="blue" className="bg-gradient-to-r from-indigo-500 to-blue-600 hover:from-indigo-600 hover:to-blue-700 text-white ">
                             {data.cta.primary.label}
                         <ArrowRight className="ml-2 h-5 w-5" />
                         </Button>
                         </Link>
                         <Link href={data.cta.secondary.href} >
-                        <Button size="lg" variant="outline" className="text-base bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 hover:text-white">
+                        <Button size="lg" variant="ghost" className="bg-white/50 text-black font-semibold ">
                             {data.cta.secondary.label}
                         </Button>
                         </Link>
@@ -90,12 +91,12 @@ export default function Hero({data}: {data: any}){
                         {data.achievements.map((stat: any) => (
                             <div
                             key={stat._key}
-                            className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 text-white hover:bg-white/20 transition-colors"
+                            className="group bg-white/10 backdrop-blur hover:bg-white/20 text-white p-6 rounded-xl  transition-colors" 
                             >
                             {/* <div className="mb-4">{stat.icon}</div> */}
-                            <DynamicIcon name={stat.icon as IconName} className=" mb-6 text-blue-500 size-6" /> 
-                            <div className="text-3xl font-bold mb-1">{stat.title}</div>
-                            <div className="text-sm text-gray-300">{stat.subTitle}</div>
+                            <DynamicIcon name={stat.icon as IconName} className=" mb-6 group-hover:scale-120  text-white size-6 transition-all" /> 
+                            <div className="text-3xl font-bold  mb-1">{stat.title}</div>
+                            <div className="text-sm">{stat.subTitle}</div>
                             </div>
                         ))}
                         </div>

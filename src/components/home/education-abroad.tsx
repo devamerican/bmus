@@ -40,10 +40,12 @@ export default function EducationAbroad({data}: {data: any}){
 
     return(
         <section className="flex flex-col lg:flex-row gap-4 *:basis-1/2 section-container items-center" >
-            <div className="space-y-4 text-muted-foreground" >
+            <div className="space-y-4 " >
 
                 <h2 className="text-h2 text-primary" >{data.heading}</h2>
-                <PortableText value={data.content} />
+                <div >
+                    <PortableText value={data.content} />
+                </div>
                 {/* <p>Education Abroad Services Overseas CAREER Consultants provides “One Stop Solution for All Your International Education Needs”.
                 </p>
                 <p>We offer a wide-ranging portfolio of outstanding and brilliantly managed services right from pre-admission to post landing services designed to suit the individual needs of the students.Our quality counseling distinguishes us from others in a way that we offer personalized counseling where there is direct involvement of the directors who have been educated in the finest institutes in India and abroad and have first-hand experience of the international culture and education system.</p>

@@ -1,4 +1,6 @@
 import { Facebook, Instagram, Mail, MapPin, Phone, Twitter } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
+
 import Link from "next/link";
 
 const countries = [
@@ -129,10 +131,20 @@ const Footer = () => {
                 <Instagram className="h-5 w-5" />
                 <a
                   target="_blank"
-                  href="https://instagram.com/dev_american"
+                  href="https://www.instagram.com/best_medical_university_"
                   className="text-sm hover:opacity-75"
                 >
                   Instagram
+                </a>
+              </div>
+              <div className="flex items-center gap-2">
+                <FaWhatsapp  className="h-5 w-5" />
+                <a
+                  target="_blank"
+                  href="https://wa.me/917015303343"
+                  className="text-sm hover:opacity-75"
+                >
+                  Whatsapp
                 </a>
               </div>
             </div>

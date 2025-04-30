@@ -7,6 +7,7 @@ import WhatWeOffer from "@/components/home/what-we-offer";
 
 import { type SanityDocument } from "next-sanity";
 import { client } from "@/sanity/client";
+import MBBSAbroadForIndians from "@/components/home/MBBSAbroadForIndians";
 
 
 export default async function Home() {
@@ -21,6 +22,7 @@ export default async function Home() {
     <main className="space-y-10 md:space-y-16 lg:space-y-32 mb-10" >
       <Hero data={data.hero} />
       <EducationAbroad data={data.hero2} />
+      <MBBSAbroadForIndians />
       <Countries data={data.countrySection} />
       <WhatWeOffer data={data.whatWeOffer} />
       <BookCounseling />
