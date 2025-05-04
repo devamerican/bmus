@@ -16,6 +16,7 @@ import imageUrlBuilder from "@sanity/image-url";
 
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import { notFound } from 'next/navigation';
+import { SimpleTable } from '@/components/layout/simple-table';
 
 // const pageContent = {
 //   hero: {
@@ -74,6 +75,132 @@ import { notFound } from 'next/navigation';
 //   ]
 // };
 
+const data = {
+
+  overview: {
+    title: "Overview",
+    content: "For many Indian students, pursuing an MBBS abroad for Indian students at low cost is an attractive option, and an MBBS in Russia fits the bill perfectly. Russian medical universities offer a robust education that adheres to international standards, making them globally recognized. The fee structure for MBBS in Russia is significantly more affordable compared to countries like the UK and the USA, with average annual expenses ranging from 2.4 Lacs to 5.1 Lacs INR. Additionally, the opportunity to gain practical experience through a compulsory one-year internship adds immense value to the educational journey. When considering MBBS abroad admission, students often seek guidance from an MBBS abroad consultant to navigate the application process efficiently. With proper support, students can unlock a world of opportunities that come with a degree from a reputable Russian university, enabling them to establish a successful medical career both in India and abroad."
+  },
+  "details": {
+      heading: "MBBS from Russia Details Information",
+      subHeading: "Here is the complete information for Indian students looking for MBBS from Russia",
+      content: [
+        {
+          key: "MBBS course duration in Russia",
+          value: "6 months"	
+        }
+      ]
+  },
+  "why_choose": {
+    "listItems": [
+      "Affordable tuition fees.\n",
+      "The MBBS and MD degrees from medical colleges in Georgia are acknowledged by international bodies like World Health Organization and UNESCO.\n",
+      "Students pursuing their MBBS in Georgia are given chance to get an internship in some of the best multinational companies of the world within the country itself.\n",
+      "The hospitals are well equipped with great infrastructure and technology.\n",
+      "Medical universities have state-of-the-art technology and efficient infrastructure.\n",
+      "There is no donation or capitation fee to get an MBBS seat in the best medical universities.\n"
+    ],
+    "title": "Why to choose Georgia for MBBS?"
+  },
+  "heading": "MBBS in Russia",
+  "eligibility": {
+    "listItems": [
+      "Those students who have reached the age of 17 by the end of the year in which they receive their admission.",
+      "The student must possess a minimum of 50% mark in Physics, Chemistry, and Biology from a CBSE/ICSE or an equivalent board exam.\n",
+      "Students who have qualified for NEET (according to the most recent MCI notification)\n",
+      "Good Communication Skills\n"
+    ],
+    "title": "Eligibility for MBBS in Russia"
+  },
+  "about": {
+    "facts": [
+      {
+        "icon": "map-pin",
+        "_key": "102c84af48af",
+        "title": "Capital",
+        "value": "Moscow"
+      }
+    ],
+    "content": [
+      {
+        "style": "normal",
+        "_key": "f6b869b35139",
+        "markDefs": [],
+        "children": [
+          {
+            "text": "Russia officially known as the Russian Federation is a country in North Eurasia. It has continental air landmass, frozen climate, and borders with Norway, Finland, Estonia, Latvia, Lithuania, Poland, Belarus, and Ukraine.",
+            "_key": "ada76d714f43",
+            "_type": "span",
+            "marks": []
+          }
+        ],
+        "_type": "block"
+      },
+      {
+        "markDefs": [],
+        "children": [
+          {
+            "text": "Russia is the largest country in the world with an estimated area of 17,125,400 square kilometers. Moscow is the capital of Russia. It is located in the European plain. 80% of Russia is in Europe region and the remainder in the Asian Region.",
+            "_key": "8bbf96d171b4",
+            "_type": "span",
+            "marks": []
+          }
+        ],
+        "_type": "block",
+        "style": "normal",
+        "_key": "4ebb4fd4631c"
+      }
+    ],
+    "title": "About Russia"
+  },
+  "_originalId": "51eea1e5-2132-4238-a008-83d82b809473",
+  "city_attractions": {
+    "image": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-b9d4c73bf8b9969aa02e7b311f6c2ae9dabd03ad-1200x400-jpg",
+        "_type": "reference"
+      }
+    },
+    "title": "City Attractions Russia"
+  },
+  "hero": {
+    "logo_image": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-e1c7306d9b306a828c08484498b77b88649916f9-400x400-png",
+        "_type": "reference"
+      }
+    },
+  },
+  "universities": {
+    "title": "Medical Universities in Russia",
+    "table": [
+      {
+        "_key": "8631ce938125",
+        "fees": "2970 USD",
+        "year": "1906",
+        "name": "Top State Medical University",
+        "location": "MOSCOW"
+      }
+    ]
+  },
+  "_id": "51eea1e5-2132-4238-a008-83d82b809473",
+  "bg_image": {
+    "asset": {
+      "_ref": "image-2b041efc50d22ccab3734b74298812c25c53bfa0-1200x350-jpg",
+      "_type": "reference"
+    },
+    "_type": "image"
+  },
+  "_createdAt": "2025-04-09T17:08:00Z",
+  "slug": {
+    "current": "russia",
+    "_type": "slug"
+  }
+}
+
+
 type MBBSInCountryPageProps = {
   params: {
     country: string
@@ -100,6 +227,8 @@ export default async function MBBSInCountryPage({params}: MBBSInCountryPageProps
 
   if(!pageContent) return notFound()
 
+    console.log('pageContent', pageContent)
+
   return (
     <div className=" bg-gray-50">
       {/* Hero Section with Russian Landmark */}
@@ -113,202 +242,158 @@ export default async function MBBSInCountryPage({params}: MBBSInCountryPageProps
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center p-4">
           <h3 className="text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg">{pageContent.heading}</h3>
-          {/* <p className="text-lg md:text-xl max-w-3xl drop-shadow-md">
-            {pageContent.hero.subtitle}
-          </p> */}
         </div>
       </section>
 
 
       {/* Main Content */}
-      <main className="section-container mx-auto px-4 py-8">
-        <div className="">
+      <main className="max-w-[1280px] mx-auto px-4 py-8">
+
           {/* Main Content Area */}
-          <div>
-            {/* <h1 className="text-h1 text-center mb-8">{pageContent.hero.title}</h1> */}
-            
-            {/* <Card className="mb-8">
-              <CardContent className="pt-6"> */}
-              <div className='mt-14' >
+          <div className='mt-14' >
 
-                  <Image 
-                    src={urlFor(pageContent.hero.logo_image)?.url() ?? "" }
-                    alt="Russian Flag" 
-                    width={200} 
-                    height={120} 
-                    className="rounded-md float-left clear-both"
-                    />
-                    <PortableText value={pageContent.hero.content} />
-
-                    {/* {
-                        pageContent.introduction.paragraphs.map((paragraph, index) => (
-                            <p key={index} className="text-gray-700 mb-4">{paragraph}</p>
-                        ))
-                    } */}
-                        {/* <p className="text-gray-700 mb-4">{pageContent.introduction.paragraphs[0]}</p>
-                        <p className="text-gray-700">{pageContent.introduction.paragraphs[1]}</p>
-                        <p className="text-gray-700 mb-4">{pageContent.introduction.paragraphs[2]}</p>
-                        <p className="text-gray-700">{pageContent.introduction.paragraphs[3]}</p> */}
-                    </div>
-              {/* </CardContent>
-            </Card> */}
-
-            <h2 className="text-h2 mb-6 mt-20">{pageContent.universities.title}</h2>
-            
-            <div className="rounded-lg border overflow-hidden mb-8">
-                <Card className='p-0' >
-            <CardContent className='p-0' >
-
-              <Table  >
-                <TableHeader >
-                  <TableRow className="bg-blue-50 *:p-4">
-                    <TableHead className="font-semibold">UNIVERSITY NAME</TableHead>
-                    <TableHead className="font-semibold">ESTD. YEAR</TableHead>
-                    <TableHead className="font-semibold">LOCATION</TableHead>
-                    <TableHead className="font-semibold">TUTION FEES/YEAR</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody >
-                  {pageContent.universities.table.map((university: any, index: number) => (
-                    <TableRow key={index} className='*:p-4' >
-                      <TableCell>{university.name}</TableCell>
-                      <TableCell>{university.year}</TableCell>
-                      <TableCell>{university.location}</TableCell>
-                      <TableCell>{university.fees}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </CardContent>
-                </Card>
-            </div>
-
-            <h2 className="text-h2 mb-6 mt-20">{pageContent.about.title}</h2>
-            <Card className="mb-8 shadow-none border-none">
-              <CardContent className="pt-6">
-                {/* {pageContent.aboutRussia.paragraphs.map((paragraph, index) => (
-                  <p key={index} className="text-gray-700 mb-4">{paragraph}</p>
-                ))} */}
-                <PortableText value={pageContent.about.content} />
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-                  {pageContent.about.facts.map((fact: any, index: number) => (
-                    <div key={index} className="bg-blue-50 p-4 rounded-lg">
-                      <h4 className="font-semibold mb-2">{fact.title}</h4>
-                      <div className="flex items-center gap-2">
-                        <DynamicIcon name={fact.icon as IconName} className='h-4 w-4 text-blue-600' />
-                        {/* {fact.icon === "MapPin" && <MapPin className="h-4 w-4 text-blue-600" />}
-                        {fact.icon === "Globe" && <Globe className="h-4 w-4 text-blue-600" />}
-                        {fact.icon === "Clock" && <Clock className="h-4 w-4 text-blue-600" />} */}
-                        <span>{fact.value}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-            
-            <div className='grid lg:grid-cols-2 gap-6' >
-
-            <Card className="mb-8 shadow-none border-none">
-                <CardHeader>
-                    <CardTitle>
-                        <h4 className="text-h4">{pageContent.eligibility.title}</h4>
-                    </CardTitle>
-                </CardHeader>
-              <CardContent>
-                <ul className="space-y-4">
-                  {pageContent.eligibility.listItems.map((item: string, index: number) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card className="mb-8 shadow-none border-none" >
-                <CardHeader>
-                  <CardTitle>
-                    <h4 className="text-h4">{pageContent.why_choose.title}</h4> 
-                  </CardTitle>
-                </CardHeader>
-              <CardContent className="">
-                <ul className="space-y-4">
-                  {pageContent.why_choose.listItems.map((item: string, index: number) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-            </div>
-
-            <h3 className="text-h3 mb-6">{pageContent.city_attractions.title}</h3>
-            <div className=" mb-8">
-                <Image 
-                  src={urlFor(pageContent.city_attractions.image)?.url() ?? "" }
-                  alt="city attraction" 
-                  width={400} 
-                  height={300} 
-                  className="rounded-lg shadow-md object-cover w-full"
+              <Image 
+                src={urlFor(pageContent.hero.logo_image)?.url() ?? "" }
+                alt="Russian Flag" 
+                width={200} 
+                height={120} 
+                className="rounded-md float-left clear-both"
                 />
-            </div>
+                <PortableText value={pageContent.hero.content} />
+
           </div>
 
-          {/* Sidebar */}
-          {/* <div className="lg:col-span-1">
-            <Card className="mb-6">
-              <CardHeader className="bg-blue-700 text-white">
-                <CardTitle>Request Information</CardTitle>
-              </CardHeader>
-              <CardContent className="pt-6">
-                <form className="space-y-4">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                    <input 
-                      type="text" 
-                      id="name" 
-                      className="w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 focus:ring-blue-500 focus:border-blue-500" 
-                      placeholder="Your Name"
-                    />
+        <div className='my-20 space-y-20 w-full' >
+
+          {pageContent?.sections?.map((section: any, i: number) => { 
+            switch (section.type) {
+              case 'table':
+                return <TableSection key={i} data={section} />
+              case 'content':
+                return <ContentSection key={i} data={section} />
+              case 'labelValue':
+                return <LabelValueSection key={i} data={section} />
+              default:
+                return null
+                }
+              })}
+          </div>
+          {/* <div className='space-y-20 my-20 w-full' >
+              { 
+                pageContent?.table_sections?.map((section: any, index: number) => {
+                  const formatedTableData = formatTableData(section?.table_section?.data)
+                  return <div key={index}>
+                    <h3 className="text-h3 mb-4">{section?.table_section.heading}</h3>
+                    <SimpleTable data={formatedTableData} />
                   </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                    <input 
-                      type="email" 
-                      id="email" 
-                      className="w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 focus:ring-blue-500 focus:border-blue-500" 
-                      placeholder="your@email.com"
-                    />
+                })
+              }
+          </div>
+
+          <div>
+            {
+              pageContent?.label_value_sections?.map((section: any, index: number) => {
+                return <div key={index}>
+                  <h3 className="text-h3 mb-4">{section?.label_values_section.heading}</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6" >
+                    {
+                      section?.label_values_section?.label_value?.map((item: {label: string, value: string}, index: number) => ( 
+                        <div key={index} className="hover:shadow transition-shadow p-6 rounded-lg bg-muted w-full" >
+                          <p>{item.label}</p>
+                          <p>{item.value}</p>
+                        </div>
+                      ))
+                    }
                   </div>
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                    <input 
-                      type="tel" 
-                      id="phone" 
-                      className="w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 focus:ring-blue-500 focus:border-blue-500" 
-                      placeholder="+1 (123) 456-7890"
-                    />
+                </div>
+              })
+            }
+          </div>
+
+          <div className='space-y-20 my-20 w-full' >
+            { 
+              pageContent?.content_sections?.map((section: any, index: number) => {
+                return <div key={index}>
+                  <h3 className="text-h3 mb-4">{section?.content_section.heading}</h3>
+                  <div className="!prose min-w-full bg-white p-4 rounded-lg " >
+                    <PortableText value={section?.content_section?.content} />
                   </div>
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                    <textarea 
-                      id="message" 
-                      rows={4}
-                      className="w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 focus:ring-blue-500 focus:border-blue-500" 
-                      placeholder="Your questions or requirements..."
-                    ></textarea>
-                  </div>
-                  <Button className="w-full">Submit Request</Button>
-                </form>
-              </CardContent>
-            </Card>
+                </div>
+              })
+            }
           </div> */}
-        </div>
+            
       </main>
     </div>
   );
 }
+
+
+function TableSection({data}: {data: any}){
+  const formatedTableData = formatTableData(data?.data)
+  return <div key={data._key} >
+    <div className='mb-6' >
+      <h3 className="text-h3 mb-2">{data?.heading}</h3>
+      <p>{data?.description}</p>
+    </div>
+  <SimpleTable data={formatedTableData} />
+</div>
+}
+
+function ContentSection({data}: {data: any}){
+  return (
+      <div key={data._key} >
+       <div className='mb-6' >
+        <h3 className="text-h3 mb-2">{data?.heading}</h3>
+        <p>{data?.description}</p>
+      </div>
+        <div className="!prose min-w-full " >
+          <PortableText value={data?.content} />
+        </div>
+      </div>
+  )
+}
+
+function LabelValueSection({data}: {data: any}){
+  return (
+    <div key={data._key} >
+      <div className='mb-6' >
+          <h3 className="text-h3 mb-2">{data.heading}</h3>
+          <p >{data.description}</p>
+      </div>
+        <div className="border-2 rounded-md" >
+          {
+            data?.label_value?.map((item: {label: string, value: string}, index: number) => ( 
+              <div key={index} className="grid grid-cols-2 *:p-3 text-sm border-b-2 last:border-none divide-x-2 " >
+                <p>{item.label}</p>
+                <p>{item.value}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+  )
+}
+
+
+type TableData = {
+  headers: string[];
+  rows: { columns: string[] }[];
+};
+
+type FormattedRow = Record<string, string>;
+
+function formatTableData(data: TableData): FormattedRow[] {
+  const { headers, rows } = data;
+
+  return rows.map(row => {
+    const formattedRow: FormattedRow = {};
+
+    headers.forEach((header, index) => {
+      formattedRow[header] = row.columns[index] || '';
+    });
+
+    return formattedRow;
+  });
+}
+

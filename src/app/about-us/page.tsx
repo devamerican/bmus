@@ -90,7 +90,7 @@ const urlFor = (source: SanityImageSource) =>
   return (
     <section className="max-w-5xl mx-auto px-4 my-10 lg:my-16 lg:pb-16" >
       <h1 className="text-h1 text-center mb-20" >{aboutPageData.intro.heading}</h1> 
-      <h2 className="text-h2 mb-8">{aboutPageData.intro.subheading}</h2>
+      <h2 className="text-h3 mb-8">{aboutPageData.intro.subheading}</h2>
       <div className="space-y-8" >
         {aboutPageData?.intro?.content && <PortableText value={aboutPageData?.intro?.content} />}
         {/* <p>Education Abroad Services Overseas CAREER Consultants provides “One Stop Solution for All Your International Education Needs”.</p>

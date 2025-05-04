@@ -52,22 +52,23 @@ export default function Hero({data}: {data: any}){
 
 
             {/* <div className="relative overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900"> */}
-            <div className="relative overflow-hidden bg-gradient-to-br from-black via-black/80 to-black">
+            {/* <div className="relative overflow-hidden bg-gradient-to-br from-black via-black/80 to-black"> */}
+            <div className="relative overflow-hidden bg-gradient-to-br from-white via-sky-400/10 to-white"> 
                 {/* Content */}
                 <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     {/* Left Column */}
-                    <div className="text-blue-100 space-y-8">
-                    <div className="flex items-center gap-2 bg-blue-100/10 backdrop-blur-sm w-fit px-4 py-2 rounded-full">
+                    <div className="text-black space-y-8">
+                    <div className="flex items-center gap-2 bg-blue-500/10 backdrop-blur-sm w-fit px-4 py-2 rounded-full">
                         <GraduationCap className="h-5 w-5 text-blue-500" />
                         <span className="text-sm font-medium">Your Future Starts Here</span>
                     </div>
                     
-                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight" >
+                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight " >
                         {data.heading}
                     </h1>
                     
-                    <p className="text-lg sm:text-xl text-blue-100 max-w-xl">
+                    <p className="text-lg sm:text-xl  max-w-xl">
                         {data.subheading}
                     </p>
                     
@@ -79,7 +80,7 @@ export default function Hero({data}: {data: any}){
                         </Button>
                         </Link>
                         <Link href={data.cta.secondary.href} >
-                        <Button size="lg" variant="ghost" className="bg-white/50 text-black font-semibold ">
+                        <Button size="lg" variant="ghost" className="bg-black/10 hover:bg-black/20 transition-colors  font-semibold ">
                             {data.cta.secondary.label}
                         </Button>
                         </Link>
@@ -91,10 +92,10 @@ export default function Hero({data}: {data: any}){
                         {data.achievements.map((stat: any) => (
                             <div
                             key={stat._key}
-                            className="group bg-white/10 backdrop-blur hover:bg-white/20 text-white p-6 rounded-xl  transition-colors" 
+                            className="group  backdrop-blur  bg-black/5 hover:bg-black/10  p-6 rounded-xl  transition-colors" 
                             >
                             {/* <div className="mb-4">{stat.icon}</div> */}
-                            <DynamicIcon name={stat.icon as IconName} className=" mb-6 group-hover:scale-120  text-white size-6 transition-all" /> 
+                            <DynamicIcon name={stat.icon as IconName} className=" mb-6 group-hover:scale-120  text-blue-500 size-6 transition-all" /> 
                             <div className="text-3xl font-bold  mb-1">{stat.title}</div>
                             <div className="text-sm">{stat.subTitle}</div>
                             </div>
