@@ -13,8 +13,8 @@ const items = [
     {
         title: "Chat on WhatsApp",
         icon: MessageSquare,
-        details: ["+91 9050086500", "+91 7015303343"],
-        type: "phone",
+        details: ["+91 7015303343"],
+        type: "phone-whatsapp",
     },
     {
         title: "Write to us",
@@ -64,6 +64,11 @@ export default function ApplyOnlinePage(){
                                                 <li key={i} className="hover:text-blue-500" >
                                                     {
                                                         item.type === 'phone' && <Link href={`tel:${detail}`}>
+                                                            {detail}
+                                                        </Link>
+                                                    }
+                                                    {
+                                                        item.type === 'phone-whatsapp' && <Link target="_blank" href={`https://wa.me/${917015303343}`}> 
                                                             {detail}
                                                         </Link>
                                                     }

@@ -25,7 +25,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Download, Globe,  Menu,  } from "lucide-react";
+import { Download, Globe,  Menu, Plane,  } from "lucide-react";
 import { type SanityDocument } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
 
@@ -191,44 +191,12 @@ export default async function Navbar() {
   console.log('prospectus', prospectus)
   return (
     <>
-    {/* <div className="hidden lg:flex justify-between items-center gap-3 px-3 py-1 bg-secondary" >
-      <ul className="flex gap-6" >
-        <Link href="tel:+919910180049" className="text-sm hover:opacity-75">
-          <li className="flex gap-1 text-sm"> <Phone size={18} /> +91 9910180049</li>
-        </Link>
-        <Link href="mailto:info@eduabroadservices.com" className="text-sm hover:opacity-75">
-          <li className="flex gap-1 text-sm"> <Mail size={18} /> info@eduabroadservices.com</li>
-        </Link>
-      </ul>
-      <Link href="/apply-online" >
-        <Button size="sm" variant="outline" >
-            <Globe />
-            Apply Now
-        </Button>
-      </Link>
-  </div> */}
     <nav className="sticky top-0 z-50 bg-white border-b shadow-sm">
       <div className="flex items-center justify-between gap-2 p-2.5 xl:p-3 mx-auto">
         {/* Logo */}
         <div className="flex gap-3 items-center" >
 
         <Link href="/" className="flex-none">
-          {/* <Image
-            src="/newlogo.png"
-            width={100}
-            height={30}
-            alt="logo"
-            className="h-auto hidden xl:block"
-            priority
-          />
-          <Image
-            src="/sm-logo.jpg"
-            width={50}
-            height={50}
-            alt="logo"
-            className="h-auto xl:hidden"
-            priority
-          /> */}
 
         <Image
             src={urlFor(navbar.logo)?.width(300).height(300).url() ?? "" }
@@ -301,7 +269,7 @@ export default async function Navbar() {
           </Link>
           <Link href="/apply-online" >
             <Button >
-                <Globe />
+                <Plane />
                 Apply Now
             </Button>
           </Link>
@@ -365,7 +333,7 @@ export default async function Navbar() {
                     </Button>
                   </Link>
                   <Link href="/apply-online" >
-                    <Button className="w-full">  <Globe /> Apply Now</Button>
+                    <Button className="w-full">  <Plane /> Apply Now</Button>
                   </Link>
               </div>
             </div>

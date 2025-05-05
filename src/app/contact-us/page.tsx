@@ -1,32 +1,25 @@
 import CounselingForm from "@/components/home/counseling-form";
-import { Home, Mail, MapPin, Phone } from "lucide-react";
+import { Building, Home, Mail, MapPin, Phone } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import Link from "next/link";
 
 const contactInfo = [
     {
       title: "Head Office (Palwal, Haryana)",
-    //   address: "Office No. 304-305, 3rd Floor, OM Subham Tower, Neelam-Bata Road, NIT Faridabad 121001",
       details: ["Opposite Indian Overseas Bank, Near Vivekanand School, Railway Road, Palwal - 121102"],
       type: 'address',
-      icon: <Home className="text-green-600" />,
+      icon: <Building className="text-green-600" />,
     },
-    // {
-    //     title: "Jaipur Office",
-    //     address:
-    //     "Anil Kumar Sharma, Plot. No. 24/201, Brij Bihar Extension, Jagatpura Jaipur, Pin - 203016",
-    //     details: ["+91 9417876746", "+91 6284091032"],
-    //     icon: <Home className="text-green-600" />,
-    // },
-    // {
-    //     title: "Gurugram Office",
-    //     address: "667, Udyog Vihar Phase V, Sector 19, Gurugram, Haryana, 122008",
-    //     icon: <Home className="text-green-600" />,
-    // },
+    {
+        title: "Dubai Office",
+        details:
+        ["Flat no - 304 , Bhueira corniche, Shaheen tower Dubai UAE"],
+        icon: <Building className="text-green-600" />,
+        type: 'address',
+    },
     {
       title: "Call us",
-    //   details: ["+91 129 4150049", "+91 9910180049", "+91 9910850049"],
-      details: ["+91 9050086500", "+91 7015303343"],
+      details: ["+91 9050086500", "+91 7015303343", "+971 508786484"],
       type: 'phone',
       icon: <Phone className="text-red-500" />,
     },
@@ -49,7 +42,6 @@ export default function ContactUs(){
         <section className="section-container my-10 ">
             <h1 className="text-center text-h1 mb-16" >Contact US</h1>
 
-            {/* <div className="flex items-center *:basis-1/2" > */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5" >
                 <div className="max-w-3xl mx-auto space-y-5">
                     {contactInfo.map((item, index) => (
@@ -60,27 +52,24 @@ export default function ContactUs(){
                             <h3 className="text-lg font-semibold text-gray-800 mb-3">
                                 {item.title}
                             </h3>
-                            {/* {item.address && (
-                                <p className="text-muted-foreground mt-1">{item.address}</p>
-                            )} */}
                             {item.details && (
-                                <ul className="text-muted-foreground flex flex-col gap-2">
+                                <ul className=" flex flex-col gap-2">
                                 {item.details.map((detail: string, i: number) => (
-                                    <li key={i} className="hover:text-blue-500" >
+                                    <li key={i} >
                                         {
-                                            item.type === 'phone' && <Link href={`tel:${detail}`}>
+                                            item.type === 'phone' && <Link href={`tel:${detail}`} className="hover:text-blue-600" >
                                                 {detail}
                                             </Link>
                                         }
                                         {
-                                            item.type === 'email' && <Link href={`mailto:${detail}`}>
+                                            item.type === 'email' && <Link href={`mailto:${detail}`} className="hover:text-blue-600" >
                                                 {detail}
                                             </Link>
                                         }
                                         {
-                                            item.type === 'address' && <Link target="_blank" href={`https://maps.app.goo.gl/NotXCRBUSfxC6g8v6`}>
+                                            item.type === 'address' && <p>
                                                 {detail}
-                                            </Link>
+                                            </p>
                                         }
                                     </li>
                                 ))}
@@ -91,7 +80,6 @@ export default function ContactUs(){
                         </Card>
                     ))}
                 </div>
-                {/* <Card className="bg-primary text-primary-foreground p-6 py-10 max-w-3xl mx-auto w-full" > */}
                 <Card className=" p-6 py-10 max-w-3xl mx-auto w-full shadow-none border-2 border-muted" >
                     <CardHeader className="mb-4" >
                         <h2 className="text-h2" >We&apos;d love to hear from you!</h2>

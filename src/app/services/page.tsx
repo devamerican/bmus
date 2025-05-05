@@ -1,54 +1,96 @@
 import Image from "next/image";
-import {Card, CardContent} from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { client } from "@/sanity/client";
 import { SanityDocument } from "next-sanity";
 import { DynamicIcon, IconName } from "lucide-react/dynamic";
-const services = [
-    { title: "Free counseling to select right university.", image: "/service.png" },
-    { title: "Guaranteed admission in the university of choice.", image: "/service.png" },
-    { title: "Visa, Apostille, Invitation letter & Other Documentation", image: "/service.png" },
-    { title: "Assistance in foreign exchanges.", image: "/service.png" },
-    { title: "Advance booking of Hostel Rooms.", image: "/service.png" },
-    { title: "Travel arrangements from Delhi to University Campus.", image: "/service.png" },
-    { title: "Sim card Arrangements", image: "/service.png" },
-    { title: "Airport Pickup, Hotel Arrangement & Other Services", image: "/service.png" },
-    { title: "Opening Bank Account", image: "/service.png" },
-    { title: "Any Emergency Assistance", image: "/service.png" },
-    { title: "Regular Feedback To Parents", image: "/service.png" },
-    { title: "Assistance & Guidance During the Course of Study", image: "/service.png" }
-  ];
+import imageUrlBuilder from "@sanity/image-url";
+import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
 export const metadata = {
-    title: "Our Services",
-    description: "Different Services provided by BMUS",
+  title: "Our Services",
+  description: "Different Services provided by BMUS",
 }
 
-export default async function OurServicesPage(){
+export default async function OurServicesPage() {
+  const QUERY = `*[_type == "services"]`
+  const servicesData = await client.fetch<SanityDocument>(QUERY, {});
+  const services = servicesData[0]
 
-    const QUERY = `*[_type == "services"]`
-    const servicesData = await client.fetch<SanityDocument>(QUERY, {});
-    const services = servicesData[0]
+  const { projectId, dataset } = client.config();
+  const urlFor = (source: SanityImageSource) =>
+    projectId && dataset
+      ? imageUrlBuilder({ projectId, dataset }).image(source)
+      : null;
 
+  return (
+    <div>
+      {/* Hero Section */}
+      <div className="relative w-full h-[300px] md:h-[400px] bg-gray-100">
+        {services?.heroImage && (
+          <Image
+            src={urlFor(services.heroImage)?.width(1600).height(800).url() ?? "/default-services.jpg"}
+            alt={services?.heroImageAlt || "Our Services"}
+            fill
+            className="object-cover brightness-50"
+            priority
+          />
+        )}
+        <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+          <div className="text-center px-4">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+              {services.heading}
+            </h1>
+            {/* <p className="text-lg text-white/90 max-w-2xl mx-auto">
+              {services.description}
+            </p> */}
+          </div>
+        </div>
+      </div>
 
-
-    return(
-        <section className="section-container my-12" > 
-            <h1 className="text-h1 mb-10 text-center" > {services.heading}</h1>
-            <p className="mb-10 text-center max-w-5xl mx-auto" >{services.description}</p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" >
-                {
-                    services.servicesItems.map((item: { title: string, icon: string }) => (
-                        <Card key={item.title} className="hover:shadow-md transition-shadow" >
-                            <CardContent className="flex flex-col justify-center items-center gap-6" >
-                                {/* <Image className="object-cover rounded-sm" src={item.image} width={100} height={100} alt={item.title} /> */}
-                                <DynamicIcon name={item.icon as IconName} size={60} className="text-blue-500" />
-                                <h3 className="text-center max-w-[12rem]">{item.title}</h3>
-                            </CardContent>
-                        </Card>
-                    ))
-                }
-            </div>
-        </section>
-    )
+      {/* Services Grid Section */}
+      <section className="max-w-7xl p-4 mx-auto my-12 md:my-16">
+      <p className=" mx-auto mb-10">
+              {services.description}
+            </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {services.servicesItems.map((item: { 
+            title: string, 
+            icon: string,
+            image?: SanityImageSource,
+            description?: string 
+          }) => (
+            <Card key={item.title} className="hover:shadow-md transition-shadow h-full">
+              <CardContent className="flex flex-col justify-center items-center gap-6 p-6 h-full">
+                {/* Image with fallback to icon */}
+                {item.image ? (
+                  <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-blue-500">
+                    <Image
+                      src={urlFor(item.image)?.width(200).height(200).url() ?? ""}
+                      alt={item.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                ) : (
+                  <DynamicIcon 
+                    name={item.icon as IconName} 
+                    size={60} 
+                    className="text-blue-500" 
+                  />
+                )}
+                
+                <h3 className="text-center  font-medium text-zinc-700">{item.title}</h3>
+                
+                {item.description && (
+                  <p className="text-center text-sm text-muted-foreground">
+                    {item.description}
+                  </p>
+                )}
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+    </div>
+  )
 }

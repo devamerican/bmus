@@ -20,9 +20,13 @@ const countries = [
     title: "Uzbekistan",
     href: "/mbbs/uzbekistan",
   },
+  // {
+  //   title: "Serbia",
+  //   href: "/mbbs/serbia",
+  // },
   {
-    title: "Serbia",
-    href: "/mbbs/serbia",
+    title: "Nepal",
+    href: "/mbbs/nepal",
   },
   {
     title: "Georgia",

@@ -40,7 +40,7 @@ export default function MbbsAbroadEligibilityAndDocument() {
         </div>
         <div className="basis-1/2" >
           <div className="mb-9 md:mb-16">
-            <h2 className="text-h2 mb-6">Eligibility:</h2>
+            <h4 className="text-h4 mb-6">Eligibility:</h4>
             <ul className="space-y-4">
               {studyAbroadEligibility.map((item) => (
                 <li key={item} className="flex gap-3">
@@ -51,7 +51,7 @@ export default function MbbsAbroadEligibilityAndDocument() {
           </div>
 
           <div className="mb-6" >
-            <h2 className="text-h2 mb-6">Document:</h2>
+            <h4 className="text-h4 mb-6">Document:</h4> 
             <ul className="space-y-4">
               {studyAbroadDocument.map((item) => (
                 <li key={item} className="flex gap-3">

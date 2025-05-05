@@ -88,7 +88,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${poppins.className} antialiased`}
+        className={`${geistSans.className} ${geistMono.variable} ${poppins.variable} antialiased`}
       >
         <Toaster richColors />
         <Navbar />
