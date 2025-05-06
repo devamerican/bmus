@@ -13,10 +13,10 @@ type MBBSInCountryPageProps = {
 
 export default async function MBBSInCountryPage({params}: MBBSInCountryPageProps) {
   // All content stored in a variable
-  const slugParam = await params 
-  const countryFromParam = slugParam.country
+  // const slugParam = await params 
+  // const countryFromParam = slugParam.country
 
-  const QUERY = `*[_type == "mbbsInCountry"][slug.current == $slug][0]`
+  const QUERY = `*[_type == "mbbsInCountry"][slug.current == $country][0]`
 
   const { data: pageContent } = await sanityFetch({query: QUERY, params: await params })
 
