@@ -1,8 +1,7 @@
-import { client } from "@/sanity/client";
 import { PortableText, SanityDocument } from "next-sanity";
 import Image from "next/image";
-import imageUrlBuilder from "@sanity/image-url";
-import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import { sanityFetch } from "@/sanity/lib/live";
+import { urlFor } from "@/sanity/lib/image";
 
 export const metadata = {
     title: "Director's Message",
@@ -11,14 +10,8 @@ export const metadata = {
 
 export default async function DirectorMessage() {
     const QUERY = `*[_type == "directorsMessage"]`
-    const directorMessageData = await client.fetch<SanityDocument>(QUERY, {});
+    const { data: directorMessageData } = await sanityFetch({query: QUERY})
     const directorMessage = directorMessageData[0]
-
-    const { projectId, dataset } = client.config();
-    const urlFor = (source: SanityImageSource) =>
-      projectId && dataset
-        ? imageUrlBuilder({ projectId, dataset }).image(source)
-        : null;
 
     return (
         <div>

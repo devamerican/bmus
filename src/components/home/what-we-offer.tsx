@@ -2,77 +2,12 @@
 import Image from "next/image"
 import useEmblaCarousel from 'embla-carousel-react'
 import { PortableText } from "next-sanity"
-import imageUrlBuilder from "@sanity/image-url";
 
-import { client } from "@/sanity/client";
-import { SanityImageSource } from '@sanity/image-url/lib/types/types';
-// import Autoplay from 'embla-carousel-autoplay'
-// const items = [
-//     {
-//         id: 1,
-//         title: 'Education Abroad Services',
-//         image: '/customer-support.jpg'
-//     },
-//     {
-//         id: 2,
-//         title: 'Education Abroad Services',
-//         image: '/customer-support.jpg'
-//     },
-//     {
-//         id: 3,
-//         title: 'Education Abroad Services',
-//         image: '/customer-support.jpg'
-//     },
-//     {
-//         id: 4,
-//         title: 'Education Abroad Services',
-//         image: '/customer-support.jpg'
-//     },
-//     {
-//         id: 5,
-//         title: 'Education Abroad Services',
-//         image: '/customer-support.jpg'
-//     },
-//     {
-//         id: 6,
-//         title: 'Education Abroad Services',
-//         image: '/customer-support.jpg'
-//     },
-//     {
-//         id: 7,
-//         title: 'Education Abroad Services',
-//         image: '/customer-support.jpg'
-//     },
-//     {
-//         id: 8,
-//         title: 'Education Abroad Services',
-//         image: '/customer-support.jpg'
-//     },
-//     {
-//         id: 9,
-//         title: 'Education Abroad Services',
-//         image: '/customer-support.jpg'
-//     },
-//     {
-//         id: 10,
-//         title: 'Education Abroad Services',
-//         image: '/customer-support.jpg'
-//     },
-//     {
-//         id: 11,
-//         title: 'Education Abroad Services',
-//         image: '/customer-support.jpg'
-//     },
-// ]
+import { urlFor } from "@/sanity/lib/image";
 
 export default function WhatWeOffer({data}: {data: any}){
     const [emblaRef] = useEmblaCarousel({ loop: true, align: 'start', dragFree: true })
 
-    const { projectId, dataset } = client.config();
-    const urlFor = (source: SanityImageSource) =>
-      projectId && dataset
-        ? imageUrlBuilder({ projectId, dataset }).image(source)
-        : null;
     return(
         <div id="services" className=" py-10 xl:py-20 scroll-mt-16" >
 

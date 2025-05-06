@@ -1,16 +1,16 @@
-"use client"
+// "use client"
 // import { useEffect } from 'react'
-import useEmblaCarousel from 'embla-carousel-react'
-import Autoplay from 'embla-carousel-autoplay'
-import Image from 'next/image'
+// import useEmblaCarousel from 'embla-carousel-react'
+// import Autoplay from 'embla-carousel-autoplay'
+// import Image from 'next/image'
 import { ArrowRight, Globe2, GraduationCap } from 'lucide-react'
 import { Button } from '../ui/button'
 import Link from 'next/link'
 import { DynamicIcon, IconName } from 'lucide-react/dynamic'
-import imageUrlBuilder from "@sanity/image-url";
+// import imageUrlBuilder from "@sanity/image-url";
 
-import { client } from "@/sanity/client";
-import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+// import { client } from "@/sanity/client";
+// import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
 const heroItems = [
     {
@@ -28,12 +28,6 @@ const heroItems = [
 ]
 
 export default function Hero({data}: {data: any}){
-    const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay()])
-    const { projectId, dataset } = client.config();
-    const urlFor = (source: SanityImageSource) =>
-      projectId && dataset
-        ? imageUrlBuilder({ projectId, dataset }).image(source)
-        : null;
 
     return(
         <section className='relative' >

@@ -4,56 +4,12 @@ import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import { Quote } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card" 
-import imageUrlBuilder from "@sanity/image-url";
+import { urlFor } from "@/sanity/lib/image"
 
-import { client } from "@/sanity/client";
-import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
-const testimonials = [
-    {
-        id: 1,
-        name: 'Ajay Gaur',
-        image: '/student.png',
-        university: "MBBS Student at Anhui Medical University, China",
-        content: " I have been a student of BMUS for the past 13 years. I have been in the MBBS program for the past 12 years and I am currently pursuing my MBBS degree from the same institution. I have always been a student-athlete and I am very passionate about sports. I have always been a fan of BMUS and I am very happy to be associated with such a great institution. I would highly recommend BMUS to anyone who is looking for a top-notch MBBS program."
-    },
-    {
-        id: 2,
-        name: 'Ajay Gaur',
-        image: '/student.png',
-        university: "MBBS Student at Anhui Medical University, China",
-        content: " I have been a student of BMUS for the past 13 years. I have been in the MBBS program for the past 12 years and I am currently pursuing my MBBS degree from the same institution. I have always been a student-athlete and I am very passionate about sports. I have always been a fan of BMUS and I am very happy to be associated with such a great institution. I would highly recommend BMUS to anyone who is looking for a top-notch MBBS program."
-    },
-    {
-        id: 3,
-        name: 'Ajay Gaur',
-        image: '/student.png',
-        university: "MBBS Student at Anhui Medical University, China",
-        content: " I have been a student of BMUS for the past 13 years. I have been in the MBBS program for the past 12 years and I am currently pursuing my MBBS degree from the same institution. I have always been a student-athlete and I am very passionate about sports. I have always been a fan of BMUS and I am very happy to be associated with such a great institution. I would highly recommend BMUS to anyone who is looking for a top-notch MBBS program."
-    },
-    {
-        id: 4,
-        name: 'Ajay Gaur',
-        image: '/student.png',
-        university: "MBBS Student at Anhui Medical University, China",
-        content: " I have been a student of BMUS for the past 13 years. I have been in the MBBS program for the past 12 years and I am currently pursuing my MBBS degree from the same institution. I have always been a student-athlete and I am very passionate about sports. I have always been a fan of BMUS and I am very happy to be associated with such a great institution. I would highly recommend BMUS to anyone who is looking for a top-notch MBBS program."
-    },
-    {
-        id: 5,
-        name: 'Ajay Gaur',
-        image: '/student.png',
-        university: "MBBS Student at Anhui Medical University, China",
-        content: " I have been a student of BMUS for the past 13 years. I have been in the MBBS program for the past 12 years and I am currently pursuing my MBBS degree from the same institution. I have always been a student-athlete and I am very passionate about sports. I have always been a fan of BMUS and I am very happy to be associated with such a great institution. I would highly recommend BMUS to anyone who is looking for a top-notch MBBS program."
-    },
-]
 export default function StudentsSay({data}: {data: any}){
      const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay()])
 
-     const { projectId, dataset } = client.config();
-     const urlFor = (source: SanityImageSource) =>
-       projectId && dataset
-         ? imageUrlBuilder({ projectId, dataset }).image(source)
-         : null;
     return(
         <section  >
             <div className="px-4" >

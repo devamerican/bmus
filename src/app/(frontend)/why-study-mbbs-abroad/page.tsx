@@ -1,21 +1,8 @@
 // import { camera } from "lucide-react";
+import { sanityFetch } from '@/sanity/lib/live';
 import { DynamicIcon, type IconName} from 'lucide-react/dynamic'; 
 import { type SanityDocument } from "next-sanity";
-import { client } from "@/sanity/client";
 
-// const studyAbroadBenefits = [
-//     { title: "Lower Tuition Fee Than India", image: "book-text" },
-//     { title: "NMC and WHO Approved Medical Universities", image: "stethoscope" },
-//     { title: "Internationally Trained and Experienced Faculty", image: "shield-check" },
-//     { title: "Safe and Secure Countries", image: "shield-check" },
-//     { title: "No Donation or Capitation Fee", image: "hand-coins" },
-//     { title: "Comfortable Weather for Study", image: "cloud-sun" },
-//     { title: "Similar Cost of Living as India", image: "indian-rupee" },
-//     { title: "English Medium Study", image: "book-a" },
-//     { title: "Availability of Better Medical Equipment", image: "heart-pulse" },
-//     { title: "Indian Food Available", image: "apple" },
-//     { title: "International Job Options", image: "briefcase-business" }
-//   ];
   
 export const metadata = {
     title: "Why Study MBBS Abroad",
@@ -25,7 +12,8 @@ export const metadata = {
 export default async function WhyStudyMbbsAbroad() {
 
         const QUERY = `*[_type == "whyStudyMBBSAbroad"]`
-        const result = await client.fetch<SanityDocument[]>(QUERY, {});
+        // const result = await client.fetch<SanityDocument[]>(QUERY, {});
+        const { data: result } = await sanityFetch({query: QUERY})
         const data = result[0]
 
   return (
