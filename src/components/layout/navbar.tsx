@@ -29,8 +29,10 @@ import { Download, Globe,  Menu, Plane,  } from "lucide-react";
 import { type SanityDocument } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
 
-import { client } from "@/sanity/client";
+// import { client } from "@/sanity/client";
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import { sanityFetch } from "@/sanity/lib/live";
+import { urlFor } from "@/sanity/lib/image";
 
 const navItems = [
 //   {
@@ -176,17 +178,20 @@ export default async function Navbar() {
         "pdfUrl": prospectus.asset->url
       }`
 
-  const navbarData = await client.fetch<SanityDocument>(QUERY, {});
-  const prospectusData = await client.fetch<SanityDocument>(PROSPECTUS_QUERY, {});
+    const { data: navbarData } = await sanityFetch({query: QUERY})
+    const { data: prospectusData } = await sanityFetch({query: PROSPECTUS_QUERY})
+
+  // const navbarData = await client.fetch<SanityDocument>(QUERY, {});
+  // const prospectusData = await client.fetch<SanityDocument>(PROSPECTUS_QUERY, {});
 
   const prospectus = prospectusData[0]
   const navbar = navbarData[0]
 
-      const { projectId, dataset } = client.config();
-  const urlFor = (source: SanityImageSource) =>
-    projectId && dataset
-      ? imageUrlBuilder({ projectId, dataset }).image(source)
-      : null;
+  //     const { projectId, dataset } = client.config();
+  // const urlFor = (source: SanityImageSource) =>
+  //   projectId && dataset
+  //     ? imageUrlBuilder({ projectId, dataset }).image(source)
+  //     : null;
 
   console.log('prospectus', prospectus)
   return (

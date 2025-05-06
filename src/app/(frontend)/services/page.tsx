@@ -1,10 +1,9 @@
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
-import { client } from "@/sanity/client";
-import { SanityDocument } from "next-sanity";
 import { DynamicIcon, IconName } from "lucide-react/dynamic";
-import imageUrlBuilder from "@sanity/image-url";
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import { sanityFetch } from "@/sanity/lib/live";
+import { urlFor } from "@/sanity/lib/image";
 
 export const metadata = {
   title: "Our Services",
@@ -13,14 +12,9 @@ export const metadata = {
 
 export default async function OurServicesPage() {
   const QUERY = `*[_type == "services"]`
-  const servicesData = await client.fetch<SanityDocument>(QUERY, {});
+  const { data: servicesData } = await sanityFetch({query: QUERY})
   const services = servicesData[0]
 
-  const { projectId, dataset } = client.config();
-  const urlFor = (source: SanityImageSource) =>
-    projectId && dataset
-      ? imageUrlBuilder({ projectId, dataset }).image(source)
-      : null;
 
   return (
     <div>

@@ -1,8 +1,6 @@
-import { client } from "@/sanity/client";
-import { SanityImageSource } from "@sanity/image-url/lib/types/types";
-import { SanityDocument } from "next-sanity";
-import imageUrlBuilder from "@sanity/image-url";
 import PhotoGallery from "./photo-gallery";
+import { urlFor } from "@/sanity/lib/image";
+import { sanityFetch } from "@/sanity/lib/live";
 
 export const metadata = {
   title: "Gallery",
@@ -12,13 +10,8 @@ export const metadata = {
 export default async function Gallery() {
 
   const  QUERY = `*[_type == "gallery"]`
-  const galleryData = await client.fetch<SanityDocument>(QUERY, {});
+  const { data: galleryData } = await sanityFetch({query: QUERY})
   const gallery = galleryData[0]
-  const { projectId, dataset } = client.config();
-  const urlFor = (source: SanityImageSource) =>
-    projectId && dataset
-      ? imageUrlBuilder({ projectId, dataset }).image(source)
-      : null;
 
   const images = gallery.images.map((image: any) => urlFor(image)?.url() ?? "")
 

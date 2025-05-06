@@ -1,10 +1,8 @@
 import Image from "next/image";
 import { DynamicIcon, IconName } from "lucide-react/dynamic";
-import { type SanityDocument, PortableText } from "next-sanity";
-import imageUrlBuilder from "@sanity/image-url";
-
-import { client } from "@/sanity/client";
-import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import { PortableText } from "next-sanity";
+import { sanityFetch } from "@/sanity/lib/live";
+import { urlFor } from "@/sanity/lib/image";
 
 
 export const metadata = {
@@ -15,14 +13,9 @@ export const metadata = {
 
 export default async function AboutUs() {
     const QUERY = `*[_type == "aboutUs"]`
-    const data = await client.fetch<SanityDocument[]>(QUERY, {});
+    const { data } = await sanityFetch({query: QUERY})
     const aboutPageData = data[0]
 
-    const { projectId, dataset } = client.config();
-    const urlFor = (source: SanityImageSource) =>
-      projectId && dataset
-        ? imageUrlBuilder({ projectId, dataset }).image(source)
-        : null;
 
   return (
     <div>
