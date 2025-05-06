@@ -1,7 +1,5 @@
 "use server"
 
-import { sendEmail } from "@/lib/send-email"
-
 type DataT= { 
     name: string;
     email: string;
@@ -9,43 +7,71 @@ type DataT= {
     message: string;
     page: string;
 }
+type EmailTo = {
+    email: string
+}
 
+
+type EmailOptions = {
+    params: {NAME: string, EMAIL?: string, MESSAGE?: string, PHONE?: string, PAGE?: string},
+    templateId: number,
+    to: EmailTo[],
+    replyTo?: {email: string}
+}
 export async function submitForm(data: DataT) {
     
     try {
+
+        const result = await Promise.all([
+            await sendEmail({
+              params: { NAME: data.name },
+              templateId: 1,
+              to: [{ email: data.email }],
+            }),
+            await sendEmail({
+              params: { NAME: data.name, EMAIL: data.email, MESSAGE: data.message, PHONE: data.phone, PAGE: data.page },
+              templateId: 2,
+              to: [{ email: "ajaypathak2527@gmail.com" }],
+              replyTo: {email: data.email}
+            })
+        ])
+
+        const messageIdExists = result.every(response => response.messageId)
+
+        if(messageIdExists){
+          return {success: true,  message: "Your message has been sent!"};
+        }
+    
+
+          return {success: false, message: 'There was an error sending your message.' };
         
-        await sendEmail({
-            toEmail: data.email,
-            subject: `Thank you for your message! - BMUS`,
-            body: `
-                <h2>Thank you for your message!</h2> <br/>
-                <p>Hi ${data.name},</p> <br/>
-                <p>We have received your message and will get back to you soon.</p> <br/>
-                <p>Best Regards,</p>
-                <p>Vishnu Sharma</p>
-            `
-        })
-
-        await sendEmail({
-            toEmail: "devamericanpalwal@gmail.com",
-            subject: `New message from ${data.name} - BMUS`,
-            body: `
-                <h2>New message from ${data.name}</h2> <br/>
-                <p>Hi Vishnu,</p> <br/>
-                <p>We have received your message from ${data.name} and will get back to you soon.</p> <br/>
-                <p>Best Regards,</p>
-                <p>Ajay Gaur</p>
-            `
-        })
-
-        return {
-            success: true,
-            message: "Thank you for your message!"
-        }
     } catch (error) {
-        return {
-            success: false,
-            message: "Something went wrong"
-        }
+        // console.log(error)
+        return {success: false, message: "Something went wrong. Try again later."}
     }
 }
+
+async function sendEmail(emailOptions: EmailOptions){
+    const apiKey = process.env.BREVO_API!;
+    const url = 'https://api.brevo.com/v3/smtp/email';
+  
+    const options = {
+      method: 'POST',
+      headers: {
+        accept: 'application/json',
+        'content-type': 'application/json',
+        'api-key': apiKey,
+      },
+      body: JSON.stringify(emailOptions),
+    };
+  
+    const response = await fetch(url, options);
+  
+    if (!response.ok) {
+        console.log('response ', response)
+      throw new Error('Failed to send email');
+    }
+    const data = await response.json()
+    return data
+  }
+  

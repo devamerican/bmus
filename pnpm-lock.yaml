@@ -65,9 +65,6 @@ dependencies:
   next-sanity:
     specifier: ^9.9.6
     version: 9.9.6(@sanity/client@6.28.4)(@sanity/icons@3.7.0)(@sanity/types@3.81.0)(@sanity/ui@2.15.16)(next@15.2.0)(react-dom@19.0.0)(react-is@18.3.1)(react@19.0.0)(sanity@3.81.0)(styled-components@6.1.16)
-  nodemailer:
-    specifier: ^6.10.1
-    version: 6.10.1
   react:
     specifier: ^19.0.0
     version: 19.0.0
@@ -8706,11 +8703,6 @@ packages:
 
   /node-releases@2.0.19:
     resolution: {integrity: sha512-xxOWJsBKtzAq7DY0J+DTzuz58K8e7sJbdgwkbMWQe8UYB6ekmsQ45q0M/tJDsGaZmbC+l7n57UV8Hl5tHxO9uw==}
-    dev: false
-
-  /nodemailer@6.10.1:
-    resolution: {integrity: sha512-Z+iLaBGVaSjbIzQ4pX6XV41HrooLsQ10ZWPUehGmuantvzWoDVBnmsdUcOIDM1t+yPor5pDhVlDESgOMEGxhHA==}
-    engines: {node: '>=6.0.0'}
     dev: false
 
   /normalize-package-data@2.5.0:

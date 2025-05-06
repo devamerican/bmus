@@ -16,6 +16,7 @@ import { CounselingFormType, counselingFormSchema } from "@/lib/zod";
 import { Textarea } from "@/components/ui/textarea";
 import { Loader } from "lucide-react";
 import {toast} from "sonner";
+import { submitForm } from "@/app/action";
 
 interface CounselingFormProps {
   theme?: "light" | "dark";
@@ -34,13 +35,24 @@ export default function CounselingForm({ theme = "light" }: CounselingFormProps)
 
   const inputClass = theme === "dark" ? "bg-secondary/10 border-none" : "";
 
-  function onSubmit(data: CounselingFormType) {
-    console.log(data);
-    form.reset()
-    // alert('form sumbitted successfully!')
-    toast.success('Thank you for your message!', {
-      description: 'We will get back to you soon.'
-    })
+  async function onSubmit(data: CounselingFormType) {
+    try {
+      const res = await submitForm({...data, page: window.location.pathname})
+      if(res.success){
+          // toast.success(res.message)
+          toast.success('Thank you for your message!', {
+            description: 'We will get back to you soon.'
+          })
+          form.reset()
+          return
+      }
+      toast.error(res.message || "Something went wrong. Try again later")
+      
+  } catch (error) {
+      // console.log(error)
+      toast.error("Something went wrong. Try again later")
+  }
+
   }
 
   return (
