@@ -9,7 +9,6 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-//   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import {
   Sheet,
@@ -25,14 +24,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Download, Globe,  Menu, Plane,  } from "lucide-react";
-import { type SanityDocument } from "next-sanity";
-import imageUrlBuilder from "@sanity/image-url";
+import { Download,  Menu, Plane,  } from "lucide-react";
 
-// import { client } from "@/sanity/client";
-import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import { sanityFetch } from "@/sanity/lib/live";
 import { urlFor } from "@/sanity/lib/image";
+import NavbarLayout from "./navbar-layout";
 
 const navItems = [
 //   {
@@ -181,22 +177,12 @@ export default async function Navbar() {
     const { data: navbarData } = await sanityFetch({query: QUERY})
     const { data: prospectusData } = await sanityFetch({query: PROSPECTUS_QUERY})
 
-  // const navbarData = await client.fetch<SanityDocument>(QUERY, {});
-  // const prospectusData = await client.fetch<SanityDocument>(PROSPECTUS_QUERY, {});
-
   const prospectus = prospectusData[0]
   const navbar = navbarData[0]
 
-  //     const { projectId, dataset } = client.config();
-  // const urlFor = (source: SanityImageSource) =>
-  //   projectId && dataset
-  //     ? imageUrlBuilder({ projectId, dataset }).image(source)
-  //     : null;
 
-  console.log('prospectus', prospectus)
   return (
-    <>
-    <nav className="sticky top-0 z-50 bg-white border-b shadow-sm">
+    <NavbarLayout>
       <div className="flex items-center justify-between gap-2 p-2.5 xl:p-3 mx-auto">
         {/* Logo */}
         <div className="flex gap-3 items-center" >
@@ -208,8 +194,7 @@ export default async function Navbar() {
             width={50}
             height={50}
             alt="logo"
-            className=""
-            // priority
+            priority
           /> 
         </Link>
 
@@ -345,8 +330,6 @@ export default async function Navbar() {
           </SheetContent>
         </Sheet>
       </div>
-    </nav>
-    </>
-
+    </NavbarLayout>
   );
 }

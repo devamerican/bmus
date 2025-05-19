@@ -43,6 +43,14 @@ export const servicesSchema = defineType({
               type: 'string',
             }),
             defineField({
+              name: 'image',
+              title: 'Image',
+              type: 'image',
+              options: {
+                hotspot: true,
+              },
+            }),
+            defineField({
               name: 'title',
               title: 'Title',
               type: 'string',

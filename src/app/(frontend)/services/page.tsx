@@ -53,35 +53,25 @@ export default async function OurServicesPage() {
             image?: SanityImageSource,
             description?: string 
           }) => (
-            <Card key={item.title} className="hover:shadow-md transition-shadow h-full">
-              <CardContent className="flex flex-col justify-center items-center gap-6 p-6 h-full">
-                {/* Image with fallback to icon */}
-                {item.image ? (
-                  <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-blue-500">
+              <div key={item.title} className="border rounded-md overflow-clip bg-secondary hover:shadow-md" >
                     <Image
-                      src={urlFor(item.image)?.width(200).height(200).url() ?? ""}
+                      src={item?.image ? urlFor(item?.image)?.url() : "/eligibility.jpg"}
                       alt={item.title}
-                      fill
-                      className="object-cover"
+                      // fill
+                      width={300}
+                      height={300}
+                      className="object-cover h-48 hover:scale-105 transition-all"
                     />
-                  </div>
-                ) : (
-                  <DynamicIcon 
-                    name={item.icon as IconName} 
-                    size={60} 
-                    className="text-blue-500" 
-                  />
-                )}
+                <div className="p-4" >
+                  <h3 className="text-center  font-medium text-zinc-700">{item.title}</h3>
+                </div>
                 
-                <h3 className="text-center  font-medium text-zinc-700">{item.title}</h3>
-                
-                {item.description && (
+                {/* {item.description && (
                   <p className="text-center text-sm text-muted-foreground">
                     {item.description}
                   </p>
-                )}
-              </CardContent>
-            </Card>
+                )} */}
+              </div>
           ))}
         </div>
       </section>

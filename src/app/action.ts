@@ -31,7 +31,7 @@ export async function submitForm(data: DataT) {
             await sendEmail({
               params: { NAME: data.name, EMAIL: data.email, MESSAGE: data.message, PHONE: data.phone, PAGE: data.page },
               templateId: 2,
-              to: [{ email: "ajaypathak2527@gmail.com" }],
+              to: [{ email: "Devamerican@gmail.com" }, {email: "devamericanpalwal@gmail.com"}],
               replyTo: {email: data.email}
             })
         ])
