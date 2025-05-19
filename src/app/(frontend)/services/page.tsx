@@ -46,7 +46,7 @@ export default async function OurServicesPage() {
       <p className=" mx-auto mb-10">
               {services.description}
             </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {services.servicesItems.map((item: { 
             title: string, 
             icon: string,
@@ -60,7 +60,7 @@ export default async function OurServicesPage() {
                       // fill
                       width={300}
                       height={300}
-                      className="object-cover h-48 hover:scale-105 transition-all"
+                      className="object-cover w-full h-48 hover:scale-105 transition-all"
                     />
                 <div className="p-4" >
                   <h3 className="text-center  font-medium text-zinc-700">{item.title}</h3>
