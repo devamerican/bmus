@@ -49,7 +49,7 @@ export default function Hero({data}: {data: any}){
             {/* <div className="relative overflow-hidden bg-gradient-to-br from-black via-black/80 to-black"> */}
             <div className="relative overflow-hidden bg-gradient-to-br from-white via-sky-400/10 to-white"> 
                 {/* Content */}
-                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-20 md:py-28">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     {/* Left Column */}
                     <div className="text-black space-y-8">
@@ -66,7 +66,7 @@ export default function Hero({data}: {data: any}){
                         {data.subheading}
                     </p>
                     
-                    <div className="flex flex-col sm:flex-row gap-4">
+                    <div className="flex flex-row gap-4">
                         <Link href={data.cta.primary.href} >
                         <Button size="lg" variant="blue" className="bg-gradient-to-r from-indigo-500 to-blue-600 hover:from-indigo-600 hover:to-blue-700 text-white ">
                             {data.cta.primary.label}

@@ -270,7 +270,7 @@ export default async function Navbar() {
         <Sheet>
           <SheetTrigger asChild className="lg:hidden">
             <Button variant="ghost" size="icon" aria-label="Menu">
-              <Menu className="w-5 h-5" />
+              <Menu className="!size-5" />
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="overflow-y-auto">
@@ -317,13 +317,17 @@ export default async function Navbar() {
               </Accordion>
               <div className="flex flex-col space-y-2 mt-6">
                   <Link href={prospectus.pdfUrl} target="_blank" rel="noopener noreferrer">
+                  <SheetClose className="w-full" >
                     <Button variant="outline" className="w-full">
                       <Download />
                         Prospectus
                     </Button>
+                  </SheetClose>
                   </Link>
                   <Link href="/apply-online" >
-                    <Button className="w-full">  <Plane /> Apply Now</Button>
+                    <SheetClose className="w-full" >
+                      <Button className="w-full">  <Plane /> Apply Now</Button>
+                    </SheetClose>
                   </Link>
               </div>
             </div>
