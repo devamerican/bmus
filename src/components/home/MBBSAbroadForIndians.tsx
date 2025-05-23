@@ -9,16 +9,16 @@ const countries = [
         href: "/mbbs/russia",
     },
     {
-        flag: '/flags/flag-kazakhstan.jpg',
-        name: "Kazakhstan",
-        title: "8+ Universities",
-        href: "/mbbs/kazakhstan",
-    },
-    {
         flag: '/flags/flag-georgia.jpg',
         name: "Georgia",
         title: "20+ Colleges",
         href: "/mbbs/georgia",
+    },
+    {
+        flag: '/flags/flag-kazakhstan.jpg',
+        name: "Kazakhstan",
+        title: "8+ Universities",
+        href: "/mbbs/kazakhstan",
     },
     {
         flag: '/flags/flag-uzbekistan.jpg',

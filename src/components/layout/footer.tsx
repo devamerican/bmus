@@ -125,7 +125,7 @@ const Footer = () => {
                 <Facebook className="h-5 w-5" />
                 <a
                   target="_blank"
-                  href="https://facebook.com/100063787162813"
+                  href="https://www.facebook.com/share/1Bm1THt5LH/"
                   className="text-sm hover:opacity-75"
                 >
                   Facebook
@@ -135,7 +135,7 @@ const Footer = () => {
                 <Instagram className="h-5 w-5" />
                 <a
                   target="_blank"
-                  href="https://www.instagram.com/best_medical_university_"
+                  href="https://www.instagram.com/best_medical_university_?igsh=MTYybncwZmdja3h2Mw=="
                   className="text-sm hover:opacity-75"
                 >
                   Instagram

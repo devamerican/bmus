@@ -66,14 +66,14 @@ const navItems = [
         description: "Study medicine in Russia",
       },
       {
+        title: "MBBS in Georgia",
+        href: "/mbbs/georgia",
+        description: "Study medicine in Georgia",
+      },
+      {
         title: "MBBS in Kazakhstan",
         href: "/mbbs/kazakhstan",
         description: "Study medicine in Kazakhstan",
-      },
-      {
-        title: "MBBS in Kyrgyzstan",
-        href: "/mbbs/kyrgyzstan",
-        description: "Study medicine in kyrgyzstan",
       },
       {
         title: "MBBS in Uzbekistan",
@@ -81,9 +81,9 @@ const navItems = [
         description: "Study medicine in Uzbekistan",
       },
       {
-        title: "MBBS in Georgia",
-        href: "/mbbs/georgia",
-        description: "Study medicine in Georgia",
+        title: "MBBS in Kyrgyzstan",
+        href: "/mbbs/kyrgyzstan",
+        description: "Study medicine in kyrgyzstan",
       },
       {
         title: "MBBS in Bangladesh",
