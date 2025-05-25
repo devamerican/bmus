@@ -1,4 +1,4 @@
-import PhotoGallery from "./photo-gallery";
+import PhotoGallery from "../photo-gallery";
 import { urlFor } from "@/sanity/lib/image";
 import { sanityFetch } from "@/sanity/lib/live";
 

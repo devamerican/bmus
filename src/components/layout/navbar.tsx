@@ -146,20 +146,20 @@ const navItems = [
   // },
   {
     name: "Gallery",
-    href: "/gallery",
-    // items: [
-    //   {
-    //     title: "Photos",
-    //     href: "/photos",
-    //     description: "View our photo gallery",
-    //   },
-    //   {
-    //     title: "Videos",
-    //     href: "/videos",
-    //     description: "Watch our videos",
-    //     disabled: true
-    //   },
-    // ],
+    href: "#",
+    items: [
+      {
+        title: "Photos",
+        href: "/gallery/photos",
+        description: "View our photo gallery",
+      },
+      {
+        title: "Videos",
+        href: "/gallery/videos",
+        description: "Watch our videos",
+        disabled: true
+      },
+    ],
   },
   {
     name: "Contact Us",

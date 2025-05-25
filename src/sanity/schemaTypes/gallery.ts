@@ -17,35 +17,19 @@ export const gallerySchema =  defineType({
       type: 'string',
     }),
 
-    // defineField({
-    //   name: 'images',
-    //   title: 'Images',
-    //   type: 'array',
-    //   of: [
-    //     defineField({
-    //       name: 'imageItem',
-    //       type: 'object',
-    //       fields: [
-    //         defineField({
-    //           name: 'image',
-    //           title: 'Image',
-    //           type: 'image',
-    //           options: {
-    //             hotspot: true,
-    //           },
-    //           validation: Rule => Rule.required(),
-    //         }),
-    //         defineField({
-    //           name: 'alt',
-    //           title: 'Alt text for image',
-    //           type: 'string',
-    //           validation: Rule => Rule.required(),
-    //         }),
-    //       ]
-    //     })
-    // ]
-
-    // }),
+    defineField({
+      name: 'videos',
+      title: 'Videos',
+      type: 'array',
+      of: [
+        {
+          type: 'file',
+          options: {
+            hotspot: true,
+          },
+        },
+      ]
+    }),
 
     defineField({
       name: 'images',

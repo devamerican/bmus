@@ -40,7 +40,7 @@ export const metadata = {
 export default function ContactUs(){
     return(
         <section className="section-container my-10 ">
-            <h1 className="text-center text-h1 mb-16" >Contact US</h1>
+            <h1 className="text-center text-h1 mb-16" >Contact Us</h1>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5" >
                 <div className="max-w-3xl mx-auto space-y-5">
