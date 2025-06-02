@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Poppins } from "next/font/google";
+import { Geist, Geist_Mono, Poppins, Anton } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/navbar";
-import Footer from "@/components/layout/footer";
-import { Toaster } from 'sonner';
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -14,6 +11,12 @@ const poppins = Poppins({
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+});
+
+const anton = Anton({
+  variable: "--font-anton",
+  subsets: ["latin"],
+  weight: ["400"]
 });
 
 const geistMono = Geist_Mono({
@@ -88,7 +91,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.className} ${geistMono.variable} ${poppins.variable} antialiased`}
+        className={`${geistSans.className} ${poppins.variable}  antialiased`}
       >
         {/* <Toaster richColors /> */}
         {/* <Navbar /> */}

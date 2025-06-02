@@ -54,6 +54,11 @@ const navItems = [
         href: "/services",
         description: "Explore the services we offer",
       },
+      {
+        title: "Student Reviews",
+        href: "/student-reviews",
+        description: "Read our student reviews",
+      },
     ],
   },
   {
@@ -189,13 +194,16 @@ export default async function Navbar() {
 
         <Link href="/" className="flex-none">
 
+      <div className="flex items-center gap-2" >
         <Image
             src={urlFor(navbar.logo)?.width(300).height(300).url() ?? "" }
             width={50}
             height={50}
             alt="logo"
             priority
-          /> 
+            /> 
+          <span className="font-semibold leading-none tracking-widest font-(family-name:--font-poppins) text-xs text-blue-800" >Best <br /> Medical <br /> University <br /> Services</span>
+        </div>
         </Link>
 
         {/* Desktop Navigation */}

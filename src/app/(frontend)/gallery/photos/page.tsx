@@ -3,7 +3,7 @@ import { urlFor } from "@/sanity/lib/image";
 import { sanityFetch } from "@/sanity/lib/live";
 
 export const metadata = {
-  title: "Gallery",
+  title: "Photo Gallery",
   description: "BMUS Success Stories – A Photo Journey",
 }
 
