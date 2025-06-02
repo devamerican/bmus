@@ -48,6 +48,8 @@ export default async function AboutUs() {
           {aboutPageData?.intro?.content && <PortableText value={aboutPageData?.intro?.content} />}
         </div> 
 
+        <Image src="/certificate.png" alt="BMUS Certification" width={800} height={300} className="my-6" /> 
+
         {/* Achievements */}
         <div className="my-24">
           <h2 className="text-h2 mb-12">{aboutPageData?.achievements?.title}</h2>
