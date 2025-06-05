@@ -12,7 +12,7 @@ export default function BookCounseling(){
                 <Card className="px-6 md:px-8 lg:px-10 lg:py-0 lg:shadow-none lg:border-none basis-[45%]" >
                     <CardHeader className="mb-8 p-0" >
                         <CardTitle>
-                            <h2 className="text-h2" >Book Your Counseling Now!</h2>
+                            <h2 className="text-h2" >Book Your Counselling Now!</h2>
                         </CardTitle>
                             <p className="text-muted-foreground" >Fill in the details and our team will contact you in the next 24 hours!</p>
                     </CardHeader>

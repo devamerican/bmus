@@ -26,7 +26,7 @@ export default function WhatWeOffer({data}: {data: any}){
                         {
                             data.services.map((item: any) => (
                                 <div className=" flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.33%] xl:flex-[0_0_25%] min-w-0 flex flex-col items-center justify-center gap-4 p-4" key={item._key}>
-                                    <Image className='w-full aspect-[400/300] object-cover' src={urlFor(item.image)?.url() ?? "" } width={400} height={300} alt="hero" /> 
+                                    <Image className='w-full aspect-[400/300] object-cover rounded-md' src={urlFor(item.image)?.url() ?? "" } width={400} height={300} alt="hero" /> 
                                     <h3 className="text-lg ">{item.title}</h3>
                                 </div>
                             ))
