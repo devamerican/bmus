@@ -50,7 +50,7 @@ const usefulLinks = [
 
 const Footer = () => {
   return (
-    <footer className="bg-primary text-primary-foreground pt-12">
+    <footer className="bg-blue-900 text-primary-foreground pt-12">
       <div className="max-w-[1400px] mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Office Address Section */}
@@ -179,7 +179,7 @@ const Footer = () => {
         </div>
 
         {/* Copyright Section */}
-        <div className="mt-12 py-6 border-t text-muted-foreground border-zinc-800/75 text-center text-xs md:text-sm">
+        <div className="mt-12 py-6   text-center text-xs md:text-sm">
           <p>
             Copyright © 2024-25 | Best Medical University Services | Website 
             Owned by Vishnu Sharma

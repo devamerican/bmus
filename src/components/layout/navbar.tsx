@@ -266,7 +266,7 @@ export default async function Navbar() {
             <Button variant="ghost" > <Download /> Prospectus</Button>
           </Link>
           <Link href="/apply-online" >
-            <Button >
+            <Button variant="blue" >
                 <Plane />
                 Apply Now
             </Button>

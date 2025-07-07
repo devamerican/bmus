@@ -1,4 +1,4 @@
-// "use client"
+"use client"
 // import { useEffect } from 'react'
 // import useEmblaCarousel from 'embla-carousel-react'
 // import Autoplay from 'embla-carousel-autoplay'
@@ -7,6 +7,8 @@ import { ArrowRight, Globe2, GraduationCap } from 'lucide-react'
 import { Button } from '../ui/button'
 import Link from 'next/link'
 import { DynamicIcon, IconName } from 'lucide-react/dynamic'
+import { AuroraBackground } from '../ui/aurora-background'
+import { motion } from "motion/react"
 // import imageUrlBuilder from "@sanity/image-url";
 
 // import { client } from "@/sanity/client";
@@ -47,7 +49,19 @@ export default function Hero({data}: {data: any}){
 
             {/* <div className="relative overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900"> */}
             {/* <div className="relative overflow-hidden bg-gradient-to-br from-black via-black/80 to-black"> */}
-            <div className="relative overflow-hidden bg-gradient-to-br from-white via-sky-400/10 to-white"> 
+
+                <AuroraBackground>
+      <motion.div
+        initial={{ opacity: 0.0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          delay: 0.3,
+          duration: 0.8,
+          ease: "easeInOut",
+        }}
+        className="relative flex flex-col gap-4 items-center justify-center px-4"
+      >
+            <div className="relative overflow-hidden"> 
                 {/* Content */}
                 <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-20 md:py-28">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -98,6 +112,8 @@ export default function Hero({data}: {data: any}){
                 </div>
                 </div>
             </div>
+            </motion.div>
+            </AuroraBackground>
         </section>
     )
 }

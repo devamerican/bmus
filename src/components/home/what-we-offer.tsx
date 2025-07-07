@@ -9,7 +9,7 @@ export default function WhatWeOffer({data}: {data: any}){
     const [emblaRef] = useEmblaCarousel({ loop: true, align: 'start', dragFree: true })
 
     return(
-        <div id="services" className=" py-10 xl:py-20 scroll-mt-16" >
+        <div id="services" className=" py-10 xl:py-20 scroll-mt-16 bg-blue-900 text-white" >
 
         <section className="section-container text-center " >
             <h2 className="text-h2 mb-6 " >{data.heading}</h2>

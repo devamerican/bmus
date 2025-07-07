@@ -6,7 +6,7 @@ export default function BookCounseling(){
     return(
         <section id="book_counseling" className="section-container flex flex-col lg:flex-row  gap-6 scroll-mt-20" >
             <div className="basis-[55%]" >
-                <Image className="object-cover w-full" src="/bmus-abroad.jpg" width={1600} height={1200} alt="book your counselling" />
+                <Image className="object-cover w-full rounded-lg" src="/bmus-abroad.jpg" width={1600} height={1200} alt="book your counselling" />
             </div>
                 {/* <Card className="bg-primary text-primary-foreground p-6 md:p-8 lg:p-10" > */}
                 <Card className="px-6 md:px-8 lg:px-10 lg:py-0 lg:shadow-none lg:border-none basis-[45%]" >
