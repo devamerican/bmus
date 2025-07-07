@@ -110,7 +110,7 @@ export default function CounselingForm({ theme = "light" }: CounselingFormProps)
             </FormItem>
           )}
         />
-        <Button variant={theme === "dark" ? "secondary" : "default"} disabled={form.formState.isSubmitting} type="submit">
+        <Button variant={"blue"} disabled={form.formState.isSubmitting} type="submit">
           {form.formState.isSubmitting ? (
             <>
               <Loader className="animate-spin" /> Submitting

@@ -2,6 +2,7 @@
 import { sanityFetch } from '@/sanity/lib/live';
 import { DynamicIcon, type IconName} from 'lucide-react/dynamic'; 
 import { type SanityDocument } from "next-sanity";
+import WhyStudyMbbsAbroadCard from './why-study-mbbs-abroad-card';
 
   
 export const metadata = {
@@ -23,10 +24,11 @@ export default async function WhyStudyMbbsAbroad() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" >
         {
             data.items?.map((item: any) => (
-                <div key={item._key} className="p-8 sm:p-10 min-h-56  rounded-xl bg-muted"> 
-                    <DynamicIcon name={item.icon as IconName} size={42} className='mb-6 text-blue-500' />
-                    <h3 className="text-lg font-semibold text-muted-foreground">{item.title}</h3>
-                </div>
+              <WhyStudyMbbsAbroadCard key={item._key} item={item} />
+                // <div key={item._key} className="p-8 sm:p-10 min-h-56  rounded-xl bg-muted"> 
+                //     <DynamicIcon name={item.icon as IconName} size={42} className='mb-6 text-blue-500' />
+                //     <h3 className="text-lg font-semibold text-muted-foreground">{item.title}</h3>
+                // </div>
             ))
         }
       </div>

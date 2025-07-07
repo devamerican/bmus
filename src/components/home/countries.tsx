@@ -10,7 +10,7 @@ export default function Countries({data}: {data: any}){
                 {
                     data.countries.map((country: any, i: number) => (
                         <div key={i} >
-                            <Image className="object-cover" src={urlFor(country.image)?.width(800).height(600).url() ?? ""} width={800} height={600} alt={country.country} /> 
+                            <Image className="object-cover rounded-lg" src={urlFor(country.image)?.width(800).height(600).url() ?? ""} width={800} height={600} alt={country.country} /> 
                             <h4 className="text-center text-lg font-semibold mt-2" >{country.country}</h4>
                         </div>  
                     ))
