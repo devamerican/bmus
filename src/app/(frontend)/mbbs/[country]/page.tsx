@@ -4,12 +4,36 @@ import { notFound } from 'next/navigation';
 import { SimpleTable } from '@/components/layout/simple-table';
 import { sanityFetch } from '@/sanity/lib/live';
 import { urlFor } from '@/sanity/lib/image';
+import type { Metadata } from 'next';
 
 
 
 type MBBSInCountryPageProps = {
   params: Promise<{country: string}>
 }
+
+
+export async function generateMetadata({params}: MBBSInCountryPageProps){
+  const countrySlug = (await params).country
+  const country = countrySlug.charAt(0).toUpperCase() + countrySlug.slice(1)
+
+  return {
+   title: `MBBS in ${country} | MBBS in ${country} for Indian Students`,
+   description:
+     `Study MBBS in ${country} with BMUS. NMC approved universities, affordable tuition fees, English-medium education & high-quality medical training.`,
+   keywords: [
+     `MBBS in ${country}`,
+     `study medicine in ${country}`,
+     `MBBS ${country} fees`,
+   ],
+   alternates: {
+     canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/mbbs-in-russia`,
+   },
+  };
+
+}
+
+
 
 export default async function MBBSInCountryPage({params}: MBBSInCountryPageProps) {
   // All content stored in a variable

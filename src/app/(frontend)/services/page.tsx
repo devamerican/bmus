@@ -4,12 +4,21 @@ import { DynamicIcon, IconName } from "lucide-react/dynamic";
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import { sanityFetch } from "@/sanity/lib/live";
 import { urlFor } from "@/sanity/lib/image";
+import type { Metadata } from "next";
 
-export const metadata = {
-  title: "Our Services",
-  description: "Different Services provided by BMUS",
-}
-
+export const metadata: Metadata = {
+  title: "Our Services | MBBS Abroad Admission & Visa Support – Counseling",
+  description:
+    "BMUS offers complete MBBS abroad services counseling, university selection, admission process, visa assistance & student support.",
+  keywords: [
+    "MBBS abroad services",
+    "medical admission support",
+    "study abroad services",
+  ],
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/services`,
+  },
+};
 export default async function OurServicesPage() {
   const QUERY = `*[_type == "services"]`
   const { data: servicesData } = await sanityFetch({query: QUERY})

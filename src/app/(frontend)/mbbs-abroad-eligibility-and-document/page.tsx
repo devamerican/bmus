@@ -1,4 +1,5 @@
 import { Check } from "lucide-react";
+import type { Metadata } from "next";
 import Image from "next/image";
 
 const studyAbroadEligibility = [
@@ -15,10 +16,20 @@ const studyAbroadDocument = [
   "An agreement letter from parents.",
 ];
 
-export const metadata = {
-  title: "MBBS Abroad Eligibility and Document",
-  description: "MBBS Abroad Eligibility and Document for BMUS MBBS Abroad Program",
-}
+export const metadata: Metadata = {
+  title: "MBBS Abroad Eligibility & Admission Process",
+  description:
+    "Check MBBS abroad eligibility criteria, age limit, NEET requirements & admission process for Indian students with BMUS.",
+  keywords: [
+    "MBBS eligibility abroad",
+    "NEET MBBS abroad",
+    "MBBS admission process",
+  ],
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/eligibility`,
+  },
+};
+
 
 export default function MbbsAbroadEligibilityAndDocument() {
   return (

@@ -3,11 +3,20 @@ import { DynamicIcon, IconName } from "lucide-react/dynamic";
 import { PortableText } from "next-sanity";
 import { sanityFetch } from "@/sanity/lib/live";
 import { urlFor } from "@/sanity/lib/image";
+import type { Metadata } from "next";
 
 
-export const metadata = {
-    title: "About Us",
-    description: "BMUS helps students to study abroad in the best medical universities of the world.",
+export const metadata: Metadata = {
+    title: "Trusted MBBS Abroad Education Consultants",
+    description: "Learn about BMUS, a trusted MBBS abroad consultancy helping students study medicine in top global universities.",
+    keywords: [
+      "about BMUS",
+      "medical education consultants",
+      "MBBS abroad guidance",
+    ],
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/about-us`
+    }
 }
 
 

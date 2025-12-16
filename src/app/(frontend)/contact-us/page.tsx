@@ -2,11 +2,23 @@ import CounselingForm from "@/components/home/counseling-form";
 import { Building, Mail, MapPin, Phone } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import Link from "next/link";
+import type { Metadata } from "next";
 
-export const metadata = {
-  title: "Contact Us",
-  description: "Contact Us for BMUS MBBS Abroad Program",
+export const metadata: Metadata = {
+  title:
+    "Contact BMUS | MBBS Abroad Counseling & Admissions Support",
+  description:
+    "Contact BMUS for expert MBBS abroad counseling. Get personalized guidance, university selection & admission support today.",
+  keywords: [
+    "contact BMUS",
+    "MBBS abroad counseling",
+    "medical admission help",
+  ],
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/contact-us`,
+  },
 };
+
 
 export default function ContactUs() {
   return (
