@@ -43,7 +43,7 @@ const usefulLinks = [
   { title: "Why MBBS Abroad", href: "/why-study-mbbs-abroad" },
   { title: "Services", href: "/services" },
   // { title: "News & Events", href: "/news-and-events" },
-  { title: "Countries", href: "/countries" },
+  { title: "FAQ's", href: "/mbbs-abroad-faq" },
   // { title: "Blog", href: "/blog" },
   { title: "Contact Us", href: "/contact-us" },
 ];
