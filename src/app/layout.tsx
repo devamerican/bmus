@@ -13,54 +13,24 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const anton = Anton({
-  variable: "--font-anton",
-  subsets: ["latin"],
-  weight: ["400"]
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL!),
   title: {
-    default: "BMUS - Best Medical University Services",
+    default: "Best Medical University Services | MBBS Abroad Consultants in palwal, Haryana, India",
     template: "%s | BMUS",
   },
-  description: "BMUS is a platform that provides affordable and quality medical services to students from all over the world.",
+  description: "BMUS helps Indian students get MBBS admission abroad in NMC & WHO approved medical universities. Low fees, expert counseling, visa support & post-arrival assistance.",
   keywords: [
-    "bmus",
-    "best medical university services",
-    "medical services",
-    "medical school",
-    "medical university",
-    "medical college",
-    "bmus medical services",
-    "bmus medical school",
-    "bmus medical university",
-    "bmus medical college",
-    "study abroad",
-    "study abroad programs",
-    "study abroad opportunities",
-    "study abroad destinations",
-    "study abroad countries",
-    "study abroad programs",
-    "study abroad opportunities",
-    "study abroad destinations",
-    "study abroad countries",
-    "study abroad mbbs",
-    "mbbs",
+    "MBBS abroad",
+    "MBBS admission abroad",
+    "BMUS",
+    "medical education overseas",
+    "MBBS consultants India"
   ],
-  // twitter: {
-  //   card: "summary_large_image",
-  //   creator: "@itsajaygaur",
-  //   title: "Ajay Gaur",
-  //   description: "Personal portfolio website of Ajay Gaur built with Next.js",
-  //   images: [`${process.env.NEXT_PUBLIC_BASE_URL!}/opengraph-image.png`],
-  // },
+  alternates:{
+    canonical: `${process.env.NEXT_PUBLIC_BASE_URL}`,
+  },
   robots: {
     index: true,
     follow: true,
@@ -93,10 +63,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.className} ${poppins.variable}  antialiased`}
       >
-        {/* <Toaster richColors /> */}
-        {/* <Navbar /> */}
         {children}
-        {/* <Footer /> */}
       </body>
     </html>
   );
