@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -24,17 +23,17 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Download,  Menu, Plane,  } from "lucide-react";
+import { Download, Menu, Plane } from "lucide-react";
 
 import { sanityFetch } from "@/sanity/lib/live";
 import { urlFor } from "@/sanity/lib/image";
 import NavbarLayout from "./navbar-layout";
 
 const navItems = [
-//   {
-//     name: "Home",
-//     href: "/",
-//   },
+  //   {
+  //     name: "Home",
+  //     href: "/",
+  //   },
   {
     name: "About Us",
     href: "#",
@@ -94,17 +93,17 @@ const navItems = [
         title: "MBBS in Bangladesh",
         href: "/mbbs/bangladesh",
         description: "Study medicine in Bangladesh",
-      },    
+      },
       {
         title: "MBBS in Mauritius",
         href: "/mbbs/mauritius",
         description: "Study medicine in Mauritius",
-      },    
+      },
       {
         title: "MBBS in Nepal",
         href: "/mbbs/nepal",
         description: "Study medicine in Nepal",
-      },    
+      },
     ],
   },
   {
@@ -162,7 +161,7 @@ const navItems = [
         title: "Videos",
         href: "/gallery/videos",
         description: "Watch our videos",
-        disabled: true
+        disabled: true,
       },
     ],
   },
@@ -173,106 +172,117 @@ const navItems = [
 ];
 
 export default async function Navbar() {
-
-  const QUERY = `*[_type == "navbar"]`
+  const QUERY = `*[_type == "navbar"]`;
   const PROSPECTUS_QUERY = `*[_type == "prospectus"]{
         "pdfUrl": prospectus.asset->url
-      }`
+      }`;
 
-    const { data: navbarData } = await sanityFetch({query: QUERY})
-    const { data: prospectusData } = await sanityFetch({query: PROSPECTUS_QUERY})
+  const { data: navbarData } = await sanityFetch({ query: QUERY });
+  const { data: prospectusData } = await sanityFetch({
+    query: PROSPECTUS_QUERY,
+  });
 
-  const prospectus = prospectusData[0]
-  const navbar = navbarData[0]
-
+  const prospectus = prospectusData[0];
+  const navbar = navbarData[0];
 
   return (
     <NavbarLayout>
       <div className="flex items-center justify-between gap-2 p-2.5 xl:p-3 mx-auto">
         {/* Logo */}
-        <div className="flex gap-3 items-center" >
+        <div className="flex gap-3 items-center">
+          <Link href="/" className="flex-none">
+            <div className="flex items-center gap-2">
+              <Image
+                src={urlFor(navbar.logo)?.width(300).height(300).url() ?? ""}
+                width={50}
+                height={50}
+                alt="logo"
+                priority
+              />
+              <span className="font-semibold leading-none tracking-widest font-(family-name:--font-poppins) text-xs text-blue-800">
+                Best <br /> Medical <br /> University <br /> Services
+              </span>
+            </div>
+          </Link>
 
-        <Link href="/" className="flex-none">
+          {/* Desktop Navigation */}
+          <div className="hidden lg:block">
+            <NavigationMenu>
+              <NavigationMenuList>
+                {navItems.map((item) => {
+                  // If the item has no subitems, render a simple link
+                  if (!item.items) {
+                    return (
+                      <NavigationMenuItem key={item.name}>
+                        <Link href={item.href} passHref>
+                          {/* <NavigationMenuLink className={navigationMenuTriggerStyle()}> */}
+                          <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 data-[active=true]:bg-accent/50 data-[state=open]:bg-accent/50 data-[active=true]:text-accent-foreground ring-ring/10 dark:ring-ring/20 dark:outline-ring/40 outline-ring/50 transition-[color,box-shadow] focus-visible:ring-4 focus-visible:outline-1">
+                            {item.name}
+                          </NavigationMenuLink>
+                        </Link>
+                      </NavigationMenuItem>
+                    );
+                  }
 
-      <div className="flex items-center gap-2" >
-        <Image
-            src={urlFor(navbar.logo)?.width(300).height(300).url() ?? "" }
-            width={50}
-            height={50}
-            alt="logo"
-            priority
-            /> 
-          <span className="font-semibold leading-none tracking-widest font-(family-name:--font-poppins) text-xs text-blue-800" >Best <br /> Medical <br /> University <br /> Services</span>
-        </div>
-        </Link>
-
-        {/* Desktop Navigation */}
-        <div className="hidden lg:block">
-          <NavigationMenu>
-            <NavigationMenuList>
-              {navItems.map((item) => {
-                // If the item has no subitems, render a simple link
-                if (!item.items) {
+                  // If the item has subitems, render a dropdown
                   return (
                     <NavigationMenuItem key={item.name}>
-                      <Link href={item.href} legacyBehavior passHref>
-                        {/* <NavigationMenuLink className={navigationMenuTriggerStyle()}> */}
-                        <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 data-[active=true]:bg-accent/50 data-[state=open]:bg-accent/50 data-[active=true]:text-accent-foreground ring-ring/10 dark:ring-ring/20 dark:outline-ring/40 outline-ring/50 transition-[color,box-shadow] focus-visible:ring-4 focus-visible:outline-1" >
-                          {item.name}
-                        </NavigationMenuLink>
-                      </Link>
+                      <NavigationMenuTrigger className="px-3">
+                        {item.name}
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:grid-cols-3 lg:w-[600px] xl:w-[760px]">
+                          {item.items?.map((subitem, index) => (
+                            <li key={index}>
+                              <NavigationMenuLink asChild>
+                                <Link
+                                  href={subitem.href}
+                                  className="block p-3 space-y-1 leading-none no-underline rounded-md outline-none select-none hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                                >
+                                  <div className="text-sm font-medium leading-none">
+                                    {subitem.title}
+                                  </div>
+                                  {subitem.description && (
+                                    <p className="text-sm leading-snug text-muted-foreground">
+                                      {subitem.description}
+                                    </p>
+                                  )}
+                                </Link>
+                              </NavigationMenuLink>
+                            </li>
+                          ))}
+                        </ul>
+                      </NavigationMenuContent>
                     </NavigationMenuItem>
                   );
-                }
-
-                // If the item has subitems, render a dropdown
-                return (
-                  <NavigationMenuItem key={item.name}>
-                    <NavigationMenuTrigger className="px-3" >{item.name}</NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:grid-cols-3 lg:w-[600px] xl:w-[760px]">
-                        {item.items?.map((subitem, index) => (
-                          <li key={index}>
-                            <NavigationMenuLink asChild>
-                              <Link
-                                href={subitem.href}
-                                className="block p-3 space-y-1 leading-none no-underline rounded-md outline-none select-none hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                              >
-                                <div className="text-sm font-medium leading-none">{subitem.title}</div>
-                                {subitem.description && (
-                                  <p className="text-sm leading-snug text-muted-foreground">
-                                    {subitem.description}
-                                  </p>
-                                )}
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
-                        ))}
-                      </ul>
-                    </NavigationMenuContent>
-                  </NavigationMenuItem>
-                );
-              })}
-            </NavigationMenuList>
-          </NavigationMenu>
-        </div>
+                })}
+              </NavigationMenuList>
+            </NavigationMenu>
+          </div>
         </div>
 
         {/* CTA Buttons */}
         {/* <div className="hidden lg:flex gap-2">
         </div> */}
-        <div className="flex gap-2 items-center max-lg:hidden " >
-          <Link href={prospectus.pdfUrl} target="_blank" rel="noopener noreferrer">
-            <Button variant="ghost" > <Download /> Prospectus</Button>
+        <div className="flex gap-2 items-center max-lg:hidden ">
+          <Link
+            href={prospectus.pdfUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button variant="ghost">
+              {" "}
+              <Download /> Prospectus
+            </Button>
           </Link>
-          <Link href="/apply-online" >
-            <Button variant="blue" >
-                <Plane />
-                Apply Now
+          <Link href="/apply-online">
+            <Button variant="blue">
+              <Plane />
+              Apply Now
             </Button>
           </Link>
         </div>
-          {/* <Button>Apply Now</Button> */}
+        {/* <Button>Apply Now</Button> */}
 
         {/* Mobile Menu Button */}
         <Sheet>
@@ -294,29 +304,30 @@ export default async function Navbar() {
                         href={item.href}
                         className="flex items-center py-2 text-base font-medium transition-colors hover:text-primary"
                       >
-                        <SheetClose>
-                            {item.name}
-                        </SheetClose>
+                        <SheetClose>{item.name}</SheetClose>
                       </Link>
                     ) : (
-                      <AccordionItem value={`item-${idx}`} className="border-b-0">
+                      <AccordionItem
+                        value={`item-${idx}`}
+                        className="border-b-0"
+                      >
                         <AccordionTrigger className="py-2 text-base font-medium">
                           {item.name}
                         </AccordionTrigger>
                         <AccordionContent>
-                            <div className="pl-4 space-y-2">
-                                {item.items.map((subitem, subIdx) => (
-                                    <Link
-                                    key={subIdx}
-                                    href={subitem.href}
-                                    className="block py-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                                    >
-                                    <SheetClose key={subIdx} className="text-start" >  
-                                        {subitem.title}
-                                    </SheetClose>
-                                </Link>
-                                ))}
-                            </div>
+                          <div className="pl-4 space-y-2">
+                            {item.items.map((subitem, subIdx) => (
+                              <Link
+                                key={subIdx}
+                                href={subitem.href}
+                                className="block py-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                              >
+                                <SheetClose key={subIdx} className="text-start">
+                                  {subitem.title}
+                                </SheetClose>
+                              </Link>
+                            ))}
+                          </div>
                         </AccordionContent>
                       </AccordionItem>
                     )}
@@ -324,19 +335,26 @@ export default async function Navbar() {
                 ))}
               </Accordion>
               <div className="flex flex-col space-y-2 mt-6">
-                  <Link href={prospectus.pdfUrl} target="_blank" rel="noopener noreferrer">
-                  <SheetClose className="w-full" >
+                <Link
+                  href={prospectus.pdfUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <SheetClose className="w-full">
                     <Button variant="outline" className="w-full">
                       <Download />
-                        Prospectus
+                      Prospectus
                     </Button>
                   </SheetClose>
-                  </Link>
-                  <Link href="/apply-online" >
-                    <SheetClose className="w-full" >
-                      <Button className="w-full">  <Plane /> Apply Now</Button>
-                    </SheetClose>
-                  </Link>
+                </Link>
+                <Link href="/apply-online">
+                  <SheetClose className="w-full">
+                    <Button className="w-full">
+                      {" "}
+                      <Plane /> Apply Now
+                    </Button>
+                  </SheetClose>
+                </Link>
               </div>
             </div>
           </SheetContent>
