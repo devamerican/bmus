@@ -1,5 +1,6 @@
 import { Facebook, Instagram, Mail, MapPin, Phone, Twitter } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
+import { FiYoutube } from "react-icons/fi";
 
 import Link from "next/link";
 
@@ -149,6 +150,16 @@ const Footer = () => {
                   className="text-sm hover:opacity-75"
                 >
                   Whatsapp
+                </a>
+              </div>
+              <div className="flex items-center gap-2">
+                <FiYoutube className="h-5 w-5" />
+                <a
+                  target="_blank"
+                  href="https://www.youtube.com/@BestMedicalUniversityServices"
+                  className="text-sm hover:opacity-75"
+                >
+                  Youtube
                 </a>
               </div>
             </div>

@@ -214,12 +214,14 @@ export default async function Navbar() {
                   if (!item.items) {
                     return (
                       <NavigationMenuItem key={item.name}>
-                        <Link href={item.href} passHref>
-                          {/* <NavigationMenuLink className={navigationMenuTriggerStyle()}> */}
-                          <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 data-[active=true]:bg-accent/50 data-[state=open]:bg-accent/50 data-[active=true]:text-accent-foreground ring-ring/10 dark:ring-ring/20 dark:outline-ring/40 outline-ring/50 transition-[color,box-shadow] focus-visible:ring-4 focus-visible:outline-1">
+                        <NavigationMenuLink asChild>
+                          <Link
+                            href={item.href}
+                            className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 data-[active=true]:bg-accent/50 data-[state=open]:bg-accent/50 data-[active=true]:text-accent-foreground ring-ring/10 dark:ring-ring/20 dark:outline-ring/40 outline-ring/50 transition-[color,box-shadow] focus-visible:ring-4 focus-visible:outline-1"
+                          >
                             {item.name}
-                          </NavigationMenuLink>
-                        </Link>
+                          </Link>
+                        </NavigationMenuLink>
                       </NavigationMenuItem>
                     );
                   }
@@ -270,7 +272,7 @@ export default async function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Button variant="ghost">
+            <Button variant="outline">
               {" "}
               <Download /> Prospectus
             </Button>
@@ -300,12 +302,14 @@ export default async function Navbar() {
                 {navItems.map((item, idx) => (
                   <div key={idx} className="py-1">
                     {!item.items ? (
-                      <Link
-                        href={item.href}
-                        className="flex items-center py-2 text-base font-medium transition-colors hover:text-primary"
-                      >
-                        <SheetClose>{item.name}</SheetClose>
-                      </Link>
+                      <SheetClose asChild>
+                        <Link
+                          href={item.href}
+                          className="flex items-center py-2 text-base font-medium transition-colors hover:text-primary"
+                        >
+                          {item.name}
+                        </Link>
+                      </SheetClose>
                     ) : (
                       <AccordionItem
                         value={`item-${idx}`}
@@ -317,15 +321,14 @@ export default async function Navbar() {
                         <AccordionContent>
                           <div className="pl-4 space-y-2">
                             {item.items.map((subitem, subIdx) => (
-                              <Link
-                                key={subIdx}
-                                href={subitem.href}
-                                className="block py-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                              >
-                                <SheetClose key={subIdx} className="text-start">
+                              <SheetClose asChild key={subIdx}>
+                                <Link
+                                  href={subitem.href}
+                                  className="block py-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                                >
                                   {subitem.title}
-                                </SheetClose>
-                              </Link>
+                                </Link>
+                              </SheetClose>
                             ))}
                           </div>
                         </AccordionContent>
@@ -335,26 +338,25 @@ export default async function Navbar() {
                 ))}
               </Accordion>
               <div className="flex flex-col space-y-2 mt-6">
-                <Link
-                  href={prospectus.pdfUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <SheetClose className="w-full">
-                    <Button variant="outline" className="w-full">
+                <SheetClose asChild>
+                  <Button asChild variant="outline" className="w-full">
+                    <Link
+                      href={prospectus.pdfUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <Download />
                       Prospectus
-                    </Button>
-                  </SheetClose>
-                </Link>
-                <Link href="/apply-online">
-                  <SheetClose className="w-full">
-                    <Button className="w-full">
-                      {" "}
+                    </Link>
+                  </Button>
+                </SheetClose>
+                <SheetClose asChild>
+                  <Button asChild variant="blue" className="w-full">
+                    <Link href="/apply-online">
                       <Plane /> Apply Now
-                    </Button>
-                  </SheetClose>
-                </Link>
+                    </Link>
+                  </Button>
+                </SheetClose>
               </div>
             </div>
           </SheetContent>

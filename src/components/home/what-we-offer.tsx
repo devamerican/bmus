@@ -16,7 +16,7 @@ export default function WhatWeOffer({data}: {data: any}){
             <h3 className="text-h3 mb-2 " >{data.subheading}</h3> 
             {/* <p className="max-w-4xl mx-auto mb-10 text-muted-foreground" >Education Abroad Services, offer a wide-ranging portfolio of outstanding and brilliantly managed services right from pre-admission to post landing services designed to suit the individual needs of the students.</p> */}
             <div className="mb-8" >
-                <PortableText value={data.content} />
+                <p className="max-w-4xl mx-auto whitespace-pre-wrap" >{data.content}</p>
             </div>
 
 
