@@ -12,43 +12,44 @@ const slides = [
     {
         title: "STUDY MEDICINE ABROAD",
         subtitle: "WHO & ECFMG Accredited Universities",
-        image: "/students.jpg",
+        image: "https://images.unsplash.com/photo-1631815587646-b85a1bb027e1?q=80&w=2070&auto=format&fit=crop",
         cta: "Apply Now",
         link: "/contact"
     },
     {
         title: "STUDY IN UK, USA, GERMANY, CANADA",
         subtitle: "STUDY ABROAD PROGRAMS",
-        image: "/bmus-abroad.jpg",
+        image: "/hero-img.jpg",
         cta: "Explore Programs",
         link: "/courses"
     },
     {
         title: "CAUCASUS UNIVERSITY, GEORGIA",
         subtitle: "Best University in Georgia located in the Capital City Tbilisi",
-        image: "/hero-img.jpg",
+        image: "/rut-miit.jpg",
         cta: "Learn More",
         link: "/georgia"
     },
     {
         title: "EAST WEST UNIVERSITY GEORGIA",
         subtitle: "Where Excellence Meets Diversity",
-        image: "/Kazakhstan.jpg",
+        image: "https://images.unsplash.com/photo-1519452575417-564c1401ecc0?q=80&w=2070&auto=format&fit=crop",
         cta: "View Campus",
         link: "/georgia"
     },
     {
         title: "INTERNATIONAL BLACK SEA UNIVERSITY",
         subtitle: "Located In Capital City Of Georgia, Tbilisi",
-        image: "/russia.jpg",
+        image: "/camilo-botia.jpg",
         cta: "Get Started",
         link: "/georgia"
     }
+
 ]
 
 export default function CeecoHero() {
     const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 40 }, [
-        Autoplay({ delay: 5000, stopOnInteraction: false })
+        Autoplay({ delay: 5000, stopOnInteraction: true })
     ])
 
     const [selectedIndex, setSelectedIndex] = useState(0)
@@ -76,11 +77,12 @@ export default function CeecoHero() {
                     {slides.map((slide, index) => (
                         <div className="flex-[0_0_100%] min-w-0 relative h-full w-full" key={index}>
                             <Image
-                                className="w-full h-full object-cover brightness-[0.6]"
-                                src={slide.image}
+                                className="w-full h-full object-cover object-center brightness-[0.6]"
+                                src={slide.image.startsWith("/") ? slide.image : `${slide.image}&crop=entropy`}
                                 fill
                                 priority={index === 0}
                                 alt={slide.title}
+                                sizes="100vw"
                             />
                             {/* Overlay Gradient */}
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
