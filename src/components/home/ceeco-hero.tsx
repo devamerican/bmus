@@ -19,7 +19,7 @@ const slides = [
     {
         title: "STUDY IN UK, USA, GERMANY, CANADA",
         subtitle: "STUDY ABROAD PROGRAMS",
-        image: "/hero-img.jpg",
+        image: "/javier-trueba.jpg",
         cta: "Explore Programs",
         link: "/courses"
     },
