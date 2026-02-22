@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import { Toaster } from 'sonner';
-import { SanityLive } from '@/sanity/lib/live'
 
 
 // const poppins = Poppins({
@@ -88,13 +87,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-      <>
-        <Toaster richColors />
-        <Navbar />
-        {children}
-        <SanityLive />
-        <Footer />
-      </>
+    <>
+      <Toaster richColors />
+      <Navbar />
+      {children}
+      <Footer />
+    </>
 
   );
 }

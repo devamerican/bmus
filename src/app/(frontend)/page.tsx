@@ -6,21 +6,25 @@ import CeecoHero from "@/components/home/ceeco-hero";
 import HomeCtaSection from "@/components/home/cta-section";
 import StudentsSay from "@/components/home/students-say";
 import WhatWeOffer from "@/components/home/what-we-offer";
+import VideoReviews from "@/components/home/video-reviews";
 
 import MBBSAbroadForIndians from "@/components/home/MBBSAbroadForIndians";
-import { sanityFetch } from "@/sanity/lib/live";
+import { cachedSanityFetch } from "@/sanity/lib/fetch";
 
 
 export default async function Home() {
 
-  const QUERY = `*[_type == "homepage"]`
-  const { data: result } = await sanityFetch({ query: QUERY })
+  const HOMEPAGE_QUERY = `*[_type == "homepage"]`
+  const result = await cachedSanityFetch<any[]>(HOMEPAGE_QUERY)
   const data = result[0]
 
 
   return (
     <main className="space-y-10 md:space-y-16 lg:space-y-32 mb-10" >
       <CeecoHero />
+
+      <VideoReviews />
+
       <Hero data={data.hero} />
       <EducationAbroad data={data.hero2} />
       <MBBSAbroadForIndians />

@@ -1,6 +1,6 @@
 import PhotoGallery from "../photo-gallery";
 import { urlFor } from "@/sanity/lib/image";
-import { sanityFetch } from "@/sanity/lib/live";
+import { cachedSanityFetch } from "@/sanity/lib/fetch";
 
 export const metadata = {
   title: "Photo Gallery",
@@ -9,8 +9,8 @@ export const metadata = {
 
 export default async function Gallery() {
 
-  const  QUERY = `*[_type == "gallery"]`
-  const { data: galleryData } = await sanityFetch({query: QUERY})
+  const QUERY = `*[_type == "gallery"]`
+  const galleryData = await cachedSanityFetch<any[]>(QUERY)
   const gallery = galleryData[0]
 
   const images = gallery.images.map((image: any) => urlFor(image)?.url() ?? "")

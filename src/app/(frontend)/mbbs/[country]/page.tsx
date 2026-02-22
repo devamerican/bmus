@@ -2,59 +2,59 @@ import Image from 'next/image';
 import { PortableText } from 'next-sanity';
 import { notFound } from 'next/navigation';
 import { SimpleTable } from '@/components/layout/simple-table';
-import { sanityFetch } from '@/sanity/lib/live';
+import { cachedSanityFetch } from '@/sanity/lib/fetch';
 import { urlFor } from '@/sanity/lib/image';
 import type { Metadata } from 'next';
 
 
 
 type MBBSInCountryPageProps = {
-  params: Promise<{country: string}>
+  params: Promise<{ country: string }>
 }
 
 
-export async function generateMetadata({params}: MBBSInCountryPageProps){
+export async function generateMetadata({ params }: MBBSInCountryPageProps) {
   const countrySlug = (await params).country
   const country = countrySlug.charAt(0).toUpperCase() + countrySlug.slice(1)
 
   return {
-   title: `MBBS in ${country} | MBBS in ${country} for Indian Students`,
-   description:
-     `Study MBBS in ${country} with BMUS. NMC approved universities, affordable tuition fees, English-medium education & high-quality medical training.`,
-   keywords: [
-     `MBBS in ${country}`,
-     `study medicine in ${country}`,
-     `MBBS ${country} fees`,
-   ],
-   alternates: {
-     canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/mbbs-in-russia`,
-   },
+    title: `MBBS in ${country} | MBBS in ${country} for Indian Students`,
+    description:
+      `Study MBBS in ${country} with BMUS. NMC approved universities, affordable tuition fees, English-medium education & high-quality medical training.`,
+    keywords: [
+      `MBBS in ${country}`,
+      `study medicine in ${country}`,
+      `MBBS ${country} fees`,
+    ],
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/mbbs-in-russia`,
+    },
   };
 
 }
 
 
 
-export default async function MBBSInCountryPage({params}: MBBSInCountryPageProps) {
+export default async function MBBSInCountryPage({ params }: MBBSInCountryPageProps) {
   // All content stored in a variable
   // const slugParam = await params 
   // const countryFromParam = slugParam.country
 
   const QUERY = `*[_type == "mbbsInCountry"][slug.current == $country][0]`
 
-  const { data: pageContent } = await sanityFetch({query: QUERY, params: await params })
+  const pageContent = await cachedSanityFetch<any>(QUERY, await params)
 
-  if(!pageContent) return notFound()
+  if (!pageContent) return notFound()
 
 
   return (
     <div className=" bg-gray-50">
       {/* Hero Section with Russian Landmark */}
       <section className="relative h-96">
-        <Image 
-          src={urlFor(pageContent.bg_image)?.url() ?? "" }
-          alt="Saint Basil's Cathedral in Moscow" 
-          fill 
+        <Image
+          src={urlFor(pageContent.bg_image)?.url() ?? ""}
+          alt="Saint Basil's Cathedral in Moscow"
+          fill
           className="object-cover brightness-50"
           priority
         />
@@ -67,23 +67,23 @@ export default async function MBBSInCountryPage({params}: MBBSInCountryPageProps
       {/* Main Content */}
       <main className="max-w-[1280px] mx-auto px-4 py-8">
 
-          {/* Main Content Area */}
-          <div className='mt-14' >
+        {/* Main Content Area */}
+        <div className='mt-14' >
 
-              <Image 
-                src={urlFor(pageContent.hero.logo_image)?.url() ?? "" }
-                alt="Russian Flag" 
-                width={200} 
-                height={120} 
-                className="rounded-md float-left clear-both"
-                />
-                <PortableText value={pageContent.hero.content} />
+          <Image
+            src={urlFor(pageContent.hero.logo_image)?.url() ?? ""}
+            alt="Russian Flag"
+            width={200}
+            height={120}
+            className="rounded-md float-left clear-both"
+          />
+          <PortableText value={pageContent.hero.content} />
 
-          </div>
+        </div>
 
         <div className='my-20 space-y-20 w-full' >
 
-          {pageContent?.sections?.map((section: any, i: number) => { 
+          {pageContent?.sections?.map((section: any, i: number) => {
             switch (section.type) {
               case 'table':
                 return <TableSection key={i} data={section} />
@@ -93,59 +93,59 @@ export default async function MBBSInCountryPage({params}: MBBSInCountryPageProps
                 return <LabelValueSection key={i} data={section} />
               default:
                 return null
-                }
-              })}
-          </div>
-            
+            }
+          })}
+        </div>
+
       </main>
     </div>
   );
 }
 
 
-function TableSection({data}: {data: any}){
+function TableSection({ data }: { data: any }) {
   const formatedTableData = formatTableData(data?.data)
   return <div key={data._key} >
     <div className='mb-6' >
       <h3 className="text-h3 mb-2">{data?.heading}</h3>
       <p>{data?.description}</p>
     </div>
-  <SimpleTable data={formatedTableData} />
-</div>
+    <SimpleTable data={formatedTableData} />
+  </div>
 }
 
-function ContentSection({data}: {data: any}){
-  return (
-      <div key={data._key} >
-       <div className='mb-6' >
-        <h3 className="text-h3 mb-2">{data?.heading}</h3>
-        <p>{data?.description}</p>
-      </div>
-        <div className="!prose min-w-full " >
-          <PortableText value={data?.content} />
-        </div>
-      </div>
-  )
-}
-
-function LabelValueSection({data}: {data: any}){
+function ContentSection({ data }: { data: any }) {
   return (
     <div key={data._key} >
       <div className='mb-6' >
-          <h3 className="text-h3 mb-2">{data.heading}</h3>
-          <p >{data.description}</p>
+        <h3 className="text-h3 mb-2">{data?.heading}</h3>
+        <p>{data?.description}</p>
       </div>
-        <div className="border-2 rounded-md" >
-          {
-            data?.label_value?.map((item: {label: string, value: string}, index: number) => ( 
-              <div key={index} className="grid grid-cols-2 *:p-3 text-sm border-b-2 last:border-none divide-x-2 " >
-                <p>{item.label}</p>
-                <p>{item.value}</p>
-              </div>
-            ))
-          }
-        </div>
+      <div className="!prose min-w-full " >
+        <PortableText value={data?.content} />
       </div>
+    </div>
+  )
+}
+
+function LabelValueSection({ data }: { data: any }) {
+  return (
+    <div key={data._key} >
+      <div className='mb-6' >
+        <h3 className="text-h3 mb-2">{data.heading}</h3>
+        <p >{data.description}</p>
+      </div>
+      <div className="border-2 rounded-md" >
+        {
+          data?.label_value?.map((item: { label: string, value: string }, index: number) => (
+            <div key={index} className="grid grid-cols-2 *:p-3 text-sm border-b-2 last:border-none divide-x-2 " >
+              <p>{item.label}</p>
+              <p>{item.value}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
   )
 }
 

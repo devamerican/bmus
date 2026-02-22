@@ -25,7 +25,7 @@ import {
 } from "@/components/ui/accordion";
 import { Download, Menu, Plane } from "lucide-react";
 
-import { sanityFetch } from "@/sanity/lib/live";
+import { cachedSanityFetch } from "@/sanity/lib/fetch";
 import { urlFor } from "@/sanity/lib/image";
 import NavbarLayout from "./navbar-layout";
 
@@ -177,13 +177,11 @@ export default async function Navbar() {
         "pdfUrl": prospectus.asset->url
       }`;
 
-  const { data: navbarData } = await sanityFetch({ query: QUERY });
-  const { data: prospectusData } = await sanityFetch({
-    query: PROSPECTUS_QUERY,
-  });
+  const navbarData = await cachedSanityFetch(QUERY);
+  const prospectusData = await cachedSanityFetch(PROSPECTUS_QUERY);
 
-  const prospectus = prospectusData[0];
-  const navbar = navbarData[0];
+  const prospectus = (prospectusData as any[])[0];
+  const navbar = (navbarData as any[])[0];
 
   return (
     <NavbarLayout>

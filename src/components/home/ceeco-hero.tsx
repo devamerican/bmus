@@ -3,10 +3,8 @@ import React, { useCallback, useEffect, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import Image from 'next/image'
-import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
-import { Button } from '../ui/button'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { motion, AnimatePresence } from "motion/react"
-import Link from 'next/link'
 
 const slides = [
     {
@@ -17,9 +15,9 @@ const slides = [
         link: "/contact"
     },
     {
-        title: "STUDY IN UK, USA, GERMANY, CANADA",
+        title: "STUDY IN NEPAL",
         subtitle: "STUDY ABROAD PROGRAMS",
-        image: "/javier-trueba.jpg",
+        image: "/sylwia-bartyzel.jpg",
         cta: "Explore Programs",
         link: "/courses"
     },

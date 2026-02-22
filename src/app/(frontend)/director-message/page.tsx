@@ -1,6 +1,6 @@
 import { PortableText, SanityDocument } from "next-sanity";
 import Image from "next/image";
-import { sanityFetch } from "@/sanity/lib/live";
+import { cachedSanityFetch } from "@/sanity/lib/fetch";
 import { urlFor } from "@/sanity/lib/image";
 
 export const metadata = {
@@ -10,7 +10,7 @@ export const metadata = {
 
 export default async function DirectorMessage() {
     const QUERY = `*[_type == "directorsMessage"]`
-    const { data: directorMessageData } = await sanityFetch({query: QUERY})
+    const directorMessageData = await cachedSanityFetch<any[]>(QUERY)
     const directorMessage = directorMessageData[0]
 
     return (
@@ -55,11 +55,11 @@ export default async function DirectorMessage() {
                             />
                         </div>
                     )}
-                    
+
                     {/* Main Content */}
                     <div className={`leading-loose prose max-w-full ${directorMessage?.sideImage ? 'md:w-2/3' : 'w-full'}`}>
                         <PortableText value={directorMessage.content} />
-                        
+
                         {/* Optional Signature */}
                         {directorMessage?.signature && (
                             <div className="mt-8">

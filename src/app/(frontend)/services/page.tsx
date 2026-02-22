@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { DynamicIcon, IconName } from "lucide-react/dynamic";
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
-import { sanityFetch } from "@/sanity/lib/live";
+import { cachedSanityFetch } from "@/sanity/lib/fetch";
 import { urlFor } from "@/sanity/lib/image";
 import type { Metadata } from "next";
 
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 };
 export default async function OurServicesPage() {
   const QUERY = `*[_type == "services"]`
-  const { data: servicesData } = await sanityFetch({query: QUERY})
+  const servicesData = await cachedSanityFetch<any[]>(QUERY)
   const services = servicesData[0]
 
 
@@ -52,35 +52,35 @@ export default async function OurServicesPage() {
 
       {/* Services Grid Section */}
       <section className="max-w-7xl p-4 mx-auto my-12 md:my-16">
-      <p className=" mx-auto mb-10">
-              {services.description}
-            </p>
+        <p className=" mx-auto mb-10">
+          {services.description}
+        </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {services.servicesItems.map((item: { 
-            title: string, 
+          {services.servicesItems.map((item: {
+            title: string,
             icon: string,
             image?: SanityImageSource,
-            description?: string 
+            description?: string
           }) => (
-              <div key={item.title} className="border rounded-md overflow-clip bg-secondary hover:shadow-md" >
-                    <Image
-                      src={item?.image ? urlFor(item?.image)?.url() : "/eligibility.jpg"}
-                      alt={item.title}
-                      // fill
-                      width={300}
-                      height={300}
-                      className="object-cover w-full h-48 hover:scale-105 transition-all"
-                    />
-                <div className="p-4" >
-                  <h3 className="text-center  font-medium text-zinc-700">{item.title}</h3>
-                </div>
-                
-                {/* {item.description && (
+            <div key={item.title} className="border rounded-md overflow-clip bg-secondary hover:shadow-md" >
+              <Image
+                src={item?.image ? urlFor(item?.image)?.url() : "/eligibility.jpg"}
+                alt={item.title}
+                // fill
+                width={300}
+                height={300}
+                className="object-cover w-full h-48 hover:scale-105 transition-all"
+              />
+              <div className="p-4" >
+                <h3 className="text-center  font-medium text-zinc-700">{item.title}</h3>
+              </div>
+
+              {/* {item.description && (
                   <p className="text-center text-sm text-muted-foreground">
                     {item.description}
                   </p>
                 )} */}
-              </div>
+            </div>
           ))}
         </div>
       </section>

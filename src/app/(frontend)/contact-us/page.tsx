@@ -31,13 +31,13 @@ export default function ContactUs() {
           {/* Dubai Office */}
           <Card className="bg-muted shadow-none border-none">
             <CardContent className="space-y-2 pl-10">
-            <div className="flex items-center gap-3">
-              <Building className="text-green-600" />
-              <h3 className="text-lg font-semibold">Dubai Office</h3>
-            </div>
-            <div>
-              <p>Flat no - 304, Bhueira Corniche, Shaheen Tower, Dubai, UAE</p>
-            </div>
+              <div className="flex items-center gap-3">
+                <Building className="text-green-600" />
+                <h3 className="text-lg font-semibold">Dubai Office</h3>
+              </div>
+              <div>
+                <p>Flat no - 304, Bhueira Corniche, Shaheen Tower, Dubai, UAE</p>
+              </div>
               <div className="flex items-center gap-2">
                 <Phone className="text-red-500" size={16} />
                 <Link href="tel:+971508786484" className="hover:text-blue-600">
@@ -50,10 +50,10 @@ export default function ContactUs() {
           {/* India Offices */}
           <Card className="bg-muted shadow-none border-none">
             <CardContent className="space-y-3 pl-10">
-            <div className="flex items-center gap-3">
-              <Building className="text-green-600" />
-              <h3 className="text-lg font-semibold">India Offices</h3>
-            </div>
+              <div className="flex items-center gap-3">
+                <Building className="text-green-600" />
+                <h3 className="text-lg font-semibold">India Offices</h3>
+              </div>
               {[
                 "Opposite Indian Overseas Bank, Near Vivekanand School, Railway Road, Palwal - 121102",
                 "Kidzee School, 221/8, Sector - 8, Garh Road, Jagriti Vihar, Meerut, Uttar Pradesh - 250001",
@@ -70,8 +70,8 @@ export default function ContactUs() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Phone className="text-red-500" size={16} />
-                  <Link href="tel:+917015303343" className="hover:text-blue-600">
-                    +91 7015303343
+                  <Link href="tel:+919354086500" className="hover:text-blue-600">
+                    +91 9354086500
                   </Link>
                 </div>
               </div>
@@ -81,12 +81,12 @@ export default function ContactUs() {
           {/* Email */}
           <Card className="bg-muted shadow-none border-none">
             <CardContent className="pl-10 space-y-2">
-            <div className="flex items-center gap-3">
-              <Mail className="text-blue-600" />
-              <h3 className="text-lg font-semibold">Email</h3>
-            </div>
-              <Link href="mailto:info@eduabroadservices.com" className="hover:text-blue-600">
-                info@eduabroadservices.com
+              <div className="flex items-center gap-3">
+                <Mail className="text-blue-600" />
+                <h3 className="text-lg font-semibold">Email</h3>
+              </div>
+              <Link href="mailto:bmus.helpdesk@gmail.com" className="hover:text-blue-600">
+                bmus.helpdesk@gmail.com
               </Link>
             </CardContent>
           </Card>
