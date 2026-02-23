@@ -64,14 +64,14 @@ export default function ContactUs() {
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
                   <Phone className="text-red-500" size={16} />
-                  <Link href="tel:+919050086500" className="hover:text-blue-600">
-                    +91 9050086500
+                  <Link href="tel:+919354086500" className="hover:text-blue-600">
+                    +91 9354086500
                   </Link>
                 </div>
                 <div className="flex items-center gap-2">
                   <Phone className="text-red-500" size={16} />
-                  <Link href="tel:+919354086500" className="hover:text-blue-600">
-                    +91 9354086500
+                  <Link href="tel:+917015303343" className="hover:text-blue-600">
+                    +91 7015303343
                   </Link>
                 </div>
               </div>

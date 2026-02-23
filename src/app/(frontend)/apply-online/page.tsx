@@ -1,5 +1,5 @@
-import {  Mail, MessageSquare, Phone } from "lucide-react";
-import {Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Mail, MessageSquare, Phone } from "lucide-react";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import CounselingForm from "@/components/home/counseling-form";
 import Link from "next/link";
 
@@ -7,7 +7,7 @@ const items = [
     {
         title: "Call Our Team",
         icon: Phone,
-        details: ["+91 9050086500", "+91 7015303343"],
+        details: ["+91 7015303343", "+91 7015303343"],
         type: "phone",
     },
     {
@@ -29,27 +29,27 @@ export const metadata = {
     description: "Apply Online for BMUS MBBS Abroad Program",
 }
 
-export default function ApplyOnlinePage(){
-    return(
+export default function ApplyOnlinePage() {
+    return (
         <section className="max-w-5xl px-4 mx-auto my-8 md:my-12 lg:my-16 md:pb-20" >
             <h1 className="text-h1 text-center mb-10 md:mb-14 lg:mb-20" >Online Application Form</h1>
 
 
 
             <div className="flex flex-col md:flex-row *:basis-1/2 gap-6" >
-            {/* <Card className=" p-6 mx-auto w-full border-muted shadow-none border-none " >
+                {/* <Card className=" p-6 mx-auto w-full border-muted shadow-none border-none " >
                 <CardContent className="p-0 lg:px-12" >
                 </CardContent>
             </Card> */}
-                    <div className="p-4 max-w-lg mx-auto w-full" >
-                        <CounselingForm />
-                    </div>
+                <div className="p-4 max-w-lg mx-auto w-full" >
+                    <CounselingForm />
+                </div>
 
-            <Card className="shadow-none border-none bg-muted " >
-                <CardHeader className="text-h3 md:mb-6" >
-                    Get in Touch With Us
-                </CardHeader>
-                <CardContent className="space-y-3 md:space-y-6 px-3 md:px-6" >
+                <Card className="shadow-none border-none bg-muted " >
+                    <CardHeader className="text-h3 md:mb-6" >
+                        Get in Touch With Us
+                    </CardHeader>
+                    <CardContent className="space-y-3 md:space-y-6 px-3 md:px-6" >
                         {
                             items.map((item) => (
                                 <div key={item.title} className="flex items-start gap-4 p-4  rounded-xl " >
@@ -60,25 +60,25 @@ export default function ApplyOnlinePage(){
                                         </h3>
                                         {item.details && (
                                             <ul className="text-muted-foreground flex gap-2">
-                                            {item.details.map((detail: string, i: number) => (
-                                                <li key={i} className="hover:text-blue-500" >
-                                                    {
-                                                        item.type === 'phone' && <Link href={`tel:${detail}`}>
-                                                            {detail}
-                                                        </Link>
-                                                    }
-                                                    {
-                                                        item.type === 'phone-whatsapp' && <Link target="_blank" href={`https://wa.me/${917015303343}`}> 
-                                                            {detail}
-                                                        </Link>
-                                                    }
-                                                    {
-                                                        item.type === 'email' && <Link href={`mailto:${detail}`}>
-                                                            {detail}
-                                                        </Link>
-                                                    }
-                                                </li>
-                                            ))}
+                                                {item.details.map((detail: string, i: number) => (
+                                                    <li key={i} className="hover:text-blue-500" >
+                                                        {
+                                                            item.type === 'phone' && <Link href={`tel:${detail}`}>
+                                                                {detail}
+                                                            </Link>
+                                                        }
+                                                        {
+                                                            item.type === 'phone-whatsapp' && <Link target="_blank" href={`https://wa.me/${917015303343}`}>
+                                                                {detail}
+                                                            </Link>
+                                                        }
+                                                        {
+                                                            item.type === 'email' && <Link href={`mailto:${detail}`}>
+                                                                {detail}
+                                                            </Link>
+                                                        }
+                                                    </li>
+                                                ))}
                                             </ul>
                                         )}
                                         {/* <p className="text-sm md:text-base" >{item.details}</p> */}
@@ -86,8 +86,8 @@ export default function ApplyOnlinePage(){
                                 </div>
                             ))
                         }
-                </CardContent>
-        </Card>
+                    </CardContent>
+                </Card>
             </div>
 
         </section>

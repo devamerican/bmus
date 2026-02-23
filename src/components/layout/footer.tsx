@@ -68,19 +68,28 @@ const Footer = () => {
               <div className="flex items-center gap-2">
                 <Phone className="h-5 w-5" />
                 <a
-                  href="tel:+919910180049"
+                  href="tel:+919354086500"
                   className="text-sm hover:opacity-75"
                 >
-                  +91 9050086500
+                  +91 9354086500
+                </a>
+              </div>
+              <div className="flex items-center gap-2">
+                <Phone className="h-5 w-5" />
+                <a
+                  href="tel:+917015303343"
+                  className="text-sm hover:opacity-75"
+                >
+                  +91 7015303343
                 </a>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="h-5 w-5" />
                 <a
-                  href="mailto:info@eduabroadservices.com"
+                  href="mailto:bmus.helpdesk@gmail.com"
                   className="text-sm hover:opacity-75"
                 >
-                  info@bmus.co.in
+                  bmus.helpdesk@gmail.com
                 </a>
               </div>
             </div>
@@ -143,7 +152,7 @@ const Footer = () => {
                 </a>
               </div>
               <div className="flex items-center gap-2">
-                <FaWhatsapp  className="h-5 w-5" />
+                <FaWhatsapp className="h-5 w-5" />
                 <a
                   target="_blank"
                   href="https://wa.me/917015303343"
@@ -192,7 +201,7 @@ const Footer = () => {
         {/* Copyright Section */}
         <div className="mt-12 py-6   text-center text-xs md:text-sm">
           <p>
-            Copyright © 2024-25 | Best Medical University Services | Website 
+            Copyright © 2024-25 | Best Medical University Services | Website
             Owned by Vishnu Sharma
             {/* <Link
               target="_blank"
