@@ -21,101 +21,180 @@ export const metadata: Metadata = {
 
 
 export default function ContactUs() {
-  return (
-    <section className="section-container my-10">
-      <h1 className="text-center text-h1 mb-16">Contact Us</h1>
+  const indiaOffices = [
+    {
+      city: "Palwal",
+      state: "Haryana",
+      address: "Opposite Indian Overseas Bank, Near Vivekanand School, Railway Road, Palwal - 121102",
+    },
+    {
+      city: "Bhiwani",
+      state: "Haryana",
+      address:
+        "Star Sainik Defence Academy, Rahul gas wali Gali, CR Resort k samne Mini by pass Shanti nagar Bhiwani Haryana",
+    },
+    {
+      city: "Nuh",
+      state: "Haryana",
+      address: "Kasba Pinangwan, Dhanna Road, Tehsil Punhana, District Nuh, Haryana - 122508",
+    },
+    {
+      city: "Nuh",
+      state: "Haryana",
+      address: "Bright Vision Academy, Ward No. 7, Near New Bus Stand, Nuh, Distt. Nuh, Haryana",
+    },
+    {
+      city: "Ghaziabad",
+      state: "Uttar Pradesh",
+      address: "M.S Public School, Sector-7, Sector-10, Raj Nagar, Ghaziabad, Uttar Pradesh - 201002",
+    },
+    {
+      city: "Meerut",
+      state: "Uttar Pradesh",
+      address: "Kidzee Jagriti Vihar 221, 8, Garg Road, Sector-8, Jagriti Vihar, Meerut, Uttar Pradesh - 250004",
+    },
+  ];
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-        {/* LEFT: Contact Info */}
-        <div className="space-y-6 max-w-3xl mx-auto">
+  return (
+    <section className="section-container my-12 space-y-20">
+      <div className="text-center space-y-4">
+        <h1 className="text-h1">Contact Us</h1>
+        <p className="text-muted-foreground max-w-2xl mx-auto">
+          Reach out to us for expert MBBS abroad counseling and admission support. 
+          Our team is here to guide you through every step of your medical journey.
+        </p>
+      </div>
+
+      {/* PRIMARY CONTACT & FORM */}
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
+        {/* LEFT: Core Contact Info */}
+        <div className="lg:col-span-2 space-y-6">
           {/* Dubai Office */}
-          <Card className="bg-muted shadow-none border-none">
-            <CardContent className="space-y-2 pl-10">
+          <Card className="overflow-hidden border border-muted/30 shadow-sm bg-gradient-to-br from-white to-blue-50/30 dark:from-zinc-900 dark:to-zinc-900/30">
+            <CardHeader className="pb-2 border-b border-blue-100/30 dark:border-zinc-800">
               <div className="flex items-center gap-3">
-                <Building className="text-green-600" />
-                <h3 className="text-lg font-semibold">Dubai Office</h3>
+                <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">
+                  <Building className="text-green-600" size={20} />
+                </div>
+                <h3 className="text-lg font-bold">Dubai Office</h3>
               </div>
-              <div>
-                <p>Flat no - 304, Bhueira Corniche, Shaheen Tower, Dubai, UAE</p>
-              </div>
-              <div className="flex items-center gap-2">
-                <Phone className="text-red-500" size={16} />
-                <Link href="tel:+971508786484" className="hover:text-blue-600">
+            </CardHeader>
+            <CardContent className="pt-6 space-y-4">
+              <p className="text-muted-foreground leading-relaxed">
+                Flat no - 304, Bhueira Corniche, Shaheen Tower, Dubai, UAE
+              </p>
+              <div className="flex items-center gap-3 p-3 bg-white/40 dark:bg-black/20 rounded-xl border border-blue-50/50 dark:border-zinc-800">
+                <div className="p-2 bg-red-100 dark:bg-red-900/30 rounded-lg">
+                  <Phone className="text-red-500" size={16} />
+                </div>
+                <Link href="tel:+971508786484" className="font-semibold hover:text-primary transition-colors">
                   +971 508786484
                 </Link>
               </div>
             </CardContent>
           </Card>
 
-          {/* India Offices */}
-          <Card className="bg-muted shadow-none border-none">
-            <CardContent className="space-y-3 pl-10">
+          {/* General Support & Email */}
+          <Card className="overflow-hidden border border-muted/30 shadow-sm bg-gradient-to-br from-white to-green-50/30 dark:from-zinc-900 dark:to-zinc-900/30">
+            <CardHeader className="pb-2 border-b border-green-100/30 dark:border-zinc-800">
               <div className="flex items-center gap-3">
-                <Building className="text-green-600" />
-                <h3 className="text-lg font-semibold">India Offices</h3>
+                <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+                  <Mail className="text-blue-600" size={20} />
+                </div>
+                <h3 className="text-lg font-bold">Quick Connect</h3>
               </div>
-              {[
-                "Opposite Indian Overseas Bank, Near Vivekanand School, Railway Road, Palwal - 121102",
-                "Kidzee School, 221/8, Sector - 8, Garh Road, Jagriti Vihar, Meerut, Uttar Pradesh - 250001",
-                "M. S. Public School Sector 7, Raj Nagar, Ghaziabad, Uttar Pradesh - 201002",
-              ].map((addr, i) => (
-                <p key={i}>{addr}</p>
-              ))}
+            </CardHeader>
+            <CardContent className="pt-6 space-y-5">
               <div className="space-y-1">
-                <div className="flex items-center gap-2">
-                  <Phone className="text-red-500" size={16} />
-                  <Link href="tel:+919354086500" className="hover:text-blue-600">
-                    +91 9354086500
+                <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Email Us</p>
+                <Link href="mailto:bmus.helpdesk@gmail.com" className="text-lg font-medium hover:text-primary transition-colors block">
+                  bmus.helpdesk@gmail.com
+                </Link>
+              </div>
+              
+              <div className="space-y-3">
+                <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">India Support</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <Link href="tel:+919354086500" className="flex items-center gap-2 p-2 px-3 bg-white/40 dark:bg-black/20 rounded-lg border border-green-50/50 dark:border-zinc-800 hover:border-primary/30 transition-all group">
+                    <Phone size={14} className="text-red-500 group-hover:scale-110 transition-transform" />
+                    <span className="text-sm font-medium">+91 9354086500</span>
                   </Link>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Phone className="text-red-500" size={16} />
-                  <Link href="tel:+917015303343" className="hover:text-blue-600">
-                    +91 7015303343
+                  <Link href="tel:+917015303343" className="flex items-center gap-2 p-2 px-3 bg-white/40 dark:bg-black/20 rounded-lg border border-green-50/50 dark:border-zinc-800 hover:border-primary/30 transition-all group">
+                    <Phone size={14} className="text-red-500 group-hover:scale-110 transition-transform" />
+                    <span className="text-sm font-medium">+91 7015303343</span>
                   </Link>
                 </div>
               </div>
-            </CardContent>
-          </Card>
-
-          {/* Email */}
-          <Card className="bg-muted shadow-none border-none">
-            <CardContent className="pl-10 space-y-2">
-              <div className="flex items-center gap-3">
-                <Mail className="text-blue-600" />
-                <h3 className="text-lg font-semibold">Email</h3>
-              </div>
-              <Link href="mailto:bmus.helpdesk@gmail.com" className="hover:text-blue-600">
-                bmus.helpdesk@gmail.com
-              </Link>
             </CardContent>
           </Card>
         </div>
 
         {/* RIGHT: Counseling Form */}
-        <Card className="p-6 py-10 max-w-3xl mx-auto w-full shadow-none border-2 border-muted">
-          <CardHeader className="mb-4">
-            <h2 className="text-h2">We&apos;d love to hear from you!</h2>
-          </CardHeader>
-          <CardContent>
-            <CounselingForm />
-          </CardContent>
-        </Card>
+        <div className="lg:col-span-3 h-full">
+          <Card className="p-8 h-full shadow-md border border-muted/40 bg-background flex flex-col justify-center relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-110 duration-500" />
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-green-500/5 rounded-full -ml-12 -mb-12 transition-transform group-hover:scale-110 duration-500" />
+            
+            <CardHeader className="relative px-0 pt-0 mb-8 text-center sm:text-left">
+              <h2 className="text-3xl font-bold tracking-tight">We&apos;d love to hear from you!</h2>
+              <p className="text-muted-foreground mt-2">Fill out the form below and our counselor will get back to you within 24 hours.</p>
+            </CardHeader>
+            <CardContent className="px-0 pb-0">
+              <CounselingForm />
+            </CardContent>
+          </Card>
+        </div>
       </div>
 
-      {/* Map */}
-      <div className="mt-32">
-        <h2 className="text-h2 mb-8 text-center flex justify-center items-center gap-3">
-          <MapPin size={32} /> Find Us on Map
-        </h2>
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3517.960262587472!2d77.33471047576815!3d28.147697875932984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cd24a4aaa4139%3A0x4e42f7f2f52396d7!2sAmerican%20Spoken%20English%20Classes!5e0!3m2!1sen!2sin!4v1740835136432!5m2!1sen!2sin"
-          width="600"
-          height="450"
-          style={{ border: "0", width: "100%", borderRadius: "16px", overflow: "hidden" }}
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        ></iframe>
+      {/* INDIA NETWORK / BRANCHES */}
+      <div className="space-y-10 group/locations">
+        <div className="flex flex-col items-center gap-3">
+          <div className="h-1 w-20 bg-primary/20 rounded-full group-hover/locations:w-32 transition-all duration-500" />
+          <h2 className="text-3xl font-bold text-center">Our India Network</h2>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          {indiaOffices.map((office, i) => (
+            <Card key={i} className="hover-card-glass flex flex-col border-muted/30 hover:border-primary/30 transition-all duration-300 shadow-sm hover:shadow-md group">
+              <CardHeader className="pb-4">
+                <div className="flex justify-between items-start">
+                  <div className="space-y-1">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/70">{office.state}</span>
+                    <h4 className="text-xl font-bold">{office.city}</h4>
+                  </div>
+                  <div className="p-2 transition-colors duration-300 group-hover:bg-primary/10 rounded-lg">
+                    <MapPin className="text-primary" size={20} />
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {office.address}
+                </p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+
+      {/* MAP SECTION */}
+      <div className="space-y-8">
+        <div className="flex flex-col items-center gap-3">
+          <h2 className="text-2xl font-bold flex items-center gap-3">
+            <MapPin size={24} className="text-red-500 animate-bounce" /> 
+            Find Us on Map
+          </h2>
+        </div>
+        <div className="rounded-3xl border border-muted/50 overflow-hidden shadow-md bg-muted h-[450px]">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3517.9652196791862!2d77.33465947576816!3d28.147546975933043!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cd3d55e3004a1%3A0x8e3398a6b5171328!2sBMUS-%20Abroad%20MBBS%20Consultant%20%7C%20MBBS%20Consultancy%20in%20Palwal%20Haryana!5e0!3m2!1sen!2sin!4v1773571860127!5m2!1sen!2sin"
+            width="100%"
+            height="100%"
+            style={{ border: "0" }}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
       </div>
     </section>
   );

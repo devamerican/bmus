@@ -17,28 +17,28 @@ const slides = [
     {
         title: "STUDY IN NEPAL",
         subtitle: "STUDY ABROAD PROGRAMS",
-        image: "/sylwia-bartyzel.jpg",
+        image: "/Nepal University.jpg",
         cta: "Explore Programs",
         link: "/courses"
     },
     {
-        title: "CAUCASUS UNIVERSITY, GEORGIA",
+        title: "Batumi Shota Rustaveli State University",
         subtitle: "Best University in Georgia located in the Capital City Tbilisi",
-        image: "/rut-miit.jpg",
+        image: "/CAMPUS_4ZetiLIiP.webp",
         cta: "Learn More",
         link: "/georgia"
     },
     {
-        title: "EAST WEST UNIVERSITY GEORGIA",
+        title: "Kirov State Medical University",
         subtitle: "Where Excellence Meets Diversity",
-        image: "https://images.unsplash.com/photo-1519452575417-564c1401ecc0?q=80&w=2070&auto=format&fit=crop",
+        image: "/6964c45240a89.jpg",
         cta: "View Campus",
         link: "/georgia"
     },
     {
-        title: "INTERNATIONAL BLACK SEA UNIVERSITY",
-        subtitle: "Located In Capital City Of Georgia, Tbilisi",
-        image: "/camilo-botia.jpg",
+        title: "Kazakh National Medical University",
+        subtitle: "Located In Capital City Of Kazakhstan, Almaty",
+        image: "/CAMPUS_nzDCQ2Hw2t.webp",
         cta: "Get Started",
         link: "/georgia"
     }
