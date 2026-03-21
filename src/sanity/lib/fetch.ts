@@ -25,7 +25,7 @@ import { QueryParams } from 'next-sanity'
 export async function cachedSanityFetch<T = unknown>(
   query: string,
   params: QueryParams = {},
-  revalidate: number | false = 3600
+  revalidate: number | false = false
 ): Promise<T> {
   return client.fetch<T>(query, params, {
     next: {

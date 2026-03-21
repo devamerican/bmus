@@ -9,6 +9,7 @@ import { servicesSchema } from './services'
 import { whyStudyMBBSAbroadSchema } from './whyStudyMBBSAbroad'
 import { prospectusSchema } from './prospectus'
 import { gallerySchema } from './gallery'
+import { blogPostSchema } from './blogPost'
 import { type SchemaTypeDefinition } from 'sanity'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -43,10 +44,12 @@ export const schema: { types: SchemaTypeDefinition[] } = {
   
   
     mbbsInCountrySchema,
-  
+
     prospectusSchema,
-  
-    gallerySchema
+
+    gallerySchema,
+
+    blogPostSchema
   ],
   
 }
