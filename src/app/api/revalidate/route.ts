@@ -10,18 +10,22 @@ function verifySignature(
 ): boolean {
   if (!signature) return false
 
-  const [t, rawHash] = signature.split(',')
-  if (!t || !rawHash) return false
+  // Sanity sends signature in format: t=<timestamp>,sha256=<hash>
+  const parts = signature.split(',')
+  if (parts.length < 2) return false
 
-  const hash = crypto
+  const providedHash = parts[1]?.trim()
+  if (!providedHash?.startsWith('sha256=')) {
+    return false
+  }
+
+  // Create expected signature and compare
+  const expectedHash = crypto
     .createHmac('sha256', secret)
     .update(body)
     .digest('base64')
 
-  return crypto.timingSafeEqual(
-    Buffer.from(`t=${t},${rawHash}`),
-    Buffer.from(`t=${t},sha256=${hash}`)
-  )
+  return providedHash.substring(7) === expectedHash
 }
 
 // Map Sanity document types to their corresponding page paths
@@ -127,7 +131,7 @@ export async function POST(request: NextRequest) {
     console.log(`Webhook received: ${operation} on ${documentType}`, { slug })
 
     // Get paths to revalidate based on document type and operation
-    const paths = getPathsToRevalidate(operation, documentType, slug?.current)
+    const paths = getPathsToRevalidate(operation, documentType, slug)
 
     if (paths.length === 0) {
       return NextResponse.json({
