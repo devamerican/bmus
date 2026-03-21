@@ -10,22 +10,22 @@ function verifySignature(
 ): boolean {
   if (!signature) return false
 
-  // Sanity sends signature in format: t=<timestamp>,sha256=<hash>
+  // Sanity sends signature in format: t=<timestamp>,v1=<hash>
   const parts = signature.split(',')
   if (parts.length < 2) return false
 
   const providedHash = parts[1]?.trim()
-  if (!providedHash?.startsWith('sha256=')) {
+  if (!providedHash?.startsWith('v1=')) {
     return false
   }
 
-  // Create expected signature and compare
+  // Create expected signature - Sanity uses hex encoding
   const expectedHash = crypto
     .createHmac('sha256', secret)
     .update(body)
-    .digest('base64')
+    .digest('hex')
 
-  return providedHash.substring(7) === expectedHash
+  return providedHash.substring(3) === expectedHash
 }
 
 // Map Sanity document types to their corresponding page paths
