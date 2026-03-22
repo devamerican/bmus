@@ -7,17 +7,22 @@ import HomeCtaSection from "@/components/home/cta-section";
 import StudentsSay from "@/components/home/students-say";
 import WhatWeOffer from "@/components/home/what-we-offer";
 import VideoReviews from "@/components/home/video-reviews";
+import BlogSection from "@/components/home/blog-section";
 
 import MBBSAbroadForIndians from "@/components/home/MBBSAbroadForIndians";
 import { cachedSanityFetch } from "@/sanity/lib/fetch";
+import { RECENT_BLOG_POSTS_QUERY } from "@/sanity/queries/blog";
 
 
 export default async function Home() {
 
   const HOMEPAGE_QUERY = `*[_type == "homepage"]`
-  const result = await cachedSanityFetch<any[]>(HOMEPAGE_QUERY)
-  const data = result[0]
-
+  const [homepageResult, blogPosts] = await Promise.all([
+    cachedSanityFetch<any[]>(HOMEPAGE_QUERY),
+    cachedSanityFetch<any[]>(RECENT_BLOG_POSTS_QUERY),
+  ])
+  const data = homepageResult[0]
+  
 
   return (
     <main className="space-y-10 md:space-y-16 lg:space-y-32 mb-10" >
@@ -27,6 +32,11 @@ export default async function Home() {
 
       <Hero data={data.hero} />
       <EducationAbroad data={data.hero2} />
+
+      {blogPosts && blogPosts.length > 0 && (
+        <BlogSection posts={blogPosts} />
+      )}
+
       <MBBSAbroadForIndians />
       <Countries data={data.countrySection} />
       <WhatWeOffer data={data.whatWeOffer} />

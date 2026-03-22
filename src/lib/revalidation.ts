@@ -12,7 +12,7 @@ export interface LegacyWebhookPayload {
 }
 
 // Type-to-path mapping for all Sanity content types
-const TYPE_TO_PATH_MAP: Record<string, string | ((payload: SanityWebhookPayload) => string | null)> = {
+const TYPE_TO_PATH_MAP: Record<string, string | string[] | ((payload: SanityWebhookPayload) => string | string[] | null)> = {
   // Static routes (direct mapping)
   'aboutUs': '/about-us',
   'homepage': '/',
@@ -26,7 +26,17 @@ const TYPE_TO_PATH_MAP: Record<string, string | ((payload: SanityWebhookPayload)
   // Dynamic routes (functions that extract slugs)
   'blogPost': (payload) => {
     const slug = payload?.slug?.current;
-    return slug ? `/blog/${slug}` : null;
+    const paths: string[] = [];
+
+    // Always revalidate the blog listing page
+    paths.push('/blog');
+
+    // Revalidate the individual blog post if we have a slug
+    if (slug) {
+      paths.push(`/blog/${slug}`);
+    }
+
+    return paths;
   },
   'mbbsInCountry': (payload) => {
     const slug = payload?.slug?.current;
@@ -50,15 +60,23 @@ export function getPathsForWebhookPayload(payload: SanityWebhookPayload): string
     return [];
   }
 
-  // Handle static routes
+  // Handle static routes (string)
   if (typeof pathResolver === 'string') {
     return [pathResolver];
   }
 
-  // Handle dynamic routes
+  // Handle static routes (array of strings)
+  if (Array.isArray(pathResolver)) {
+    return pathResolver;
+  }
+
+  // Handle dynamic routes (function)
   try {
-    const path = pathResolver(payload);
-    return path ? [path] : [];
+    const result = pathResolver(payload);
+    if (Array.isArray(result)) {
+      return result;
+    }
+    return result ? [result] : [];
   } catch (error) {
     console.error(`[Webhook] Error resolving path for ${_type}:`, error);
     return [];
