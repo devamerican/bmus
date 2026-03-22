@@ -2,7 +2,7 @@ import { groq } from 'next-sanity'
 
 // Fetch all published blog posts for listing with pagination
 export const BLOG_POSTS_QUERY = groq`
-  *[_type == "blogPost"] | order(publishedAt desc) [$start...$end] {
+  *[_type == "blogPost" && status == "published"] | order(publishedAt desc) [$start...$end] {
     _id,
     title,
     slug,
@@ -49,17 +49,17 @@ export const BLOG_POST_BY_SLUG_QUERY = groq`
 
 // Count total published blog posts for pagination
 export const BLOG_POSTS_COUNT_QUERY = groq`
-  count(*[_type == "blogPost"])
+  count(*[_type == "blogPost" && status == "published"])
 `
 
 // Fetch all published blog post slugs for static generation
 export const BLOG_POSTS_SLUGS_QUERY = groq`
-  *[_type == "blogPost"].slug.current
+  *[_type == "blogPost" && status == "published"].slug.current
 `
 
 // Fetch recent blog posts for homepage section
 export const RECENT_BLOG_POSTS_QUERY = groq`
-  *[_type == "blogPost"] | order(publishedAt desc)[0...3] {
+  *[_type == "blogPost" && status == "published"] | order(publishedAt desc)[0...3] {
     _id,
     title,
     slug,

@@ -14,7 +14,7 @@ export default async function VideoGallery() {
       }
     }
   }`
-  const galleryData = await cachedSanityFetch<any[]>(QUERY)
+  const galleryData = await cachedSanityFetch<any[]>(QUERY, {}, 3600, ['gallery-videos'])
   const gallery = galleryData[0]
 
   return (

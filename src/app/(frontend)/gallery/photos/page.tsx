@@ -10,7 +10,7 @@ export const metadata = {
 export default async function Gallery() {
 
   const QUERY = `*[_type == "gallery"]`
-  const galleryData = await cachedSanityFetch<any[]>(QUERY)
+  const galleryData = await cachedSanityFetch<any[]>(QUERY, {}, 3600, ['gallery-photos'])
   const gallery = galleryData[0]
 
   const images = gallery.images.map((image: any) => urlFor(image)?.url() ?? "")

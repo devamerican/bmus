@@ -15,7 +15,7 @@ type BlogPostPageProps = {
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params
-  const post = await cachedSanityFetch<any>(BLOG_POST_BY_SLUG_QUERY, { slug })
+  const post = await cachedSanityFetch<any>(BLOG_POST_BY_SLUG_QUERY, { slug }, 3600, [`blog-${slug}`])
 
   if (!post) return {}
 
@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 }
 
 export async function generateStaticParams() {
-  const slugs = await cachedSanityFetch<string[]>(BLOG_POSTS_SLUGS_QUERY)
+  const slugs = await cachedSanityFetch<string[]>(BLOG_POSTS_SLUGS_QUERY, {}, 3600, ['blog'])
 
   return slugs.map((slug) => ({
     slug,
@@ -59,7 +59,7 @@ export async function generateStaticParams() {
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params
-  const post = await cachedSanityFetch<any>(BLOG_POST_BY_SLUG_QUERY, { slug })
+  const post = await cachedSanityFetch<any>(BLOG_POST_BY_SLUG_QUERY, { slug }, 3600, [`blog-${slug}`])
 
   if (!post) {
     notFound()

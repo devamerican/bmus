@@ -1,5 +1,6 @@
 import { client } from './client'
 import { QueryParams } from 'next-sanity'
+import { unstable_cache } from 'next/cache'
 
 /**
  * Cached Sanity fetch for production use.
@@ -21,15 +22,22 @@ import { QueryParams } from 'next-sanity'
  * @param revalidate - Revalidation interval in seconds (default: 3600 = 1 hour).
  *                    Set to `false` to cache indefinitely and rely solely on
  *                    on-demand revalidation via webhooks.
+ * @param tags    - Cache tags for on-demand revalidation via webhooks
  */
 export async function cachedSanityFetch<T = unknown>(
   query: string,
   params: QueryParams = {},
-  revalidate: number | false = false
+  revalidate: number | false = 3600,
+  tags?: string[]
 ): Promise<T> {
-  return client.fetch<T>(query, params, {
-    next: {
+  const cacheKey = JSON.stringify({ query, params })
+
+  return unstable_cache(
+    async () => client.fetch<T>(query, params),
+    [cacheKey],
+    {
       revalidate,
-    },
-  })
+      tags,
+    }
+  )()
 }

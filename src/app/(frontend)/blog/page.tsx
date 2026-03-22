@@ -26,8 +26,8 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 
   // Fetch posts and count in parallel
   const [posts, totalCount] = await Promise.all([
-    cachedSanityFetch<any[]>(BLOG_POSTS_QUERY, { start, end }),
-    cachedSanityFetch<number>(BLOG_POSTS_COUNT_QUERY, {}),
+    cachedSanityFetch<any[]>(BLOG_POSTS_QUERY, { start, end }, 3600, ['blog']),
+    cachedSanityFetch<number>(BLOG_POSTS_COUNT_QUERY, {}, 3600, ['blog']),
   ])
 
   const totalPages = Math.ceil(totalCount / POSTS_PER_PAGE)

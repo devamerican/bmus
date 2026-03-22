@@ -18,8 +18,8 @@ export default async function Home() {
 
   const HOMEPAGE_QUERY = `*[_type == "homepage"]`
   const [homepageResult, blogPosts] = await Promise.all([
-    cachedSanityFetch<any[]>(HOMEPAGE_QUERY),
-    cachedSanityFetch<any[]>(RECENT_BLOG_POSTS_QUERY),
+    cachedSanityFetch<any[]>(HOMEPAGE_QUERY, {}, 3600, ['homepage']),
+    cachedSanityFetch<any[]>(RECENT_BLOG_POSTS_QUERY, {}, 3600, ['blog']),
   ])
   const data = homepageResult[0]
   

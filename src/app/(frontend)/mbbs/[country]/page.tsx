@@ -36,13 +36,10 @@ export async function generateMetadata({ params }: MBBSInCountryPageProps) {
 
 
 export default async function MBBSInCountryPage({ params }: MBBSInCountryPageProps) {
-  // All content stored in a variable
-  // const slugParam = await params 
-  // const countryFromParam = slugParam.country
-
+  const { country } = await params
   const QUERY = `*[_type == "mbbsInCountry"][slug.current == $country][0]`
 
-  const pageContent = await cachedSanityFetch<any>(QUERY, await params)
+  const pageContent = await cachedSanityFetch<any>(QUERY, { country }, 3600, [`mbbs-${country}`])
 
   if (!pageContent) return notFound()
 

@@ -10,7 +10,7 @@ export const metadata = {
 
 export default async function DirectorMessage() {
     const QUERY = `*[_type == "directorsMessage"]`
-    const directorMessageData = await cachedSanityFetch<any[]>(QUERY)
+    const directorMessageData = await cachedSanityFetch<any[]>(QUERY, {}, 3600, ['director-message'])
     const directorMessage = directorMessageData[0]
 
     return (

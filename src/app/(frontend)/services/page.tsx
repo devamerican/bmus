@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 };
 export default async function OurServicesPage() {
   const QUERY = `*[_type == "services"]`
-  const servicesData = await cachedSanityFetch<any[]>(QUERY)
+  const servicesData = await cachedSanityFetch<any[]>(QUERY, {}, 3600, ['services'])
   const services = servicesData[0]
 
 

@@ -10,7 +10,7 @@ export default async function VideoReviews() {
       }
     }
   }`
-    const galleryData = await cachedSanityFetch<any[]>(VIDEO_QUERY)
+    const galleryData = await cachedSanityFetch<any[]>(VIDEO_QUERY, {}, 3600, ['gallery-videos'])
 
     // Filter out videos with "whatsapp" in the original filename and take top 4
     const validVideos = galleryData[0]?.videos?.filter((v: any) => {

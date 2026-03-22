@@ -1,7 +1,7 @@
-import { revalidatePath } from 'next/cache'
+import { revalidatePath, revalidateTag } from 'next/cache'
 import { type NextRequest, NextResponse } from 'next/server'
 import { parseBody } from 'next-sanity/webhook'
-import { getPathsForWebhookPayload, logRevalidation, type SanityWebhookPayload, type LegacyWebhookPayload } from '@/lib/revalidation'
+import { getPathsForWebhookPayload, getTagsForWebhookPayload, logRevalidation, type SanityWebhookPayload, type LegacyWebhookPayload } from '@/lib/revalidation'
 
 type WebhookPayload = SanityWebhookPayload | LegacyWebhookPayload
 
@@ -41,7 +41,8 @@ export async function POST(req: NextRequest) {
     if (body && 'path' in body && body.path) {
       console.log('[Webhook] ✅ Legacy format, path:', body.path)
       revalidatePath(body.path)
-      logRevalidation(body.path)
+      revalidateTag(body.path)
+      logRevalidation(body.path, 'update')
       const response = NextResponse.json({
         revalidated: true,
         paths: [body.path],
@@ -56,15 +57,18 @@ export async function POST(req: NextRequest) {
       console.log('[Webhook] 📝 Sanity webhook payload detected')
       const sanityPayload = body as SanityWebhookPayload
       const paths = getPathsForWebhookPayload(sanityPayload)
+      const tags = getTagsForWebhookPayload(sanityPayload)
 
       console.log('[Webhook] 📍 Paths to revalidate:', paths)
+      console.log('[Webhook] 🏷️  Tags to revalidate:', tags)
 
-      if (paths.length === 0) {
-        console.log('[Webhook] ❌ No paths found for type:', sanityPayload._type)
+      if (paths.length === 0 && tags.length === 0) {
+        console.log('[Webhook] ❌ No paths or tags found for type:', sanityPayload._type)
         return NextResponse.json({
           revalidated: false,
           paths: [],
-          message: 'No paths found for this document type',
+          tags: [],
+          message: 'No paths or tags found for this document type',
           _type: sanityPayload._type
         }, { status: 400 })
       }
@@ -75,19 +79,31 @@ export async function POST(req: NextRequest) {
         try {
           revalidatePath(path)
           logRevalidation(path, sanityPayload.operation || 'update')
-          console.log('[Webhook] ✅ Revalidated:', path)
+          console.log('[Webhook] ✅ Revalidated path:', path)
         } catch (error) {
-          console.log('[Webhook] ❌ Error revalidating', path, ':', error)
+          console.log('[Webhook] ❌ Error revalidating path', path, ':', error)
           revalidationErrors.push(`${path}: ${error}`)
         }
       }
 
-      // 6. Return result
+      // 6. Revalidate all tags
+      for (const tag of tags) {
+        try {
+          revalidateTag(tag)
+          console.log('[Webhook] ✅ Revalidated tag:', tag)
+        } catch (error) {
+          console.log('[Webhook] ❌ Error revalidating tag', tag, ':', error)
+          revalidationErrors.push(`tag:${tag}: ${error}`)
+        }
+      }
+
+      // 7. Return result
       if (revalidationErrors.length > 0) {
         return NextResponse.json({
           revalidated: true,
           paths,
-          message: `Revalidated ${paths.length - revalidationErrors.length}/${paths.length} paths`,
+          tags,
+          message: `Revalidated ${paths.length + tags.length - revalidationErrors.length}/${paths.length + tags.length} items`,
           errors: revalidationErrors
         }, { status: 207 })
       }
@@ -95,7 +111,8 @@ export async function POST(req: NextRequest) {
       const response = NextResponse.json({
         revalidated: true,
         paths,
-        message: `Revalidated ${paths.length} path${paths.length > 1 ? 's' : ''}`,
+        tags,
+        message: `Revalidated ${paths.length} path${paths.length > 1 ? 's' : ''} and ${tags.length} tag${tags.length > 1 ? 's' : ''}`,
         operation: sanityPayload.operation
       })
       console.log('[Webhook] ✅ Returning success response')

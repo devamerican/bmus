@@ -16,7 +16,7 @@ export default async function MbbsAbroadFAQPage() {
 
     const QUERY = `*[_type == "mbbsFaqs"]`
 
-    const mbbsFaqsData = await cachedSanityFetch<any[]>(QUERY)
+    const mbbsFaqsData = await cachedSanityFetch<any[]>(QUERY, {}, 3600, ['mbbs-abroad-faq'])
     const mbbsFaqs = mbbsFaqsData[0]
 
     return (

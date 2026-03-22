@@ -181,8 +181,8 @@ export default async function Navbar() {
         "pdfUrl": prospectus.asset->url
       }`;
 
-  const navbarData = await cachedSanityFetch(QUERY);
-  const prospectusData = await cachedSanityFetch(PROSPECTUS_QUERY);
+  const navbarData = await cachedSanityFetch(QUERY, {}, 3600, ['navbar']);
+  const prospectusData = await cachedSanityFetch(PROSPECTUS_QUERY, {}, 3600, ['prospectus']);
 
   const prospectus = (prospectusData as any[])[0];
   const navbar = (navbarData as any[])[0];

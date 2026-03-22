@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
 export default async function AboutUs() {
   const QUERY = `*[_type == "aboutUs"]`
-  const data = await cachedSanityFetch<any[]>(QUERY)
+  const data = await cachedSanityFetch<any[]>(QUERY, {}, 3600, ['about-us'])
   const aboutPageData = data[0]
 
 

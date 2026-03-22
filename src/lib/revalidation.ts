@@ -41,7 +41,36 @@ const TYPE_TO_PATH_MAP: Record<string, string | string[] | ((payload: SanityWebh
   'mbbsInCountry': (payload) => {
     const slug = payload?.slug?.current;
     return slug ? `/mbbs/${slug}` : null;
-  }
+  },
+  'navbar': '/',
+};
+
+// Type-to-cache-tag mapping for on-demand revalidation
+const TYPE_TO_TAG_MAP: Record<string, string | string[] | ((payload: SanityWebhookPayload) => string | string[] | null)> = {
+  'aboutUs': 'about-us',
+  'homepage': 'homepage',
+  'services': 'services',
+  'directorsMessage': 'director-message',
+  'whyStudyMBBSAbroad': 'why-study-mbbs-abroad',
+  'mbbsFaqs': 'mbbs-abroad-faq',
+  'prospectus': 'prospectus',
+  'gallery': ['gallery-photos', 'gallery-videos'],
+  'navbar': 'navbar',
+
+  'blogPost': (payload) => {
+    const slug = payload?.slug?.current;
+    const tags: string[] = ['blog'];
+
+    if (slug) {
+      tags.push(`blog-${slug}`);
+    }
+
+    return tags;
+  },
+  'mbbsInCountry': (payload) => {
+    const slug = payload?.slug?.current;
+    return slug ? `mbbs-${slug}` : null;
+  },
 };
 
 // Main function to get paths from webhook payload
@@ -86,4 +115,41 @@ export function getPathsForWebhookPayload(payload: SanityWebhookPayload): string
 // Logging utility
 export function logRevalidation(path: string, operation: string = 'update') {
   console.log(`[Webhook] Revalidating ${path} (${operation})`);
+}
+
+// Main function to get cache tags from webhook payload
+export function getTagsForWebhookPayload(payload: SanityWebhookPayload): string[] {
+  const { _type } = payload;
+
+  if (!_type) {
+    return [];
+  }
+
+  const tagResolver = TYPE_TO_TAG_MAP[_type];
+
+  if (!tagResolver) {
+    return [];
+  }
+
+  // Handle static tags (string)
+  if (typeof tagResolver === 'string') {
+    return [tagResolver];
+  }
+
+  // Handle static tags (array of strings)
+  if (Array.isArray(tagResolver)) {
+    return tagResolver;
+  }
+
+  // Handle dynamic tags (function)
+  try {
+    const result = tagResolver(payload);
+    if (Array.isArray(result)) {
+      return result;
+    }
+    return result ? [result] : [];
+  } catch (error) {
+    console.error(`[Webhook] Error resolving tag for ${_type}:`, error);
+    return [];
+  }
 }

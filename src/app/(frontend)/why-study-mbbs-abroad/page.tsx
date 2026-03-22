@@ -13,8 +13,7 @@ export const metadata = {
 export default async function WhyStudyMbbsAbroad() {
 
   const QUERY = `*[_type == "whyStudyMBBSAbroad"]`
-  // const result = await client.fetch<SanityDocument[]>(QUERY, {});
-  const result = await cachedSanityFetch<any[]>(QUERY)
+  const result = await cachedSanityFetch<any[]>(QUERY, {}, 3600, ['why-study-mbbs-abroad'])
   const data = result[0]
 
   return (
