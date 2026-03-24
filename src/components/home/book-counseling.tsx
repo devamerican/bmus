@@ -4,7 +4,7 @@ import { CardContent, Card, CardTitle, CardHeader } from "../ui/card";
 
 export default function BookCounseling(){
     return(
-        <section id="book_counseling" className="section-container flex flex-col lg:flex-row  gap-6 scroll-mt-20" >
+        <section id="book_counseling" className="section-container flex flex-col lg:flex-row  gap-6 scroll-mt-20 my-10 xl:my-20" >
             <div className="basis-[55%]" >
                 <Image className="object-cover w-full rounded-lg" src="/bmus-abroad.jpg" width={1600} height={1200} alt="book your counselling" />
             </div>
