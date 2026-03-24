@@ -29,7 +29,7 @@ const slides = [
         title: "Batumi Shota Rustaveli State University",
         subtitle: "Best University in Georgia",
         description: "Located in the capital city Tbilisi, offering world-class medical education.",
-        image: "/CAMPUS_4ZetiLiiP.webp",
+        image: "/CAMPUS_4ZetiLIiP.webp",
         cta: "Learn More",
         link: "/mbbs/georgia"
     },
