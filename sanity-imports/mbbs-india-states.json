@@ -1,0 +1,1125 @@
+{
+  "imports": [
+    {
+      "_type": "mbbsInCountry",
+      "slug": {
+        "_type": "slug",
+        "current": "punjab"
+      },
+      "heading": "Punjab MBBS Admission 2026",
+      "bg_image": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-placeholder-punjab-bg",
+          "_type": "reference"
+        }
+      },
+      "hero": {
+        "logo_image": {
+          "_type": "image",
+          "asset": {
+            "_ref": "image-placeholder-punjab-logo",
+            "_type": "reference"
+          }
+        },
+        "content": [
+          {
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "text": "Punjab MBBS Admission 2026 - Merit List, Seats, Counselling, Admission Process, Cut-Off, NRI Quota Fees, Private Colleges Fees, Govt. Colleges Fees, Top Colleges"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "text": "Baba Farid University of Health Sciences (BFUHS), Faridkot, handles every step of the MBBS BDS admissions process in Punjab. Your NEET marks determine your eligibility for admission to medical colleges in Punjab."
+              }
+            ]
+          }
+        ]
+      },
+      "sections": [
+        {
+          "_type": "object",
+          "_key": "punjab-stats",
+          "type": "labelValue",
+          "heading": "Punjab MBBS Overview",
+          "description": "Key statistics for MBBS admission in Punjab",
+          "label_value": [
+            {
+              "label": "Government Colleges",
+              "value": "6"
+            },
+            {
+              "label": "Government Seats",
+              "value": "999"
+            },
+            {
+              "label": "Private Colleges",
+              "value": "7"
+            },
+            {
+              "label": "Private Seats",
+              "value": "900"
+            }
+          ]
+        },
+        {
+          "_type": "object",
+          "_key": "punjab-admission-process",
+          "type": "content",
+          "heading": "Punjab MBBS Admission Process",
+          "description": "Steps for MBBS counseling in Punjab",
+          "content": [
+            {
+              "_type": "block",
+              "style": "h3",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "Admission Process"
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "1. In Govt. colleges of Punjab, 15% of the MBBS seats are allotted under the All India Quota (AIQ) through MCC Counseling and 85% through the state quota counselling conducted by Baba Farid University of Health Sciences, Faridkot (BFUHS)."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "2. In Private Colleges of Punjab, 100% of the MBBS seats are allotted through the Punjab State Quota counselling."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "3. AIIMS Bathinda, 100% MBBS seats are allotted through a centralized counseling conducted by the Medical Counselling Committee (MCC)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_type": "object",
+          "_key": "punjab-particulars",
+          "type": "labelValue",
+          "heading": "Punjab MBBS Admission Particulars",
+          "description": "Key details for admission",
+          "label_value": [
+            {
+              "label": "Admission Name",
+              "value": "Punjab MBBS College Admission 2026"
+            },
+            {
+              "label": "Counseling Authority",
+              "value": "Baba Farid University of Health Sciences, Faridkot"
+            },
+            {
+              "label": "Mode of Admission",
+              "value": "Online"
+            },
+            {
+              "label": "Entrance Exam",
+              "value": "NEET 2026"
+            },
+            {
+              "label": "Official Website",
+              "value": "https://bfuhs.ac.in/"
+            }
+          ]
+        },
+        {
+          "_type": "object",
+          "_key": "punjab-private-fees",
+          "type": "table",
+          "heading": "Punjab MBBS Fees Structure In Private Medical Colleges 2026",
+          "description": "Yearly tuition fees for private colleges",
+          "data": {
+            "headers": ["Private MBBS Colleges", "Government Quota (Per Annum)", "Management Quota (Per Annum)"],
+            "rows": [
+              {
+                "columns": ["Christian Medical College, Ludhiana", "₹ 6,60,000", "₹ 6,60,000"]
+              },
+              {
+                "columns": ["Sri Guru Ram Das Institute of Medical Sciences and Research, Amritsar", "₹ 4,47,000", "₹ 11,49,000"]
+              },
+              {
+                "columns": ["Dayanand Medical College & Hospital, Ludhiana", "₹ 4,47,000", "₹ 11,49,000"]
+              },
+              {
+                "columns": ["Punjab Institute of Medical Sciences, Jalandhar", "₹ 4,47,000", "₹ 11,49,000"]
+              },
+              {
+                "columns": ["Gian Sagar Medical College & Hospital, Patiala", "₹ 4,47,000", "₹ 11,49,000"]
+              },
+              {
+                "columns": ["Adesh Institute of Medical Sciences & Research, Bathinda", "₹ 11,49,000", "₹ 11,49,000"]
+              },
+              {
+                "columns": ["RIMT Medical College And Hospital, Gobindgarh", "₹ 4,47,000", "₹ 11,49,000"]
+              }
+            ]
+          }
+        },
+        {
+          "_type": "object",
+          "_key": "punjab-govt-fees",
+          "type": "table",
+          "heading": "Punjab MBBS Fees Structure In Government Medical Colleges 2026",
+          "description": "Annual fees for government colleges",
+          "data": {
+            "headers": ["Government MBBS Colleges", "Fee Per Annum in ₹"],
+            "rows": [
+              {
+                "columns": ["All India Institute of Medical Sciences, Bhatinda", "Varies"]
+              },
+              {
+                "columns": ["Government Medical College, Patiala", "₹ 1,92,000"]
+              },
+              {
+                "columns": ["Government Medical College, Amritsar", "₹ 1,92,000"]
+              },
+              {
+                "columns": ["Guru Govind Singh Medical College, Faridkot", "₹ 1,92,000"]
+              },
+              {
+                "columns": ["Dr B R Ambedkar State Institute of Medical Sciences, SAS Nagar, Mohali", "₹ 1,92,000"]
+              }
+            ]
+          }
+        },
+        {
+          "_type": "object",
+          "_key": "punjab-nri-fees",
+          "type": "table",
+          "heading": "Punjab MBBS NRI Quota Fees",
+          "description": "NRI quota fee structure for Punjab medical colleges",
+          "data": {
+            "headers": ["College", "NRI Seats", "NRI Fee (USD)"],
+            "rows": [
+              {
+                "columns": ["Adesh Institute of Medical Sciences & Research, Bathinda", "22", "~110,000"]
+              },
+              {
+                "columns": ["Christian Medical College, Ludhiana", "15", "Different policy (Verify)"]
+              },
+              {
+                "columns": ["Dayanand Medical College & Hospital, Ludhiana", "15", "~110,000"]
+              },
+              {
+                "columns": ["Punjab Institute of Medical Sciences, Jalandhar", "22", "~110,000"]
+              },
+              {
+                "columns": ["Sri Guru Ram Das Institute of Medical Sciences and Research, Amritsar", "11", "~110,000"]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "_type": "mbbsInCountry",
+      "slug": {
+        "_type": "slug",
+        "current": "haryana"
+      },
+      "heading": "Haryana MBBS Admission 2025",
+      "bg_image": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-placeholder-haryana-bg",
+          "_type": "reference"
+        }
+      },
+      "hero": {
+        "logo_image": {
+          "_type": "image",
+          "asset": {
+            "_ref": "image-placeholder-haryana-logo",
+            "_type": "reference"
+          }
+        },
+        "content": [
+          {
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "text": "Haryana MBBS Admission 2025 - Merit List, Seats, Counselling, Admission Process, Cut-Off, NRI Quota Fees, Private Colleges Fees, Govt. Colleges Fees, Top Colleges"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "text": "PT. B.D. Sharma University of Health Sciences, Rohtak, handles every step of the MBBS BDS admissions process in Haryana. Your NEET rank determines admission to medical colleges in Haryana."
+              }
+            ]
+          }
+        ]
+      },
+      "sections": [
+        {
+          "_type": "object",
+          "_key": "haryana-stats",
+          "type": "labelValue",
+          "heading": "Haryana MBBS Overview",
+          "description": "Key statistics for MBBS admission in Haryana",
+          "label_value": [
+            {
+              "label": "Government Colleges",
+              "value": "6"
+            },
+            {
+              "label": "Government Seats",
+              "value": "835"
+            },
+            {
+              "label": "Private Colleges",
+              "value": "9"
+            },
+            {
+              "label": "Private Seats",
+              "value": "1350"
+            }
+          ]
+        },
+        {
+          "_type": "object",
+          "_key": "haryana-admission-process",
+          "type": "content",
+          "heading": "Haryana MBBS Admission Process",
+          "description": "Steps for MBBS counseling in Haryana",
+          "content": [
+            {
+              "_type": "block",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "1. In Govt. colleges of Haryana, 15% of the MBBS seats are allotted under the All India Quota (AIQ) through MCC Counseling and 85% through the state quota counselling conducted by PT. B.D. Sharma University of Health Sciences, Rohtak."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "2. In Private Colleges of Haryana, 100% of the MBBS seats are allotted through the Haryana State Quota counselling."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_type": "object",
+          "_key": "haryana-particulars",
+          "type": "labelValue",
+          "heading": "Haryana MBBS Admission Particulars",
+          "description": "Key details for admission",
+          "label_value": [
+            {
+              "label": "Admission Name",
+              "value": "Haryana MBBS College Admission 2025"
+            },
+            {
+              "label": "Counseling Authority",
+              "value": "PT. B.D. Sharma University of Health Sciences, Rohtak"
+            },
+            {
+              "label": "Mode of Admission",
+              "value": "Online"
+            },
+            {
+              "label": "Entrance Exam",
+              "value": "NEET 2025"
+            },
+            {
+              "label": "Official Website",
+              "value": "https://dmer.haryana.gov.in/"
+            }
+          ]
+        },
+        {
+          "_type": "object",
+          "_key": "haryana-private-fees",
+          "type": "table",
+          "heading": "Haryana MBBS Fees Structure In Private Medical Colleges 2025",
+          "description": "Annual fees for private colleges",
+          "data": {
+            "headers": ["Private MBBS Colleges", "Government Quota Fee Per Annum"],
+            "rows": [
+              {
+                "columns": ["Faculty Of Medicine & Health Sciences, SGT University, Gurugram", "₹ 21,00,000"]
+              },
+              {
+                "columns": ["Adesh Medical College & Hospital, Kurukshetra", "₹ 12,00,000 (with 7.5% Increment)"]
+              },
+              {
+                "columns": ["Maharishi Markendeshwar College Of Medical Sciences, Sadhopur", "₹ 17,00,000 (with 10% Increment)"]
+              },
+              {
+                "columns": ["AL - Falah School Of Medical Science & Research Centre, Faridabad", "₹ 16,37,500"]
+              },
+              {
+                "columns": ["NC Medical College & Hospital, Israna, Panipat", "₹ 12,00,000"]
+              },
+              {
+                "columns": ["World College Of Medical Sciences And Research, Jhajjar", "₹ 12,00,000"]
+              }
+            ]
+          }
+        },
+        {
+          "_type": "object",
+          "_key": "haryana-govt-fees",
+          "type": "table",
+          "heading": "Haryana MBBS Fees Structure In Government Medical Colleges 2025",
+          "description": "Annual fees for government colleges",
+          "data": {
+            "headers": ["Government MBBS Colleges", "Fee Per Annum in ₹"],
+            "rows": [
+              {
+                "columns": ["ESIC Medical College, NIT, Faridabad", "₹ 80,000"]
+              },
+              {
+                "columns": ["Pandit Bhagwat Dayal Sharma Post Graduate Institute of Medical Sciences", "₹ 80,000"]
+              },
+              {
+                "columns": ["Kalpana Chawla Govt. Medical College, Karnal", "₹ 80,000"]
+              },
+              {
+                "columns": ["Maharaja Agrasen Medical College, Agroha Hisar", "₹ 1,80,000"]
+              },
+              {
+                "columns": ["Bhagat Phool Singh Govt. Medical College For Women, Khanpur Kalan, Sonepat", "₹ 80,000"]
+              },
+              {
+                "columns": ["Sh. Atal Bihari Vajpayee Government Medical College, Chhainsa, Faridabad", "₹ 80,000"]
+              },
+              {
+                "columns": ["Shaheed Hasan Khan Mewati Govt. Medical College, Nalhar Mewat", "₹ 80,000"]
+              }
+            ]
+          }
+        },
+        {
+          "_type": "object",
+          "_key": "haryana-nri-fees",
+          "type": "labelValue",
+          "heading": "Haryana MBBS NRI Quota Fees",
+          "description": "NRI quota fees for government and private colleges",
+          "label_value": [
+            {
+              "label": "NRI Fees in Government Medical Colleges",
+              "value": "$ 1,25,000 per year"
+            },
+            {
+              "label": "NRI Fees in Private Medical Colleges",
+              "value": "$ 1,10,000 per year"
+            }
+          ]
+        },
+        {
+          "_type": "object",
+          "_key": "haryana-bond-policy",
+          "type": "content",
+          "heading": "Haryana MBBS Bond Policy",
+          "description": "Service bond details for government colleges",
+          "content": [
+            {
+              "_type": "block",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "The Haryana Bond Policy for government MBBS colleges entails a commitment to serve in rural or underserved areas of Haryana for 5 Years after completing their medical education."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "style": "h4",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "Bond Amounts:"
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "listItem": "bullet",
+              "level": 1,
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "Government Medical Colleges: ₹25,77,090/- (Male), ₹23,19,381/- (Female)"
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "listItem": "bullet",
+              "level": 1,
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "Government Aided Medical College: ₹21,90,000/- (Male), ₹19,71,000/- (Female)"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_type": "mbbsInCountry",
+      "slug": {
+        "_type": "slug",
+        "current": "rajasthan"
+      },
+      "heading": "Rajasthan MBBS Admission 2026",
+      "bg_image": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-placeholder-rajasthan-bg",
+          "_type": "reference"
+        }
+      },
+      "hero": {
+        "logo_image": {
+          "_type": "image",
+          "asset": {
+            "_ref": "image-placeholder-rajasthan-logo",
+            "_type": "reference"
+          }
+        },
+        "content": [
+          {
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "text": "Rajasthan MBBS Admission 2026 - Merit List, Seats, Counselling, Admission Process, Cut-Off, NRI Quota Fees, Private Colleges Fees, Govt. Colleges Fees, Top Colleges"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "text": "Rajasthan University of Health Sciences handles every step of the MBBS BDS admissions process in Rajasthan, including counseling application form, schedule, seat matrix, document verification, and seat assignment."
+              }
+            ]
+          }
+        ]
+      },
+      "sections": [
+        {
+          "_type": "object",
+          "_key": "rajasthan-stats",
+          "type": "labelValue",
+          "heading": "Rajasthan MBBS Overview",
+          "description": "Key statistics for MBBS admission in Rajasthan",
+          "label_value": [
+            {
+              "label": "Government Colleges",
+              "value": "31"
+            },
+            {
+              "label": "Government Seats",
+              "value": "4455"
+            },
+            {
+              "label": "Private Colleges",
+              "value": "12"
+            },
+            {
+              "label": "Private Seats",
+              "value": "2050"
+            }
+          ]
+        },
+        {
+          "_type": "object",
+          "_key": "rajasthan-admission-process",
+          "type": "content",
+          "heading": "Rajasthan MBBS Admission Process",
+          "description": "Steps for MBBS counseling in Rajasthan",
+          "content": [
+            {
+              "_type": "block",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "1. In Govt. colleges of Rajasthan, 15% of the MBBS seats are allotted under the All India Quota (AIQ) through MCC Counseling and 85% through the state quota counselling conducted by Rajasthan University of Health Sciences."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "2. In Private Colleges of Rajasthan, 100% of the MBBS seats are allotted through the Rajasthan State Quota counselling."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_type": "object",
+          "_key": "rajasthan-particulars",
+          "type": "labelValue",
+          "heading": "Rajasthan MBBS Admission Particulars",
+          "description": "Key details for admission",
+          "label_value": [
+            {
+              "label": "Admission Name",
+              "value": "Rajasthan MBBS College Admission 2026"
+            },
+            {
+              "label": "Counseling Authority",
+              "value": "Rajasthan University of Health Sciences (RUHS)"
+            },
+            {
+              "label": "Mode of Admission",
+              "value": "Online"
+            },
+            {
+              "label": "Entrance Exam",
+              "value": "NEET 2026"
+            },
+            {
+              "label": "Official Website",
+              "value": "https://www.rajugneet2023.com/"
+            }
+          ]
+        },
+        {
+          "_type": "object",
+          "_key": "rajasthan-private-fees",
+          "type": "table",
+          "heading": "Rajasthan MBBS Fees Structure In Private Medical Colleges 2026",
+          "description": "Annual fees for private colleges",
+          "data": {
+            "headers": ["Private MBBS Colleges", "State Quota Fee", "Management Quota Fee"],
+            "rows": [
+              {
+                "columns": ["Pacific Institute Of Medical Sciences Udaipur", "₹ 23,00,000", "₹ 35,00,000"]
+              },
+              {
+                "columns": ["NIMS, Jaipur", "₹ 21,00,000", "₹ 25,00,000"]
+              },
+              {
+                "columns": ["DR. S S Tantia Medical College Hospital & Research Centre Sriganganagar", "₹ 21,75,000", "₹ 28,75,000"]
+              },
+              {
+                "columns": ["JNU Institute Of Medical Sciences & Research Centre Jaipur", "₹ 21,60,000", "₹ 25,50,000"]
+              },
+              {
+                "columns": ["American International Institute Of Medical Sciences Udaipur", "₹ 18,90,000", "₹ 28,00,000"]
+              },
+              {
+                "columns": ["Geetanjali Medical College & Hospital Udaipur", "₹ 22,00,000", "₹ 29,00,000"]
+              },
+              {
+                "columns": ["Mahatma Gandhi Medical College & Hospital, Jaipur", "₹ 19,50,000", "₹ 26,75,000"]
+              }
+            ]
+          }
+        },
+        {
+          "_type": "object",
+          "_key": "rajasthan-govt-colleges",
+          "type": "table",
+          "heading": "Rajasthan MBBS Fees Structure In Government Medical Colleges 2026",
+          "description": "Government colleges with seat information",
+          "data": {
+            "headers": ["Government MBBS Colleges", "Establish Year", "Annual Intake Seats"],
+            "rows": [
+              {
+                "columns": ["SMS Medical College, Jaipur", "1947", "250"]
+              },
+              {
+                "columns": ["R N T Medical College, Udaipur", "1961", "250"]
+              },
+              {
+                "columns": ["Sardar Patel Medical College, Bikaner", "1959", "250"]
+              },
+              {
+                "columns": ["Jawaharlal Nehru Medical College, Ajmer", "1965", "250"]
+              },
+              {
+                "columns": ["Dr SN Medical College, Jodhpur", "1965", "250"]
+              },
+              {
+                "columns": ["Government Medical College, Kota", "1992", "250"]
+              }
+            ]
+          }
+        },
+        {
+          "_type": "object",
+          "_key": "rajasthan-nri-fees",
+          "type": "labelValue",
+          "heading": "Rajasthan MBBS NRI Quota Fees",
+          "description": "NRI quota fees",
+          "label_value": [
+            {
+              "label": "NRI MBBS Seats in Rajasthan Fees",
+              "value": "$ 36,466 / Year"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_type": "mbbsInCountry",
+      "slug": {
+        "_type": "slug",
+        "current": "uttar-pradesh"
+      },
+      "heading": "Uttar Pradesh MBBS Admission 2025",
+      "bg_image": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-placeholder-up-bg",
+          "_type": "reference"
+        }
+      },
+      "hero": {
+        "logo_image": {
+          "_type": "image",
+          "asset": {
+            "_ref": "image-placeholder-up-logo",
+            "_type": "reference"
+          }
+        },
+        "content": [
+          {
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "text": "Uttar Pradesh MBBS Admission 2025 - Merit List, Seats, Counselling, Admission Process, Cut-Off, Private Colleges Fees, Govt. Colleges Fees, Top Colleges"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "text": "Director General of Medical Education and Training Uttar Pradesh handles every step of the MBBS BDS admissions process including counseling application form, schedule, seat matrix, document verification, and seat assignment."
+              }
+            ]
+          }
+        ]
+      },
+      "sections": [
+        {
+          "_type": "object",
+          "_key": "up-stats",
+          "type": "labelValue",
+          "heading": "Uttar Pradesh MBBS Overview",
+          "description": "Key statistics for MBBS admission in Uttar Pradesh",
+          "label_value": [
+            {
+              "label": "Government Colleges",
+              "value": "45"
+            },
+            {
+              "label": "Government Seats",
+              "value": "5475"
+            },
+            {
+              "label": "Private Colleges",
+              "value": "40"
+            },
+            {
+              "label": "Private Seats",
+              "value": "6650"
+            }
+          ]
+        },
+        {
+          "_type": "object",
+          "_key": "up-admission-process",
+          "type": "content",
+          "heading": "Uttar Pradesh MBBS Admission Process",
+          "description": "Steps for MBBS counseling in Uttar Pradesh",
+          "content": [
+            {
+              "_type": "block",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "1. In Govt. colleges of Uttar Pradesh, 15% of the MBBS seats are allotted under the All India Quota (AIQ) through MCC Counseling and 85% through the state quota counselling conducted by Director General of Medical Education and Training Uttar Pradesh."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "2. In Private Colleges of Uttar Pradesh, 100% of the MBBS seats are allotted through the Uttar Pradesh State Quota counselling."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_type": "object",
+          "_key": "up-particulars",
+          "type": "labelValue",
+          "heading": "Uttar Pradesh MBBS Admission Particulars",
+          "description": "Key details for admission",
+          "label_value": [
+            {
+              "label": "Admission Name",
+              "value": "Uttar Pradesh MBBS College Admission 2025"
+            },
+            {
+              "label": "Counseling Authority",
+              "value": "Director General of Medical Education and Training Uttar Pradesh"
+            },
+            {
+              "label": "Mode of Admission",
+              "value": "Online"
+            },
+            {
+              "label": "Entrance Exam",
+              "value": "NEET 2025"
+            },
+            {
+              "label": "Official Website",
+              "value": "https://upneet.gov.in/"
+            }
+          ]
+        },
+        {
+          "_type": "object",
+          "_key": "up-private-fees",
+          "type": "table",
+          "heading": "Uttar Pradesh MBBS Fees Structure In Private Medical Colleges 2025",
+          "description": "Annual tuition fees for private colleges",
+          "data": {
+            "headers": ["Private MBBS Colleges", "Yearly MBBS Tuition Fee"],
+            "rows": [
+              {
+                "columns": ["NATIONAL CAPITAL REGION INSTITUTE OF MEDICAL COLLEGE, MEERUT", "₹ 12,19,917"]
+              },
+              {
+                "columns": ["VENKATESHWARA INSTITUTE OF MEDICAL SCIENCES, AMROHA", "₹ 11,10,508"]
+              },
+              {
+                "columns": ["G.S. MEDICAL COLLEGE, HAPUR", "₹ 11,78,892"]
+              },
+              {
+                "columns": ["KRISHAN MOHAN MEDICAL COLLEGE & HOSPITAL, MATHURA", "₹ 11,73,856"]
+              },
+              {
+                "columns": ["PRASAD INSTITUTE OF MEDICAL COLLEGE, LUCKNOW", "₹ 11,03,932"]
+              },
+              {
+                "columns": ["K.D. MEDICAL COLLEGE HOSPITAL & RESEARCH CENTRE, MATHURA", "₹ 12,28,240"]
+              },
+              {
+                "columns": ["T.S. MISHRA MEDICAL COLLEGE & HOSPITAL, LUCKNOW", "₹ 12,99,199"]
+              },
+              {
+                "columns": ["RAJSHREE MEDICAL RESEARCH INSTITUTE BAREILLY", "₹ 14,74,087"]
+              }
+            ]
+          }
+        },
+        {
+          "_type": "object",
+          "_key": "up-govt-fees",
+          "type": "table",
+          "heading": "Uttar Pradesh MBBS Fees Structure In Government Medical Colleges 2025",
+          "description": "Annual fees for government colleges",
+          "data": {
+            "headers": ["Government MBBS Colleges", "Yearly MBBS Tuition Fees"],
+            "rows": [
+              {
+                "columns": ["KGMU, LUCKNOW", "₹ 18,000"]
+              },
+              {
+                "columns": ["DR. R.M.L INSTITUTE OF MEDICAL SCIENCES, LUCKNOW", "₹ 26,000"]
+              },
+              {
+                "columns": ["G.S.V.M. MEDICAL COLLEGE, KANPUR", "₹ 26,000"]
+              },
+              {
+                "columns": ["M.L.N. MEDICAL COLLEGE, PRAGYRAJ", "₹ 30,000"]
+              },
+              {
+                "columns": ["L.L.R.M. MEDICAL COLLEGE, MEERUT", "₹ 36,000"]
+              },
+              {
+                "columns": ["GOVT. INSTITUTE OF MEDICAL SCIENCES, GREATER NOIDA", "₹ 36,000"]
+              },
+              {
+                "columns": ["S.N. MEDICAL COLLEGE, AGRA", "₹ 36,000"]
+              },
+              {
+                "columns": ["B.R.D. MEDICAL COLLEGE, GORAKHPUR", "₹ 36,000"]
+              }
+            ]
+          }
+        },
+        {
+          "_type": "object",
+          "_key": "up-minority-fees",
+          "type": "table",
+          "heading": "Uttar Pradesh MBBS Fees Structure In Minority Medical Colleges 2025",
+          "description": "Annual fees for minority colleges",
+          "data": {
+            "headers": ["College Name", "Yearly MBBS Tuition Fee"],
+            "rows": [
+              {
+                "columns": ["CAREER INSTITUTE OF MEDICAL SCIENCES, LUCKNOW (Muslim)", "₹ 15,95,000"]
+              },
+              {
+                "columns": ["INTEGRAL INSTITUTE OF MEDICAL SCIENCES & RESEARCH, LUCKNOW (Muslim)", "₹ 18,00,000"]
+              },
+              {
+                "columns": ["ERA MEDICAL COLLEGE, LUCKNOW (Muslim)", "₹ 16,60,000"]
+              },
+              {
+                "columns": ["F.H. MEDICAL COLLEGE & HOSPITAL, AGRA (Muslim)", "₹ 16,50,000"]
+              },
+              {
+                "columns": ["TEERTHANKER MAHAVEER MEDICAL COLLEGE & RESEARCH CENTRE, MORADABAD (Jain)", "₹ 16,20,000"]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "_type": "mbbsInCountry",
+      "slug": {
+        "_type": "slug",
+        "current": "maharashtra"
+      },
+      "heading": "Maharashtra MBBS Admission 2026",
+      "bg_image": {
+        "_type": "image",
+        "asset": {
+          "_ref": "image-placeholder-maharashtra-bg",
+          "_type": "reference"
+        }
+      },
+      "hero": {
+        "logo_image": {
+          "_type": "image",
+          "asset": {
+            "_ref": "image-placeholder-maharashtra-logo",
+            "_type": "reference"
+          }
+        },
+        "content": [
+          {
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "text": "Maharashtra MBBS Admission 2026 - Merit List, Seats, Counselling, Admission Process, Cut-Off, NRI Quota Fees, Private Colleges Fees, Govt. Colleges Fees, Top Colleges"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "text": "Maharashtra State CET Cell handles every step of the MBBS BDS admissions process in Maharashtra, including counseling application form, schedule, seat matrix, document verification, and seat assignment."
+              }
+            ]
+          }
+        ]
+      },
+      "sections": [
+        {
+          "_type": "object",
+          "_key": "maharashtra-stats",
+          "type": "labelValue",
+          "heading": "Maharashtra MBBS Overview",
+          "description": "Key statistics for MBBS admission in Maharashtra",
+          "label_value": [
+            {
+              "label": "Government Colleges",
+              "value": "43"
+            },
+            {
+              "label": "Government Seats",
+              "value": "6075"
+            },
+            {
+              "label": "Private Colleges",
+              "value": "40"
+            },
+            {
+              "label": "Private Seats",
+              "value": "6599"
+            }
+          ]
+        },
+        {
+          "_type": "object",
+          "_key": "maharashtra-admission-process",
+          "type": "content",
+          "heading": "Maharashtra MBBS Admission Process",
+          "description": "Steps for MBBS counseling in Maharashtra",
+          "content": [
+            {
+              "_type": "block",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "1. In Govt. colleges of Maharashtra, 15% of the MBBS seats are allotted under the All India Quota (AIQ) through MCC Counseling and 85% through the state quota counselling conducted by Maharashtra State CET Cell."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "2. In Private Colleges of Maharashtra, 100% of the MBBS seats are allotted through the Maharashtra State Quota counselling."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_type": "object",
+          "_key": "maharashtra-particulars",
+          "type": "labelValue",
+          "heading": "Maharashtra MBBS Admission Particulars",
+          "description": "Key details for admission",
+          "label_value": [
+            {
+              "label": "Admission Name",
+              "value": "Maharashtra MBBS College Admission 2026"
+            },
+            {
+              "label": "Counseling Authority",
+              "value": "Maharashtra State CET Cell"
+            },
+            {
+              "label": "Mode of Admission",
+              "value": "Online"
+            },
+            {
+              "label": "Entrance Exam",
+              "value": "NEET 2026"
+            },
+            {
+              "label": "Official Website",
+              "value": "https://cetcell.net.in/NEET-UG-2023/login"
+            }
+          ]
+        },
+        {
+          "_type": "object",
+          "_key": "maharashtra-private-fees",
+          "type": "table",
+          "heading": "Maharashtra MBBS Fees Structure In Private Medical Colleges 2026",
+          "description": "Annual fees for private colleges",
+          "data": {
+            "headers": ["Private MBBS Colleges", "OPN", "EWS/OBC", "NRI"],
+            "rows": [
+              {
+                "columns": ["Vedantaa Institute Of Medical Sciences Palghar Maharashtra", "₹ 1,557,000", "NA", "₹ 4,671,000"]
+              },
+              {
+                "columns": ["Dr. N Y Tasgaonkar Institute Of Medical Science Diksal Karjat", "₹ 565,000", "₹ 282,500", "₹ 5,300,000"]
+              },
+              {
+                "columns": ["Sindhudurg Shikshan Prasarak Mandal Medical College & Hospital Sindhudurg", "₹ 694,546", "₹ 347,273", "₹ 3,820,000"]
+              },
+              {
+                "columns": ["Prakash Institute Of Medical Science & Research Sangli", "₹ 773,637", "₹ 386,819", "₹ 4,255,000"]
+              },
+              {
+                "columns": ["ACPM Medical College Dhule", "₹ 850,000", "₹ 473,895", "₹ 4,250,000"]
+              },
+              {
+                "columns": ["Dr. Panjabrao Alias Bhausaheb Deshmukh Memorial Medical College Amravati", "₹ 1,078,000", "₹ 1,078,000", "₹ 5,390,000"]
+              },
+              {
+                "columns": ["SMBT Institute Of Medical Sciences & Research Centre Nandihills Nashik", "₹ 1,160,000", "₹ 632,727", "₹ 5,800,000"]
+              }
+            ]
+          }
+        },
+        {
+          "_type": "object",
+          "_key": "maharashtra-govt-colleges",
+          "type": "table",
+          "heading": "Maharashtra MBBS Fees Structure In Government Medical Colleges 2026",
+          "description": "Government colleges with seat information",
+          "data": {
+            "headers": ["Government MBBS Colleges", "Establish Year", "Annual Intake Seats"],
+            "rows": [
+              {
+                "columns": ["Grant Medical College, Mumbai", "1845", "250"]
+              },
+              {
+                "columns": ["Seth GS Medical College, and KEM Hospital, Mumbai", "1925", "250"]
+              },
+              {
+                "columns": ["B. J. Govt. Medical College, Pune", "1924", "250"]
+              },
+              {
+                "columns": ["Armed Forces Medical College, Pune", "1962", "150"]
+              },
+              {
+                "columns": ["Government Medical College, Nagpur", "1947", "250"]
+              },
+              {
+                "columns": ["Dr. Shankarrao Chavan Govt. Medical College, Nanded", "1988", "150"]
+              },
+              {
+                "columns": ["Government Medical College, Aurangabad", "1956", "200"]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

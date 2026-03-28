@@ -23,7 +23,7 @@ export const mbbsInCountrySchema = defineType({
       title: 'Background Image',
       type: 'image',
       options: { hotspot: true },
-      validation: Rule => Rule.required(),
+      description: 'Optional - will use gradient background if not provided',
     }),
 
     // ✅ Fixed Hero section
@@ -32,7 +32,7 @@ export const mbbsInCountrySchema = defineType({
       title: 'Hero Section',
       type: 'object',
       fields: [
-        defineField({ name: 'logo_image', title: 'Logo Image', type: 'image', options: { hotspot: true }, validation: Rule => Rule.required() }),
+        defineField({ name: 'logo_image', title: 'Logo Image', type: 'image', options: { hotspot: true }, description: 'Optional - will be hidden if not provided' }),
         defineField({
           name: 'content',
           title: 'Content',

@@ -44,17 +44,24 @@ export default async function MBBSInCountryPage({ params }: MBBSInCountryPagePro
   if (!pageContent) return notFound()
 
 
+  const bgImageUrl = pageContent.bg_image ? urlFor(pageContent.bg_image)?.url() : null
+  const logoImageUrl = pageContent.hero?.logo_image ? urlFor(pageContent.hero.logo_image)?.url() : null
+
   return (
     <div className=" bg-gray-50">
-      {/* Hero Section with Russian Landmark */}
+      {/* Hero Section with Background */}
       <section className="relative h-96">
-        <Image
-          src={urlFor(pageContent.bg_image)?.url() ?? ""}
-          alt="Saint Basil's Cathedral in Moscow"
-          fill
-          className="object-cover brightness-50"
-          priority
-        />
+        {bgImageUrl ? (
+          <Image
+            src={bgImageUrl}
+            alt={pageContent.heading}
+            fill
+            className="object-cover brightness-50"
+            priority
+          />
+        ) : (
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-800" />
+        )}
         <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center p-4">
           <h3 className="text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg">{pageContent.heading}</h3>
         </div>
@@ -67,14 +74,16 @@ export default async function MBBSInCountryPage({ params }: MBBSInCountryPagePro
         {/* Main Content Area */}
         <div className='mt-14' >
 
-          <Image
-            src={urlFor(pageContent.hero.logo_image)?.url() ?? ""}
-            alt="Russian Flag"
-            width={200}
-            height={120}
-            className="rounded-md float-left clear-both"
-          />
-          <PortableText value={pageContent.hero.content} />
+          {logoImageUrl && (
+            <Image
+              src={logoImageUrl}
+              alt={pageContent.heading}
+              width={200}
+              height={120}
+              className="rounded-md float-left clear-both mr-4 mb-4"
+            />
+          )}
+          <PortableText value={pageContent.hero?.content || []} />
 
         </div>
 

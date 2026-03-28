@@ -61,6 +61,37 @@ const navItems = [
     ],
   },
   {
+    name: "MBBS in India",
+    href: "#",
+    items: [
+      {
+        title: "MBBS in Maharashtra",
+        href: "/mbbs/maharashtra",
+        description: "Study medicine in Maharashtra",
+      },
+      {
+        title: "MBBS in Uttar Pradesh",
+        href: "/mbbs/uttar-pradesh",
+        description: "Study medicine in Uttar Pradesh",
+      },
+      {
+        title: "MBBS in Rajasthan",
+        href: "/mbbs/rajasthan",
+        description: "Study medicine in Rajasthan",
+      },
+      {
+        title: "MBBS in Haryana",
+        href: "/mbbs/haryana",
+        description: "Study medicine in Haryana",
+      },
+      {
+        title: "MBBS in Punjab",
+        href: "/mbbs/punjab",
+        description: "Study medicine in Punjab",
+      },
+    ],
+  },
+  {
     name: "MBBS Abroad",
     href: "#",
     items: [

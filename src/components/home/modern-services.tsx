@@ -98,7 +98,7 @@ export default function ModernServices({ data }: { data: { services: Service[], 
                                         whileInView={{ scale: 1, opacity: 1 }}
                                         viewport={{ once: true }}
                                         transition={{ delay: index * 0.1 + 0.2 }}
-                                        className="absolute -bottom-6 left-6 w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300"
+                                        className="absolute bottom-2 left-6 w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300"
                                     >
                                         {getIcon(service.title)}
                                     </motion.div>

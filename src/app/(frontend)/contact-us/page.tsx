@@ -34,7 +34,7 @@ export default function ContactUs() {
         "Star Sainik Defence Academy, Rahul gas wali Gali, CR Resort k samne Mini by pass Shanti nagar Bhiwani Haryana",
     },
     {
-      city: "Nuh",
+      city: "Punhana",
       state: "Haryana",
       address: "Kasba Pinangwan, Dhanna Road, Tehsil Punhana, District Nuh, Haryana - 122508",
     },
