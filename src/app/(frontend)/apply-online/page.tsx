@@ -7,7 +7,7 @@ const items = [
     {
         title: "Call Our Team",
         icon: Phone,
-        details: ["+91 7015303343", "+91 7015303343"],
+        details: ["+91 7015303343", "+91 9354086500"],
         type: "phone",
     },
     {
@@ -19,7 +19,7 @@ const items = [
     {
         title: "Write to us",
         icon: Mail,
-        details: ["info@bmus.co.in"],
+        details: ["bmus.helpdesk@gmail.com"],
         type: "email"
     }
 ]
@@ -68,7 +68,7 @@ export default function ApplyOnlinePage() {
                                                             </Link>
                                                         }
                                                         {
-                                                            item.type === 'phone-whatsapp' && <Link target="_blank" href={`https://wa.me/${917015303343}`}>
+                                                            item.type === 'phone-whatsapp' && <Link target="_blank" href={`https://wa.me/${detail.replace(/\D/g, '')}`}>
                                                                 {detail}
                                                             </Link>
                                                         }
