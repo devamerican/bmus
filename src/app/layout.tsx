@@ -63,7 +63,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <GoogleTagManager gtmId="G-N0WSHRHRP7" />
+      <GoogleTagManager gtmId="G-V4JN4HPSG6" />
       <body
         className={`${geistSans.className} ${poppins.variable}  antialiased`}
       >
