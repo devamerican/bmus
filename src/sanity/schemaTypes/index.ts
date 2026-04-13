@@ -10,25 +10,34 @@ import { whyStudyMBBSAbroadSchema } from './whyStudyMBBSAbroad'
 import { prospectusSchema } from './prospectus'
 import { gallerySchema } from './gallery'
 import { blogPostSchema } from './blogPost'
+import { seoSchema } from './objects/seo'
+import { admissionProcessPageSchema } from './admissionProcessPage'
+import { applyOnlinePageSchema } from './applyOnlinePage'
+import { contactUsPageSchema } from './contactUsPage'
+import { eligibilityAndDocumentPageSchema } from './eligibilityAndDocumentPage'
+import { studentReviewsPageSchema } from './studentReviewsPage'
+import { blogListingPageSchema } from './blogListingPage'
 import { type SchemaTypeDefinition } from 'sanity'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
+    seoSchema,
+
     introSection,
     achievementsSection,
     ourTeamSection,
     pageSchema,
-  
+
     servicesSchema,
-  
+
     directorsMessageSchema,
-  
+
     whyStudyMBBSAbroadSchema,
-  
+
     mbbsFaqsSchema,
-  
+
     navbarSchema,
-  
+
     primaryCTASchema,
     secondaryCTASchema,
     ctaContainerSchema,
@@ -41,17 +50,24 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     heroSchema,
     homepageSchema,
     achievementScehma,
-  
-  
+
+
     mbbsInCountrySchema,
 
     prospectusSchema,
 
     gallerySchema,
 
-    blogPostSchema
+    blogPostSchema,
+
+    admissionProcessPageSchema,
+    applyOnlinePageSchema,
+    contactUsPageSchema,
+    eligibilityAndDocumentPageSchema,
+    studentReviewsPageSchema,
+    blogListingPageSchema,
   ],
-  
+
 }
 
 // export const schemaTypes = [

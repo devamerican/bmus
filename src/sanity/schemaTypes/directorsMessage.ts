@@ -28,5 +28,10 @@ export const directorsMessageSchema = {
       type: 'array',
       of: [{ type: 'block' }],
     },
+    {
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo',
+    },
   ],
 }

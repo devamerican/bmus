@@ -8,6 +8,7 @@ import HomeCtaSection from "@/components/home/cta-section";
 import StudentsSay from "@/components/home/students-say";
 import WhatWeOffer from "@/components/home/what-we-offer";
 import VideoReviews from "@/components/home/video-reviews";
+import PhotoHighlights from "@/components/home/photo-highlights";
 import BlogSection from "@/components/home/blog-section";
 import MBBSAbroadForIndians from "@/components/home/MBBSAbroadForIndians";
 
@@ -21,6 +22,23 @@ import ModernTestimonials from "@/components/home/modern-testimonials";
 
 import { cachedSanityFetch } from "@/sanity/lib/fetch";
 import { RECENT_BLOG_POSTS_QUERY } from "@/sanity/queries/blog";
+import type { Metadata } from "next";
+import { buildMetadata, type SanitySeo } from "@/lib/seo";
+
+
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = await cachedSanityFetch<SanitySeo>(
+    `*[_type == "homepage"][0].seo`,
+    {},
+    3600,
+    ['homepage'],
+  )
+  return buildMetadata(seo, {
+    title: "Best Medical University Services | MBBS Abroad Consultants in India",
+    description:
+      "BMUS helps Indian students get MBBS admission abroad with trusted consultants, NMC approved universities, affordable fees & end-to-end support.",
+  })
+}
 
 
 export default async function Home() {
@@ -40,6 +58,8 @@ export default async function Home() {
     return (
       <main className="space-y-0 mb-10">
         <ModernHero />
+        <VideoReviews />
+        <PhotoHighlights />
         <StatsSection />
         <EducationAbroad data={data.hero2} />
 
@@ -63,6 +83,8 @@ export default async function Home() {
       <CeecoHero />
 
       <VideoReviews />
+
+      <PhotoHighlights />
 
       <Hero data={data.hero} />
       <EducationAbroad data={data.hero2} />

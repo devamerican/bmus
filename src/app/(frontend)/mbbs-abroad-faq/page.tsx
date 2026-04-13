@@ -5,11 +5,21 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion"
 import { cachedSanityFetch } from "@/sanity/lib/fetch";
+import type { Metadata } from "next";
+import { buildMetadata, type SanitySeo } from "@/lib/seo";
 
 
-export const metadata = {
-    title: "MBBS Abroad FAQ",
-    description: "Most Frequently Asked Questions for BMUS MBBS Abroad Program",
+export async function generateMetadata(): Promise<Metadata> {
+    const seo = await cachedSanityFetch<SanitySeo>(
+        `*[_type == "mbbsFaqs"][0].seo`,
+        {},
+        3600,
+        ['mbbs-abroad-faq'],
+    )
+    return buildMetadata(seo, {
+        title: "MBBS Abroad FAQ",
+        description: "Most Frequently Asked Questions for BMUS MBBS Abroad Program",
+    })
 }
 
 export default async function MbbsAbroadFAQPage() {

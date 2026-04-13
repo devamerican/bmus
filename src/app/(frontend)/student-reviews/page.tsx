@@ -1,8 +1,18 @@
 import { cachedSanityFetch } from "@/sanity/lib/fetch";
+import type { Metadata } from "next";
+import { buildMetadata, type SanitySeo } from "@/lib/seo";
 
-export const metadata = {
-  title: "Student Reviews",
-  description: "What our students have to say about BMUS",
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = await cachedSanityFetch<SanitySeo>(
+    `*[_type == "studentReviewsPage"][0].seo`,
+    {},
+    3600,
+    ['student-reviews'],
+  )
+  return buildMetadata(seo, {
+    title: "Student Reviews",
+    description: "What our students have to say about BMUS",
+  })
 }
 
 export default async function StudentReviews() {

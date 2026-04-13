@@ -2,10 +2,20 @@ import { PortableText, SanityDocument } from "next-sanity";
 import Image from "next/image";
 import { cachedSanityFetch } from "@/sanity/lib/fetch";
 import { urlFor } from "@/sanity/lib/image";
+import type { Metadata } from "next";
+import { buildMetadata, type SanitySeo } from "@/lib/seo";
 
-export const metadata = {
-    title: "Director's Message",
-    description: "Director's Message for BMUS MBBS Abroad Program",
+export async function generateMetadata(): Promise<Metadata> {
+    const seo = await cachedSanityFetch<SanitySeo>(
+        `*[_type == "directorsMessage"][0].seo`,
+        {},
+        3600,
+        ['director-message'],
+    )
+    return buildMetadata(seo, {
+        title: "Director's Message",
+        description: "Director's Message for BMUS MBBS Abroad Program",
+    })
 }
 
 export default async function DirectorMessage() {

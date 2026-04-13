@@ -19,13 +19,15 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 
   if (!post) return {}
 
-  const title = post.seoTitle || post.title
-  const description = post.seoDescription || post.excerpt
+  const title = post.seo?.title?.trim() || post.title
+  const description = post.seo?.description?.trim() || post.excerpt
+  const keywords = post.seo?.keywords?.length ? post.seo.keywords : undefined
   const imageUrl = urlFor(post.featuredImage).width(1200).height(630).url()
 
   return {
     title,
     description,
+    ...(keywords ? { keywords } : {}),
     openGraph: {
       title,
       description,

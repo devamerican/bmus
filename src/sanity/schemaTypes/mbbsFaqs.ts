@@ -35,6 +35,11 @@ export const mbbsFaqsSchema = {
                 ],
             },
         ],
-    }
+    },
+    {
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo',
+    },
   ],
 }

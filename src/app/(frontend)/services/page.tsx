@@ -5,20 +5,31 @@ import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import { cachedSanityFetch } from "@/sanity/lib/fetch";
 import { urlFor } from "@/sanity/lib/image";
 import type { Metadata } from "next";
+import { buildMetadata, type SanitySeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Our Services | MBBS Abroad Admission & Visa Support – Counseling",
-  description:
-    "BMUS offers complete MBBS abroad services counseling, university selection, admission process, visa assistance & student support.",
-  keywords: [
-    "MBBS abroad services",
-    "medical admission support",
-    "study abroad services",
-  ],
-  alternates: {
-    canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/services`,
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = await cachedSanityFetch<SanitySeo>(
+    `*[_type == "services"][0].seo`,
+    {},
+    3600,
+    ['services'],
+  )
+  return {
+    ...buildMetadata(seo, {
+      title: "Our Services | MBBS Abroad Admission & Visa Support – Counseling",
+      description:
+        "BMUS offers complete MBBS abroad services counseling, university selection, admission process, visa assistance & student support.",
+      keywords: [
+        "MBBS abroad services",
+        "medical admission support",
+        "study abroad services",
+      ],
+    }),
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/services`,
+    },
+  }
+}
 export default async function OurServicesPage() {
   const QUERY = `*[_type == "services"]`
   const servicesData = await cachedSanityFetch<any[]>(QUERY, {}, 3600, ['services'])

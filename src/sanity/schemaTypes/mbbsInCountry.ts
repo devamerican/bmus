@@ -136,5 +136,10 @@ export const mbbsInCountrySchema = defineType({
         }),
       ],
     }),
+    defineField({
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo',
+    }),
   ],
 })

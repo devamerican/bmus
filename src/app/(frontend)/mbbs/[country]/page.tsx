@@ -5,6 +5,7 @@ import { SimpleTable } from '@/components/layout/simple-table';
 import { cachedSanityFetch } from '@/sanity/lib/fetch';
 import { urlFor } from '@/sanity/lib/image';
 import type { Metadata } from 'next';
+import { buildMetadata, type SanitySeo } from '@/lib/seo';
 
 
 
@@ -13,24 +14,31 @@ type MBBSInCountryPageProps = {
 }
 
 
-export async function generateMetadata({ params }: MBBSInCountryPageProps) {
+export async function generateMetadata({ params }: MBBSInCountryPageProps): Promise<Metadata> {
   const countrySlug = (await params).country
   const country = countrySlug.charAt(0).toUpperCase() + countrySlug.slice(1)
 
-  return {
-    title: `MBBS in ${country} | MBBS in ${country} for Indian Students`,
-    description:
-      `Study MBBS in ${country} with BMUS. NMC approved universities, affordable tuition fees, English-medium education & high-quality medical training.`,
-    keywords: [
-      `MBBS in ${country}`,
-      `study medicine in ${country}`,
-      `MBBS ${country} fees`,
-    ],
-    alternates: {
-      canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/mbbs-in-russia`,
-    },
-  };
+  const seo = await cachedSanityFetch<SanitySeo>(
+    `*[_type == "mbbsInCountry" && slug.current == $country][0].seo`,
+    { country: countrySlug },
+    3600,
+    [`mbbs-${countrySlug}`],
+  )
 
+  return {
+    ...buildMetadata(seo, {
+      title: `MBBS in ${country} | MBBS in ${country} for Indian Students`,
+      description: `Study MBBS in ${country} with BMUS. NMC approved universities, affordable tuition fees, English-medium education & high-quality medical training.`,
+      keywords: [
+        `MBBS in ${country}`,
+        `study medicine in ${country}`,
+        `MBBS ${country} fees`,
+      ],
+    }),
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/mbbs/${countrySlug}`,
+    },
+  }
 }
 
 

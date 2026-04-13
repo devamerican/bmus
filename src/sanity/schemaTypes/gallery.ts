@@ -42,7 +42,19 @@ export const gallerySchema =  defineType({
             hotspot: true,
           },
         },
-      ],      
+      ],
+    }),
+
+    defineField({
+      name: 'photosPageSeo',
+      title: 'Photos Page SEO',
+      type: 'seo',
+    }),
+
+    defineField({
+      name: 'videosPageSeo',
+      title: 'Videos Page SEO',
+      type: 'seo',
     }),
   ],
 })

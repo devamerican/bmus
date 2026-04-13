@@ -3,11 +3,21 @@ import { cachedSanityFetch } from '@/sanity/lib/fetch';
 import { DynamicIcon, type IconName } from 'lucide-react/dynamic';
 import { type SanityDocument } from "next-sanity";
 import WhyStudyMbbsAbroadCard from './why-study-mbbs-abroad-card';
+import type { Metadata } from "next";
+import { buildMetadata, type SanitySeo } from "@/lib/seo";
 
 
-export const metadata = {
-  title: "Why Study MBBS Abroad",
-  description: "Why you should study MBBS abroad",
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = await cachedSanityFetch<SanitySeo>(
+    `*[_type == "whyStudyMBBSAbroad"][0].seo`,
+    {},
+    3600,
+    ['why-study-mbbs-abroad'],
+  )
+  return buildMetadata(seo, {
+    title: "Why Study MBBS Abroad",
+    description: "Why you should study MBBS abroad",
+  })
 }
 
 export default async function WhyStudyMbbsAbroad() {

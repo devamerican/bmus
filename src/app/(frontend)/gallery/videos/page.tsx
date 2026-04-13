@@ -1,8 +1,18 @@
 import { cachedSanityFetch } from "@/sanity/lib/fetch";
+import type { Metadata } from "next";
+import { buildMetadata, type SanitySeo } from "@/lib/seo";
 
-export const metadata = {
-  title: "Video Gallery",
-  description: "BMUS Success Stories – A Photo Journey",
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = await cachedSanityFetch<SanitySeo>(
+    `*[_type == "gallery"][0].videosPageSeo`,
+    {},
+    3600,
+    ['gallery-videos'],
+  )
+  return buildMetadata(seo, {
+    title: "Video Gallery",
+    description: "BMUS Success Stories – A Photo Journey",
+  })
 }
 
 export default async function VideoGallery() {

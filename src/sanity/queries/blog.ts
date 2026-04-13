@@ -42,8 +42,7 @@ export const BLOG_POST_BY_SLUG_QUERY = groq`
         }
       }
     },
-    seoTitle,
-    seoDescription
+    seo
   }
 `
 

@@ -1,10 +1,20 @@
 import PhotoGallery from "../photo-gallery";
 import { urlFor } from "@/sanity/lib/image";
 import { cachedSanityFetch } from "@/sanity/lib/fetch";
+import type { Metadata } from "next";
+import { buildMetadata, type SanitySeo } from "@/lib/seo";
 
-export const metadata = {
-  title: "Photo Gallery",
-  description: "BMUS Success Stories – A Photo Journey",
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = await cachedSanityFetch<SanitySeo>(
+    `*[_type == "gallery"][0].photosPageSeo`,
+    {},
+    3600,
+    ['gallery-photos'],
+  )
+  return buildMetadata(seo, {
+    title: "Photo Gallery",
+    description: "BMUS Success Stories – A Photo Journey",
+  })
 }
 
 export default async function Gallery() {

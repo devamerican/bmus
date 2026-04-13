@@ -1,17 +1,28 @@
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
-import { 
-  UserCircle2, 
-  FileSpreadsheet, 
-  TicketsPlane, 
-  Briefcase, 
-  Plane 
+import {
+  UserCircle2,
+  FileSpreadsheet,
+  TicketsPlane,
+  Briefcase,
+  Plane
 } from 'lucide-react';
+import type { Metadata } from 'next';
+import { cachedSanityFetch } from '@/sanity/lib/fetch';
+import { buildMetadata, type SanitySeo } from '@/lib/seo';
 
 
-export const metadata = {
-  title: "Admission Process",
-  description: "Simple steps to get admission in MBBS Abroad",
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = await cachedSanityFetch<SanitySeo>(
+    `*[_type == "admissionProcessPage"][0].seo`,
+    {},
+    3600,
+    ['admission-process'],
+  )
+  return buildMetadata(seo, {
+    title: "Admission Process",
+    description: "Simple steps to get admission in MBBS Abroad",
+  })
 }
 
 

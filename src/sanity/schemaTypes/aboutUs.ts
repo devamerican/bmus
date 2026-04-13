@@ -146,6 +146,11 @@ export const pageSchema = defineType({
       title: 'Our Team Section',
       type: 'ourTeam',
     }),
+    defineField({
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo',
+    }),
   ],
 })
 

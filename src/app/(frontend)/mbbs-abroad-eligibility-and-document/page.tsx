@@ -1,6 +1,8 @@
 import { Check } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
+import { cachedSanityFetch } from "@/sanity/lib/fetch";
+import { buildMetadata, type SanitySeo } from "@/lib/seo";
 
 const studyAbroadEligibility = [
   "12th Science/A Level PCB (Physics-Chemistry-Biology); English should be a Subject in 12th",
@@ -16,19 +18,29 @@ const studyAbroadDocument = [
   "An agreement letter from parents.",
 ];
 
-export const metadata: Metadata = {
-  title: "MBBS Abroad Eligibility & Admission Process",
-  description:
-    "Check MBBS abroad eligibility criteria, age limit, NEET requirements & admission process for Indian students with BMUS.",
-  keywords: [
-    "MBBS eligibility abroad",
-    "NEET MBBS abroad",
-    "MBBS admission process",
-  ],
-  alternates: {
-    canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/eligibility`,
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = await cachedSanityFetch<SanitySeo>(
+    `*[_type == "eligibilityAndDocumentPage"][0].seo`,
+    {},
+    3600,
+    ['mbbs-abroad-eligibility-and-document'],
+  )
+  return {
+    ...buildMetadata(seo, {
+      title: "MBBS Abroad Eligibility & Admission Process",
+      description:
+        "Check MBBS abroad eligibility criteria, age limit, NEET requirements & admission process for Indian students with BMUS.",
+      keywords: [
+        "MBBS eligibility abroad",
+        "NEET MBBS abroad",
+        "MBBS admission process",
+      ],
+    }),
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/eligibility`,
+    },
+  }
+}
 
 
 export default function MbbsAbroadEligibilityAndDocument() {

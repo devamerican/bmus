@@ -21,7 +21,7 @@ export default async function VideoReviews() {
     if (!validVideos || validVideos.length === 0) return null;
 
     return (
-        <section className="px-4">
+        <section className="px-4 py-20">
             <h2 className="text-h2 mb-8 lg:mb-12 text-center">Video Reviews</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
                 {validVideos.map((video: any, idx: number) => (

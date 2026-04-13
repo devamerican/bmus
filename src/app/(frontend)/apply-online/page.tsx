@@ -2,6 +2,9 @@ import { Mail, MessageSquare, Phone } from "lucide-react";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import CounselingForm from "@/components/home/counseling-form";
 import Link from "next/link";
+import type { Metadata } from "next";
+import { cachedSanityFetch } from "@/sanity/lib/fetch";
+import { buildMetadata, type SanitySeo } from "@/lib/seo";
 
 const items = [
     {
@@ -24,9 +27,17 @@ const items = [
     }
 ]
 
-export const metadata = {
-    title: "Apply Online",
-    description: "Apply Online for BMUS MBBS Abroad Program",
+export async function generateMetadata(): Promise<Metadata> {
+    const seo = await cachedSanityFetch<SanitySeo>(
+        `*[_type == "applyOnlinePage"][0].seo`,
+        {},
+        3600,
+        ['apply-online'],
+    )
+    return buildMetadata(seo, {
+        title: "Apply Online",
+        description: "Apply Online for BMUS MBBS Abroad Program",
+    })
 }
 
 export default function ApplyOnlinePage() {

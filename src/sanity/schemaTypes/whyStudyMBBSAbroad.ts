@@ -35,6 +35,11 @@ export const whyStudyMBBSAbroadSchema = {
                 ],
             },
         ],
-    }
+    },
+    {
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo',
+    },
   ],
 }

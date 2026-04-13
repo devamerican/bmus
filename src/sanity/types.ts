@@ -30,6 +30,67 @@ export type ObjectImage = {
   _type: "image";
 };
 
+export type BlogListingPage = {
+  _id: string;
+  _type: "blogListingPage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  seo?: Seo;
+};
+
+export type Seo = {
+  _type: "seo";
+  title?: string;
+  description?: string;
+  keywords?: Array<string>;
+};
+
+export type StudentReviewsPage = {
+  _id: string;
+  _type: "studentReviewsPage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  seo?: Seo;
+};
+
+export type EligibilityAndDocumentPage = {
+  _id: string;
+  _type: "eligibilityAndDocumentPage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  seo?: Seo;
+};
+
+export type ContactUsPage = {
+  _id: string;
+  _type: "contactUsPage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  seo?: Seo;
+};
+
+export type ApplyOnlinePage = {
+  _id: string;
+  _type: "applyOnlinePage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  seo?: Seo;
+};
+
+export type AdmissionProcessPage = {
+  _id: string;
+  _type: "admissionProcessPage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  seo?: Seo;
+};
+
 export type BlogPost = {
   _id: string;
   _type: "blogPost";
@@ -67,8 +128,7 @@ export type BlogPost = {
   };
   publishedAt?: string;
   status?: "draft" | "published";
-  seoTitle?: string;
-  seoDescription?: string;
+  seo?: Seo;
 };
 
 export type SanityImageCrop = {
@@ -121,6 +181,8 @@ export type Gallery = {
     _type: "image";
     _key: string;
   }>;
+  photosPageSeo?: Seo;
+  videosPageSeo?: Seo;
 };
 
 export type Prospectus = {
@@ -239,6 +301,7 @@ export type MbbsInCountry = {
         _key: string;
       }
   >;
+  seo?: Seo;
 };
 
 export type Achievement = Array<{
@@ -273,6 +336,7 @@ export type Homepage = {
   };
   whatWeOffer?: WhatWeOffer;
   whatStudentsSay?: WhatStudentsSay;
+  seo?: Seo;
 };
 
 export type WhatStudentsSay = {
@@ -446,6 +510,7 @@ export type MbbsFaqs = {
     answer?: string;
     _key: string;
   }>;
+  seo?: Seo;
 };
 
 export type WhyStudyMBBSAbroad = {
@@ -460,6 +525,7 @@ export type WhyStudyMBBSAbroad = {
     title?: string;
     _key: string;
   }>;
+  seo?: Seo;
 };
 
 export type DirectorsMessage = {
@@ -494,6 +560,7 @@ export type DirectorsMessage = {
     _type: "block";
     _key: string;
   }>;
+  seo?: Seo;
 };
 
 export type Services = {
@@ -523,6 +590,7 @@ export type Services = {
     title?: string;
     _key: string;
   }>;
+  seo?: Seo;
 };
 
 export type AboutUs = {
@@ -534,6 +602,7 @@ export type AboutUs = {
   intro?: Intro;
   achievements?: Achievements;
   ourTeam?: OurTeam;
+  seo?: Seo;
 };
 
 export type OurTeam = {
@@ -689,6 +758,13 @@ export type Geopoint = {
 export type AllSanitySchemaTypes =
   | SanityImageAssetReference
   | ObjectImage
+  | BlogListingPage
+  | Seo
+  | StudentReviewsPage
+  | EligibilityAndDocumentPage
+  | ContactUsPage
+  | ApplyOnlinePage
+  | AdmissionProcessPage
   | BlogPost
   | SanityImageCrop
   | SanityImageHotspot
@@ -726,3 +802,123 @@ export type AllSanitySchemaTypes =
   | SanityAssetSourceData
   | SanityImageAsset
   | Geopoint;
+
+// Source: src/sanity/queries/blog.ts
+// Variable: BLOG_POSTS_QUERY
+// Query: *[_type == "blogPost" && status == "published"] | order(publishedAt desc) [$start...$end] {    _id,    title,    slug,    excerpt,    publishedAt,    featuredImage {      ...,      asset-> {        _id,        url,        metadata {          dimensions,          lqip        }      }    }  }
+export type BLOG_POSTS_QUERY_RESULT = Array<{
+  _id: string;
+  title: string | null;
+  slug: Slug | null;
+  excerpt: string | null;
+  publishedAt: string | null;
+  featuredImage: {
+    asset: {
+      _id: string;
+      url: string | null;
+      metadata: {
+        dimensions: SanityImageDimensions | null;
+        lqip: string | null;
+      } | null;
+    } | null;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
+}>;
+
+// Source: src/sanity/queries/blog.ts
+// Variable: BLOG_POST_BY_SLUG_QUERY
+// Query: *[_type == "blogPost" && slug.current == $slug][0] {    _id,    title,    slug,    excerpt,    content,    publishedAt,    featuredImage {      ...,      asset-> {        _id,        url,        metadata {          dimensions,          lqip        }      }    },    seo  }
+export type BLOG_POST_BY_SLUG_QUERY_RESULT = {
+  _id: string;
+  title: string | null;
+  slug: Slug | null;
+  excerpt: string | null;
+  content: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }> | null;
+  publishedAt: string | null;
+  featuredImage: {
+    asset: {
+      _id: string;
+      url: string | null;
+      metadata: {
+        dimensions: SanityImageDimensions | null;
+        lqip: string | null;
+      } | null;
+    } | null;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
+  seo: Seo | null;
+} | null;
+
+// Source: src/sanity/queries/blog.ts
+// Variable: BLOG_POSTS_COUNT_QUERY
+// Query: count(*[_type == "blogPost" && status == "published"])
+export type BLOG_POSTS_COUNT_QUERY_RESULT = number;
+
+// Source: src/sanity/queries/blog.ts
+// Variable: BLOG_POSTS_SLUGS_QUERY
+// Query: *[_type == "blogPost" && status == "published"].slug.current
+export type BLOG_POSTS_SLUGS_QUERY_RESULT = Array<string | null>;
+
+// Source: src/sanity/queries/blog.ts
+// Variable: RECENT_BLOG_POSTS_QUERY
+// Query: *[_type == "blogPost" && status == "published"] | order(publishedAt desc)[0...3] {    _id,    title,    slug,    excerpt,    publishedAt,    status,    featuredImage {      ...,      asset-> {        _id,        url,        metadata {          dimensions,          lqip        }      }    }  }
+export type RECENT_BLOG_POSTS_QUERY_RESULT = Array<{
+  _id: string;
+  title: string | null;
+  slug: Slug | null;
+  excerpt: string | null;
+  publishedAt: string | null;
+  status: "published";
+  featuredImage: {
+    asset: {
+      _id: string;
+      url: string | null;
+      metadata: {
+        dimensions: SanityImageDimensions | null;
+        lqip: string | null;
+      } | null;
+    } | null;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
+}>;
+
+// Query TypeMap
+import "@sanity/client";
+declare module "@sanity/client" {
+  interface SanityQueries {
+    '\n  *[_type == "blogPost" && status == "published"] | order(publishedAt desc) [$start...$end] {\n    _id,\n    title,\n    slug,\n    excerpt,\n    publishedAt,\n    featuredImage {\n      ...,\n      asset-> {\n        _id,\n        url,\n        metadata {\n          dimensions,\n          lqip\n        }\n      }\n    }\n  }\n': BLOG_POSTS_QUERY_RESULT;
+    '\n  *[_type == "blogPost" && slug.current == $slug][0] {\n    _id,\n    title,\n    slug,\n    excerpt,\n    content,\n    publishedAt,\n    featuredImage {\n      ...,\n      asset-> {\n        _id,\n        url,\n        metadata {\n          dimensions,\n          lqip\n        }\n      }\n    },\n    seo\n  }\n': BLOG_POST_BY_SLUG_QUERY_RESULT;
+    '\n  count(*[_type == "blogPost" && status == "published"])\n': BLOG_POSTS_COUNT_QUERY_RESULT;
+    '\n  *[_type == "blogPost" && status == "published"].slug.current\n': BLOG_POSTS_SLUGS_QUERY_RESULT;
+    '\n  *[_type == "blogPost" && status == "published"] | order(publishedAt desc)[0...3] {\n    _id,\n    title,\n    slug,\n    excerpt,\n    publishedAt,\n    status,\n    featuredImage {\n      ...,\n      asset-> {\n        _id,\n        url,\n        metadata {\n          dimensions,\n          lqip\n        }\n      }\n    }\n  }\n': RECENT_BLOG_POSTS_QUERY_RESULT;
+  }
+}

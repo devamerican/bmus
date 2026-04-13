@@ -66,16 +66,9 @@ export const blogPostSchema = defineType({
       },
     }),
     defineField({
-      name: 'seoTitle',
-      title: 'SEO Title',
-      type: 'string',
-      description: 'Override default SEO title (leave empty to use post title)',
-    }),
-    defineField({
-      name: 'seoDescription',
-      title: 'SEO Description',
-      type: 'text',
-      description: 'Meta description for search engines',
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo',
     }),
   ],
   preview: {

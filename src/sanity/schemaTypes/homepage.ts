@@ -417,6 +417,11 @@ export const homepageSchema = defineType({
         title: 'What Students Say',
         type: 'whatStudentsSay',
     }),
+    defineField({
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo',
+    }),
   ],
 })
 
