@@ -7,6 +7,18 @@ type DataT= {
     message: string;
     page: string;
 }
+
+type AppointmentDataT = {
+    country: string;
+    name: string;
+    phone: string;
+    whatsapp: string;
+    email: string;
+    date: string;
+    time: string;
+    query?: string;
+    page: string;
+}
 type EmailTo = {
     email: string
 }
@@ -48,6 +60,41 @@ export async function submitForm(data: DataT) {
     } catch (error) {
         // console.log(error)
         return {success: false, message: "Something went wrong. Try again later."}
+    }
+}
+
+export async function submitAppointmentForm(data: AppointmentDataT) {
+    try {
+        const result = await Promise.all([
+            await sendEmail({
+                params: { NAME: data.name },
+                templateId: 1,
+                to: [{ email: data.email }],
+            }),
+            await sendEmail({
+                params: {
+                    NAME: data.name,
+                    EMAIL: data.email,
+                    MESSAGE: `Country: ${data.country}\nWhatsApp: ${data.whatsapp}\nDate: ${data.date}\nTime: ${data.time}\n\nQuery: ${data.query || "N/A"}`,
+                    PHONE: data.phone,
+                    PAGE: data.page,
+                },
+                templateId: 2,
+                to: [{ email: "Devamerican@gmail.com" }, { email: "devamericanpalwal@gmail.com" }, { email: "bmus.helpdesk@gmail.com" }],
+                replyTo: { email: data.email },
+            })
+        ])
+
+        const messageIdExists = result.every(response => response.messageId)
+
+        if (messageIdExists) {
+            return { success: true, message: "Your appointment has been booked!" };
+        }
+
+        return { success: false, message: "There was an error booking your appointment." };
+
+    } catch (error) {
+        return { success: false, message: "Something went wrong. Try again later." }
     }
 }
 

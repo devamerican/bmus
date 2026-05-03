@@ -26,7 +26,7 @@ export default async function VideoReviews() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
                 {validVideos.map((video: any, idx: number) => (
                     <video key={idx} controls className="w-full rounded-xl shadow-md object-cover bg-black/5" >
-                        <source src={video.asset.url} type="video/mp4" />
+                        <source src={video.asset?.url} type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
                 ))}

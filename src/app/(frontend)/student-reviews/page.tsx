@@ -29,7 +29,7 @@ export default async function StudentReviews() {
       <h1 className="text-h1 text-center mb-10 lg:mb-20" >Student Reviews</h1>
 
       <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
-        {gallery.videos?.map((video: any, idx: number) => (
+        {gallery.videos?.filter((video: any) => video?.asset?.url).map((video: any, idx: number) => (
           <video key={idx} controls width="600" className="rounded-lg" >
             <source src={video.asset.url} type="video/mp4" />
             Your browser does not support the video tag.

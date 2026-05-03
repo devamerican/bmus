@@ -180,3 +180,12 @@
 .section-container {
   @apply max-w-[1400px] mx-auto p-4;
 }
+
+.date-picker-right {
+  position: relative;
+}
+
+.date-picker-right::-webkit-calendar-picker-indicator {
+  position: absolute;
+  right: 0.75rem;
+}

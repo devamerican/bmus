@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 // import { Geist, Geist_Mono, Poppins } from "next/font/google";
 // import "./globals.css";
+import TopBar from "@/components/layout/top-bar";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import { Toaster } from 'sonner';
@@ -89,6 +90,7 @@ export default function RootLayout({
   return (
     <>
       <Toaster richColors />
+      <TopBar />
       <Navbar />
       {children}
       <Footer />

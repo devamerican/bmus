@@ -52,7 +52,7 @@ export default function BlogSection({ posts }: BlogSectionProps) {
                 <Link href={`/blog/${post.slug.current}`} className="block relative overflow-hidden">
                   <div className="relative h-56 overflow-hidden bg-muted">
                     <Image
-                      src={urlFor(post.featuredImage).url()}
+                      src={post.featuredImage ? urlFor(post.featuredImage)?.url() ?? "" : ""}
                       alt={post.featuredImage?.alt || post.title}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-700"
