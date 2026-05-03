@@ -204,6 +204,10 @@ const navItems = [
     name: "Contact Us",
     href: "/contact-us",
   },
+  {
+    name: "Book Appointment",
+    href: "/appointment-form",
+  },
 ];
 
 export default async function Navbar() {

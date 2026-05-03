@@ -1,5 +1,5 @@
-import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa";
+import { Mail, MapPin, Phone } from "lucide-react";
+import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { FiYoutube } from "react-icons/fi";
 import Link from "next/link";
 
@@ -25,12 +25,12 @@ const socialLinks = [
   {
     name: "Facebook",
     href: "https://www.facebook.com/share/1Bm1THt5LH/",
-    icon: Facebook,
+    icon: FaFacebook,
   },
   {
     name: "Instagram",
     href: "https://www.instagram.com/best_medical_university_?igsh=MTYybncwZmdja3h2Mw==",
-    icon: Instagram,
+    icon: FaInstagram,
   },
   {
     name: "Whatsapp",

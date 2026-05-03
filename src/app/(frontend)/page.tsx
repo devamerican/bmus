@@ -72,7 +72,7 @@ export default async function Home() {
         <ModernServices data={data.whatWeOffer} />
         <WhyChooseUs />
         <ModernTestimonials data={data.whatStudentsSay} />
-        <BookCounseling />
+        {/* <BookCounseling /> */}
         <HomeCtaSection />
       </main>
     );
