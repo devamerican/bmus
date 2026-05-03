@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Poppins } from "next/font/google";
-import { GoogleTagManager } from "@next/third-parties/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -63,7 +63,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <GoogleTagManager gtmId="G-V4JN4HPSG6" />
+      <GoogleAnalytics gaId="G-V4JN4HPSG6" />
       <body
         className={`${geistSans.className} ${poppins.variable}  antialiased`}
       >
