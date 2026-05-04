@@ -21,9 +21,20 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { AppointmentFormType, appointmentFormSchema } from "@/lib/zod";
-import { Loader } from "lucide-react";
+import {
+  Calendar,
+  Clock,
+  Globe,
+  Loader,
+  Mail,
+  MessageSquare,
+  Phone,
+  Send,
+  User,
+} from "lucide-react";
 import { toast } from "sonner";
 import { submitAppointmentForm } from "@/app/action";
+import { cn } from "@/lib/utils";
 
 const countries = [
   { value: "india", label: "India", flag: "🇮🇳" },
@@ -53,6 +64,17 @@ const timeSlots = [
   "05:00 PM - 05:30 PM",
   "05:30 PM - 06:00 PM",
 ];
+
+const inputClass =
+  "h-11 pl-10 pr-3 bg-slate-50/60 border-slate-200 text-slate-900 placeholder:text-slate-400 focus-visible:bg-white focus-visible:border-blue-500 focus-visible:ring-blue-500/20 transition-colors";
+
+const triggerClass =
+  "w-full h-11 pl-10 pr-3 bg-slate-50/60 border-slate-200 text-slate-900 data-[placeholder]:text-slate-400 focus-visible:bg-white focus-visible:border-blue-500 focus-visible:ring-blue-500/20 transition-colors";
+
+const labelClass = "text-sm font-medium text-slate-700";
+
+const iconClass =
+  "absolute left-3 top-1/2 -translate-y-1/2 size-4 text-slate-400 pointer-events-none z-10";
 
 export default function AppointmentForm() {
   const form = useForm<AppointmentFormType>({
@@ -92,18 +114,21 @@ export default function AppointmentForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 w-full">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5 w-full">
         <FormField
           control={form.control}
           name="country"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Selected Country</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <FormLabel className={labelClass}>Selected Country</FormLabel>
+              <Select onValueChange={field.onChange} value={field.value}>
                 <FormControl>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select a country" />
-                  </SelectTrigger>
+                  <div className="relative">
+                    <Globe className={iconClass} />
+                    <SelectTrigger className={triggerClass}>
+                      <SelectValue placeholder="Select a country" />
+                    </SelectTrigger>
+                  </div>
                 </FormControl>
                 <SelectContent>
                   {countries.map((country) => (
@@ -124,24 +149,38 @@ export default function AppointmentForm() {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Full Name</FormLabel>
+              <FormLabel className={labelClass}>Full Name</FormLabel>
               <FormControl>
-                <Input placeholder="John Doe" {...field} />
+                <div className="relative">
+                  <User className={iconClass} />
+                  <Input
+                    placeholder="John Doe"
+                    className={inputClass}
+                    {...field}
+                  />
+                </div>
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <FormField
             control={form.control}
             name="phone"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Phone No.</FormLabel>
+                <FormLabel className={labelClass}>Phone No.</FormLabel>
                 <FormControl>
-                  <Input placeholder="+91 9354086500" {...field} />
+                  <div className="relative">
+                    <Phone className={iconClass} />
+                    <Input
+                      placeholder="+91 9354086500"
+                      className={inputClass}
+                      {...field}
+                    />
+                  </div>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -153,9 +192,16 @@ export default function AppointmentForm() {
             name="whatsapp"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Your WhatsApp No.</FormLabel>
+                <FormLabel className={labelClass}>WhatsApp No.</FormLabel>
                 <FormControl>
-                  <Input placeholder="+91 9354086500" {...field} />
+                  <div className="relative">
+                    <MessageSquare className={iconClass} />
+                    <Input
+                      placeholder="+91 9354086500"
+                      className={inputClass}
+                      {...field}
+                    />
+                  </div>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -168,29 +214,40 @@ export default function AppointmentForm() {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel className={labelClass}>Email</FormLabel>
               <FormControl>
-                <Input type="email" placeholder="johndoe@gmail.com" {...field} />
+                <div className="relative">
+                  <Mail className={iconClass} />
+                  <Input
+                    type="email"
+                    placeholder="johndoe@gmail.com"
+                    className={inputClass}
+                    {...field}
+                  />
+                </div>
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <FormField
             control={form.control}
             name="date"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Slot Booking Date</FormLabel>
+                <FormLabel className={labelClass}>Booking Date</FormLabel>
                 <FormControl>
-                  <Input
-                    type="date"
-                    min={today}
-                    className="date-picker-right"
-                    {...field}
-                  />
+                  <div className="relative">
+                    <Calendar className={iconClass} />
+                    <Input
+                      type="date"
+                      min={today}
+                      className={cn(inputClass, "date-picker-right")}
+                      {...field}
+                    />
+                  </div>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -202,15 +259,15 @@ export default function AppointmentForm() {
             name="time"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Slot Booking Time</FormLabel>
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
+                <FormLabel className={labelClass}>Booking Time</FormLabel>
+                <Select onValueChange={field.onChange} value={field.value}>
                   <FormControl>
-                    <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Select a time" />
-                    </SelectTrigger>
+                    <div className="relative">
+                      <Clock className={iconClass} />
+                      <SelectTrigger className={triggerClass}>
+                        <SelectValue placeholder="Select a time" />
+                      </SelectTrigger>
+                    </div>
                   </FormControl>
                   <SelectContent>
                     {timeSlots.map((slot) => (
@@ -231,11 +288,12 @@ export default function AppointmentForm() {
           name="query"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Write your query</FormLabel>
+              <FormLabel className={labelClass}>Your Query</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="Course/Country/Query/Suggestion"
+                  placeholder="Tell us about the course, country, or any questions you have…"
                   rows={4}
+                  className="bg-slate-50/60 border-slate-200 text-slate-900 placeholder:text-slate-400 focus-visible:bg-white focus-visible:border-blue-500 focus-visible:ring-blue-500/20 transition-colors resize-none"
                   {...field}
                 />
               </FormControl>
@@ -245,18 +303,19 @@ export default function AppointmentForm() {
         />
 
         <Button
-          variant="blue"
           size="lg"
           disabled={form.formState.isSubmitting}
           type="submit"
-          className="w-full"
+          className="w-full h-12 text-base font-semibold bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all"
         >
           {form.formState.isSubmitting ? (
             <>
-              <Loader className="animate-spin" /> Submitting
+              <Loader className="animate-spin" /> Submitting…
             </>
           ) : (
-            "Submit"
+            <>
+              Book Appointment <Send className="size-4" />
+            </>
           )}
         </Button>
       </form>
