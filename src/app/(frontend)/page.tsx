@@ -1,5 +1,4 @@
 // Original Components
-import BookCounseling from "@/components/home/book-counseling";
 import Countries from "@/components/home/countries";
 import EducationAbroad from "@/components/home/education-abroad";
 import Hero from "@/components/home/hero";
@@ -72,7 +71,6 @@ export default async function Home() {
         <ModernServices data={data.whatWeOffer} />
         <WhyChooseUs />
         <ModernTestimonials data={data.whatStudentsSay} />
-        {/* <BookCounseling /> */}
         <HomeCtaSection />
       </main>
     );
@@ -96,7 +94,6 @@ export default async function Home() {
       <MBBSAbroadForIndians />
       <Countries data={data.countrySection} />
       <WhatWeOffer data={data.whatWeOffer} />
-      <BookCounseling />
       <HomeCtaSection />
       <StudentsSay data={data.whatStudentsSay} />
     </main>
