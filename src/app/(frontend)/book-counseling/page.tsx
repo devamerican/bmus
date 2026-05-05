@@ -12,6 +12,9 @@ export const metadata: Metadata = {
     "admission counselling",
     "BMUS counselling",
   ],
+  alternates: {
+    canonical: "https://counseling.bmus.co.in/",
+  },
 };
 
 export default function BookCounselingPage() {
