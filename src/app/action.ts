@@ -98,6 +98,41 @@ export async function submitAppointmentForm(data: AppointmentDataT) {
     }
 }
 
+export async function submitCounselingAppointment(data: AppointmentDataT) {
+    try {
+        const result = await Promise.all([
+            await sendEmail({
+                params: { NAME: data.name },
+                templateId: 1,
+                to: [{ email: data.email }],
+            }),
+            await sendEmail({
+                params: {
+                    NAME: data.name,
+                    EMAIL: data.email,
+                    MESSAGE: `Country: ${data.country}\nWhatsApp: ${data.whatsapp}\nPreferred Date: ${data.date}\nPreferred Time: ${data.time}\n\nQuery: ${data.query || "N/A"}`,
+                    PHONE: data.phone,
+                    PAGE: data.page,
+                },
+                templateId: 2,
+                to: [{ email: "bmus.helpdesk@gmail.com" }],
+                replyTo: { email: data.email },
+            })
+        ])
+
+        const messageIdExists = result.every(response => response.messageId)
+
+        if (messageIdExists) {
+            return { success: true, message: "Your counselling session has been booked!" };
+        }
+
+        return { success: false, message: "There was an error booking your counselling session." };
+
+    } catch (error) {
+        return { success: false, message: "Something went wrong. Try again later." }
+    }
+}
+
 async function sendEmail(emailOptions: EmailOptions){
     const apiKey = process.env.BREVO_API!;
     const url = 'https://api.brevo.com/v3/smtp/email';

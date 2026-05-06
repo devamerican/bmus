@@ -37,7 +37,10 @@ import {
   Sparkles,
 } from "lucide-react";
 import { toast } from "sonner";
-import { submitAppointmentForm } from "@/app/action";
+import {
+  submitAppointmentForm,
+  submitCounselingAppointment,
+} from "@/app/action";
 import { cn } from "@/lib/utils";
 
 const countries = [
@@ -123,7 +126,15 @@ function SectionHeader({
   );
 }
 
-export default function AppointmentForm() {
+interface AppointmentFormProps {
+  variant?: "appointment" | "counseling";
+  submitLabel?: string;
+}
+
+export default function AppointmentForm({
+  variant = "appointment",
+  submitLabel,
+}: AppointmentFormProps = {}) {
   const form = useForm<AppointmentFormType>({
     defaultValues: {
       country: "",
@@ -140,14 +151,26 @@ export default function AppointmentForm() {
 
   async function onSubmit(data: AppointmentFormType) {
     try {
-      const res = await submitAppointmentForm({
+      const action =
+        variant === "counseling"
+          ? submitCounselingAppointment
+          : submitAppointmentForm;
+      const res = await action({
         ...data,
         page: window.location.pathname,
       });
       if (res.success) {
-        toast.success("Appointment booked successfully!", {
-          description: "We will confirm your slot shortly.",
-        });
+        toast.success(
+          variant === "counseling"
+            ? "Counselling session booked!"
+            : "Appointment booked successfully!",
+          {
+            description:
+              variant === "counseling"
+                ? "Our team will reach out within 24 hours."
+                : "We will confirm your slot shortly.",
+          },
+        );
         form.reset();
         return;
       }
@@ -401,7 +424,10 @@ export default function AppointmentForm() {
           ) : (
             <>
               <Sparkles className="size-4" />
-              Book My Appointment
+              {submitLabel ||
+                (variant === "counseling"
+                  ? "Book My Free Counselling"
+                  : "Book My Appointment")}
               <Send className="size-4" />
             </>
           )}
