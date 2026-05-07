@@ -1,13 +1,18 @@
+"use client";
+
 import Image from "next/image";
-import Link from "next/link";
+import { useState } from "react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import {
   Award,
   BookOpenCheck,
@@ -33,8 +38,9 @@ import {
   Stethoscope,
   Trophy,
   Users,
+  XIcon,
 } from "lucide-react";
-import AppointmentForm from "./appointment-form";
+import AppointmentForm from "@/components/home/appointment-form";
 
 const stats = [
   { value: "5,000+", label: "Students Placed" },
@@ -259,18 +265,72 @@ const faqs = [
   },
 ];
 
-export default function BookCounseling() {
+const ctaPrimary =
+  "inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-amber-400 via-orange-500 to-rose-500 px-8 md:px-12 py-5 md:py-6 text-base md:text-xl font-extrabold uppercase tracking-wide text-white shadow-2xl shadow-orange-500/30 ring-2 ring-white/30 hover:scale-[1.02] active:scale-[0.99] transition-transform";
+
+function CtaButton({
+  onClick,
+  children,
+  subline,
+}: {
+  onClick: () => void;
+  children: React.ReactNode;
+  subline?: string;
+}) {
+  return (
+    <div className="flex flex-col items-center text-center my-10 md:my-14">
+      <button type="button" onClick={onClick} className={ctaPrimary}>
+        <Sparkles className="size-5 md:size-6" />
+        <span>{children}</span>
+        <ChevronRight className="size-5 md:size-6" />
+      </button>
+      {subline && (
+        <p className="mt-3 text-sm text-slate-500">{subline}</p>
+      )}
+    </div>
+  );
+}
+
+export default function BookCounseling({ logoUrl }: { logoUrl: string }) {
+  const [open, setOpen] = useState(false);
+  const openForm = () => setOpen(true);
+
   return (
     <>
-      {/* HERO + FORM */}
-      <section
-        id="book_counseling"
-        className="relative bg-gradient-to-br from-slate-50 via-blue-50/60 to-indigo-50/40 overflow-hidden scroll-mt-20"
-      >
+      {/* LOGO STRIP */}
+      <header className="bg-white border-b border-slate-200">
+        <div className="section-container flex items-center justify-between py-4">
+          <div className="flex items-center gap-3">
+            {logoUrl ? (
+              <Image
+                src={logoUrl}
+                alt="BMUS — Best Medical University Services"
+                width={56}
+                height={56}
+                priority
+                className="size-12 md:size-14 object-contain"
+              />
+            ) : null}
+            <span className="font-semibold leading-tight tracking-widest font-(family-name:--font-poppins) text-[10px] md:text-xs text-blue-800">
+              Best <br /> Medical <br /> University <br /> Services
+            </span>
+          </div>
+          <a
+            href="tel:+919354086500"
+            className="hidden sm:inline-flex items-center gap-2 text-sm md:text-base font-semibold text-slate-800 hover:text-blue-700"
+          >
+            <Phone className="size-4" />
+            +91 93540 86500
+          </a>
+        </div>
+      </header>
+
+      {/* HERO (no form) */}
+      <section className="relative bg-gradient-to-br from-slate-50 via-blue-50/60 to-indigo-50/40 overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-400/15 rounded-full blur-3xl -mr-48 -mt-48 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-400/15 rounded-full blur-3xl -ml-48 -mb-48 pointer-events-none" />
         <div
-          className="absolute inset-0 opacity-[0.12] pointer-events-none"
+          className="absolute inset-0 opacity-[0.10] pointer-events-none"
           style={{
             backgroundImage:
               "radial-gradient(circle, rgb(99 102 241 / 0.4) 1px, transparent 1px)",
@@ -278,127 +338,86 @@ export default function BookCounseling() {
           }}
         />
 
-        <div className="section-container relative grid lg:grid-cols-[1fr_460px] gap-10 lg:gap-12 items-start py-10 md:py-14 lg:py-16">
-          {/* Left content */}
-          <div className="space-y-7 lg:pt-2">
-            <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm text-blue-700 px-4 py-1.5 rounded-full text-sm font-semibold border border-blue-200 shadow-sm">
-              <Sparkles className="size-4 text-amber-500" />
-              Free MBBS Abroad Counselling
-            </div>
+        <div className="section-container relative py-12 md:py-20 lg:py-24 text-center max-w-4xl mx-auto">
+          <div className="inline-flex items-center gap-2 bg-white/85 backdrop-blur-sm text-blue-700 px-4 py-1.5 rounded-full text-sm font-semibold border border-blue-200 shadow-sm">
+            <Sparkles className="size-4 text-amber-500" />
+            Free MBBS Abroad Counselling — Limited Slots This Week
+          </div>
 
-            <h1 className="text-h1 leading-tight">
-              Become a{" "}
-              <span className="bg-gradient-to-r from-indigo-700 via-blue-700 to-cyan-600 bg-clip-text text-transparent">
-                Doctor
-              </span>{" "}
-              with Affordable MBBS Abroad
-            </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight mt-6 text-slate-900">
+            Become a{" "}
+            <span className="bg-gradient-to-r from-indigo-700 via-blue-700 to-cyan-600 bg-clip-text text-transparent">
+              Doctor
+            </span>{" "}
+            without burning a hole in your family&apos;s savings.
+          </h1>
 
-            <p className="text-slate-600 text-base md:text-lg max-w-xl">
-              Get end-to-end guidance from BMUS to study MBBS in NMC-approved
-              universities across Russia, Kazakhstan, Bangladesh, Nepal,
-              Poland and more — at a fraction of Indian private college fees.
-            </p>
+          <p className="text-slate-600 text-base md:text-xl mt-6 max-w-2xl mx-auto">
+            Get end-to-end guidance from BMUS to study MBBS in NMC-approved
+            universities across Russia, Kazakhstan, Bangladesh, Nepal, Poland
+            and more — at a fraction of Indian private college fees.
+          </p>
 
-            <ul className="grid sm:grid-cols-2 gap-3 max-w-xl">
+          <ul className="grid sm:grid-cols-2 gap-3 max-w-2xl mx-auto mt-8 text-left">
+            {[
+              "NMC-approved universities only",
+              "Transparent, all-inclusive fee structure",
+              "Visa, travel & hostel handled by us",
+              "FMGE / NExT coaching support",
+            ].map((item) => (
+              <li
+                key={item}
+                className="flex items-start gap-2 text-sm md:text-base text-slate-700"
+              >
+                <CheckCircle2 className="size-5 text-emerald-600 shrink-0 mt-0.5" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div className="flex flex-wrap items-center justify-center gap-6 mt-10">
+            <div className="flex -space-x-3">
               {[
-                "NMC-approved universities only",
-                "Transparent, all-inclusive fee structure",
-                "Visa, travel & hostel handled by us",
-                "FMGE / NExT coaching support",
-              ].map((item) => (
-                <li
-                  key={item}
-                  className="flex items-start gap-2 text-sm md:text-base text-slate-700"
+                "/anik.jpg",
+                "/naren.jpg",
+                "/camilo-botia.jpg",
+                "/javier-trueba.jpg",
+              ].map((src, i) => (
+                <div
+                  key={i}
+                  className="size-10 rounded-full border-2 border-white overflow-hidden bg-slate-200 shadow"
                 >
-                  <CheckCircle2 className="size-5 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-
-            <div className="flex flex-wrap items-center gap-6 pt-2">
-              <div className="flex -space-x-3">
-                {["/anik.jpg", "/naren.jpg", "/camilo-botia.jpg", "/javier-trueba.jpg"].map(
-                  (src, i) => (
-                    <div
-                      key={i}
-                      className="size-10 rounded-full border-2 border-white overflow-hidden bg-slate-200 shadow"
-                    >
-                      <Image
-                        src={src}
-                        alt="student"
-                        width={80}
-                        height={80}
-                        className="object-cover w-full h-full"
-                      />
-                    </div>
-                  ),
-                )}
-              </div>
-              <div>
-                <div className="flex items-center gap-1 text-amber-500">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="size-4 fill-current" />
-                  ))}
-                  <span className="ml-2 text-sm font-semibold text-slate-800">
-                    4.9/5
-                  </span>
+                  <Image
+                    src={src}
+                    alt="student"
+                    width={80}
+                    height={80}
+                    className="object-cover w-full h-full"
+                  />
                 </div>
-                <p className="text-xs text-slate-600">
-                  Trusted by 5,000+ students & parents
-                </p>
-              </div>
+              ))}
             </div>
-
-            <div className="flex flex-wrap items-center gap-3 pt-2">
-              <a href="tel:+919354086500">
-                <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white shadow-lg"
-                >
-                  <Phone className="size-4" />
-                  Call +91 93540 86500
-                </Button>
-              </a>
-              <a href="#counseling-form">
-                <Button size="lg" variant="outline">
-                  Book Free Session
-                  <ChevronRight className="size-4" />
-                </Button>
-              </a>
+            <div className="text-left">
+              <div className="flex items-center gap-1 text-amber-500">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} className="size-4 fill-current" />
+                ))}
+                <span className="ml-2 text-sm font-semibold text-slate-800">
+                  4.9/5
+                </span>
+              </div>
+              <p className="text-xs text-slate-600">
+                Trusted by 5,000+ students &amp; parents
+              </p>
             </div>
           </div>
 
-          {/* Form card */}
-          <Card
-            id="counseling-form"
-            className="shadow-2xl shadow-blue-500/10 border border-slate-200/80 bg-white/95 backdrop-blur-sm relative overflow-hidden p-0 gap-0 lg:sticky lg:top-24"
+          <CtaButton
+            onClick={openForm}
+            subline="100% Free • No obligation • Reply within 24 hours"
           >
-            <div className="h-1.5 w-full bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-500" />
-
-            <CardHeader className="relative px-6 md:px-8 pt-7 pb-5 text-center border-b border-slate-100 bg-gradient-to-b from-blue-50/50 to-transparent">
-              <div className="mx-auto mb-3 inline-flex items-center justify-center size-14 rounded-2xl bg-gradient-to-br from-indigo-500 via-blue-600 to-cyan-500 text-white shadow-lg shadow-blue-500/30 ring-4 ring-white">
-                <CalendarCheck className="size-7" />
-              </div>
-              <h2 className="text-xl md:text-2xl font-bold tracking-tight text-slate-900">
-                Book Your Free Counselling
-              </h2>
-              <p className="text-slate-600 mt-1 text-sm">
-                Fill the details and our counsellor will contact you in the
-                next 24 hours.
-              </p>
-            </CardHeader>
-
-            <CardContent className="px-6 md:px-8 py-7">
-              <AppointmentForm variant="counseling" />
-            </CardContent>
-
-            <div className="px-6 md:px-8 py-3 bg-gradient-to-r from-emerald-50 via-green-50 to-emerald-50 border-t border-emerald-100 flex items-center justify-center gap-2 text-xs font-medium text-emerald-800">
-              <ShieldCheck className="size-4 text-emerald-600" />
-              <span>Your information is secure and 100% confidential.</span>
-            </div>
-          </Card>
+            Yes! Book My Free Counselling
+          </CtaButton>
         </div>
       </section>
 
@@ -420,16 +439,16 @@ export default function BookCounseling() {
         </div>
       </section>
 
-      {/* PERKS */}
-      <section className="section-container py-12 md:py-16">
+      {/* PERKS / WHAT YOU GET */}
+      <section className="section-container py-14 md:py-20">
         <div className="text-center max-w-2xl mx-auto mb-10">
           <span className="inline-flex items-center gap-2 text-blue-700 bg-blue-50 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
             <Sparkles className="size-3.5" /> What you get
           </span>
-          <h2 className="text-h2 mt-3">
+          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mt-3">
             Built for students who deserve clear, honest guidance
           </h2>
-          <p className="text-slate-600 mt-3">
+          <p className="text-slate-600 mt-3 text-base md:text-lg">
             Every counselling session is structured to give you clarity on
             universities, costs, eligibility and the path ahead.
           </p>
@@ -457,6 +476,13 @@ export default function BookCounseling() {
             );
           })}
         </div>
+
+        <CtaButton
+          onClick={openForm}
+          subline="Talk to a senior counsellor — free, 30 minutes"
+        >
+          Claim My Free Counselling Session
+        </CtaButton>
       </section>
 
       {/* WHY CHOOSE BMUS */}
@@ -467,14 +493,14 @@ export default function BookCounseling() {
               <span className="inline-flex items-center gap-2 text-indigo-700 bg-indigo-50 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
                 <Trophy className="size-3.5" /> Why BMUS
               </span>
-              <h2 className="text-h2 mt-3 mb-4">
+              <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mt-3 mb-4">
                 Why thousands of Indian families trust BMUS for MBBS abroad
               </h2>
-              <p className="text-slate-600 max-w-xl">
-                BMUS (Best Medical University Services) is a leading
-                consultancy guiding NEET-qualified students to top medical
-                universities since 2009. We bring transparency, experience and
-                genuine care to every step of your journey.
+              <p className="text-slate-600 max-w-xl text-base md:text-lg">
+                BMUS (Best Medical University Services) is a leading consultancy
+                guiding NEET-qualified students to top medical universities
+                since 2009. We bring transparency, experience and genuine care
+                to every step of your journey.
               </p>
               <div className="grid sm:grid-cols-2 gap-4 mt-7">
                 {whyChoose.map((item) => {
@@ -521,6 +547,13 @@ export default function BookCounseling() {
               </div>
             </div>
           </div>
+
+          <CtaButton
+            onClick={openForm}
+            subline="Join 5,000+ students who chose BMUS"
+          >
+            Talk to a BMUS Counsellor
+          </CtaButton>
         </div>
       </section>
 
@@ -530,10 +563,10 @@ export default function BookCounseling() {
           <span className="inline-flex items-center gap-2 text-cyan-700 bg-cyan-50 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
             <Globe2 className="size-3.5" /> Top destinations
           </span>
-          <h2 className="text-h2 mt-3">
+          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mt-3">
             Study MBBS in 8+ countries — pick what fits you best
           </h2>
-          <p className="text-slate-600 mt-3">
+          <p className="text-slate-600 mt-3 text-base md:text-lg">
             All universities are NMC-approved and WHO-listed. Choose your
             destination based on tuition fees, duration and lifestyle.
           </p>
@@ -565,18 +598,26 @@ export default function BookCounseling() {
                   </div>
                   <p className="text-slate-600 pt-1 text-sm">{c.highlight}</p>
                 </div>
-                <a
-                  href="#counseling-form"
+                <button
+                  type="button"
+                  onClick={openForm}
                   className="inline-flex items-center gap-1 text-sm font-semibold text-blue-700 hover:text-blue-800 mt-5"
                 >
                   Get details
                   <ChevronRight className="size-4" />
-                </a>
+                </button>
               </div>
               <div className="h-1 w-full bg-gradient-to-r from-indigo-500 via-blue-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
           ))}
         </div>
+
+        <CtaButton
+          onClick={openForm}
+          subline="Get a personalised university shortlist for your NEET score"
+        >
+          Show Me The Best Country For Me
+        </CtaButton>
       </section>
 
       {/* PROCESS */}
@@ -586,10 +627,10 @@ export default function BookCounseling() {
             <span className="inline-flex items-center gap-2 text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
               <CalendarCheck className="size-3.5" /> Simple journey
             </span>
-            <h2 className="text-h2 mt-3">
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mt-3">
               Your 5-step path from counselling to campus
             </h2>
-            <p className="text-slate-600 mt-3">
+            <p className="text-slate-600 mt-3 text-base md:text-lg">
               We&apos;ve simplified MBBS abroad admission so you and your family
               never feel lost.
             </p>
@@ -619,6 +660,13 @@ export default function BookCounseling() {
               );
             })}
           </div>
+
+          <CtaButton
+            onClick={openForm}
+            subline="Step 1 starts the moment you book — 100% free"
+          >
+            Start Step 1 — Book My Free Call
+          </CtaButton>
         </div>
       </section>
 
@@ -628,8 +676,10 @@ export default function BookCounseling() {
           <span className="inline-flex items-center gap-2 text-purple-700 bg-purple-50 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
             <Sparkles className="size-3.5" /> What we offer
           </span>
-          <h2 className="text-h2 mt-3">Complete MBBS-abroad support, in one place</h2>
-          <p className="text-slate-600 mt-3">
+          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mt-3">
+            Complete MBBS-abroad support, in one place
+          </h2>
+          <p className="text-slate-600 mt-3 text-base md:text-lg">
             Beyond admissions, we take care of every detail — so you can focus
             on becoming a great doctor.
           </p>
@@ -654,6 +704,13 @@ export default function BookCounseling() {
             );
           })}
         </div>
+
+        <CtaButton
+          onClick={openForm}
+          subline="Everything from documentation to FMGE prep — handled."
+        >
+          Get End-to-End Help — Free Counselling
+        </CtaButton>
       </section>
 
       {/* TESTIMONIALS */}
@@ -663,8 +720,10 @@ export default function BookCounseling() {
             <span className="inline-flex items-center gap-2 text-amber-700 bg-amber-50 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
               <Star className="size-3.5" /> Student stories
             </span>
-            <h2 className="text-h2 mt-3">Real journeys, real outcomes</h2>
-            <p className="text-slate-600 mt-3">
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mt-3">
+              Real journeys, real outcomes
+            </h2>
+            <p className="text-slate-600 mt-3 text-base md:text-lg">
               Hear from BMUS students who are already studying or practising
               medicine across the globe.
             </p>
@@ -694,6 +753,13 @@ export default function BookCounseling() {
               </div>
             ))}
           </div>
+
+          <CtaButton
+            onClick={openForm}
+            subline="Your story could be next — start with a free call"
+          >
+            Become Our Next Success Story
+          </CtaButton>
         </div>
       </section>
 
@@ -704,20 +770,13 @@ export default function BookCounseling() {
             <span className="inline-flex items-center gap-2 text-blue-700 bg-blue-50 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
               <BookOpenCheck className="size-3.5" /> FAQ
             </span>
-            <h2 className="text-h2 mt-3">Questions parents and students ask</h2>
-            <p className="text-slate-600 mt-3">
-              Still unsure? Our counsellors will answer everything in your
-              free session.
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mt-3">
+              Questions parents and students ask
+            </h2>
+            <p className="text-slate-600 mt-3 text-base md:text-lg">
+              Still unsure? Our counsellors will answer everything in your free
+              session.
             </p>
-            <a href="#counseling-form" className="inline-block mt-6">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white shadow-lg"
-              >
-                Talk to a counsellor
-                <ChevronRight className="size-4" />
-              </Button>
-            </a>
           </div>
 
           <Accordion type="single" collapsible className="w-full">
@@ -733,6 +792,13 @@ export default function BookCounseling() {
             ))}
           </Accordion>
         </div>
+
+        <CtaButton
+          onClick={openForm}
+          subline="Get answers tailored to your NEET score and budget"
+        >
+          Ask My Question — Book Free Call
+        </CtaButton>
       </section>
 
       {/* FINAL CTA */}
@@ -740,54 +806,131 @@ export default function BookCounseling() {
         <div className="absolute -top-24 -right-24 size-72 bg-white/10 rounded-full blur-3xl" />
         <div className="absolute -bottom-24 -left-24 size-72 bg-cyan-300/20 rounded-full blur-3xl" />
 
-        <div className="section-container relative py-14 md:py-20 grid md:grid-cols-[1.4fr_1fr] gap-8 items-center">
-          <div>
-            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold mb-4">
-              <Sparkles className="size-3.5" /> Limited free slots this week
-            </div>
-            <h2 className="text-h2 mb-4 leading-tight">
-              Your dream of becoming a doctor is closer than you think.
-            </h2>
-            <p className="text-white/85 text-base md:text-lg max-w-2xl">
-              Book a free counselling session today and take the first
-              confident step towards an MBBS abroad — at a fraction of the cost
-              and zero compromise on quality.
-            </p>
+        <div className="section-container relative py-16 md:py-24 text-center max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold mb-4">
+            <Sparkles className="size-3.5" /> Limited free slots this week
           </div>
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-5 leading-tight">
+            Your dream of becoming a doctor is closer than you think.
+          </h2>
+          <p className="text-white/90 text-base md:text-xl max-w-2xl mx-auto">
+            Book a free counselling session today and take the first confident
+            step towards an MBBS abroad — at a fraction of the cost and zero
+            compromise on quality.
+          </p>
 
-          <div className="flex flex-col sm:flex-row md:flex-col gap-3 md:items-stretch">
-            <a href="#counseling-form" className="w-full">
-              <Button
-                size="lg"
-                className="w-full bg-white text-indigo-700 hover:bg-white/95 font-semibold shadow-lg"
-              >
-                <CalendarCheck className="size-4" />
-                Book Free Counselling
-              </Button>
+          <div className="mt-10 flex flex-col items-center gap-4">
+            <button type="button" onClick={openForm} className={ctaPrimary}>
+              <CalendarCheck className="size-5 md:size-6" />
+              Book My Free Counselling Now
+              <ChevronRight className="size-5 md:size-6" />
+            </button>
+            <a
+              href="tel:+919354086500"
+              className="inline-flex items-center gap-2 text-white/90 hover:text-white text-sm md:text-base font-semibold"
+            >
+              <Phone className="size-4" />
+              Or call us directly: +91 93540 86500
             </a>
-            <a href="tel:+919354086500" className="w-full">
-              <Button
-                size="lg"
-                variant="outline"
-                className="w-full bg-transparent border-white/60 text-white hover:bg-white/10 hover:text-white"
-              >
-                <Phone className="size-4" />
-                Call +91 93540 86500
-              </Button>
-            </a>
-            <Link href="https://bmus.co.in" className="w-full">
-              <Button
-                size="lg"
-                variant="ghost"
-                className="w-full text-white hover:bg-white/10 hover:text-white"
-              >
-                Visit bmus.co.in
-                <ChevronRight className="size-4" />
-              </Button>
-            </Link>
           </div>
         </div>
       </section>
+
+      {/* DISCLAIMER FOOTER */}
+      <footer className="bg-slate-900 text-slate-300">
+        <div className="section-container py-12 md:py-16">
+          <div className="flex items-center justify-center gap-3 mb-6">
+            {logoUrl ? (
+              <Image
+                src={logoUrl}
+                alt="BMUS logo"
+                width={48}
+                height={48}
+                className="size-10 object-contain bg-white/10 rounded-lg p-1"
+              />
+            ) : null}
+            <span className="font-bold text-white tracking-wide">
+              BMUS — Best Medical University Services
+            </span>
+          </div>
+
+          <div className="max-w-3xl mx-auto text-center space-y-5 text-xs md:text-sm leading-relaxed text-slate-400">
+            <p>
+              This site is not a part of the Facebook website or Facebook Inc.
+              Additionally, this site is NOT endorsed by Facebook in any way.
+              FACEBOOK is a trademark of FACEBOOK, Inc. This site is also not a
+              part of Google or YouTube and is not endorsed by Google LLC in any
+              way.
+            </p>
+            <p>
+              <span className="font-semibold text-slate-200">DISCLAIMER:</span>{" "}
+              The student outcomes, admission timelines and university fees
+              shared on this page are based on actual cases handled by BMUS
+              counsellors. Please understand that individual results vary and
+              depend on many factors — including but not limited to your NEET
+              qualification, academic background, choice of country and
+              university, embassy decisions, and personal effort. Studying MBBS
+              abroad and clearing FMGE/NExT requires sustained, consistent work.
+              Nothing on this page should be construed as a guarantee of
+              admission, scholarship, visa approval, or future medical practice.
+              All information is shared for educational and counselling purposes
+              only and may be updated as university policies change.
+            </p>
+            <p>
+              By submitting your details on this page, you consent to be
+              contacted by BMUS counsellors via phone, WhatsApp and email
+              regarding your MBBS-abroad enquiry. Your information is kept
+              strictly confidential and is never sold to third parties.
+            </p>
+          </div>
+
+          <div className="mt-10 pt-6 border-t border-white/10 text-center text-xs text-slate-500">
+            © {new Date().getFullYear()} Best Medical University Services
+            (BMUS). All rights reserved.
+          </div>
+        </div>
+      </footer>
+
+      {/* COUNSELING FORM DIALOG */}
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent
+          showClose={false}
+          className="sm:max-w-xl bg-white p-0 overflow-hidden border-0"
+        >
+          <div className="h-1.5 w-full bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-500" />
+
+          <div className="relative px-6 md:px-8 pt-7 pb-5 text-center border-b border-slate-100 bg-gradient-to-b from-blue-50/60 to-transparent">
+            <button
+              type="button"
+              onClick={() => setOpen(false)}
+              aria-label="Close"
+              className="absolute top-3 right-3 rounded-full bg-white/90 p-1.5 shadow ring-1 ring-slate-200 text-slate-600 hover:text-slate-900"
+            >
+              <XIcon className="size-4" />
+            </button>
+
+            <div className="mx-auto mb-3 inline-flex items-center justify-center size-14 rounded-2xl bg-gradient-to-br from-indigo-500 via-blue-600 to-cyan-500 text-white shadow-lg shadow-blue-500/30 ring-4 ring-white">
+              <CalendarCheck className="size-7" />
+            </div>
+            <DialogTitle className="text-xl md:text-2xl font-bold tracking-tight text-slate-900">
+              Book Your Free Counselling
+            </DialogTitle>
+            <p className="text-slate-600 mt-1 text-sm">
+              Fill the details and our counsellor will contact you in the next
+              24 hours.
+            </p>
+          </div>
+
+          <div className="px-6 md:px-8 py-7 max-h-[70vh] overflow-y-auto">
+            <AppointmentForm variant="counseling" />
+          </div>
+
+          <div className="px-6 md:px-8 py-3 bg-gradient-to-r from-emerald-50 via-green-50 to-emerald-50 border-t border-emerald-100 flex items-center justify-center gap-2 text-xs font-medium text-emerald-800">
+            <ShieldCheck className="size-4 text-emerald-600" />
+            <span>Your information is secure and 100% confidential.</span>
+          </div>
+        </DialogContent>
+      </Dialog>
     </>
   );
 }
