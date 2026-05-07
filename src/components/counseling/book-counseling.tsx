@@ -103,51 +103,6 @@ const whyChoose = [
   },
 ];
 
-const countries = [
-  {
-    name: "Russia",
-    duration: "6 Years",
-    feeRange: "₹18 – 30 Lakh",
-    highlight: "MCI/NMC approved, WHO listed",
-    flag: "🇷🇺",
-  },
-  {
-    name: "Kazakhstan",
-    duration: "5 Years",
-    feeRange: "₹16 – 22 Lakh",
-    highlight: "English medium, low cost of living",
-    flag: "🇰🇿",
-  },
-  {
-    name: "Bangladesh",
-    duration: "5 Years",
-    feeRange: "₹25 – 40 Lakh",
-    highlight: "Indian curriculum match",
-    flag: "🇧🇩",
-  },
-  {
-    name: "Nepal",
-    duration: "5.5 Years",
-    feeRange: "₹40 – 65 Lakh",
-    highlight: "Closest to India, no language barrier",
-    flag: "🇳🇵",
-  },
-  {
-    name: "Poland",
-    duration: "6 Years",
-    feeRange: "₹50 – 75 Lakh",
-    highlight: "EU recognised, premium quality",
-    flag: "🇵🇱",
-  },
-  {
-    name: "Mauritius",
-    duration: "5 Years",
-    feeRange: "₹30 – 45 Lakh",
-    highlight: "English medium, GMC affiliated",
-    flag: "🇲🇺",
-  },
-];
-
 const process = [
   {
     step: "01",
@@ -272,10 +227,12 @@ function CtaButton({
   onClick,
   children,
   subline,
+  sublineClass = "text-slate-500",
 }: {
   onClick: () => void;
   children: React.ReactNode;
   subline?: string;
+  sublineClass?: string;
 }) {
   return (
     <div className="flex flex-col items-center text-center my-10 md:my-14">
@@ -285,7 +242,7 @@ function CtaButton({
         <ChevronRight className="size-5 md:size-6" />
       </button>
       {subline && (
-        <p className="mt-3 text-sm text-slate-500">{subline}</p>
+        <p className={`mt-3 text-sm ${sublineClass}`}>{subline}</p>
       )}
     </div>
   );
@@ -440,49 +397,62 @@ export default function BookCounseling({ logoUrl }: { logoUrl: string }) {
       </section>
 
       {/* PERKS / WHAT YOU GET */}
-      <section className="section-container py-14 md:py-20">
-        <div className="text-center max-w-2xl mx-auto mb-10">
-          <span className="inline-flex items-center gap-2 text-blue-700 bg-blue-50 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
-            <Sparkles className="size-3.5" /> What you get
-          </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mt-3">
-            Built for students who deserve clear, honest guidance
-          </h2>
-          <p className="text-slate-600 mt-3 text-base md:text-lg">
-            Every counselling session is structured to give you clarity on
-            universities, costs, eligibility and the path ahead.
-          </p>
-        </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {perks.map((perk) => {
-            const Icon = perk.icon;
-            return (
-              <div
-                key={perk.title}
-                className="group relative p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-300 hover:shadow-xl hover:shadow-blue-500/5 transition-all"
-              >
+      <section className="relative bg-slate-950 text-white overflow-hidden">
+        <div className="absolute -top-32 -left-32 size-80 bg-indigo-600/30 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-32 -right-32 size-80 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none" />
+        <div
+          className="absolute inset-0 opacity-[0.08] pointer-events-none"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, rgb(255 255 255 / 0.6) 1px, transparent 1px)",
+            backgroundSize: "24px 24px",
+          }}
+        />
+        <div className="section-container relative py-14 md:py-20">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <span className="inline-flex items-center gap-2 text-blue-200 bg-blue-500/15 ring-1 ring-blue-400/30 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+              <Sparkles className="size-3.5" /> What you get
+            </span>
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mt-3 text-white">
+              Built for students who deserve clear, honest guidance
+            </h2>
+            <p className="text-slate-300 mt-3 text-base md:text-lg">
+              Every counselling session is structured to give you clarity on
+              universities, costs, eligibility and the path ahead.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {perks.map((perk) => {
+              const Icon = perk.icon;
+              return (
                 <div
-                  className={`mb-4 size-12 rounded-xl bg-gradient-to-br ${perk.color} text-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform`}
+                  key={perk.title}
+                  className="group relative p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/30 hover:bg-white/10 transition-all"
                 >
-                  <Icon className="size-6" />
+                  <div
+                    className={`mb-4 size-12 rounded-xl bg-gradient-to-br ${perk.color} text-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform`}
+                  >
+                    <Icon className="size-6" />
+                  </div>
+                  <h3 className="font-semibold text-white text-lg">
+                    {perk.title}
+                  </h3>
+                  <p className="text-sm text-slate-300 mt-2 leading-relaxed">
+                    {perk.desc}
+                  </p>
                 </div>
-                <h3 className="font-semibold text-slate-900 text-lg">
-                  {perk.title}
-                </h3>
-                <p className="text-sm text-slate-600 mt-2 leading-relaxed">
-                  {perk.desc}
-                </p>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
 
-        <CtaButton
-          onClick={openForm}
-          subline="Talk to a senior counsellor — free, 30 minutes"
-        >
-          Claim My Free Counselling Session
-        </CtaButton>
+          <CtaButton
+            onClick={openForm}
+            subline="Talk to a senior counsellor — free, 30 minutes"
+            sublineClass="text-slate-400"
+          >
+            Claim My Free Counselling Session
+          </CtaButton>
+        </div>
       </section>
 
       {/* WHY CHOOSE BMUS */}
@@ -557,69 +527,6 @@ export default function BookCounseling({ logoUrl }: { logoUrl: string }) {
         </div>
       </section>
 
-      {/* COUNTRIES / PROGRAMS */}
-      <section className="section-container py-14 md:py-20">
-        <div className="text-center max-w-2xl mx-auto mb-10">
-          <span className="inline-flex items-center gap-2 text-cyan-700 bg-cyan-50 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
-            <Globe2 className="size-3.5" /> Top destinations
-          </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mt-3">
-            Study MBBS in 8+ countries — pick what fits you best
-          </h2>
-          <p className="text-slate-600 mt-3 text-base md:text-lg">
-            All universities are NMC-approved and WHO-listed. Choose your
-            destination based on tuition fees, duration and lifestyle.
-          </p>
-        </div>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {countries.map((c) => (
-            <div
-              key={c.name}
-              className="group relative overflow-hidden rounded-2xl bg-white border border-slate-200 hover:border-blue-300 hover:shadow-xl transition-all"
-            >
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <span className="text-3xl leading-none">{c.flag}</span>
-                    <h3 className="font-semibold text-lg text-slate-900">
-                      MBBS in {c.name}
-                    </h3>
-                  </div>
-                </div>
-                <div className="space-y-2 text-sm">
-                  <div className="flex items-center justify-between text-slate-700 border-b border-slate-100 pb-2">
-                    <span className="text-slate-500">Duration</span>
-                    <span className="font-semibold">{c.duration}</span>
-                  </div>
-                  <div className="flex items-center justify-between text-slate-700 border-b border-slate-100 pb-2">
-                    <span className="text-slate-500">Total Fees</span>
-                    <span className="font-semibold">{c.feeRange}</span>
-                  </div>
-                  <p className="text-slate-600 pt-1 text-sm">{c.highlight}</p>
-                </div>
-                <button
-                  type="button"
-                  onClick={openForm}
-                  className="inline-flex items-center gap-1 text-sm font-semibold text-blue-700 hover:text-blue-800 mt-5"
-                >
-                  Get details
-                  <ChevronRight className="size-4" />
-                </button>
-              </div>
-              <div className="h-1 w-full bg-gradient-to-r from-indigo-500 via-blue-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-            </div>
-          ))}
-        </div>
-
-        <CtaButton
-          onClick={openForm}
-          subline="Get a personalised university shortlist for your NEET score"
-        >
-          Show Me The Best Country For Me
-        </CtaButton>
-      </section>
-
       {/* PROCESS */}
       <section className="bg-slate-50 py-14 md:py-20">
         <div className="section-container">
@@ -671,46 +578,51 @@ export default function BookCounseling({ logoUrl }: { logoUrl: string }) {
       </section>
 
       {/* SERVICES */}
-      <section className="section-container py-14 md:py-20">
-        <div className="text-center max-w-2xl mx-auto mb-10">
-          <span className="inline-flex items-center gap-2 text-purple-700 bg-purple-50 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
-            <Sparkles className="size-3.5" /> What we offer
-          </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mt-3">
-            Complete MBBS-abroad support, in one place
-          </h2>
-          <p className="text-slate-600 mt-3 text-base md:text-lg">
-            Beyond admissions, we take care of every detail — so you can focus
-            on becoming a great doctor.
-          </p>
-        </div>
+      <section className="relative bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white overflow-hidden">
+        <div className="absolute -top-32 right-0 size-80 bg-blue-500/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-32 left-0 size-80 bg-purple-500/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="section-container relative py-14 md:py-20">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <span className="inline-flex items-center gap-2 text-purple-200 bg-purple-500/15 ring-1 ring-purple-400/30 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+              <Sparkles className="size-3.5" /> What we offer
+            </span>
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mt-3 text-white">
+              Complete MBBS-abroad support, in one place
+            </h2>
+            <p className="text-slate-300 mt-3 text-base md:text-lg">
+              Beyond admissions, we take care of every detail — so you can
+              focus on becoming a great doctor.
+            </p>
+          </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {services.map((s) => {
-            const Icon = s.icon;
-            return (
-              <div
-                key={s.title}
-                className="p-6 rounded-2xl bg-gradient-to-br from-white to-slate-50 border border-slate-200 hover:border-blue-300 hover:shadow-lg transition-all"
-              >
-                <div className="size-11 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center mb-4">
-                  <Icon className="size-5" />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {services.map((s) => {
+              const Icon = s.icon;
+              return (
+                <div
+                  key={s.title}
+                  className="p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/30 hover:bg-white/10 transition-all"
+                >
+                  <div className="size-11 rounded-xl bg-blue-500/20 text-blue-200 ring-1 ring-blue-400/30 flex items-center justify-center mb-4">
+                    <Icon className="size-5" />
+                  </div>
+                  <h3 className="font-semibold text-white">{s.title}</h3>
+                  <p className="text-sm text-slate-300 mt-2 leading-relaxed">
+                    {s.desc}
+                  </p>
                 </div>
-                <h3 className="font-semibold text-slate-900">{s.title}</h3>
-                <p className="text-sm text-slate-600 mt-2 leading-relaxed">
-                  {s.desc}
-                </p>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
 
-        <CtaButton
-          onClick={openForm}
-          subline="Everything from documentation to FMGE prep — handled."
-        >
-          Get End-to-End Help — Free Counselling
-        </CtaButton>
+          <CtaButton
+            onClick={openForm}
+            subline="Everything from documentation to FMGE prep — handled."
+            sublineClass="text-slate-400"
+          >
+            Get End-to-End Help — Free Counselling
+          </CtaButton>
+        </div>
       </section>
 
       {/* TESTIMONIALS */}
@@ -895,11 +807,11 @@ export default function BookCounseling({ logoUrl }: { logoUrl: string }) {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent
           showClose={false}
-          className="sm:max-w-xl bg-white p-0 overflow-hidden border-0"
+          className="sm:max-w-xl bg-white p-0 overflow-hidden border-0 max-h-[92vh] flex flex-col gap-0"
         >
-          <div className="h-1.5 w-full bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-500" />
+          <div className="h-1.5 w-full bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-500 shrink-0" />
 
-          <div className="relative px-6 md:px-8 pt-7 pb-5 text-center border-b border-slate-100 bg-gradient-to-b from-blue-50/60 to-transparent">
+          <div className="relative px-6 md:px-8 pt-7 pb-5 text-center border-b border-slate-100 bg-gradient-to-b from-blue-50/60 to-transparent shrink-0">
             <button
               type="button"
               onClick={() => setOpen(false)}
@@ -921,11 +833,11 @@ export default function BookCounseling({ logoUrl }: { logoUrl: string }) {
             </p>
           </div>
 
-          <div className="px-6 md:px-8 py-7 max-h-[70vh] overflow-y-auto">
+          <div className="flex-1 min-h-0 overflow-y-auto px-6 md:px-8 py-7">
             <AppointmentForm variant="counseling" />
           </div>
 
-          <div className="px-6 md:px-8 py-3 bg-gradient-to-r from-emerald-50 via-green-50 to-emerald-50 border-t border-emerald-100 flex items-center justify-center gap-2 text-xs font-medium text-emerald-800">
+          <div className="px-6 md:px-8 py-3 bg-gradient-to-r from-emerald-50 via-green-50 to-emerald-50 border-t border-emerald-100 flex items-center justify-center gap-2 text-xs font-medium text-emerald-800 shrink-0">
             <ShieldCheck className="size-4 text-emerald-600" />
             <span>Your information is secure and 100% confidential.</span>
           </div>
