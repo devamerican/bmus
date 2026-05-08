@@ -160,17 +160,14 @@ export default function AppointmentForm({
         page: window.location.pathname,
       });
       if (res.success) {
-        toast.success(
-          variant === "counseling"
-            ? "Counselling session booked!"
-            : "Appointment booked successfully!",
-          {
-            description:
-              variant === "counseling"
-                ? "Our team will reach out within 24 hours."
-                : "We will confirm your slot shortly.",
-          },
-        );
+        if (variant === "counseling") {
+          form.reset();
+          window.location.href = "/thankyou";
+          return;
+        }
+        toast.success("Appointment booked successfully!", {
+          description: "We will confirm your slot shortly.",
+        });
         form.reset();
         return;
       }
