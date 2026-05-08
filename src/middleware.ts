@@ -20,11 +20,18 @@ export function middleware(request: NextRequest) {
       url.pathname = "/book-counseling";
       return NextResponse.rewrite(url);
     }
+    if (pathname === "/thankyou") {
+      return NextResponse.next();
+    }
     return NextResponse.redirect(`${MAIN_ORIGIN}${pathname}${search}`, 308);
   }
 
   if (MAIN_HOSTS.has(host) && pathname === "/book-counseling") {
     return NextResponse.redirect(`${COUNSELING_ORIGIN}/${search}`, 308);
+  }
+
+  if (MAIN_HOSTS.has(host) && pathname === "/thankyou") {
+    return NextResponse.redirect(`${COUNSELING_ORIGIN}/thankyou${search}`, 308);
   }
 
   return NextResponse.next();
