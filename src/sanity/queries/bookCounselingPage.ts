@@ -15,6 +15,9 @@ export const BOOK_COUNSELING_PAGE_QUERY = groq`
     },
     videoSection{
       ...,
+      videoFile{
+        asset->{ _id, url, mimeType, originalFilename }
+      },
       poster{
         ...,
         asset->{ _id, url }

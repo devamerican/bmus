@@ -455,6 +455,11 @@ export default function BookCounseling({
   })();
 
   const videoSection = { ...DEFAULTS.videoSection, ...(data?.videoSection ?? {}) };
+  const uploadedVideoUrl: string | null =
+    data?.videoSection?.videoFile?.asset?.url ?? null;
+  const uploadedVideoMime: string | null =
+    data?.videoSection?.videoFile?.asset?.mimeType ?? null;
+  const resolvedVideoUrl: string = uploadedVideoUrl || videoSection.videoUrl;
   const videoPosterUrl =
     safeImageUrl(data?.videoSection?.poster) ?? videoSection.posterUrl ?? "";
 
@@ -648,7 +653,7 @@ export default function BookCounseling({
       </section>
 
       {/* VIDEO SECTION */}
-      {videoSection.enabled !== false && videoSection.videoUrl ? (
+      {videoSection.enabled !== false && resolvedVideoUrl ? (
         <section className="relative bg-white py-14 md:py-20">
           <div className="section-container">
             <div className="text-center max-w-2xl mx-auto mb-8 md:mb-10">
@@ -670,9 +675,9 @@ export default function BookCounseling({
             </div>
 
             <div className="relative max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl ring-1 ring-slate-200 bg-slate-900 aspect-video">
-              {isIframeUrl(videoSection.videoUrl) ? (
+              {!uploadedVideoUrl && isIframeUrl(resolvedVideoUrl) ? (
                 <iframe
-                  src={toEmbedUrl(videoSection.videoUrl)}
+                  src={toEmbedUrl(resolvedVideoUrl)}
                   title={videoSection.heading || "BMUS counselling video"}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
@@ -680,12 +685,16 @@ export default function BookCounseling({
                 />
               ) : (
                 <video
-                  src={videoSection.videoUrl}
+                  src={resolvedVideoUrl}
                   controls
                   preload="metadata"
                   poster={videoPosterUrl || undefined}
                   className="absolute inset-0 w-full h-full object-cover"
-                />
+                >
+                  {uploadedVideoMime ? (
+                    <source src={resolvedVideoUrl} type={uploadedVideoMime} />
+                  ) : null}
+                </video>
               )}
             </div>
           </div>

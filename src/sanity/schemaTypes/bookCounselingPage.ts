@@ -157,15 +157,23 @@ const bookCounselingVideoSection = defineType({
     defineField({ name: 'heading', title: 'Heading', type: 'string' }),
     defineField({ name: 'description', title: 'Description', type: 'text', rows: 3 }),
     defineField({
+      name: 'videoFile',
+      title: 'Upload Video',
+      type: 'file',
+      options: { accept: 'video/*' },
+      description:
+        'Upload a video file (MP4, WebM, etc.). If both an upload and a URL are provided, the upload takes precedence.',
+    }),
+    defineField({
       name: 'videoUrl',
       title: 'Video URL',
       type: 'url',
       description:
-        'YouTube/Vimeo embed URL or direct .mp4 file URL. YouTube/Vimeo links will be rendered in an iframe.',
+        'YouTube/Vimeo embed URL or direct .mp4 file URL. Used only when no video is uploaded above. YouTube/Vimeo links are rendered in an iframe.',
     }),
     defineField({
       name: 'poster',
-      title: 'Poster Image (for direct video files)',
+      title: 'Poster Image (for uploaded or direct video files)',
       type: 'image',
       options: { hotspot: true },
     }),
