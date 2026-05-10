@@ -17,6 +17,7 @@ import { contactUsPageSchema } from './contactUsPage'
 import { eligibilityAndDocumentPageSchema } from './eligibilityAndDocumentPage'
 import { studentReviewsPageSchema } from './studentReviewsPage'
 import { blogListingPageSchema } from './blogListingPage'
+import { bookCounselingPageSchemaTypes } from './bookCounselingPage'
 import { type SchemaTypeDefinition } from 'sanity'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -66,6 +67,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     eligibilityAndDocumentPageSchema,
     studentReviewsPageSchema,
     blogListingPageSchema,
+
+    ...bookCounselingPageSchemaTypes,
   ],
 
 }
