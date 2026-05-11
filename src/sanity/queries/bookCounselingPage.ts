@@ -23,6 +23,19 @@ export const BOOK_COUNSELING_PAGE_QUERY = groq`
         asset->{ _id, url }
       }
     },
+    studentVideosSection{
+      ...,
+      videos[]{
+        title,
+        videoFile{
+          asset->{ _id, url, mimeType, originalFilename }
+        },
+        poster{
+          ...,
+          asset->{ _id, url }
+        }
+      }
+    },
     stats,
     perksSection,
     whyChooseSection{
