@@ -116,6 +116,17 @@ const DEFAULTS = {
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     posterUrl: "",
   },
+  studentVideosSection: {
+    enabled: true,
+    badge: "Student stories",
+    headingPrefix: "SEE WHAT OUR STUDENTS HAVE TO SAY ABOUT",
+    headingHighlight: "BMUS",
+    headingSuffix: "MBBS ABROAD JOURNEY",
+    description: "Real journeys, real outcomes from our students.",
+    videos: [] as Array<{ title?: string; videoUrl?: string; posterUrl?: string }>,
+    ctaLabel: "I'M READY TO BOOK MY FREE COUNSELLING",
+    ctaSubline: "100% Free • No obligation • Reply within 24 hours",
+  },
   stats: [
     { value: "5,000+", label: "Students Placed" },
     { value: "50+", label: "Partner Universities" },
@@ -462,6 +473,28 @@ export default function BookCounseling({
   const resolvedVideoUrl: string = uploadedVideoUrl || videoSection.videoUrl;
   const videoPosterUrl =
     safeImageUrl(data?.videoSection?.poster) ?? videoSection.posterUrl ?? "";
+
+  const studentVideosSection = {
+    ...DEFAULTS.studentVideosSection,
+    ...(data?.studentVideosSection ?? {}),
+  };
+  const studentVideos: Array<{
+    title?: string;
+    videoUrl: string;
+    mimeType?: string;
+    posterUrl: string;
+  }> = (() => {
+    const items = data?.studentVideosSection?.videos;
+    if (!Array.isArray(items)) return [];
+    return items
+      .map((v: any) => ({
+        title: v?.title,
+        videoUrl: v?.videoFile?.asset?.url ?? "",
+        mimeType: v?.videoFile?.asset?.mimeType ?? undefined,
+        posterUrl: safeImageUrl(v?.poster) ?? "",
+      }))
+      .filter((v) => v.videoUrl);
+  })();
 
   const stats = data?.stats?.length ? data.stats : DEFAULTS.stats;
 
@@ -999,6 +1032,71 @@ export default function BookCounseling({
           </CtaButton>
         </div>
       </section>
+
+      {/* STUDENT VIDEOS (2x2 grid of uploaded videos) */}
+      {studentVideosSection.enabled !== false && studentVideos.length > 0 ? (
+        <section className="bg-white py-14 md:py-20">
+          <div className="section-container">
+            <div className="text-center max-w-3xl mx-auto mb-10">
+              {studentVideosSection.badge ? (
+                <span className="inline-flex items-center gap-2 text-rose-700 bg-rose-50 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+                  <PlayCircle className="size-3.5" />{" "}
+                  {studentVideosSection.badge}
+                </span>
+              ) : null}
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight mt-3 text-slate-900 uppercase">
+                {studentVideosSection.headingPrefix ? (
+                  <span>{studentVideosSection.headingPrefix} </span>
+                ) : null}
+                {studentVideosSection.headingHighlight ? (
+                  <span className="text-rose-600">
+                    {studentVideosSection.headingHighlight}
+                  </span>
+                ) : null}
+                {studentVideosSection.headingSuffix ? (
+                  <span> {studentVideosSection.headingSuffix}</span>
+                ) : null}
+              </h2>
+              {studentVideosSection.description ? (
+                <p className="text-slate-600 mt-3 text-base md:text-lg">
+                  {studentVideosSection.description}
+                </p>
+              ) : null}
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 max-w-5xl mx-auto">
+              {studentVideos.slice(0, 4).map((v, i) => (
+                <div
+                  key={i}
+                  className="relative rounded-2xl overflow-hidden shadow-xl ring-1 ring-slate-200 bg-slate-900 aspect-video"
+                >
+                  <video
+                    src={v.videoUrl}
+                    controls
+                    playsInline
+                    preload="metadata"
+                    poster={v.posterUrl || undefined}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  >
+                    {v.mimeType ? (
+                      <source src={v.videoUrl} type={v.mimeType} />
+                    ) : null}
+                  </video>
+                </div>
+              ))}
+            </div>
+
+            {studentVideosSection.ctaLabel ? (
+              <CtaButton
+                onClick={openForm}
+                subline={studentVideosSection.ctaSubline}
+              >
+                {studentVideosSection.ctaLabel}
+              </CtaButton>
+            ) : null}
+          </div>
+        </section>
+      ) : null}
 
       {/* FAQ */}
       <section className="section-container py-14 md:py-20">

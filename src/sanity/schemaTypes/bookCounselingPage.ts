@@ -180,6 +180,65 @@ const bookCounselingVideoSection = defineType({
   ],
 })
 
+const bookCounselingStudentVideo = defineType({
+  name: 'bookCounselingStudentVideo',
+  title: 'Student Video',
+  type: 'object',
+  fields: [
+    defineField({ name: 'title', title: 'Title', type: 'string' }),
+    defineField({
+      name: 'videoFile',
+      title: 'Upload Video',
+      type: 'file',
+      options: { accept: 'video/*' },
+      description:
+        'Upload a video file (MP4, WebM, etc.). Required for the video to display.',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'poster',
+      title: 'Poster / Thumbnail Image',
+      type: 'image',
+      options: { hotspot: true },
+      description: 'Shown before the video plays.',
+    }),
+  ],
+  preview: {
+    select: { title: 'title', media: 'poster' },
+    prepare({ title, media }) {
+      return { title: title || 'Student Video', media }
+    },
+  },
+})
+
+const bookCounselingStudentVideosSection = defineType({
+  name: 'bookCounselingStudentVideosSection',
+  title: 'Student Videos Section',
+  type: 'object',
+  fields: [
+    defineField({ name: 'enabled', title: 'Show this section', type: 'boolean', initialValue: true }),
+    defineField({ name: 'badge', title: 'Badge Text', type: 'string' }),
+    defineField({ name: 'headingPrefix', title: 'Heading – Prefix', type: 'string' }),
+    defineField({
+      name: 'headingHighlight',
+      title: 'Heading – Highlight (red)',
+      type: 'string',
+      description: 'This portion of the heading will be highlighted in red.',
+    }),
+    defineField({ name: 'headingSuffix', title: 'Heading – Suffix', type: 'string' }),
+    defineField({ name: 'description', title: 'Description', type: 'text', rows: 2 }),
+    defineField({
+      name: 'videos',
+      title: 'Videos (recommended: 4, shown in a 2×2 grid)',
+      type: 'array',
+      of: [defineArrayMember({ type: 'bookCounselingStudentVideo' })],
+      validation: (Rule) => Rule.max(4),
+    }),
+    defineField({ name: 'ctaLabel', title: 'CTA Label', type: 'string' }),
+    defineField({ name: 'ctaSubline', title: 'CTA Subline', type: 'string' }),
+  ],
+})
+
 const bookCounselingPerksSection = defineType({
   name: 'bookCounselingPerksSection',
   title: 'Perks Section',
@@ -359,6 +418,11 @@ export const bookCounselingPageSchema = defineType({
     defineField({ name: 'hero', title: 'Hero', type: 'bookCounselingHero' }),
     defineField({ name: 'videoSection', title: 'Video Section', type: 'bookCounselingVideoSection' }),
     defineField({
+      name: 'studentVideosSection',
+      title: 'Student Videos Section',
+      type: 'bookCounselingStudentVideosSection',
+    }),
+    defineField({
       name: 'stats',
       title: 'Stats',
       type: 'array',
@@ -392,6 +456,8 @@ export const bookCounselingPageSchemaTypes = [
   bookCounselingHeader,
   bookCounselingHero,
   bookCounselingVideoSection,
+  bookCounselingStudentVideo,
+  bookCounselingStudentVideosSection,
   bookCounselingPerksSection,
   bookCounselingWhyChooseSection,
   bookCounselingProcessSection,
