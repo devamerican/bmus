@@ -20,16 +20,15 @@ const bookCounselingPerk = defineType({
   title: 'Perk',
   type: 'object',
   fields: [
-    defineField({ name: 'icon', title: 'Icon', type: 'string', description: ICON_DESCRIPTION }),
+    defineField({
+      name: 'image',
+      title: 'Card Image',
+      type: 'image',
+      options: { hotspot: true },
+      description: 'Photo shown at the top of the perk card. If omitted, a gradient placeholder is shown.',
+    }),
     defineField({ name: 'title', title: 'Title', type: 'string', validation: (Rule) => Rule.required() }),
     defineField({ name: 'desc', title: 'Description', type: 'text', rows: 3, validation: (Rule) => Rule.required() }),
-    defineField({
-      name: 'color',
-      title: 'Gradient Classes',
-      type: 'string',
-      description:
-        'Tailwind from/to gradient classes, e.g. "from-blue-500 to-indigo-600".',
-    }),
   ],
 })
 
@@ -254,7 +253,6 @@ const bookCounselingPerksSection = defineType({
       of: [defineArrayMember({ type: 'bookCounselingPerk' })],
     }),
     defineField({ name: 'ctaLabel', title: 'CTA Label', type: 'string' }),
-    defineField({ name: 'ctaSubline', title: 'CTA Subline', type: 'string' }),
   ],
 })
 
@@ -300,7 +298,6 @@ const bookCounselingProcessSection = defineType({
       of: [defineArrayMember({ type: 'bookCounselingProcessStep' })],
     }),
     defineField({ name: 'ctaLabel', title: 'CTA Label', type: 'string' }),
-    defineField({ name: 'ctaSubline', title: 'CTA Subline', type: 'string' }),
   ],
 })
 
@@ -338,7 +335,6 @@ const bookCounselingTestimonialsSection = defineType({
       of: [defineArrayMember({ type: 'bookCounselingTestimonial' })],
     }),
     defineField({ name: 'ctaLabel', title: 'CTA Label', type: 'string' }),
-    defineField({ name: 'ctaSubline', title: 'CTA Subline', type: 'string' }),
   ],
 })
 

@@ -37,7 +37,16 @@ export const BOOK_COUNSELING_PAGE_QUERY = groq`
       }
     },
     stats,
-    perksSection,
+    perksSection{
+      ...,
+      perks[]{
+        ...,
+        image{
+          ...,
+          asset->{ _id, url }
+        }
+      }
+    },
     whyChooseSection{
       ...,
       image{

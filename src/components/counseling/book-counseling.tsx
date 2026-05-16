@@ -19,11 +19,9 @@ import {
   CalendarCheck,
   CheckCircle2,
   ChevronRight,
-  Clock3,
   FileBadge,
   Globe2,
   GraduationCap,
-  Headphones,
   IndianRupee,
   Languages,
   MapPin,
@@ -50,11 +48,9 @@ const ICONS: Record<string, LucideIcon> = {
   Award,
   BookOpenCheck,
   CalendarCheck,
-  Clock3,
   FileBadge,
   Globe2,
   GraduationCap,
-  Headphones,
   IndianRupee,
   Languages,
   MapPin,
@@ -140,22 +136,16 @@ const DEFAULTS = {
       "Every counselling session is structured to give you clarity on universities, costs, eligibility and the path ahead.",
     perks: [
       {
-        icon: "Headphones",
         title: "Free 1-on-1 Counselling",
         desc: "Personal sessions with senior MBBS-abroad advisors who understand your goals.",
-        color: "from-blue-500 to-indigo-600",
       },
       {
-        icon: "Clock3",
         title: "Response within 24 Hours",
         desc: "Submit the form and our counsellor will reach out the same business day.",
-        color: "from-orange-500 to-pink-500",
       },
       {
-        icon: "ShieldCheck",
         title: "Verified Universities Only",
         desc: "We recommend NMC-approved, WHO-listed institutions across the globe.",
-        color: "from-emerald-500 to-teal-600",
       },
     ],
     ctaLabel: "Talk to a senior counsellor — free, 30 minutes",
@@ -664,7 +654,7 @@ export default function BookCounseling({
               ) : null}
             </div>
 
-            <div className="grid grid-cols-2 gap-3 md:gap-4 max-w-md mx-auto">
+            <div className="grid grid-cols-2 gap-4 md:gap-5 max-w-2xl mx-auto">
               {heroAvatars.slice(0, 4).map((avatar, i) => (
                 <div
                   key={`${avatar.src}-${i}`}
@@ -674,7 +664,7 @@ export default function BookCounseling({
                     src={avatar.src}
                     alt={avatar.alt}
                     fill
-                    sizes="(min-width: 768px) 224px, 45vw"
+                    sizes="(min-width: 768px) 320px, 46vw"
                     className="object-cover"
                   />
                 </div>
@@ -783,25 +773,33 @@ export default function BookCounseling({
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {perks.map((perk: any) => {
-              const Icon = getIcon(perk.icon);
+              const perkImgUrl = safeImageUrl(perk.image) ?? null;
               return (
                 <div
                   key={perk.title}
-                  className="group relative p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/30 hover:bg-white/10 transition-all"
+                  className="group relative rounded-2xl bg-white/5 border border-white/10 hover:border-white/30 hover:bg-white/10 transition-all overflow-hidden flex flex-col"
                 >
-                  <div
-                    className={`mb-4 size-12 rounded-xl bg-gradient-to-br ${
-                      perk.color || "from-blue-500 to-indigo-600"
-                    } text-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform`}
-                  >
-                    <Icon className="size-6" />
+                  <div className="relative h-44 w-full shrink-0">
+                    {perkImgUrl ? (
+                      <Image
+                        src={perkImgUrl}
+                        alt={perk.title}
+                        fill
+                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                        className="object-cover"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/40 to-cyan-500/30" />
+                    )}
                   </div>
-                  <h3 className="font-semibold text-white text-lg">
-                    {perk.title}
-                  </h3>
-                  <p className="text-sm text-slate-300 mt-2 leading-relaxed">
-                    {perk.desc}
-                  </p>
+                  <div className="p-6 flex flex-col gap-2 flex-1">
+                    <h3 className="font-semibold text-white text-lg">
+                      {perk.title}
+                    </h3>
+                    <p className="text-sm text-slate-300 leading-relaxed">
+                      {perk.desc}
+                    </p>
+                  </div>
                 </div>
               );
             })}
