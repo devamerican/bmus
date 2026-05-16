@@ -158,8 +158,8 @@ const DEFAULTS = {
         color: "from-emerald-500 to-teal-600",
       },
     ],
-    ctaLabel: "Claim My Free Counselling Session",
-    ctaSubline: "Talk to a senior counsellor — free, 30 minutes",
+    ctaLabel: "Talk to a senior counsellor — free, 30 minutes",
+    ctaSubline: "",
   },
   whyChooseSection: {
     badge: "Why BMUS",
@@ -243,7 +243,7 @@ const DEFAULTS = {
       },
     ],
     ctaLabel: "Start Step 1 — Book My Free Call",
-    ctaSubline: "Step 1 starts the moment you book — 100% free",
+    ctaSubline: "",
   },
   servicesSection: {
     badge: "What we offer",
@@ -314,7 +314,7 @@ const DEFAULTS = {
       },
     ],
     ctaLabel: "Become Our Next Success Story",
-    ctaSubline: "Your story could be next — start with a free call",
+    ctaSubline: "",
   },
   faqSection: {
     badge: "FAQ",
@@ -394,7 +394,7 @@ function CtaButton({
   sublineClass?: string;
 }) {
   return (
-    <div className="flex flex-col items-center text-center my-10 md:my-14">
+    <div className="flex flex-col items-center text-center mt-8 md:mt-10">
       <button type="button" onClick={onClick} className={ctaPrimary}>
         <Sparkles className="size-5 md:size-6" />
         <span>{children}</span>
@@ -645,37 +645,40 @@ export default function BookCounseling({
             ))}
           </ul>
 
-          <div className="flex flex-wrap items-center justify-center gap-6 mt-10">
-            <div className="flex -space-x-3">
-              {heroAvatars.map((avatar, i) => (
-                <div
-                  key={`${avatar.src}-${i}`}
-                  className="size-10 rounded-full border-2 border-white overflow-hidden bg-slate-200 shadow"
-                >
-                  <Image
-                    src={avatar.src}
-                    alt={avatar.alt}
-                    width={80}
-                    height={80}
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-              ))}
-            </div>
-            <div className="text-left">
-              <div className="flex items-center gap-1 text-amber-500">
+          <div className="mt-10 max-w-2xl mx-auto">
+            <div className="text-center mb-6">
+              <div className="flex items-center justify-center gap-2 text-amber-500">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="size-4 fill-current" />
+                  <Star key={i} className="size-6 md:size-7 fill-current" />
                 ))}
                 {hero.ratingValue ? (
-                  <span className="ml-2 text-sm font-semibold text-slate-800">
+                  <span className="ml-2 text-2xl md:text-3xl font-extrabold text-slate-900">
                     {hero.ratingValue}
                   </span>
                 ) : null}
               </div>
               {hero.ratingLabel ? (
-                <p className="text-xs text-slate-600">{hero.ratingLabel}</p>
+                <p className="text-lg md:text-xl font-semibold text-slate-700 mt-2">
+                  {hero.ratingLabel}
+                </p>
               ) : null}
+            </div>
+
+            <div className="grid grid-cols-2 gap-3 md:gap-4 max-w-md mx-auto">
+              {heroAvatars.slice(0, 4).map((avatar, i) => (
+                <div
+                  key={`${avatar.src}-${i}`}
+                  className="relative aspect-square rounded-2xl overflow-hidden ring-1 ring-slate-200 shadow-md bg-slate-200"
+                >
+                  <Image
+                    src={avatar.src}
+                    alt={avatar.alt}
+                    fill
+                    sizes="(min-width: 768px) 224px, 45vw"
+                    className="object-cover"
+                  />
+                </div>
+              ))}
             </div>
           </div>
 
@@ -806,7 +809,6 @@ export default function BookCounseling({
 
           <CtaButton
             onClick={openForm}
-            subline={perksSection.ctaSubline}
             sublineClass="text-slate-400"
           >
             {perksSection.ctaLabel}
@@ -927,7 +929,7 @@ export default function BookCounseling({
             })}
           </div>
 
-          <CtaButton onClick={openForm} subline={processSection.ctaSubline}>
+          <CtaButton onClick={openForm}>
             {processSection.ctaLabel}
           </CtaButton>
         </div>
@@ -1024,10 +1026,7 @@ export default function BookCounseling({
             ))}
           </div>
 
-          <CtaButton
-            onClick={openForm}
-            subline={testimonialsSection.ctaSubline}
-          >
+          <CtaButton onClick={openForm}>
             {testimonialsSection.ctaLabel}
           </CtaButton>
         </div>
