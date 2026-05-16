@@ -1,3 +1,4 @@
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Toaster } from "sonner";
 
 export default function CounselingLayout({
@@ -9,6 +10,7 @@ export default function CounselingLayout({
     <>
       <Toaster richColors />
       {children}
+      <GoogleAnalytics gaId="G-FLRKHGVYDQ" />
     </>
   );
 }
