@@ -603,7 +603,7 @@ export default function BookCounseling({
           }}
         />
 
-        <div className="section-container relative py-12 md:py-20 lg:py-24 text-center max-w-4xl mx-auto">
+        <div className="section-container relative py-12 md:py-20 lg:py-24 text-center max-w-5xl mx-auto">
           {hero.badge ? (
             <div className="inline-flex items-center gap-2 bg-white/85 backdrop-blur-sm text-blue-700 px-4 py-1.5 rounded-full text-sm font-semibold border border-blue-200 shadow-sm">
               <Sparkles className="size-4 text-amber-500" />
@@ -635,7 +635,7 @@ export default function BookCounseling({
             ))}
           </ul>
 
-          <div className="mt-10 max-w-2xl mx-auto">
+          <div className="mt-10 max-w-5xl mx-auto">
             <div className="text-center mb-6">
               <div className="flex items-center justify-center gap-2 text-amber-500">
                 {Array.from({ length: 5 }).map((_, i) => (
@@ -654,7 +654,7 @@ export default function BookCounseling({
               ) : null}
             </div>
 
-            <div className="grid grid-cols-2 gap-4 md:gap-5 max-w-2xl mx-auto">
+            <div className="grid grid-cols-2 gap-4 md:gap-5 max-w-5xl mx-auto">
               {heroAvatars.slice(0, 4).map((avatar, i) => (
                 <div
                   key={`${avatar.src}-${i}`}
