@@ -64,7 +64,16 @@ export const BOOK_COUNSELING_PAGE_QUERY = groq`
         }
       }
     },
-    servicesSection,
+    servicesSection{
+      ...,
+      services[]{
+        ...,
+        image{
+          ...,
+          asset->{ _id, url }
+        }
+      }
+    },
     testimonialsSection,
     googleReviewsSection{
       ...,

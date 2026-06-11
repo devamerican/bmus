@@ -43,6 +43,24 @@ const bookCounselingFeature = defineType({
   ],
 })
 
+const bookCounselingService = defineType({
+  name: 'bookCounselingService',
+  title: 'Service',
+  type: 'object',
+  fields: [
+    defineField({
+      name: 'image',
+      title: 'Card Image',
+      type: 'image',
+      options: { hotspot: true },
+      description: 'Stock photo shown at the top of the service card (recommended 400×280px). A gradient placeholder is shown if omitted.',
+    }),
+    defineField({ name: 'icon', title: 'Icon (overlay badge)', type: 'string', description: ICON_DESCRIPTION }),
+    defineField({ name: 'title', title: 'Title', type: 'string', validation: (Rule) => Rule.required() }),
+    defineField({ name: 'desc', title: 'Description', type: 'text', rows: 3, validation: (Rule) => Rule.required() }),
+  ],
+})
+
 const bookCounselingProcessStep = defineType({
   name: 'bookCounselingProcessStep',
   title: 'Process Step',
@@ -366,7 +384,7 @@ const bookCounselingServicesSection = defineType({
       name: 'services',
       title: 'Services',
       type: 'array',
-      of: [defineArrayMember({ type: 'bookCounselingFeature' })],
+      of: [defineArrayMember({ type: 'bookCounselingService' })],
     }),
     defineField({ name: 'ctaLabel', title: 'CTA Label', type: 'string' }),
     defineField({ name: 'ctaSubline', title: 'CTA Subline', type: 'string' }),
@@ -534,6 +552,7 @@ export const bookCounselingPageSchemaTypes = [
   bookCounselingStat,
   bookCounselingPerk,
   bookCounselingFeature,
+  bookCounselingService,
   bookCounselingProcessStep,
   bookCounselingTestimonial,
   bookCounselingFaq,
