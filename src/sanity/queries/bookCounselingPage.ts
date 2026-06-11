@@ -54,9 +54,28 @@ export const BOOK_COUNSELING_PAGE_QUERY = groq`
         asset->{ _id, url }
       }
     },
-    processSection,
+    processSection{
+      ...,
+      steps[]{
+        ...,
+        image{
+          ...,
+          asset->{ _id, url }
+        }
+      }
+    },
     servicesSection,
     testimonialsSection,
+    googleReviewsSection{
+      ...,
+      reviews[]{
+        ...,
+        profileImage{
+          ...,
+          asset->{ _id, url }
+        }
+      }
+    },
     faqSection,
     finalCtaSection,
     dialog,

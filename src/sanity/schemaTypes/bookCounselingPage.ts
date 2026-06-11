@@ -49,7 +49,14 @@ const bookCounselingProcessStep = defineType({
   type: 'object',
   fields: [
     defineField({ name: 'step', title: 'Step Number', type: 'string', validation: (Rule) => Rule.required() }),
-    defineField({ name: 'icon', title: 'Icon', type: 'string', description: ICON_DESCRIPTION }),
+    defineField({ name: 'icon', title: 'Icon (fallback)', type: 'string', description: ICON_DESCRIPTION }),
+    defineField({
+      name: 'image',
+      title: 'Card Image',
+      type: 'image',
+      options: { hotspot: true },
+      description: 'If provided, replaces the icon. Recommended: 400×300px.',
+    }),
     defineField({ name: 'title', title: 'Title', type: 'string', validation: (Rule) => Rule.required() }),
     defineField({ name: 'desc', title: 'Description', type: 'text', rows: 3, validation: (Rule) => Rule.required() }),
   ],
@@ -96,6 +103,37 @@ const bookCounselingStudentAvatar = defineType({
     }),
     defineField({ name: 'alt', title: 'Alt Text', type: 'string' }),
   ],
+})
+
+const bookCounselingGoogleReview = defineType({
+  name: 'bookCounselingGoogleReview',
+  title: 'Google Review',
+  type: 'object',
+  fields: [
+    defineField({ name: 'reviewerName', title: 'Reviewer Name', type: 'string', validation: (Rule) => Rule.required() }),
+    defineField({
+      name: 'rating',
+      title: 'Rating (1–5)',
+      type: 'number',
+      initialValue: 5,
+      validation: (Rule) => Rule.required().min(1).max(5),
+    }),
+    defineField({ name: 'reviewText', title: 'Review Text', type: 'text', rows: 4, validation: (Rule) => Rule.required() }),
+    defineField({ name: 'reviewDate', title: 'Review Date', type: 'string', description: 'e.g. "2 months ago" or "March 2024"' }),
+    defineField({
+      name: 'profileImage',
+      title: 'Profile Image',
+      type: 'image',
+      options: { hotspot: true },
+      description: 'Optional. If not provided, initials are shown.',
+    }),
+  ],
+  preview: {
+    select: { title: 'reviewerName', media: 'profileImage' },
+    prepare({ title, media }) {
+      return { title: title || 'Review', media }
+    },
+  },
 })
 
 // ---------- Page sections ----------
@@ -153,7 +191,10 @@ const bookCounselingVideoSection = defineType({
   fields: [
     defineField({ name: 'enabled', title: 'Show this section', type: 'boolean', initialValue: true }),
     defineField({ name: 'badge', title: 'Badge Text', type: 'string' }),
-    defineField({ name: 'heading', title: 'Heading', type: 'string' }),
+    defineField({ name: 'heading', title: 'Heading (plain fallback)', type: 'string' }),
+    defineField({ name: 'headingPrefix', title: 'Heading – Prefix', type: 'string' }),
+    defineField({ name: 'headingHighlight', title: 'Heading – Highlight Word', type: 'string' }),
+    defineField({ name: 'headingSuffix', title: 'Heading – Suffix', type: 'string' }),
     defineField({ name: 'description', title: 'Description', type: 'text', rows: 3 }),
     defineField({
       name: 'videoFile',
@@ -244,7 +285,10 @@ const bookCounselingPerksSection = defineType({
   type: 'object',
   fields: [
     defineField({ name: 'badge', title: 'Badge Text', type: 'string' }),
-    defineField({ name: 'heading', title: 'Heading', type: 'string' }),
+    defineField({ name: 'heading', title: 'Heading (plain fallback)', type: 'string' }),
+    defineField({ name: 'headingPrefix', title: 'Heading – Prefix', type: 'string' }),
+    defineField({ name: 'headingHighlight', title: 'Heading – Highlight Word', type: 'string' }),
+    defineField({ name: 'headingSuffix', title: 'Heading – Suffix', type: 'string' }),
     defineField({ name: 'description', title: 'Description', type: 'text', rows: 3 }),
     defineField({
       name: 'perks',
@@ -262,7 +306,10 @@ const bookCounselingWhyChooseSection = defineType({
   type: 'object',
   fields: [
     defineField({ name: 'badge', title: 'Badge Text', type: 'string' }),
-    defineField({ name: 'heading', title: 'Heading', type: 'string' }),
+    defineField({ name: 'heading', title: 'Heading (plain fallback)', type: 'string' }),
+    defineField({ name: 'headingPrefix', title: 'Heading – Prefix', type: 'string' }),
+    defineField({ name: 'headingHighlight', title: 'Heading – Highlight Word', type: 'string' }),
+    defineField({ name: 'headingSuffix', title: 'Heading – Suffix', type: 'string' }),
     defineField({ name: 'description', title: 'Description', type: 'text', rows: 4 }),
     defineField({
       name: 'features',
@@ -289,7 +336,10 @@ const bookCounselingProcessSection = defineType({
   type: 'object',
   fields: [
     defineField({ name: 'badge', title: 'Badge Text', type: 'string' }),
-    defineField({ name: 'heading', title: 'Heading', type: 'string' }),
+    defineField({ name: 'heading', title: 'Heading (plain fallback)', type: 'string' }),
+    defineField({ name: 'headingPrefix', title: 'Heading – Prefix', type: 'string' }),
+    defineField({ name: 'headingHighlight', title: 'Heading – Highlight Word', type: 'string' }),
+    defineField({ name: 'headingSuffix', title: 'Heading – Suffix', type: 'string' }),
     defineField({ name: 'description', title: 'Description', type: 'text', rows: 3 }),
     defineField({
       name: 'steps',
@@ -307,7 +357,10 @@ const bookCounselingServicesSection = defineType({
   type: 'object',
   fields: [
     defineField({ name: 'badge', title: 'Badge Text', type: 'string' }),
-    defineField({ name: 'heading', title: 'Heading', type: 'string' }),
+    defineField({ name: 'heading', title: 'Heading (plain fallback)', type: 'string' }),
+    defineField({ name: 'headingPrefix', title: 'Heading – Prefix', type: 'string' }),
+    defineField({ name: 'headingHighlight', title: 'Heading – Highlight Word', type: 'string' }),
+    defineField({ name: 'headingSuffix', title: 'Heading – Suffix', type: 'string' }),
     defineField({ name: 'description', title: 'Description', type: 'text', rows: 3 }),
     defineField({
       name: 'services',
@@ -326,7 +379,10 @@ const bookCounselingTestimonialsSection = defineType({
   type: 'object',
   fields: [
     defineField({ name: 'badge', title: 'Badge Text', type: 'string' }),
-    defineField({ name: 'heading', title: 'Heading', type: 'string' }),
+    defineField({ name: 'heading', title: 'Heading (plain fallback)', type: 'string' }),
+    defineField({ name: 'headingPrefix', title: 'Heading – Prefix', type: 'string' }),
+    defineField({ name: 'headingHighlight', title: 'Heading – Highlight Word', type: 'string' }),
+    defineField({ name: 'headingSuffix', title: 'Heading – Suffix', type: 'string' }),
     defineField({ name: 'description', title: 'Description', type: 'text', rows: 3 }),
     defineField({
       name: 'testimonials',
@@ -344,7 +400,10 @@ const bookCounselingFaqSection = defineType({
   type: 'object',
   fields: [
     defineField({ name: 'badge', title: 'Badge Text', type: 'string' }),
-    defineField({ name: 'heading', title: 'Heading', type: 'string' }),
+    defineField({ name: 'heading', title: 'Heading (plain fallback)', type: 'string' }),
+    defineField({ name: 'headingPrefix', title: 'Heading – Prefix', type: 'string' }),
+    defineField({ name: 'headingHighlight', title: 'Heading – Highlight Word', type: 'string' }),
+    defineField({ name: 'headingSuffix', title: 'Heading – Suffix', type: 'string' }),
     defineField({ name: 'description', title: 'Description', type: 'text', rows: 3 }),
     defineField({
       name: 'faqs',
@@ -363,7 +422,10 @@ const bookCounselingFinalCtaSection = defineType({
   type: 'object',
   fields: [
     defineField({ name: 'badge', title: 'Badge Text', type: 'string' }),
-    defineField({ name: 'heading', title: 'Heading', type: 'string' }),
+    defineField({ name: 'heading', title: 'Heading (plain fallback)', type: 'string' }),
+    defineField({ name: 'headingPrefix', title: 'Heading – Prefix', type: 'string' }),
+    defineField({ name: 'headingHighlight', title: 'Heading – Highlight Word', type: 'string' }),
+    defineField({ name: 'headingSuffix', title: 'Heading – Suffix', type: 'string' }),
     defineField({ name: 'description', title: 'Description', type: 'text', rows: 3 }),
     defineField({ name: 'ctaLabel', title: 'CTA Label', type: 'string' }),
     defineField({ name: 'phoneLabel', title: 'Phone Label', type: 'string' }),
@@ -395,6 +457,28 @@ const bookCounselingFooterSection = defineType({
       of: [defineArrayMember({ type: 'text', rows: 4 })],
     }),
     defineField({ name: 'copyright', title: 'Copyright Text', type: 'string' }),
+  ],
+})
+
+const bookCounselingGoogleReviewsSection = defineType({
+  name: 'bookCounselingGoogleReviewsSection',
+  title: 'Google Reviews Section',
+  type: 'object',
+  fields: [
+    defineField({ name: 'enabled', title: 'Show this section', type: 'boolean', initialValue: true }),
+    defineField({ name: 'badge', title: 'Badge Text', type: 'string' }),
+    defineField({ name: 'headingPrefix', title: 'Heading – Prefix', type: 'string' }),
+    defineField({ name: 'headingHighlight', title: 'Heading – Highlight Word', type: 'string' }),
+    defineField({ name: 'headingSuffix', title: 'Heading – Suffix', type: 'string' }),
+    defineField({ name: 'description', title: 'Description', type: 'text', rows: 2 }),
+    defineField({ name: 'overallRating', title: 'Overall Rating Label (e.g. 4.9/5)', type: 'string' }),
+    defineField({ name: 'totalReviews', title: 'Total Reviews Label (e.g. Based on 100+ reviews)', type: 'string' }),
+    defineField({
+      name: 'reviews',
+      title: 'Reviews',
+      type: 'array',
+      of: [defineArrayMember({ type: 'bookCounselingGoogleReview' })],
+    }),
   ],
 })
 
@@ -433,6 +517,11 @@ export const bookCounselingPageSchema = defineType({
       title: 'Testimonials Section',
       type: 'bookCounselingTestimonialsSection',
     }),
+    defineField({
+      name: 'googleReviewsSection',
+      title: 'Google Reviews Section',
+      type: 'bookCounselingGoogleReviewsSection',
+    }),
     defineField({ name: 'faqSection', title: 'FAQ Section', type: 'bookCounselingFaqSection' }),
     defineField({ name: 'finalCtaSection', title: 'Final CTA Section', type: 'bookCounselingFinalCtaSection' }),
     defineField({ name: 'dialog', title: 'Counselling Dialog', type: 'bookCounselingDialogContent' }),
@@ -449,6 +538,7 @@ export const bookCounselingPageSchemaTypes = [
   bookCounselingTestimonial,
   bookCounselingFaq,
   bookCounselingStudentAvatar,
+  bookCounselingGoogleReview,
   bookCounselingHeader,
   bookCounselingHero,
   bookCounselingVideoSection,
@@ -459,6 +549,7 @@ export const bookCounselingPageSchemaTypes = [
   bookCounselingProcessSection,
   bookCounselingServicesSection,
   bookCounselingTestimonialsSection,
+  bookCounselingGoogleReviewsSection,
   bookCounselingFaqSection,
   bookCounselingFinalCtaSection,
   bookCounselingDialogContent,
