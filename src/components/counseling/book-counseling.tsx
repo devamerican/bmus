@@ -106,7 +106,10 @@ const DEFAULTS = {
   videoSection: {
     enabled: true,
     badge: "Watch how we help",
-    heading: "See BMUS counselling in action",
+    heading: "See BMUS Counselling in Action",
+    headingPrefix: "See BMUS Counselling",
+    headingHighlight: "in Action",
+    headingSuffix: "",
     description:
       "A quick look at how our counsellors guide students from first call to campus admission.",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
@@ -131,7 +134,10 @@ const DEFAULTS = {
   ],
   perksSection: {
     badge: "What you get",
-    heading: "Built for students who deserve clear, honest guidance",
+    heading: "Built for Students Who Deserve Clear, Honest Guidance",
+    headingPrefix: "Built for Students Who Deserve",
+    headingHighlight: "Clear, Honest Guidance",
+    headingSuffix: "",
     description:
       "Every counselling session is structured to give you clarity on universities, costs, eligibility and the path ahead.",
     perks: [
@@ -153,7 +159,10 @@ const DEFAULTS = {
   },
   whyChooseSection: {
     badge: "Why BMUS",
-    heading: "Why thousands of Indian families trust BMUS for MBBS abroad",
+    heading: "Why Thousands of Indian Families Trust BMUS",
+    headingPrefix: "Why Thousands of Indian Families",
+    headingHighlight: "Trust BMUS",
+    headingSuffix: "for MBBS Abroad",
     description:
       "BMUS (Best Medical University Services) is a leading consultancy guiding NEET-qualified students to top medical universities since 2009. We bring transparency, experience and genuine care to every step of your journey.",
     features: [
@@ -197,37 +206,45 @@ const DEFAULTS = {
   },
   processSection: {
     badge: "Simple journey",
-    heading: "Your 5-step path from counselling to campus",
+    heading: "Your 5-Step Path from Counselling to Campus",
+    headingPrefix: "Your 5-Step Path from",
+    headingHighlight: "Counselling to Campus",
+    headingSuffix: "",
     description:
       "We've simplified MBBS abroad admission so you and your family never feel lost.",
     steps: [
       {
         step: "01",
         icon: "PhoneCall",
+        imageUrl: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=400&h=280&fit=crop&auto=format",
         title: "Book Free Counselling",
         desc: "Share your details and our advisor calls you within 24 hours.",
       },
       {
         step: "02",
         icon: "Globe2",
+        imageUrl: "https://images.unsplash.com/photo-1562774053-701939374585?w=400&h=280&fit=crop&auto=format",
         title: "Shortlist University",
         desc: "Pick the right country & university based on budget, NEET score and goals.",
       },
       {
         step: "03",
         icon: "FileBadge",
+        imageUrl: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&h=280&fit=crop&auto=format",
         title: "Admission & Documentation",
         desc: "We handle applications, invitation letters, fee transfer and verification.",
       },
       {
         step: "04",
         icon: "Plane",
+        imageUrl: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&h=280&fit=crop&auto=format",
         title: "Visa & Travel",
         desc: "End-to-end visa assistance, ticketing and pre-departure briefing.",
       },
       {
         step: "05",
         icon: "GraduationCap",
+        imageUrl: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=280&fit=crop&auto=format",
         title: "On-Campus Support",
         desc: "Hostel, food, local SIM and continuous support till you graduate.",
       },
@@ -237,7 +254,10 @@ const DEFAULTS = {
   },
   servicesSection: {
     badge: "What we offer",
-    heading: "Complete MBBS-abroad support, in one place",
+    heading: "Complete MBBS-Abroad Support, in One Place",
+    headingPrefix: "Complete MBBS-Abroad Support,",
+    headingHighlight: "in One Place",
+    headingSuffix: "",
     description:
       "Beyond admissions, we take care of every detail — so you can focus on becoming a great doctor.",
     services: [
@@ -277,7 +297,10 @@ const DEFAULTS = {
   },
   testimonialsSection: {
     badge: "Student stories",
-    heading: "Real journeys, real outcomes",
+    heading: "Real Journeys, Real Outcomes",
+    headingPrefix: "Real Journeys,",
+    headingHighlight: "Real Outcomes",
+    headingSuffix: "",
     description:
       "Hear from BMUS students who are already studying or practising medicine across the globe.",
     testimonials: [
@@ -306,9 +329,67 @@ const DEFAULTS = {
     ctaLabel: "Become Our Next Success Story",
     ctaSubline: "",
   },
+  googleReviewsSection: {
+    enabled: true,
+    badge: "Google Reviews",
+    headingPrefix: "What Our Students",
+    headingHighlight: "Say on Google",
+    headingSuffix: "",
+    description:
+      "Real reviews from students and parents who trusted BMUS for their MBBS abroad journey.",
+    overallRating: "4.9",
+    totalReviews: "Based on 150+ Google Reviews",
+    reviews: [
+      {
+        reviewerName: "Rohit Kumar",
+        rating: 5,
+        reviewText:
+          "BMUS is the best MBBS abroad consultant in Palwal. They helped my daughter get admission in a top medical university in Russia. The entire process from documentation to visa was handled seamlessly. Highly recommend!",
+        reviewDate: "2 months ago",
+      },
+      {
+        reviewerName: "Sunita Devi",
+        rating: 5,
+        reviewText:
+          "Excellent service! My son is now studying MBBS in Kazakhstan thanks to BMUS. The counsellors were very knowledgeable and transparent about all fees. No hidden charges at all.",
+        reviewDate: "3 months ago",
+      },
+      {
+        reviewerName: "Rajesh Yadav",
+        rating: 5,
+        reviewText:
+          "Best consultancy for MBBS abroad in Haryana. They guided us through every step including NEET requirements, university selection and visa process. Very professional team.",
+        reviewDate: "1 month ago",
+      },
+      {
+        reviewerName: "Pooja Sharma",
+        rating: 5,
+        reviewText:
+          "I was confused about studying MBBS abroad but BMUS counsellors gave me complete clarity. Now I'm in my 2nd year at a great university in Bangladesh. Thank you BMUS!",
+        reviewDate: "4 months ago",
+      },
+      {
+        reviewerName: "Amit Gupta",
+        rating: 5,
+        reviewText:
+          "Genuinely trustworthy MBBS consultants. They were honest about which universities are NMC approved and which ones to avoid. My daughter is very happy at her university in Kyrgyzstan.",
+        reviewDate: "5 months ago",
+      },
+      {
+        reviewerName: "Meena Verma",
+        rating: 5,
+        reviewText:
+          "BMUS team is outstanding. They provide end-to-end support including pre-departure briefing and on-campus assistance. Very helpful even after admission.",
+        reviewDate: "6 months ago",
+      },
+    ],
+  },
   faqSection: {
     badge: "FAQ",
-    heading: "Questions parents and students ask",
+    heading: "Questions Parents and Students Ask",
+    headingPrefix: "Questions Parents and",
+    headingHighlight: "Students Ask",
+    headingSuffix: "",
     description:
       "Still unsure? Our counsellors will answer everything in your free session.",
     faqs: [
@@ -342,7 +423,10 @@ const DEFAULTS = {
   },
   finalCtaSection: {
     badge: "Limited free slots this week",
-    heading: "Your dream of becoming a doctor is closer than you think.",
+    heading: "Your Dream of Becoming a Doctor is Closer Than You Think.",
+    headingPrefix: "Your Dream of Becoming a",
+    headingHighlight: "Doctor",
+    headingSuffix: "is Closer Than You Think.",
     description:
       "Book a free counselling session today and take the first confident step towards an MBBS abroad — at a fraction of the cost and zero compromise on quality.",
     ctaLabel: "Book My Free Counselling Now",
@@ -370,7 +454,13 @@ const DEFAULTS = {
 // ---------- Helpers ----------
 
 const ctaPrimary =
-  "inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-amber-400 via-orange-500 to-rose-500 px-8 md:px-12 py-5 md:py-6 text-base md:text-xl font-extrabold uppercase tracking-wide text-white shadow-2xl shadow-orange-500/30 ring-2 ring-white/30 hover:scale-[1.02] active:scale-[0.99] transition-transform";
+  "inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-amber-400 via-orange-500 to-rose-500 px-8 md:px-12 py-5 md:py-6 text-base md:text-xl font-extrabold uppercase tracking-wide text-white shadow-2xl shadow-orange-500/30 ring-2 ring-white/20 hover:scale-[1.02] active:scale-[0.99] transition-transform";
+
+const sectionBadge =
+  "inline-flex items-center gap-2 bg-amber-50 text-amber-700 border border-amber-200 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest";
+
+const sectionBadgeDark =
+  "inline-flex items-center gap-2 bg-amber-500/15 text-amber-300 border border-amber-500/30 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest";
 
 function CtaButton({
   onClick,
@@ -397,6 +487,33 @@ function CtaButton({
   );
 }
 
+function SplitHeading({
+  prefix,
+  highlight,
+  suffix,
+  heading,
+  className,
+}: {
+  prefix?: string;
+  highlight?: string;
+  suffix?: string;
+  heading?: string;
+  className?: string;
+}) {
+  if (highlight) {
+    return (
+      <h2 className={className}>
+        {prefix ? <>{prefix} </> : null}
+        <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">
+          {highlight}
+        </span>
+        {suffix ? <> {suffix}</> : null}
+      </h2>
+    );
+  }
+  return <h2 className={className}>{heading}</h2>;
+}
+
 const safeImageUrl = (img: any): string | null => {
   if (!img) return null;
   try {
@@ -410,16 +527,37 @@ const isIframeUrl = (url: string) =>
   /youtube\.com|youtu\.be|vimeo\.com/i.test(url);
 
 const toEmbedUrl = (url: string): string => {
-  // YouTube watch link → embed
   const ytWatch = url.match(/youtube\.com\/watch\?v=([\w-]+)/);
   if (ytWatch) return `https://www.youtube.com/embed/${ytWatch[1]}`;
   const ytShort = url.match(/youtu\.be\/([\w-]+)/);
   if (ytShort) return `https://www.youtube.com/embed/${ytShort[1]}`;
-  // Vimeo plain → embed
   const vimeo = url.match(/vimeo\.com\/(\d+)/);
   if (vimeo) return `https://player.vimeo.com/video/${vimeo[1]}`;
   return url;
 };
+
+function GoogleLogo({ className = "size-5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        fill="#4285F4"
+        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+      />
+      <path
+        fill="#34A853"
+        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+      />
+      <path
+        fill="#FBBC05"
+        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+      />
+      <path
+        fill="#EA4335"
+        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+      />
+    </svg>
+  );
+}
 
 // ---------- Component ----------
 
@@ -463,6 +601,8 @@ export default function BookCounseling({
   const resolvedVideoUrl: string = uploadedVideoUrl || videoSection.videoUrl;
   const videoPosterUrl =
     safeImageUrl(data?.videoSection?.poster) ?? videoSection.posterUrl ?? "";
+
+  const showVideo = videoSection.enabled !== false && !!resolvedVideoUrl;
 
   const studentVideosSection = {
     ...DEFAULTS.studentVideosSection,
@@ -531,6 +671,14 @@ export default function BookCounseling({
     ? testimonialsSection.testimonials
     : DEFAULTS.testimonialsSection.testimonials;
 
+  const googleReviewsSection = {
+    ...DEFAULTS.googleReviewsSection,
+    ...(data?.googleReviewsSection ?? {}),
+  };
+  const googleReviews = googleReviewsSection.reviews?.length
+    ? googleReviewsSection.reviews
+    : DEFAULTS.googleReviewsSection.reviews;
+
   const faqSection = { ...DEFAULTS.faqSection, ...(data?.faqSection ?? {}) };
   const faqs = faqSection.faqs?.length
     ? faqSection.faqs
@@ -556,8 +704,8 @@ export default function BookCounseling({
   return (
     <>
       {/* LOGO STRIP */}
-      <header className="bg-white border-b border-slate-200">
-        <div className="section-container flex items-center justify-between py-4">
+      <header className="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
+        <div className="section-container flex items-center justify-between py-3">
           <div className="flex items-center gap-3">
             {logoUrl ? (
               <Image
@@ -581,7 +729,7 @@ export default function BookCounseling({
           {header.phoneDisplay ? (
             <a
               href={phoneHref}
-              className="hidden sm:inline-flex items-center gap-2 text-sm md:text-base font-semibold text-slate-800 hover:text-blue-700"
+              className="hidden sm:inline-flex items-center gap-2 text-sm md:text-base font-semibold text-slate-800 hover:text-amber-600 transition-colors"
             >
               <Phone className="size-4" />
               {header.phoneDisplay}
@@ -590,145 +738,167 @@ export default function BookCounseling({
         </div>
       </header>
 
-      {/* HERO (no form) */}
-      <section className="relative bg-gradient-to-br from-slate-50 via-blue-50/60 to-indigo-50/40 overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-400/15 rounded-full blur-3xl -mr-48 -mt-48 pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-400/15 rounded-full blur-3xl -ml-48 -mb-48 pointer-events-none" />
+      {/* HERO — dark navy, two-column with video */}
+      <section className="relative bg-gradient-to-br from-slate-950 via-blue-950 to-indigo-950 overflow-hidden">
+        {/* Decorative blobs */}
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-3xl -mr-64 -mt-64 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-amber-500/8 rounded-full blur-3xl -ml-48 -mb-48 pointer-events-none" />
         <div
-          className="absolute inset-0 opacity-[0.10] pointer-events-none"
+          className="absolute inset-0 opacity-[0.06] pointer-events-none"
           style={{
             backgroundImage:
-              "radial-gradient(circle, rgb(99 102 241 / 0.4) 1px, transparent 1px)",
-            backgroundSize: "24px 24px",
+              "radial-gradient(circle, rgb(255 255 255 / 0.5) 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
           }}
         />
 
-        <div className="section-container relative py-12 md:py-20 lg:py-24 text-center max-w-5xl mx-auto">
-          {hero.badge ? (
-            <div className="inline-flex items-center gap-2 bg-white/85 backdrop-blur-sm text-blue-700 px-4 py-1.5 rounded-full text-sm font-semibold border border-blue-200 shadow-sm">
-              <Sparkles className="size-4 text-amber-500" />
-              {hero.badge}
-            </div>
-          ) : null}
+        <div className="section-container relative py-14 md:py-20 lg:py-24">
+          <div className={`grid ${showVideo ? "lg:grid-cols-2 gap-12 xl:gap-16" : "max-w-5xl mx-auto"} items-center`}>
+            {/* Left / Centre: text content */}
+            <div className={showVideo ? "" : "text-center"}>
+              {hero.badge ? (
+                <div className={`mb-6 ${showVideo ? "" : "flex justify-center"}`}>
+                  <div className="inline-flex items-center gap-2 bg-amber-500/15 border border-amber-500/40 text-amber-300 px-4 py-2 rounded-full text-sm font-semibold">
+                    <Sparkles className="size-4 text-amber-400" />
+                    {hero.badge}
+                  </div>
+                </div>
+              ) : null}
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight mt-6 text-slate-900">
-            {hero.headingPrefix}{" "}
-            <span className="bg-gradient-to-r from-indigo-700 via-blue-700 to-cyan-600 bg-clip-text text-transparent">
-              {hero.headingHighlight}
-            </span>{" "}
-            {hero.headingSuffix}
-          </h1>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.08] tracking-tight text-white">
+                {hero.headingPrefix}{" "}
+                <span className="bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 bg-clip-text text-transparent">
+                  {hero.headingHighlight}
+                </span>{" "}
+                <span className="text-slate-200">{hero.headingSuffix}</span>
+              </h1>
 
-          <p className="text-slate-600 text-base md:text-xl mt-6 max-w-2xl mx-auto">
-            {hero.description}
-          </p>
+              <p className="text-slate-300 text-base md:text-lg lg:text-xl mt-6 max-w-xl leading-relaxed">
+                {hero.description}
+              </p>
 
-          <ul className="grid sm:grid-cols-2 gap-3 max-w-2xl mx-auto mt-8 text-left">
-            {heroBullets.map((item: string) => (
-              <li
-                key={item}
-                className="flex items-start gap-2 text-sm md:text-base text-slate-700"
-              >
-                <CheckCircle2 className="size-5 text-emerald-600 shrink-0 mt-0.5" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-10 max-w-5xl mx-auto">
-            <div className="text-center mb-6">
-              <div className="flex items-center justify-center gap-2 text-amber-500">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="size-6 md:size-7 fill-current" />
+              <ul className={`grid sm:grid-cols-2 gap-3 mt-8 text-left ${showVideo ? "" : "max-w-2xl mx-auto"}`}>
+                {heroBullets.map((item: string) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-2.5 text-sm md:text-base text-slate-200"
+                  >
+                    <CheckCircle2 className="size-5 text-emerald-400 shrink-0 mt-0.5" />
+                    <span>{item}</span>
+                  </li>
                 ))}
-                {hero.ratingValue ? (
-                  <span className="ml-2 text-2xl md:text-3xl font-extrabold text-slate-900">
-                    {hero.ratingValue}
-                  </span>
+              </ul>
+
+              <div className={`mt-8 ${showVideo ? "" : "max-w-2xl mx-auto"}`}>
+                <div className={`flex items-center gap-2 text-amber-400 ${showVideo ? "" : "justify-center"}`}>
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className="size-5 md:size-6 fill-current" />
+                  ))}
+                  {hero.ratingValue ? (
+                    <span className="ml-2 text-xl md:text-2xl font-extrabold text-white">
+                      {hero.ratingValue}
+                    </span>
+                  ) : null}
+                </div>
+                {hero.ratingLabel ? (
+                  <p className={`text-slate-300 text-sm md:text-base mt-1.5 ${showVideo ? "" : "text-center"}`}>
+                    {hero.ratingLabel}
+                  </p>
                 ) : null}
               </div>
-              {hero.ratingLabel ? (
-                <p className="text-lg md:text-xl font-semibold text-slate-700 mt-2">
-                  {hero.ratingLabel}
-                </p>
-              ) : null}
-            </div>
 
-            <div className="grid grid-cols-2 gap-4 md:gap-5 max-w-5xl mx-auto">
-              {heroAvatars.slice(0, 4).map((avatar, i) => (
-                <div
-                  key={`${avatar.src}-${i}`}
-                  className="relative aspect-square rounded-2xl overflow-hidden ring-1 ring-slate-200 shadow-md bg-slate-200"
-                >
-                  <Image
-                    src={avatar.src}
-                    alt={avatar.alt}
-                    fill
-                    sizes="(min-width: 768px) 320px, 46vw"
-                    className="object-cover"
-                  />
+              {heroAvatars.length > 0 && !showVideo ? (
+                <div className="grid grid-cols-2 gap-4 md:gap-5 max-w-3xl mx-auto mt-8">
+                  {heroAvatars.slice(0, 4).map((avatar, i) => (
+                    <div
+                      key={`${avatar.src}-${i}`}
+                      className="relative aspect-square rounded-2xl overflow-hidden ring-2 ring-white/10 shadow-xl bg-slate-800"
+                    >
+                      <Image
+                        src={avatar.src}
+                        alt={avatar.alt}
+                        fill
+                        sizes="(min-width: 768px) 320px, 46vw"
+                        className="object-cover"
+                      />
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-          </div>
+              ) : null}
 
-          <CtaButton onClick={openForm} subline={hero.ctaSubline}>
-            {hero.ctaLabel}
-          </CtaButton>
+              <div className={`mt-8 md:mt-10 ${showVideo ? "" : "flex flex-col items-center"}`}>
+                <button type="button" onClick={openForm} className={ctaPrimary}>
+                  <Sparkles className="size-5 md:size-6" />
+                  <span>{hero.ctaLabel}</span>
+                  <ChevronRight className="size-5 md:size-6" />
+                </button>
+                {hero.ctaSubline && (
+                  <p className="mt-3 text-sm text-slate-400">{hero.ctaSubline}</p>
+                )}
+              </div>
+            </div>
+
+            {/* Right: video player */}
+            {showVideo ? (
+              <div className="w-full">
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="flex items-center justify-center size-7 rounded-full bg-amber-500/20 border border-amber-500/40">
+                    <PlayCircle className="size-4 text-amber-400" />
+                  </div>
+                  <span className="text-amber-300 text-sm font-semibold uppercase tracking-wider">
+                    {videoSection.badge || "Watch how we help"}
+                  </span>
+                </div>
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl ring-2 ring-amber-500/25 bg-slate-900 aspect-video">
+                  {!uploadedVideoUrl && isIframeUrl(resolvedVideoUrl) ? (
+                    <iframe
+                      src={toEmbedUrl(resolvedVideoUrl)}
+                      title={videoSection.heading || "BMUS counselling video"}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      className="absolute inset-0 w-full h-full"
+                    />
+                  ) : (
+                    <video
+                      src={resolvedVideoUrl}
+                      controls
+                      preload="metadata"
+                      poster={videoPosterUrl || undefined}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    >
+                      {uploadedVideoMime ? (
+                        <source src={resolvedVideoUrl} type={uploadedVideoMime} />
+                      ) : null}
+                    </video>
+                  )}
+                </div>
+                {/* Avatar strip below video */}
+                {heroAvatars.length > 0 ? (
+                  <div className="mt-5 grid grid-cols-4 gap-3">
+                    {heroAvatars.slice(0, 4).map((avatar, i) => (
+                      <div
+                        key={`${avatar.src}-${i}`}
+                        className="relative aspect-square rounded-xl overflow-hidden ring-2 ring-white/10 bg-slate-800"
+                      >
+                        <Image
+                          src={avatar.src}
+                          alt={avatar.alt}
+                          fill
+                          sizes="120px"
+                          className="object-cover"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+            ) : null}
+          </div>
         </div>
       </section>
 
-      {/* VIDEO SECTION */}
-      {videoSection.enabled !== false && resolvedVideoUrl ? (
-        <section className="relative bg-white py-14 md:py-20">
-          <div className="section-container">
-            <div className="text-center max-w-2xl mx-auto mb-8 md:mb-10">
-              {videoSection.badge ? (
-                <span className="inline-flex items-center gap-2 text-blue-700 bg-blue-50 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
-                  <PlayCircle className="size-3.5" /> {videoSection.badge}
-                </span>
-              ) : null}
-              {videoSection.heading ? (
-                <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mt-3 text-slate-900">
-                  {videoSection.heading}
-                </h2>
-              ) : null}
-              {videoSection.description ? (
-                <p className="text-slate-600 mt-3 text-base md:text-lg">
-                  {videoSection.description}
-                </p>
-              ) : null}
-            </div>
-
-            <div className="relative max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl ring-1 ring-slate-200 bg-slate-900 aspect-video">
-              {!uploadedVideoUrl && isIframeUrl(resolvedVideoUrl) ? (
-                <iframe
-                  src={toEmbedUrl(resolvedVideoUrl)}
-                  title={videoSection.heading || "BMUS counselling video"}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  className="absolute inset-0 w-full h-full"
-                />
-              ) : (
-                <video
-                  src={resolvedVideoUrl}
-                  controls
-                  preload="metadata"
-                  poster={videoPosterUrl || undefined}
-                  className="absolute inset-0 w-full h-full object-cover"
-                >
-                  {uploadedVideoMime ? (
-                    <source src={resolvedVideoUrl} type={uploadedVideoMime} />
-                  ) : null}
-                </video>
-              )}
-            </div>
-          </div>
-        </section>
-      ) : null}
-
       {/* STATS STRIP */}
-      <section className="bg-gradient-to-r from-indigo-700 via-blue-700 to-cyan-600 text-white">
+      <section className="bg-gradient-to-r from-amber-600 via-orange-500 to-amber-500 text-white">
         <div className="section-container py-10 md:py-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
             {stats.map((s: any) => (
@@ -736,7 +906,7 @@ export default function BookCounseling({
                 <div className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight">
                   {s.value}
                 </div>
-                <div className="text-sm md:text-base text-white/85 mt-1">
+                <div className="text-sm md:text-base text-white/85 mt-1 font-medium">
                   {s.label}
                 </div>
               </div>
@@ -747,37 +917,41 @@ export default function BookCounseling({
 
       {/* PERKS / WHAT YOU GET */}
       <section className="relative bg-slate-950 text-white overflow-hidden">
-        <div className="absolute -top-32 -left-32 size-80 bg-indigo-600/30 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-32 -right-32 size-80 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -top-32 -left-32 size-80 bg-indigo-600/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-32 -right-32 size-80 bg-amber-500/15 rounded-full blur-3xl pointer-events-none" />
         <div
-          className="absolute inset-0 opacity-[0.08] pointer-events-none"
+          className="absolute inset-0 opacity-[0.06] pointer-events-none"
           style={{
             backgroundImage:
-              "radial-gradient(circle, rgb(255 255 255 / 0.6) 1px, transparent 1px)",
+              "radial-gradient(circle, rgb(255 255 255 / 0.5) 1px, transparent 1px)",
             backgroundSize: "24px 24px",
           }}
         />
-        <div className="section-container relative py-14 md:py-20">
-          <div className="text-center max-w-2xl mx-auto mb-10">
+        <div className="section-container relative py-16 md:py-24">
+          <div className="text-center max-w-2xl mx-auto mb-12">
             {perksSection.badge ? (
-              <span className="inline-flex items-center gap-2 text-blue-200 bg-blue-500/15 ring-1 ring-blue-400/30 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+              <span className={sectionBadgeDark}>
                 <Sparkles className="size-3.5" /> {perksSection.badge}
               </span>
             ) : null}
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mt-3 text-white">
-              {perksSection.heading}
-            </h2>
-            <p className="text-slate-300 mt-3 text-base md:text-lg">
+            <SplitHeading
+              prefix={perksSection.headingPrefix}
+              highlight={perksSection.headingHighlight}
+              suffix={perksSection.headingSuffix}
+              heading={perksSection.heading}
+              className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mt-4 text-white leading-tight"
+            />
+            <p className="text-slate-300 mt-4 text-base md:text-lg">
               {perksSection.description}
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {perks.map((perk: any) => {
               const perkImgUrl = safeImageUrl(perk.image) ?? null;
               return (
                 <div
                   key={perk.title}
-                  className="group relative rounded-2xl bg-white/5 border border-white/10 hover:border-white/30 hover:bg-white/10 transition-all overflow-hidden flex flex-col"
+                  className="group relative rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/40 hover:bg-white/8 transition-all duration-300 overflow-hidden flex flex-col hover:-translate-y-1"
                 >
                   <div className="relative h-44 w-full shrink-0">
                     {perkImgUrl ? (
@@ -789,11 +963,11 @@ export default function BookCounseling({
                         className="object-cover"
                       />
                     ) : (
-                      <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/40 to-cyan-500/30" />
+                      <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/40 to-amber-500/20" />
                     )}
                   </div>
-                  <div className="p-6 flex flex-col gap-2 flex-1">
-                    <h3 className="font-semibold text-white text-lg">
+                  <div className="p-7 flex flex-col gap-2 flex-1">
+                    <h3 className="font-bold text-white text-lg">
                       {perk.title}
                     </h3>
                     <p className="text-sm text-slate-300 leading-relaxed">
@@ -815,30 +989,34 @@ export default function BookCounseling({
       </section>
 
       {/* WHY CHOOSE BMUS */}
-      <section className="bg-slate-50 py-14 md:py-20">
+      <section className="bg-white py-16 md:py-24">
         <div className="section-container">
-          <div className="grid lg:grid-cols-[1.1fr_1fr] gap-10 items-center">
+          <div className="grid lg:grid-cols-[1.1fr_1fr] gap-12 items-center">
             <div>
               {whyChooseSection.badge ? (
-                <span className="inline-flex items-center gap-2 text-indigo-700 bg-indigo-50 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+                <span className={sectionBadge}>
                   <Trophy className="size-3.5" /> {whyChooseSection.badge}
                 </span>
               ) : null}
-              <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mt-3 mb-4">
-                {whyChooseSection.heading}
-              </h2>
-              <p className="text-slate-600 max-w-xl text-base md:text-lg">
+              <SplitHeading
+                prefix={whyChooseSection.headingPrefix}
+                highlight={whyChooseSection.headingHighlight}
+                suffix={whyChooseSection.headingSuffix}
+                heading={whyChooseSection.heading}
+                className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mt-4 mb-5 text-slate-900 leading-tight"
+              />
+              <p className="text-slate-600 max-w-xl text-base md:text-lg leading-relaxed">
                 {whyChooseSection.description}
               </p>
-              <div className="grid sm:grid-cols-2 gap-4 mt-7">
+              <div className="grid sm:grid-cols-2 gap-4 mt-8">
                 {whyChooseFeatures.map((item: any) => {
                   const Icon = getIcon(item.icon);
                   return (
                     <div
                       key={item.title}
-                      className="flex gap-3 p-4 rounded-xl bg-white border border-slate-200"
+                      className="flex gap-3 p-5 rounded-xl bg-slate-50 border border-slate-200 hover:border-amber-200 hover:bg-amber-50/50 transition-colors"
                     >
-                      <div className="shrink-0 size-10 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 text-white flex items-center justify-center">
+                      <div className="shrink-0 size-10 rounded-lg bg-gradient-to-br from-amber-400 to-orange-500 text-white flex items-center justify-center shadow-sm">
                         <Icon className="size-5" />
                       </div>
                       <div>
@@ -855,7 +1033,7 @@ export default function BookCounseling({
               </div>
             </div>
 
-            <div className="relative rounded-2xl overflow-hidden shadow-xl">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <Image
                 src={whyChooseImageUrl}
                 alt="BMUS counselling team"
@@ -863,11 +1041,11 @@ export default function BookCounseling({
                 height={1400}
                 className="object-cover w-full h-full"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/70 via-transparent" />
-              <div className="absolute bottom-5 left-5 right-5 text-white">
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent" />
+              <div className="absolute bottom-6 left-6 right-6 text-white">
                 {whyChooseSection.imageBadge ? (
-                  <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold mb-2">
-                    <Award className="size-3.5" /> {whyChooseSection.imageBadge}
+                  <div className="inline-flex items-center gap-2 bg-amber-500/20 backdrop-blur border border-amber-400/40 px-3 py-1.5 rounded-full text-xs font-bold mb-3">
+                    <Award className="size-3.5 text-amber-400" /> {whyChooseSection.imageBadge}
                   </div>
                 ) : null}
                 {whyChooseSection.imageQuote ? (
@@ -885,43 +1063,78 @@ export default function BookCounseling({
         </div>
       </section>
 
-      {/* PROCESS */}
-      <section className="bg-slate-50 py-14 md:py-20">
+      {/* PROCESS / SIMPLE JOURNEY */}
+      <section className="bg-slate-50 py-16 md:py-24">
         <div className="section-container">
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="text-center max-w-2xl mx-auto mb-14">
             {processSection.badge ? (
-              <span className="inline-flex items-center gap-2 text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+              <span className={sectionBadge}>
                 <CalendarCheck className="size-3.5" /> {processSection.badge}
               </span>
             ) : null}
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mt-3">
-              {processSection.heading}
-            </h2>
-            <p className="text-slate-600 mt-3 text-base md:text-lg">
+            <SplitHeading
+              prefix={processSection.headingPrefix}
+              highlight={processSection.headingHighlight}
+              suffix={processSection.headingSuffix}
+              heading={processSection.heading}
+              className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mt-4 text-slate-900 leading-tight"
+            />
+            <p className="text-slate-600 mt-4 text-base md:text-lg">
               {processSection.description}
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-5">
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
             {processSteps.map((p: any) => {
               const Icon = getIcon(p.icon);
+              const stepImageUrl: string | null =
+                safeImageUrl(p.image) ?? p.imageUrl ?? null;
               return (
                 <div
                   key={p.step}
-                  className="relative p-6 rounded-2xl bg-white border border-slate-200 hover:shadow-lg transition-all"
+                  className="relative rounded-2xl bg-white border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col"
                 >
-                  <div className="absolute top-4 right-4 text-5xl font-black text-slate-100 leading-none select-none">
-                    {p.step}
+                  {stepImageUrl ? (
+                    <div className="relative w-full h-40 shrink-0 overflow-hidden">
+                      <Image
+                        src={stepImageUrl}
+                        alt={p.title}
+                        fill
+                        sizes="(min-width: 1024px) 20vw, (min-width: 768px) 50vw, 100vw"
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-white/60 to-transparent" />
+                      <div className="absolute top-3 right-3 text-3xl font-black text-amber-500/70 leading-none select-none">
+                        {p.step}
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="pt-6 px-6 pb-0">
+                      <div className="flex items-start justify-between mb-4">
+                        <div className="size-11 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 text-white flex items-center justify-center shadow">
+                          <Icon className="size-5" />
+                        </div>
+                        <span className="text-4xl font-black text-amber-500/30 leading-none select-none">
+                          {p.step}
+                        </span>
+                      </div>
+                    </div>
+                  )}
+                  <div className={`${stepImageUrl ? "p-6 pt-4" : "px-6 pb-6"} flex flex-col flex-1`}>
+                    {stepImageUrl ? (
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="size-8 rounded-lg bg-gradient-to-br from-amber-400 to-orange-500 text-white flex items-center justify-center shadow-sm">
+                          <Icon className="size-4" />
+                        </div>
+                      </div>
+                    ) : null}
+                    <h3 className="font-bold text-slate-900 text-base leading-snug">
+                      {p.title}
+                    </h3>
+                    <p className="text-sm text-slate-600 mt-2 leading-relaxed">
+                      {p.desc}
+                    </p>
                   </div>
-                  <div className="relative size-11 rounded-xl bg-gradient-to-br from-indigo-500 to-blue-600 text-white flex items-center justify-center shadow mb-4">
-                    <Icon className="size-5" />
-                  </div>
-                  <h3 className="relative font-semibold text-slate-900">
-                    {p.title}
-                  </h3>
-                  <p className="relative text-sm text-slate-600 mt-2 leading-relaxed">
-                    {p.desc}
-                  </p>
                 </div>
               );
             })}
@@ -934,20 +1147,24 @@ export default function BookCounseling({
       </section>
 
       {/* SERVICES */}
-      <section className="relative bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white overflow-hidden">
-        <div className="absolute -top-32 right-0 size-80 bg-blue-500/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-32 left-0 size-80 bg-purple-500/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="section-container relative py-14 md:py-20">
-          <div className="text-center max-w-2xl mx-auto mb-10">
+      <section className="relative bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 text-white overflow-hidden">
+        <div className="absolute -top-32 right-0 size-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-32 left-0 size-80 bg-indigo-500/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="section-container relative py-16 md:py-24">
+          <div className="text-center max-w-2xl mx-auto mb-12">
             {servicesSection.badge ? (
-              <span className="inline-flex items-center gap-2 text-purple-200 bg-purple-500/15 ring-1 ring-purple-400/30 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+              <span className={sectionBadgeDark}>
                 <Sparkles className="size-3.5" /> {servicesSection.badge}
               </span>
             ) : null}
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mt-3 text-white">
-              {servicesSection.heading}
-            </h2>
-            <p className="text-slate-300 mt-3 text-base md:text-lg">
+            <SplitHeading
+              prefix={servicesSection.headingPrefix}
+              highlight={servicesSection.headingHighlight}
+              suffix={servicesSection.headingSuffix}
+              heading={servicesSection.heading}
+              className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mt-4 text-white leading-tight"
+            />
+            <p className="text-slate-300 mt-4 text-base md:text-lg">
               {servicesSection.description}
             </p>
           </div>
@@ -958,12 +1175,12 @@ export default function BookCounseling({
               return (
                 <div
                   key={s.title}
-                  className="p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/30 hover:bg-white/10 transition-all"
+                  className="p-7 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-amber-500/40 hover:bg-white/8 transition-all duration-300 hover:-translate-y-1"
                 >
-                  <div className="size-11 rounded-xl bg-blue-500/20 text-blue-200 ring-1 ring-blue-400/30 flex items-center justify-center mb-4">
+                  <div className="size-11 rounded-xl bg-gradient-to-br from-amber-400/20 to-orange-500/20 text-amber-300 ring-1 ring-amber-400/30 flex items-center justify-center mb-5">
                     <Icon className="size-5" />
                   </div>
-                  <h3 className="font-semibold text-white">{s.title}</h3>
+                  <h3 className="font-bold text-white text-lg">{s.title}</h3>
                   <p className="text-sm text-slate-300 mt-2 leading-relaxed">
                     {s.desc}
                   </p>
@@ -983,30 +1200,34 @@ export default function BookCounseling({
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="bg-gradient-to-br from-indigo-50 via-white to-cyan-50 py-14 md:py-20">
+      <section className="bg-white py-16 md:py-24">
         <div className="section-container">
-          <div className="text-center max-w-2xl mx-auto mb-10">
+          <div className="text-center max-w-2xl mx-auto mb-12">
             {testimonialsSection.badge ? (
-              <span className="inline-flex items-center gap-2 text-amber-700 bg-amber-50 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+              <span className={sectionBadge}>
                 <Star className="size-3.5" /> {testimonialsSection.badge}
               </span>
             ) : null}
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mt-3">
-              {testimonialsSection.heading}
-            </h2>
-            <p className="text-slate-600 mt-3 text-base md:text-lg">
+            <SplitHeading
+              prefix={testimonialsSection.headingPrefix}
+              highlight={testimonialsSection.headingHighlight}
+              suffix={testimonialsSection.headingSuffix}
+              heading={testimonialsSection.heading}
+              className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mt-4 text-slate-900 leading-tight"
+            />
+            <p className="text-slate-600 mt-4 text-base md:text-lg">
               {testimonialsSection.description}
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className="grid md:grid-cols-3 gap-6">
             {testimonials.map((t: any) => (
               <div
                 key={t.name}
-                className="relative p-7 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-lg transition-all"
+                className="relative p-7 rounded-2xl bg-slate-50 border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
               >
-                <Quote className="absolute top-5 right-5 size-8 text-blue-100" />
-                <div className="flex items-center gap-1 text-amber-500 mb-3">
+                <Quote className="absolute top-5 right-5 size-8 text-amber-200" />
+                <div className="flex items-center gap-1 text-amber-500 mb-4">
                   {Array.from({ length: t.rating ?? 5 }).map((_, i) => (
                     <Star key={i} className="size-4 fill-current" />
                   ))}
@@ -1014,11 +1235,11 @@ export default function BookCounseling({
                 <p className="text-slate-700 text-sm leading-relaxed">
                   &ldquo;{t.quote}&rdquo;
                 </p>
-                <div className="mt-5 pt-4 border-t border-slate-100">
-                  <p className="font-semibold text-slate-900 text-sm">
+                <div className="mt-6 pt-5 border-t border-slate-200">
+                  <p className="font-bold text-slate-900 text-sm">
                     {t.name}
                   </p>
-                  <p className="text-xs text-slate-500">{t.role}</p>
+                  <p className="text-xs text-slate-500 mt-0.5">{t.role}</p>
                 </div>
               </div>
             ))}
@@ -1030,18 +1251,140 @@ export default function BookCounseling({
         </div>
       </section>
 
+      {/* GOOGLE REVIEWS */}
+      {googleReviewsSection.enabled !== false ? (
+        <section className="bg-gradient-to-br from-amber-50/60 via-orange-50/30 to-white py-16 md:py-24 border-y border-amber-100">
+          <div className="section-container">
+            <div className="text-center max-w-2xl mx-auto mb-12">
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <GoogleLogo className="size-6" />
+                <span className={sectionBadge}>
+                  {googleReviewsSection.badge || "Google Reviews"}
+                </span>
+              </div>
+              <SplitHeading
+                prefix={googleReviewsSection.headingPrefix}
+                highlight={googleReviewsSection.headingHighlight}
+                suffix={googleReviewsSection.headingSuffix}
+                heading="What Our Students Say on Google"
+                className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight"
+              />
+              <p className="text-slate-600 mt-4 text-base md:text-lg">
+                {googleReviewsSection.description}
+              </p>
+
+              {/* Overall rating display */}
+              <div className="mt-8 inline-flex items-center gap-4 bg-white border border-amber-200 rounded-2xl px-6 py-4 shadow-sm">
+                <div className="text-center">
+                  <div className="text-4xl font-extrabold text-slate-900">
+                    {googleReviewsSection.overallRating || "4.9"}
+                  </div>
+                  <div className="flex items-center gap-0.5 text-amber-500 mt-1 justify-center">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star key={i} className="size-4 fill-current" />
+                    ))}
+                  </div>
+                </div>
+                <div className="w-px h-12 bg-slate-200" />
+                <div className="text-left">
+                  <div className="flex items-center gap-1.5">
+                    <GoogleLogo className="size-5" />
+                    <span className="font-bold text-slate-900 text-sm">Google</span>
+                  </div>
+                  <p className="text-xs text-slate-500 mt-0.5">
+                    {googleReviewsSection.totalReviews || "Based on 150+ reviews"}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {googleReviews.slice(0, 6).map((review: any, idx: number) => {
+                const initials = (review.reviewerName || "U")
+                  .split(" ")
+                  .map((n: string) => n[0])
+                  .join("")
+                  .slice(0, 2)
+                  .toUpperCase();
+                const profileImgUrl = review.profileImage?.asset?.url
+                  ? safeImageUrl(review.profileImage)
+                  : null;
+                const avatarColors = [
+                  "from-blue-500 to-indigo-600",
+                  "from-emerald-500 to-teal-600",
+                  "from-purple-500 to-violet-600",
+                  "from-rose-500 to-pink-600",
+                  "from-amber-500 to-orange-600",
+                  "from-cyan-500 to-blue-600",
+                ];
+                const colorClass = avatarColors[idx % avatarColors.length];
+
+                return (
+                  <div
+                    key={idx}
+                    className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 flex flex-col"
+                  >
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="flex items-center gap-3">
+                        {profileImgUrl ? (
+                          <div className="relative size-10 rounded-full overflow-hidden shrink-0">
+                            <Image
+                              src={profileImgUrl}
+                              alt={review.reviewerName}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                        ) : (
+                          <div className={`size-10 rounded-full bg-gradient-to-br ${colorClass} text-white flex items-center justify-center text-sm font-bold shrink-0`}>
+                            {initials}
+                          </div>
+                        )}
+                        <div>
+                          <p className="font-bold text-slate-900 text-sm leading-tight">
+                            {review.reviewerName}
+                          </p>
+                          {review.reviewDate ? (
+                            <p className="text-xs text-slate-400 mt-0.5">{review.reviewDate}</p>
+                          ) : null}
+                        </div>
+                      </div>
+                      <GoogleLogo className="size-5 shrink-0" />
+                    </div>
+
+                    <div className="flex items-center gap-0.5 text-amber-500 mb-3">
+                      {Array.from({ length: review.rating ?? 5 }).map((_, i) => (
+                        <Star key={i} className="size-3.5 fill-current" />
+                      ))}
+                    </div>
+
+                    <p className="text-slate-700 text-sm leading-relaxed line-clamp-4 flex-1">
+                      {review.reviewText}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+
+            <CtaButton onClick={openForm}>
+              {hero.ctaLabel}
+            </CtaButton>
+          </div>
+        </section>
+      ) : null}
+
       {/* STUDENT VIDEOS (2x2 grid of uploaded videos) */}
       {studentVideosSection.enabled !== false && studentVideos.length > 0 ? (
-        <section className="bg-white py-14 md:py-20">
+        <section className="bg-slate-50 py-16 md:py-24">
           <div className="section-container">
-            <div className="text-center max-w-3xl mx-auto mb-10">
+            <div className="text-center max-w-3xl mx-auto mb-12">
               {studentVideosSection.badge ? (
-                <span className="inline-flex items-center gap-2 text-rose-700 bg-rose-50 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+                <span className={sectionBadge}>
                   <PlayCircle className="size-3.5" />{" "}
                   {studentVideosSection.badge}
                 </span>
               ) : null}
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight mt-3 text-slate-900 uppercase">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mt-4 text-slate-900 uppercase leading-tight">
                 {studentVideosSection.headingPrefix ? (
                   <span>{studentVideosSection.headingPrefix} </span>
                 ) : null}
@@ -1055,7 +1398,7 @@ export default function BookCounseling({
                 ) : null}
               </h2>
               {studentVideosSection.description ? (
-                <p className="text-slate-600 mt-3 text-base md:text-lg">
+                <p className="text-slate-600 mt-4 text-base md:text-lg">
                   {studentVideosSection.description}
                 </p>
               ) : null}
@@ -1096,60 +1439,78 @@ export default function BookCounseling({
       ) : null}
 
       {/* FAQ */}
-      <section className="section-container py-14 md:py-20">
-        <div className="grid lg:grid-cols-[1fr_1.4fr] gap-10">
-          <div>
-            {faqSection.badge ? (
-              <span className="inline-flex items-center gap-2 text-blue-700 bg-blue-50 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
-                <BookOpenCheck className="size-3.5" /> {faqSection.badge}
-              </span>
-            ) : null}
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mt-3">
-              {faqSection.heading}
-            </h2>
-            <p className="text-slate-600 mt-3 text-base md:text-lg">
-              {faqSection.description}
-            </p>
+      <section className="bg-white py-16 md:py-24">
+        <div className="section-container">
+          <div className="grid lg:grid-cols-[1fr_1.5fr] gap-12">
+            <div>
+              {faqSection.badge ? (
+                <span className={sectionBadge}>
+                  <BookOpenCheck className="size-3.5" /> {faqSection.badge}
+                </span>
+              ) : null}
+              <SplitHeading
+                prefix={faqSection.headingPrefix}
+                highlight={faqSection.headingHighlight}
+                suffix={faqSection.headingSuffix}
+                heading={faqSection.heading}
+                className="text-3xl md:text-4xl font-extrabold tracking-tight mt-4 text-slate-900 leading-tight"
+              />
+              <p className="text-slate-600 mt-4 text-base md:text-lg leading-relaxed">
+                {faqSection.description}
+              </p>
+            </div>
+
+            <Accordion type="single" collapsible className="w-full">
+              {faqs.map((faq: any, idx: number) => (
+                <AccordionItem key={faq.q} value={`item-${idx}`}>
+                  <AccordionTrigger className="text-base md:text-lg font-semibold text-slate-900 py-5 text-left">
+                    {faq.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-slate-600 text-sm md:text-base leading-relaxed">
+                    {faq.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
 
-          <Accordion type="single" collapsible className="w-full">
-            {faqs.map((faq: any, idx: number) => (
-              <AccordionItem key={faq.q} value={`item-${idx}`}>
-                <AccordionTrigger className="text-base md:text-lg font-semibold text-slate-900 py-5">
-                  {faq.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-slate-600 text-sm md:text-base leading-relaxed">
-                  {faq.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+          <CtaButton onClick={openForm} subline={faqSection.ctaSubline}>
+            {faqSection.ctaLabel}
+          </CtaButton>
         </div>
-
-        <CtaButton onClick={openForm} subline={faqSection.ctaSubline}>
-          {faqSection.ctaLabel}
-        </CtaButton>
       </section>
 
       {/* FINAL CTA */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-indigo-700 via-blue-700 to-cyan-600 text-white">
-        <div className="absolute -top-24 -right-24 size-72 bg-white/10 rounded-full blur-3xl" />
-        <div className="absolute -bottom-24 -left-24 size-72 bg-cyan-300/20 rounded-full blur-3xl" />
+      <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-blue-950 to-indigo-950 text-white">
+        <div className="absolute -top-24 -right-24 size-80 bg-amber-500/10 rounded-full blur-3xl" />
+        <div className="absolute -bottom-24 -left-24 size-80 bg-blue-500/15 rounded-full blur-3xl" />
+        <div
+          className="absolute inset-0 opacity-[0.05] pointer-events-none"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, rgb(255 255 255 / 0.5) 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+          }}
+        />
 
-        <div className="section-container relative py-16 md:py-24 text-center max-w-3xl mx-auto">
+        <div className="section-container relative py-20 md:py-28 text-center max-w-4xl mx-auto">
           {finalCtaSection.badge ? (
-            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold mb-4">
+            <div className="inline-flex items-center gap-2 bg-amber-500/15 border border-amber-500/40 text-amber-300 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
               <Sparkles className="size-3.5" /> {finalCtaSection.badge}
             </div>
           ) : null}
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-5 leading-tight">
-            {finalCtaSection.heading}
-          </h2>
-          <p className="text-white/90 text-base md:text-xl max-w-2xl mx-auto">
+          <SplitHeading
+            prefix={finalCtaSection.headingPrefix}
+            highlight={finalCtaSection.headingHighlight}
+            suffix={finalCtaSection.headingSuffix}
+            heading={finalCtaSection.heading}
+            className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight text-white"
+          />
+          <p className="text-slate-300 text-base md:text-xl max-w-2xl mx-auto leading-relaxed">
             {finalCtaSection.description}
           </p>
 
-          <div className="mt-10 flex flex-col items-center gap-4">
+          <div className="mt-10 flex flex-col items-center gap-5">
             <button type="button" onClick={openForm} className={ctaPrimary}>
               <CalendarCheck className="size-5 md:size-6" />
               {finalCtaSection.ctaLabel}
@@ -1158,7 +1519,7 @@ export default function BookCounseling({
             {finalCtaSection.phoneNumber ? (
               <a
                 href={`tel:${finalCtaSection.phoneNumber.replace(/\s+/g, "")}`}
-                className="inline-flex items-center gap-2 text-white/90 hover:text-white text-sm md:text-base font-semibold"
+                className="inline-flex items-center gap-2 text-slate-300 hover:text-amber-300 text-sm md:text-base font-semibold transition-colors"
               >
                 <Phone className="size-4" />
                 {finalCtaSection.phoneLabel} {finalCtaSection.phoneNumber}
@@ -1170,8 +1531,8 @@ export default function BookCounseling({
 
       {/* DISCLAIMER FOOTER */}
       <footer className="bg-slate-900 text-slate-300">
-        <div className="section-container py-12 md:py-16">
-          <div className="flex items-center justify-center gap-3 mb-6">
+        <div className="section-container py-14 md:py-18">
+          <div className="flex items-center justify-center gap-3 mb-8">
             {logoUrl ? (
               <Image
                 src={logoUrl}
@@ -1204,9 +1565,9 @@ export default function BookCounseling({
           showClose={false}
           className="sm:max-w-xl bg-white p-0 overflow-hidden border-0 max-h-[92vh] flex flex-col gap-0"
         >
-          <div className="h-1.5 w-full bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-500 shrink-0" />
+          <div className="h-1.5 w-full bg-gradient-to-r from-amber-400 via-orange-500 to-rose-500 shrink-0" />
 
-          <div className="relative px-6 md:px-8 pt-7 pb-5 text-center border-b border-slate-100 bg-gradient-to-b from-blue-50/60 to-transparent shrink-0">
+          <div className="relative px-6 md:px-8 pt-7 pb-5 text-center border-b border-slate-100 bg-gradient-to-b from-amber-50/60 to-transparent shrink-0">
             <button
               type="button"
               onClick={() => setOpen(false)}
@@ -1216,7 +1577,7 @@ export default function BookCounseling({
               <XIcon className="size-4" />
             </button>
 
-            <div className="mx-auto mb-3 inline-flex items-center justify-center size-14 rounded-2xl bg-gradient-to-br from-indigo-500 via-blue-600 to-cyan-500 text-white shadow-lg shadow-blue-500/30 ring-4 ring-white">
+            <div className="mx-auto mb-3 inline-flex items-center justify-center size-14 rounded-2xl bg-gradient-to-br from-amber-400 via-orange-500 to-rose-500 text-white shadow-lg shadow-orange-500/30 ring-4 ring-white">
               <CalendarCheck className="size-7" />
             </div>
             <DialogTitle className="text-xl md:text-2xl font-bold tracking-tight text-slate-900">
