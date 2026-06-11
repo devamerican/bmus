@@ -777,54 +777,9 @@ export default function BookCounseling({
               <span className="text-slate-200">{hero.headingSuffix}</span>
             </h1>
 
-            <p className="text-slate-300 text-base md:text-lg lg:text-xl mt-6 max-w-2xl mx-auto leading-relaxed">
-              {hero.description}
-            </p>
-
-            <ul className="grid sm:grid-cols-2 gap-3 mt-8 max-w-2xl mx-auto text-left">
-              {heroBullets.map((item: string) => (
-                <li
-                  key={item}
-                  className="flex items-start gap-2.5 text-sm md:text-base text-slate-200"
-                >
-                  <CheckCircle2 className="size-5 text-emerald-400 shrink-0 mt-0.5" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-8 max-w-2xl mx-auto">
-              <div className="flex items-center gap-2 text-amber-400 justify-center">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="size-5 md:size-6 fill-current" />
-                ))}
-                {hero.ratingValue ? (
-                  <span className="ml-2 text-xl md:text-2xl font-extrabold text-white">
-                    {hero.ratingValue}
-                  </span>
-                ) : null}
-              </div>
-              {hero.ratingLabel ? (
-                <p className="text-slate-300 text-sm md:text-base mt-1.5 text-center">
-                  {hero.ratingLabel}
-                </p>
-              ) : null}
-            </div>
-
-            <div className="mt-8 md:mt-10 flex flex-col items-center">
-              <button type="button" onClick={openForm} className={ctaPrimary}>
-                <Sparkles className="size-5 md:size-6" />
-                <span>{hero.ctaLabel}</span>
-                <ChevronRight className="size-5 md:size-6" />
-              </button>
-              {hero.ctaSubline && (
-                <p className="mt-3 text-sm text-slate-400">{hero.ctaSubline}</p>
-              )}
-            </div>
-
-            {/* Video below CTA */}
+            {/* Video below heading */}
             {showVideo ? (
-              <div className="mt-10 md:mt-14 max-w-3xl mx-auto w-full">
+              <div className="mt-8 mb-8 max-w-3xl mx-auto w-full">
                 <div className="flex items-center justify-center gap-2 mb-3">
                   <div className="flex items-center justify-center size-7 rounded-full bg-amber-500/20 border border-amber-500/40">
                     <PlayCircle className="size-4 text-amber-400" />
@@ -877,7 +832,7 @@ export default function BookCounseling({
                 ) : null}
               </div>
             ) : heroAvatars.length > 0 ? (
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-5 max-w-2xl mx-auto mt-10">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-5 max-w-2xl mx-auto mt-8 mb-8">
                 {heroAvatars.slice(0, 4).map((avatar, i) => (
                   <div
                     key={`${avatar.src}-${i}`}
@@ -894,6 +849,51 @@ export default function BookCounseling({
                 ))}
               </div>
             ) : null}
+
+            <p className="text-slate-300 text-base md:text-lg lg:text-xl mt-6 max-w-2xl mx-auto leading-relaxed">
+              {hero.description}
+            </p>
+
+            <ul className="grid sm:grid-cols-2 gap-3 mt-8 max-w-2xl mx-auto text-left">
+              {heroBullets.map((item: string) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-2.5 text-sm md:text-base text-slate-200"
+                >
+                  <CheckCircle2 className="size-5 text-emerald-400 shrink-0 mt-0.5" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-8 max-w-2xl mx-auto">
+              <div className="flex items-center gap-2 text-amber-400 justify-center">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} className="size-5 md:size-6 fill-current" />
+                ))}
+                {hero.ratingValue ? (
+                  <span className="ml-2 text-xl md:text-2xl font-extrabold text-white">
+                    {hero.ratingValue}
+                  </span>
+                ) : null}
+              </div>
+              {hero.ratingLabel ? (
+                <p className="text-slate-300 text-sm md:text-base mt-1.5 text-center">
+                  {hero.ratingLabel}
+                </p>
+              ) : null}
+            </div>
+
+            <div className="mt-8 md:mt-10 flex flex-col items-center">
+              <button type="button" onClick={openForm} className={ctaPrimary}>
+                <Sparkles className="size-5 md:size-6" />
+                <span>{hero.ctaLabel}</span>
+                <ChevronRight className="size-5 md:size-6" />
+              </button>
+              {hero.ctaSubline && (
+                <p className="mt-3 text-sm text-slate-400">{hero.ctaSubline}</p>
+              )}
+            </div>
           </div>
         </div>
       </section>
@@ -1158,18 +1158,35 @@ export default function BookCounseling({
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {services.map((s: any) => {
               const Icon = getIcon(s.icon);
+              const svcImgUrl = safeImageUrl(s.image) ?? null;
               return (
                 <div
                   key={s.title}
-                  className="p-7 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-amber-500/40 hover:bg-white/8 transition-all duration-300 hover:-translate-y-1"
+                  className="rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/40 hover:bg-white/8 transition-all duration-300 hover:-translate-y-1 overflow-hidden flex flex-col"
                 >
-                  <div className="size-11 rounded-xl bg-gradient-to-br from-amber-400/20 to-orange-500/20 text-amber-300 ring-1 ring-amber-400/30 flex items-center justify-center mb-5">
-                    <Icon className="size-5" />
+                  <div className="relative h-44 w-full shrink-0">
+                    {svcImgUrl ? (
+                      <Image
+                        src={svcImgUrl}
+                        alt={s.title}
+                        fill
+                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                        className="object-cover"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 bg-gradient-to-br from-amber-400/30 to-orange-500/20" />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute bottom-3 left-3 size-10 rounded-xl bg-gradient-to-br from-amber-400/30 to-orange-500/30 text-amber-300 ring-1 ring-amber-400/40 flex items-center justify-center backdrop-blur-sm">
+                      <Icon className="size-5" />
+                    </div>
                   </div>
-                  <h3 className="font-bold text-white text-lg">{s.title}</h3>
-                  <p className="text-sm text-slate-300 mt-2 leading-relaxed">
-                    {s.desc}
-                  </p>
+                  <div className="p-6 flex flex-col gap-2 flex-1">
+                    <h3 className="font-bold text-white text-lg">{s.title}</h3>
+                    <p className="text-sm text-slate-300 leading-relaxed">
+                      {s.desc}
+                    </p>
+                  </div>
                 </div>
               );
             })}
