@@ -55,7 +55,7 @@ const bookCounselingProcessStep = defineType({
       title: 'Card Image',
       type: 'image',
       options: { hotspot: true },
-      description: 'If provided, replaces the icon. Recommended: 400×300px.',
+      description: 'Step card image — primary display. Upload a relevant photo (recommended 400×300px). Falls back to a stock photo if not set.',
     }),
     defineField({ name: 'title', title: 'Title', type: 'string', validation: (Rule) => Rule.required() }),
     defineField({ name: 'desc', title: 'Description', type: 'text', rows: 3, validation: (Rule) => Rule.required() }),
