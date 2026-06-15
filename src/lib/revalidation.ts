@@ -22,6 +22,12 @@ const TYPE_TO_PATH_MAP: Record<string, string | string[] | ((payload: SanityWebh
   'mbbsFaqs': '/mbbs-abroad-faq',
   'prospectus': '/prospectus',
   'gallery': '/gallery/photos',
+  'bookCounselingPage': '/book-counseling',
+  'contactUsPage': '/contact-us',
+  'admissionProcessPage': '/admission-process',
+  'applyOnlinePage': '/apply-online',
+  'eligibilityAndDocumentPage': '/mbbs-abroad-eligibility-and-document',
+  'studentReviewsPage': '/student-reviews',
 
   // Dynamic routes (functions that extract slugs)
   'blogPost': (payload) => {
@@ -56,6 +62,15 @@ const TYPE_TO_TAG_MAP: Record<string, string | string[] | ((payload: SanityWebho
   'prospectus': 'prospectus',
   'gallery': ['gallery-photos', 'gallery-videos'],
   'navbar': 'navbar',
+  // Tags below must match the exact tag string each page passes to
+  // cachedSanityFetch — unstable_cache is tag-keyed, so a mismatch means the
+  // page never refreshes on publish.
+  'bookCounselingPage': 'bookCounselingPage',
+  'contactUsPage': 'contact-us',
+  'admissionProcessPage': 'admission-process',
+  'applyOnlinePage': 'apply-online',
+  'eligibilityAndDocumentPage': 'mbbs-abroad-eligibility-and-document',
+  'studentReviewsPage': 'student-reviews',
 
   'blogPost': (payload) => {
     const slug = payload?.slug?.current;
@@ -127,8 +142,12 @@ export function getTagsForWebhookPayload(payload: SanityWebhookPayload): string[
 
   const tagResolver = TYPE_TO_TAG_MAP[_type];
 
+  // Safety net: if a document type has no explicit tag mapping, fall back to
+  // revalidating a tag named after the document `_type` itself. This means any
+  // page that follows the convention of tagging its fetch with the document
+  // `_type` will revalidate on publish even if this map is never updated.
   if (!tagResolver) {
-    return [];
+    return [_type];
   }
 
   // Handle static tags (string)
