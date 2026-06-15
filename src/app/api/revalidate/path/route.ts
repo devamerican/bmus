@@ -57,7 +57,16 @@ export async function POST(req: NextRequest) {
       console.log('[Webhook] 📝 Sanity webhook payload detected')
       const sanityPayload = body as SanityWebhookPayload
       const paths = getPathsForWebhookPayload(sanityPayload)
-      const tags = getTagsForWebhookPayload(sanityPayload)
+      // Always revalidate a tag named after the document `_type` as a safety
+      // net, in addition to any explicitly-mapped tags. This guarantees a page
+      // refreshes on publish whenever it tags its fetch with the document
+      // `_type`, even if the explicit map is missing an entry.
+      const tags = Array.from(
+        new Set([
+          ...getTagsForWebhookPayload(sanityPayload),
+          ...(sanityPayload._type ? [sanityPayload._type] : []),
+        ])
+      )
 
       console.log('[Webhook] 📍 Paths to revalidate:', paths)
       console.log('[Webhook] 🏷️  Tags to revalidate:', tags)
