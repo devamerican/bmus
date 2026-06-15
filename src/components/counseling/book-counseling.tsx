@@ -680,6 +680,16 @@ export default function BookCounseling({
   const services = servicesSection.services?.length
     ? servicesSection.services
     : DEFAULTS.servicesSection.services;
+  // Per-card default images, so cards managed in Sanity still show a relevant
+  // photo until an editor uploads their own (a Sanity image always overrides).
+  const serviceImageByTitle: Record<string, string> = Object.fromEntries(
+    DEFAULTS.servicesSection.services.map((s) => [s.title, s.imageUrl]),
+  );
+  const serviceFallbackImage = (s: any, idx: number): string | null =>
+    s.imageUrl ??
+    serviceImageByTitle[s.title] ??
+    DEFAULTS.servicesSection.services[idx]?.imageUrl ??
+    null;
 
   const testimonialsSection = {
     ...DEFAULTS.testimonialsSection,
@@ -1168,9 +1178,10 @@ export default function BookCounseling({
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {services.map((s: any) => {
+            {services.map((s: any, idx: number) => {
               const Icon = getIcon(s.icon);
-              const svcImgUrl = safeImageUrl(s.image) ?? s.imageUrl ?? null;
+              const svcImgUrl =
+                safeImageUrl(s.image) ?? serviceFallbackImage(s, idx);
               return (
                 <div
                   key={s.title}
