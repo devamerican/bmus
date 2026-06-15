@@ -265,31 +265,43 @@ const DEFAULTS = {
         icon: "Stethoscope",
         title: "MBBS Abroad Admission",
         desc: "Direct admission in 50+ NMC-approved universities across 8+ countries.",
+        imageUrl:
+          "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&h=280&fit=crop&auto=format",
       },
       {
         icon: "Microscope",
         title: "Course & University Selection",
         desc: "Personalised shortlist based on your NEET score, budget, and preference.",
+        imageUrl:
+          "https://images.unsplash.com/photo-1562774053-701939374585?w=400&h=280&fit=crop&auto=format",
       },
       {
         icon: "FileBadge",
         title: "Visa & Documentation",
         desc: "Complete paperwork, embassy support and fast-tracked student visas.",
+        imageUrl:
+          "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&h=280&fit=crop&auto=format",
       },
       {
         icon: "Languages",
         title: "Language & FMGE Prep",
         desc: "Local-language basics and FMGE/NExT coaching for a smooth return.",
+        imageUrl:
+          "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=280&fit=crop&auto=format",
       },
       {
         icon: "MapPin",
         title: "Travel & Forex",
         desc: "Tickets, foreign exchange, and group travel arrangements at student rates.",
+        imageUrl:
+          "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&h=280&fit=crop&auto=format",
       },
       {
         icon: "Award",
         title: "Career & Internship Guidance",
         desc: "Internship, residency and licensing support after graduation.",
+        imageUrl:
+          "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=280&fit=crop&auto=format",
       },
     ],
     ctaLabel: "Get End-to-End Help — Free Counselling",
@@ -954,7 +966,7 @@ export default function BookCounseling({
                   key={perk.title}
                   className="group relative rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/40 hover:bg-white/8 transition-all duration-300 overflow-hidden flex flex-col hover:-translate-y-1"
                 >
-                  <div className="relative h-44 w-full shrink-0">
+                  <div className="relative h-60 sm:h-72 lg:h-80 w-full shrink-0">
                     {perkImgUrl ? (
                       <Image
                         src={perkImgUrl}
@@ -1158,7 +1170,7 @@ export default function BookCounseling({
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {services.map((s: any) => {
               const Icon = getIcon(s.icon);
-              const svcImgUrl = safeImageUrl(s.image) ?? null;
+              const svcImgUrl = safeImageUrl(s.image) ?? s.imageUrl ?? null;
               return (
                 <div
                   key={s.title}
