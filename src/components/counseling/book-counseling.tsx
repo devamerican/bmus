@@ -301,7 +301,7 @@ const DEFAULTS = {
         title: "Career & Internship Guidance",
         desc: "Internship, residency and licensing support after graduation.",
         imageUrl:
-          "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=280&fit=crop&auto=format",
+          "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=280&fit=crop&auto=format",
       },
     ],
     ctaLabel: "Get End-to-End Help — Free Counselling",
